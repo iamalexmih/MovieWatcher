@@ -30,6 +30,7 @@
 		B5B1D1AF29D9DE83006966FF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B5B1D1AE29D9DE83006966FF /* FirebaseAuth */; };
 		B5B1D1B129D9DE83006966FF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B5B1D1B029D9DE83006966FF /* FirebaseFirestore */; };
 		B5B1D1B329D9DE83006966FF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B5B1D1B229D9DE83006966FF /* FirebaseStorage */; };
+		B5B1D1B629D9FBB1006966FF /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5B1D1B529D9FBB1006966FF /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 				B5B1D1B329D9DE83006966FF /* FirebaseStorage in Frameworks */,
 				B5B1D1AF29D9DE83006966FF /* FirebaseAuth in Frameworks */,
 				B5B1D1B129D9DE83006966FF /* FirebaseFirestore in Frameworks */,
+				B5B1D1B629D9FBB1006966FF /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +265,7 @@
 				B5B1D1AE29D9DE83006966FF /* FirebaseAuth */,
 				B5B1D1B029D9DE83006966FF /* FirebaseFirestore */,
 				B5B1D1B229D9DE83006966FF /* FirebaseStorage */,
+				B5B1D1B529D9FBB1006966FF /* SnapKit */,
 			);
 			productName = "ch 3 MovieWatcher";
 			productReference = B5B1D16929D9D7B0006966FF /* ch 3 MovieWatcher.app */;
@@ -295,6 +298,7 @@
 			packageReferences = (
 				B5B1D1AA29D9DDE3006966FF /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				B5B1D1AD29D9DE83006966FF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B5B1D1B429D9FBB1006966FF /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = B5B1D16A29D9D7B0006966FF /* Products */;
 			projectDirPath = "";
@@ -580,6 +584,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		B5B1D1B429D9FBB1006966FF /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -602,6 +614,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B5B1D1AD29D9DE83006966FF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		B5B1D1B529D9FBB1006966FF /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5B1D1B429D9FBB1006966FF /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
