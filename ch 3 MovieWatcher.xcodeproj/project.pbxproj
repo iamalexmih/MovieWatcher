@@ -95,6 +95,7 @@
 				B5B1D18029D9D7C0006966FF /* Application */,
 				B5B1D17229D9D7B0006966FF /* Main.storyboard */,
 				B5B1D17029D9D7B0006966FF /* ViewController.swift */,
+				B5B1D1B729DA0787006966FF /* Components */,
 				B5B1D19029D9DB9A006966FF /* Service */,
 				B5B1D18E29D9DB45006966FF /* HomeScreen */,
 				B5B1D18C29D9DA75006966FF /* ListMovieScreen */,
@@ -242,6 +243,13 @@
 				B5B1D19429D9DC50006966FF /* RegisterViewController.swift */,
 			);
 			path = RegisterScreen;
+			sourceTree = "<group>";
+		};
+		B5B1D1B729DA0787006966FF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
