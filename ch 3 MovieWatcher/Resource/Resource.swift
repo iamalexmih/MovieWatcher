@@ -9,7 +9,12 @@ import Foundation
 
 enum Resources {
     enum Colors {
-        static let colorExample = "colorExample"
+        static let accent = "accentColor"
+        static let bg = "bgColor"
+        static let cellIcon = "cellIconColor"
+        static let inactive = "inactiveColor"
+        static let secondText = "secondTextColor"
+        static let text = "textColor"
     }
     
     
