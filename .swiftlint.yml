@@ -1,0 +1,57 @@
+disabled_rules:
+    - trailing_newline
+    - trailing_whitespace
+
+line_length:
+    - 150 # warning
+    - 200 # error
+
+vertical_whitespace:
+    max_empty_lines: 3
+
+excluded:
+    - Pods
+
+warning_threshold: 15 # Максимально допустимое количество предупреждений
+
+custom_rules:
+    open_iboutlets: # проверяет что свойство приватное
+        included: ".*.swift"
+        name: "IBOutlet opening"
+        regex: '@IBOutlet ?(weak){0,1} var'
+        message: "IBOutlet should be private"
+        severity: error
+        
+    open_ibaction: # проверяет что свойство приватное
+        included: ".*.swift"
+        name: "IBAction opening"
+        regex: '@IBAction func'
+        message: "IBAction should be private"
+        severity: error
+    
+    comments_space:
+        name: "Space After Comment"
+        regex: '(^ *//\w+)'
+        message: "There should be a space after //"
+        severity: warning
+    
+    comments_capitalized_ignore_possible_code:
+        name: "Capitalize First Word In Comment"
+        regex: '(\w??// +(?!swiftlint)[a-z]+)'
+        message: "The first word of a comment should be capitalized"
+        severity: error
+    
+    print_using:
+        regex: 'print'
+        message: "Print decrease performance of the app"
+
+    custom_rules: # Правило, проверяющее именование с суффиксом -id. (например: userId — верно, userID — неверно)
+      id_suffix_naming:
+        name: "Wrong name"
+        regex: "(ID)"
+        match_kinds:
+          - comment
+          - identifier
+        message: "Use 'Id' instead 'ID'"
+        severity: error
+        
