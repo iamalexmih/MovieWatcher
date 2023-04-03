@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  ch 3 MovieWatcher
+//  Ch 3 MovieWatcher
 //
 //  Created by Алексей Попроцкий on 02.04.2023.
 //
@@ -11,7 +11,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        view.backgroundColor = .blue
     }
 
 
