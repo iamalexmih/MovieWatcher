@@ -282,8 +282,8 @@
 				63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */,
 				8E06F09E29DB5335006B2DED /* SearchTextField.swift */,
 				B5B6B14D29DC47C500F79E98 /* LogOutTemplateButton.swift */,
-				B5B6B14F29DC688C00F79E98 /* TestComponentsViewController.swift */,
 				00F1E97329DC55DB00F5FBF7 /* ButtonContinueView.swift */,
+				B5B6B14F29DC688C00F79E98 /* TestComponentsViewController.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";

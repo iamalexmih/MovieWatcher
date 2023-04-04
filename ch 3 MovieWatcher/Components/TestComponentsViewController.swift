@@ -16,6 +16,7 @@ class TestComponentsViewController: UIViewController {
     let textFieldWithLabel = TextFieldWithLabel()
     let searchTextField = SearchTextField()
     let logOutTemplateButton = LogOutTemplateButton()
+    let buttonContinueView = ButtonContinueView(title: "Custom Button")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class TestComponentsViewController: UIViewController {
         addTextFieldWithLabel()
         addSearchTextField()
         addLogOutTemplateButton()
+        addButtonContinueView()
     }
     
     func addGoogleButtonOnView() {
@@ -66,6 +68,16 @@ class TestComponentsViewController: UIViewController {
         logOutTemplateButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(32)
             make.top.equalTo(searchTextField.snp.bottom).offset(50)
+            make.height.equalTo(60)
+        }
+    }
+    
+    func addButtonContinueView() {
+        view.addSubview(buttonContinueView)
+        
+        buttonContinueView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(32)
+            make.top.equalTo(logOutTemplateButton.snp.bottom).offset(50)
             make.height.equalTo(60)
         }
     }
