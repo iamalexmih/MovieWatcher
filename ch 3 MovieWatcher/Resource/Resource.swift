@@ -29,5 +29,10 @@ enum Resources {
         static let tabBarSearchFill = "SearchFill"
         static let tabBarRecentWatch = "Video"
         static let tabBarRecentWatchFill = "Subtract"
+        static let googleSymbol = "googleSymbol"
+    }
+    
+    enum Font {
+        static let jakartaFontSemiBold = "PlusJakartaSansRoman-SemiBold"
     }
 }
