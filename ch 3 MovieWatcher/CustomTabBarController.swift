@@ -12,10 +12,10 @@ class CustomTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let filterViewController = UINavigationController(rootViewController: FilterViewController())
-        let listMovieViewController = UINavigationController(rootViewController: SearchViewController())
+        let filterViewController = UINavigationController(rootViewController: SearchViewController())
+        let listMovieViewController = UINavigationController(rootViewController: RecantWatchViewController())
         let homeViewController = UINavigationController(rootViewController: HomeViewController())
-        let movieDetailViewController = UINavigationController(rootViewController: MovieDetailViewController())
+        let movieDetailViewController = UINavigationController(rootViewController: FavoriteViewController())
         let settingViewController = UINavigationController(rootViewController: SettingViewController())
         setViewControllers([filterViewController,
                             listMovieViewController,
