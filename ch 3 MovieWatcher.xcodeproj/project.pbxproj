@@ -36,6 +36,7 @@
 		B5B1D1B329D9DE83006966FF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B5B1D1B229D9DE83006966FF /* FirebaseStorage */; };
 		B5B1D1B629D9FBB1006966FF /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5B1D1B529D9FBB1006966FF /* SnapKit */; };
 		B5B6B14E29DC47C500F79E98 /* LogOutTemplateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B6B14D29DC47C500F79E98 /* LogOutTemplateButton.swift */; };
+		B5B6B15029DC688C00F79E98 /* TestComponentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B6B14F29DC688C00F79E98 /* TestComponentsViewController.swift */; };
 		D4022D1487FF89F97179087C /* Pods_ch_3_MovieWatcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359A23F88600928C5A777E35 /* Pods_ch_3_MovieWatcher.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 		B5B1D1A629D9DD8E006966FF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B5B1D1A829D9DDA3006966FF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		B5B6B14D29DC47C500F79E98 /* LogOutTemplateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutTemplateButton.swift; sourceTree = "<group>"; };
+		B5B6B14F29DC688C00F79E98 /* TestComponentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestComponentsViewController.swift; sourceTree = "<group>"; };
 		D4C9D26B5DDDFDA94E958ED2 /* Pods-ch 3 MovieWatcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ch 3 MovieWatcher.release.xcconfig"; path = "Target Support Files/Pods-ch 3 MovieWatcher/Pods-ch 3 MovieWatcher.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -278,6 +280,7 @@
 				63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */,
 				8E06F09E29DB5335006B2DED /* SearchTextField.swift */,
 				B5B6B14D29DC47C500F79E98 /* LogOutTemplateButton.swift */,
+				B5B6B14F29DC688C00F79E98 /* TestComponentsViewController.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				B5B1D19929D9DC8E006966FF /* ProfileViewController.swift in Sources */,
 				63E01F7929DBEFED0010C6C7 /* TextFieldWithLabel.swift in Sources */,
 				B5B1D1A129D9DD1E006966FF /* ChangeAvatarViewController.swift in Sources */,
+				B5B6B15029DC688C00F79E98 /* TestComponentsViewController.swift in Sources */,
 				B5B1D16F29D9D7B0006966FF /* SceneDelegate.swift in Sources */,
 				B5B1D1A529D9DD77006966FF /* ListMovieViewController.swift in Sources */,
 				8E06F09F29DB5335006B2DED /* SearchTextField.swift in Sources */,
