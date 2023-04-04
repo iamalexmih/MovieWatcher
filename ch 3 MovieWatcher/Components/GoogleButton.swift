@@ -23,12 +23,12 @@ class GoogleButton: UIButton {
     
     private func setupButton() {
         setTitle("Continue with Google", for: .normal)
-        titleLabel?.font = UIFont(name: "Plus Jakarta Sans", size: 16)
+        titleLabel?.font = UIFont(name: Resources.Font.jakartaFont, size: 16)
         setTitleColor(basicTitleColour, for: .normal)
         contentMode = .center
-        setImage(UIImage(named: "googleSymbol"), for: .normal)
+        setImage(UIImage(named: Resources.Image.googleSymbol), for: .normal)
         imageEdgeInsets.left = -20
-        backgroundColor = UIColor(named: "bgColor")
+        backgroundColor = UIColor(named: Resources.Colors.backGround)
         layer.cornerRadius = 25
         layer.borderWidth = 2
         layer.borderColor = UIColor.black.cgColor
