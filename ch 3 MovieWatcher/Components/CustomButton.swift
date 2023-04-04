@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ButtonContinueView: UIButton {
+class CustomButton: UIButton {
 
     init(title: String) {
         super.init(frame: .zero)
