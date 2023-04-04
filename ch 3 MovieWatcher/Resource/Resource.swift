@@ -20,6 +20,9 @@ enum Resources {
     
     enum Image {
         static let imageExample = "imageExample"
+        static let searchImage = "magnifyingglass"
+        static let closeImage = "multiply"
+        static let filterImage = "slider.horizontal.3"
         static let tabBarHome = "GroupHome"
         static let tabBarFavorites = "Heart"
         static let tabBarFavoritesFill = "HeartFill"
