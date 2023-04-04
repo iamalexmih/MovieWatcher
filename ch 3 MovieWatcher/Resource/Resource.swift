@@ -23,5 +23,19 @@ enum Resources {
         static let searchImage = "magnifyingglass"
         static let closeImage = "multiply"
         static let filterImage = "slider.horizontal.3"
+        static let tabBarHome = "GroupHome"
+        static let tabBarFavorites = "Heart"
+        static let tabBarFavoritesFill = "HeartFill"
+        static let tabBarSetting = "Profile"
+        static let tabBarSettingFill = "ProfileFill"
+        static let tabBarSearch = "Search"
+        static let tabBarSearchFill = "SearchFill"
+        static let tabBarRecentWatch = "Video"
+        static let tabBarRecentWatchFill = "Subtract"
+        static let googleSymbol = "googleSymbol"
+    }
+    
+    enum Font {
+        static let jakartaFontSemiBold = "PlusJakartaSansRoman-SemiBold"
     }
 }
