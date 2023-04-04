@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63E01F7929DBEFED0010C6C7 /* TextFieldWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */; };
 		57E6209829DB4BFF00260AF5 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6209729DB4BFF00260AF5 /* CustomTabBarController.swift */; };
 		8708DB7929DC078300CEED97 /* PlusJakartaSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8708DB7829DC078300CEED97 /* PlusJakartaSans.ttf */; };
 		8727A1CB29DB00B400C3D087 /* GoogleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8727A1CA29DB00B400C3D087 /* GoogleButton.swift */; };
@@ -41,6 +42,7 @@
 		359A23F88600928C5A777E35 /* Pods_ch_3_MovieWatcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ch_3_MovieWatcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57E6209729DB4BFF00260AF5 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		610D653D69895880F8210BB9 /* Pods-ch 3 MovieWatcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ch 3 MovieWatcher.debug.xcconfig"; path = "Target Support Files/Pods-ch 3 MovieWatcher/Pods-ch 3 MovieWatcher.debug.xcconfig"; sourceTree = "<group>"; };
+		63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithLabel.swift; sourceTree = "<group>"; };
 		8708DB7829DC078300CEED97 /* PlusJakartaSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PlusJakartaSans.ttf; sourceTree = "<group>"; };
 		8727A1CA29DB00B400C3D087 /* GoogleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleButton.swift; sourceTree = "<group>"; };
 		8E06F09E29DB5335006B2DED /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				8727A1CA29DB00B400C3D087 /* GoogleButton.swift */,
+				63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */,
 				8E06F09E29DB5335006B2DED /* SearchTextField.swift */,
 			);
 			path = Components;
@@ -435,6 +438,7 @@
 				B5B1D16D29D9D7B0006966FF /* AppDelegate.swift in Sources */,
 				57E6209829DB4BFF00260AF5 /* CustomTabBarController.swift in Sources */,
 				B5B1D19929D9DC8E006966FF /* ProfileViewController.swift in Sources */,
+				63E01F7929DBEFED0010C6C7 /* TextFieldWithLabel.swift in Sources */,
 				B5B1D1A129D9DD1E006966FF /* ChangeAvatarViewController.swift in Sources */,
 				B5B1D16F29D9D7B0006966FF /* SceneDelegate.swift in Sources */,
 				B5B1D1A529D9DD77006966FF /* ListMovieViewController.swift in Sources */,
