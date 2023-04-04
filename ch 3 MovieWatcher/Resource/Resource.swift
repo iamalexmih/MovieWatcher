@@ -24,6 +24,6 @@ enum Resources {
     }
     
     enum Font {
-        static let jakartaFont = "PlusJakartaSans"
+        static let jakartaFontSemiBold = "PlusJakartaSansRoman-SemiBold"
     }
 }
