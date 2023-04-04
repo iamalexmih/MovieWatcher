@@ -2,9 +2,9 @@ import UIKit
 import SnapKit
 
 class SearchTextField: UIView {
-    let searchImageViewImage = UIImage(systemName: "magnifyingglass")
-    let cancelButtonImage = UIImage(systemName: "multiply")
-    let filterButtonImage = UIImage(systemName: "slider.horizontal.3")
+    let searchImageViewImage = UIImage(systemName: Resources.Image.searchImage)
+    let cancelButtonImage = UIImage(systemName: Resources.Image.closeImage)
+    let filterButtonImage = UIImage(systemName: Resources.Image.filterImage)
     let iconColor = UIColor(named: Resources.Colors.inactive)
     let buttonsColor = UIColor(named: Resources.Colors.backGround)
     var textFieldPlaceHolder = "Search"
@@ -28,10 +28,10 @@ class SearchTextField: UIView {
     }
 
     private func commonInit() {
-        setup()
+        setupConstraints()
     }
 
-    private func setup() {
+    private func setupConstraints() {
         addSubview(containerView)
         containerView.layer.borderColor = UIColor(named: Resources.Colors.accent)?.cgColor
         containerView.layer.borderWidth = 1
