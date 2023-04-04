@@ -9,8 +9,6 @@ import UIKit
 
 class ButtonContinueView: UIButton {
 
-    private var basicTitleColour: UIColor = UIColor(named: Resources.Colors.text) ?? .white
-
     init(title: String) {
         super.init(frame: .zero)
         setTitle("Continue", for: .normal)
@@ -24,7 +22,7 @@ class ButtonContinueView: UIButton {
 
     private func setupButton() {
         titleLabel?.font = UIFont(name: Resources.Font.jakartaFontSemiBold, size: 16)
-        setTitleColor(basicTitleColour, for: .normal)
+        setTitleColor(.white, for: .normal)
         contentMode = .center
         backgroundColor = UIColor(named: Resources.Colors.accent)
         layer.cornerRadius = 26
