@@ -35,12 +35,6 @@ custom_rules:
         message: "There should be a space after //"
         severity: warning
     
-#    comments_capitalized_ignore_possible_code:
-#        name: "Capitalize First Word In Comment"
-#        regex: '(\w??// +(?!swiftlint)[a-z]+)'
-#        message: "The first word of a comment should be capitalized"
-#        severity: error
-    
     print_using:
         regex: 'print'
         message: "Print decrease performance of the app"

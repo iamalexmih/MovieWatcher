@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00F1E97429DC55DB00F5FBF7 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1E97329DC55DB00F5FBF7 /* CustomButton.swift */; };
+		57E6209829DB4BFF00260AF5 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6209729DB4BFF00260AF5 /* CustomTabBarController.swift */; };
 		63E01F7929DBEFED0010C6C7 /* TextFieldWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */; };
+		8708DB7929DC078300CEED97 /* PlusJakartaSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8708DB7829DC078300CEED97 /* PlusJakartaSans.ttf */; };
 		8727A1CB29DB00B400C3D087 /* GoogleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8727A1CA29DB00B400C3D087 /* GoogleButton.swift */; };
+		8E06F09F29DB5335006B2DED /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F09E29DB5335006B2DED /* SearchTextField.swift */; };
+		B551394829DC9717005CD307 /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394729DC9717005CD307 /* UIView + ext.swift */; };
+		B551394C29DCA817005CD307 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394B29DCA817005CD307 /* FavoriteViewController.swift */; };
+		B551394F29DCA886005CD307 /* RecantWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394E29DCA886005CD307 /* RecantWatchViewController.swift */; };
 		B5B1D16D29D9D7B0006966FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D16C29D9D7B0006966FF /* AppDelegate.swift */; };
 		B5B1D16F29D9D7B0006966FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D16E29D9D7B0006966FF /* SceneDelegate.swift */; };
 		B5B1D17129D9D7B0006966FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D17029D9D7B0006966FF /* ViewController.swift */; };
@@ -20,11 +27,11 @@
 		B5B1D19729D9DC75006966FF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D19629D9DC75006966FF /* LoginViewController.swift */; };
 		B5B1D19929D9DC8E006966FF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D19829D9DC8E006966FF /* ProfileViewController.swift */; };
 		B5B1D19B29D9DCAC006966FF /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D19A29D9DCAC006966FF /* SettingViewController.swift */; };
-		B5B1D19D29D9DCCE006966FF /* MoviewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D19C29D9DCCE006966FF /* MoviewDetailViewController.swift */; };
+		B5B1D19D29D9DCCE006966FF /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D19C29D9DCCE006966FF /* MovieDetailViewController.swift */; };
 		B5B1D19F29D9DCFE006966FF /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D19E29D9DCFE006966FF /* FilterViewController.swift */; };
 		B5B1D1A129D9DD1E006966FF /* ChangeAvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D1A029D9DD1E006966FF /* ChangeAvatarViewController.swift */; };
 		B5B1D1A329D9DD4B006966FF /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D1A229D9DD4B006966FF /* MovieCell.swift */; };
-		B5B1D1A529D9DD77006966FF /* ListMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D1A429D9DD77006966FF /* ListMovieViewController.swift */; };
+		B5B1D1A529D9DD77006966FF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D1A429D9DD77006966FF /* SearchViewController.swift */; };
 		B5B1D1A729D9DD8E006966FF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D1A629D9DD8E006966FF /* HomeViewController.swift */; };
 		B5B1D1A929D9DDA3006966FF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D1A829D9DDA3006966FF /* NetworkService.swift */; };
 		B5B1D1AC29D9DDE3006966FF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B5B1D1AB29D9DDE3006966FF /* Kingfisher */; };
@@ -32,14 +39,23 @@
 		B5B1D1B129D9DE83006966FF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B5B1D1B029D9DE83006966FF /* FirebaseFirestore */; };
 		B5B1D1B329D9DE83006966FF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B5B1D1B229D9DE83006966FF /* FirebaseStorage */; };
 		B5B1D1B629D9FBB1006966FF /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5B1D1B529D9FBB1006966FF /* SnapKit */; };
+		B5B6B14E29DC47C500F79E98 /* LogOutTemplateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B6B14D29DC47C500F79E98 /* LogOutTemplateButton.swift */; };
+		B5B6B15029DC688C00F79E98 /* TestComponentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B6B14F29DC688C00F79E98 /* TestComponentsViewController.swift */; };
 		D4022D1487FF89F97179087C /* Pods_ch_3_MovieWatcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359A23F88600928C5A777E35 /* Pods_ch_3_MovieWatcher.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00F1E97329DC55DB00F5FBF7 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		359A23F88600928C5A777E35 /* Pods_ch_3_MovieWatcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ch_3_MovieWatcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		57E6209729DB4BFF00260AF5 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		610D653D69895880F8210BB9 /* Pods-ch 3 MovieWatcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ch 3 MovieWatcher.debug.xcconfig"; path = "Target Support Files/Pods-ch 3 MovieWatcher/Pods-ch 3 MovieWatcher.debug.xcconfig"; sourceTree = "<group>"; };
 		63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithLabel.swift; sourceTree = "<group>"; };
+		8708DB7829DC078300CEED97 /* PlusJakartaSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PlusJakartaSans.ttf; sourceTree = "<group>"; };
 		8727A1CA29DB00B400C3D087 /* GoogleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleButton.swift; sourceTree = "<group>"; };
+		8E06F09E29DB5335006B2DED /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		B551394729DC9717005CD307 /* UIView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ext.swift"; sourceTree = "<group>"; };
+		B551394B29DCA817005CD307 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		B551394E29DCA886005CD307 /* RecantWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecantWatchViewController.swift; sourceTree = "<group>"; };
 		B5B1D16929D9D7B0006966FF /* ch 3 MovieWatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ch 3 MovieWatcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B1D16C29D9D7B0006966FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5B1D16E29D9D7B0006966FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,13 +69,15 @@
 		B5B1D19629D9DC75006966FF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B5B1D19829D9DC8E006966FF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B5B1D19A29D9DCAC006966FF /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		B5B1D19C29D9DCCE006966FF /* MoviewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviewDetailViewController.swift; sourceTree = "<group>"; };
+		B5B1D19C29D9DCCE006966FF /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		B5B1D19E29D9DCFE006966FF /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		B5B1D1A029D9DD1E006966FF /* ChangeAvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAvatarViewController.swift; sourceTree = "<group>"; };
 		B5B1D1A229D9DD4B006966FF /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
-		B5B1D1A429D9DD77006966FF /* ListMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMovieViewController.swift; sourceTree = "<group>"; };
+		B5B1D1A429D9DD77006966FF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		B5B1D1A629D9DD8E006966FF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B5B1D1A829D9DDA3006966FF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		B5B6B14D29DC47C500F79E98 /* LogOutTemplateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutTemplateButton.swift; sourceTree = "<group>"; };
+		B5B6B14F29DC688C00F79E98 /* TestComponentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestComponentsViewController.swift; sourceTree = "<group>"; };
 		D4C9D26B5DDDFDA94E958ED2 /* Pods-ch 3 MovieWatcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ch 3 MovieWatcher.release.xcconfig"; path = "Target Support Files/Pods-ch 3 MovieWatcher/Pods-ch 3 MovieWatcher.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,12 +98,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8708DB7729DC076100CEED97 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8708DB7829DC078300CEED97 /* PlusJakartaSans.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B551394929DC98B9005CD307 /* Extansions */ = {
+			isa = PBXGroup;
+			children = (
+				B551394729DC9717005CD307 /* UIView + ext.swift */,
+			);
+			path = Extansions;
+			sourceTree = "<group>";
+		};
+		B551394A29DCA756005CD307 /* FavoriteScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B551394B29DCA817005CD307 /* FavoriteViewController.swift */,
+			);
+			path = FavoriteScreen;
+			sourceTree = "<group>";
+		};
+		B551394D29DCA87A005CD307 /* RecantWatchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B551394E29DCA886005CD307 /* RecantWatchViewController.swift */,
+			);
+			path = RecantWatchScreen;
+			sourceTree = "<group>";
+		};
 		B5B1D16029D9D7B0006966FF = {
 			isa = PBXGroup;
 			children = (
 				B5B1D16B29D9D7B0006966FF /* ch 3 MovieWatcher */,
-				B5B1D16A29D9D7B0006966FF /* Products */,
 				C9B9F91534EAC03D42F01CA1 /* Pods */,
+				B5B1D16A29D9D7B0006966FF /* Products */,
 				F52403CAC45A47E1646FF26A /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -103,19 +153,24 @@
 			children = (
 				B5B1D18029D9D7C0006966FF /* Application */,
 				B5B1D17029D9D7B0006966FF /* ViewController.swift */,
+				B551394D29DCA87A005CD307 /* RecantWatchScreen */,
+				B551394A29DCA756005CD307 /* FavoriteScreen */,
+				57E6209729DB4BFF00260AF5 /* CustomTabBarController.swift */,
+				B5B1D18D29D9DA87006966FF /* Cell */,
 				B5B1D1B729DA0787006966FF /* Components */,
 				B5B1D19029D9DB9A006966FF /* Service */,
 				B5B1D18E29D9DB45006966FF /* HomeScreen */,
-				B5B1D18C29D9DA75006966FF /* ListMovieScreen */,
+				B5B1D18C29D9DA75006966FF /* SearchScreen */,
 				B5B1D18B29D9DA06006966FF /* ChangeAvatarView */,
 				B5B1D18A29D9D9F7006966FF /* FilterView */,
-				B5B1D18929D9D9CE006966FF /* MoviewDetailScreen */,
+				B5B1D18929D9D9CE006966FF /* MovieDetailScreen */,
 				B5B1D18729D9D991006966FF /* SettingScreen */,
 				B5B1D18829D9D9AD006966FF /* ProfileScreen */,
 				B5B1D18629D9D974006966FF /* LoginScreen */,
 				B5B1D19129D9DBD8006966FF /* RegisterScreen */,
 				B5B1D18529D9D96D006966FF /* OnBoardingScreen */,
 				B5B1D18129D9D7F4006966FF /* Resource */,
+				B551394929DC98B9005CD307 /* Extansions */,
 				B5B1D18229D9D83A006966FF /* Supporting */,
 			);
 			path = "ch 3 MovieWatcher";
@@ -134,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				B5B1D18329D9D90A006966FF /* Resource.swift */,
+				8708DB7729DC076100CEED97 /* Fonts */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -180,12 +236,12 @@
 			path = ProfileScreen;
 			sourceTree = "<group>";
 		};
-		B5B1D18929D9D9CE006966FF /* MoviewDetailScreen */ = {
+		B5B1D18929D9D9CE006966FF /* MovieDetailScreen */ = {
 			isa = PBXGroup;
 			children = (
-				B5B1D19C29D9DCCE006966FF /* MoviewDetailViewController.swift */,
+				B5B1D19C29D9DCCE006966FF /* MovieDetailViewController.swift */,
 			);
-			path = MoviewDetailScreen;
+			path = MovieDetailScreen;
 			sourceTree = "<group>";
 		};
 		B5B1D18A29D9D9F7006966FF /* FilterView */ = {
@@ -204,21 +260,20 @@
 			path = ChangeAvatarView;
 			sourceTree = "<group>";
 		};
-		B5B1D18C29D9DA75006966FF /* ListMovieScreen */ = {
+		B5B1D18C29D9DA75006966FF /* SearchScreen */ = {
 			isa = PBXGroup;
 			children = (
-				B5B1D18D29D9DA87006966FF /* MovieCell */,
-				B5B1D1A429D9DD77006966FF /* ListMovieViewController.swift */,
+				B5B1D1A429D9DD77006966FF /* SearchViewController.swift */,
 			);
-			path = ListMovieScreen;
+			path = SearchScreen;
 			sourceTree = "<group>";
 		};
-		B5B1D18D29D9DA87006966FF /* MovieCell */ = {
+		B5B1D18D29D9DA87006966FF /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				B5B1D1A229D9DD4B006966FF /* MovieCell.swift */,
 			);
-			path = MovieCell;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		B5B1D18E29D9DB45006966FF /* HomeScreen */ = {
@@ -258,6 +313,10 @@
 			children = (
 				8727A1CA29DB00B400C3D087 /* GoogleButton.swift */,
 				63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */,
+				8E06F09E29DB5335006B2DED /* SearchTextField.swift */,
+				B5B6B14D29DC47C500F79E98 /* LogOutTemplateButton.swift */,
+				00F1E97329DC55DB00F5FBF7 /* CustomButton.swift */,
+				B5B6B14F29DC688C00F79E98 /* TestComponentsViewController.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -353,6 +412,7 @@
 			files = (
 				B5B1D17929D9D7B1006966FF /* LaunchScreen.storyboard in Resources */,
 				B5B1D17629D9D7B1006966FF /* Assets.xcassets in Resources */,
+				8708DB7929DC078300CEED97 /* PlusJakartaSans.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,18 +471,26 @@
 				B5B1D18429D9D90A006966FF /* Resource.swift in Sources */,
 				B5B1D19329D9DC20006966FF /* OnBoardingScreenViewController.swift in Sources */,
 				B5B1D1A729D9DD8E006966FF /* HomeViewController.swift in Sources */,
-				B5B1D19D29D9DCCE006966FF /* MoviewDetailViewController.swift in Sources */,
+				B5B1D19D29D9DCCE006966FF /* MovieDetailViewController.swift in Sources */,
 				B5B1D19F29D9DCFE006966FF /* FilterViewController.swift in Sources */,
 				B5B1D19529D9DC50006966FF /* RegisterViewController.swift in Sources */,
+				B5B6B14E29DC47C500F79E98 /* LogOutTemplateButton.swift in Sources */,
+				B551394829DC9717005CD307 /* UIView + ext.swift in Sources */,
 				B5B1D19B29D9DCAC006966FF /* SettingViewController.swift in Sources */,
 				B5B1D1A929D9DDA3006966FF /* NetworkService.swift in Sources */,
 				8727A1CB29DB00B400C3D087 /* GoogleButton.swift in Sources */,
+				B551394C29DCA817005CD307 /* FavoriteViewController.swift in Sources */,
 				B5B1D16D29D9D7B0006966FF /* AppDelegate.swift in Sources */,
+				57E6209829DB4BFF00260AF5 /* CustomTabBarController.swift in Sources */,
 				B5B1D19929D9DC8E006966FF /* ProfileViewController.swift in Sources */,
 				63E01F7929DBEFED0010C6C7 /* TextFieldWithLabel.swift in Sources */,
 				B5B1D1A129D9DD1E006966FF /* ChangeAvatarViewController.swift in Sources */,
+				B5B6B15029DC688C00F79E98 /* TestComponentsViewController.swift in Sources */,
 				B5B1D16F29D9D7B0006966FF /* SceneDelegate.swift in Sources */,
-				B5B1D1A529D9DD77006966FF /* ListMovieViewController.swift in Sources */,
+				B5B1D1A529D9DD77006966FF /* SearchViewController.swift in Sources */,
+				00F1E97429DC55DB00F5FBF7 /* CustomButton.swift in Sources */,
+				8E06F09F29DB5335006B2DED /* SearchTextField.swift in Sources */,
+				B551394F29DCA886005CD307 /* RecantWatchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
