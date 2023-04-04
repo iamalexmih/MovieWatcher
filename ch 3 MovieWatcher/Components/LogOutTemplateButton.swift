@@ -36,6 +36,7 @@ class LogOutTemplateButton: UIButton {
        layer.borderColor = titleColor.cgColor
        layer.borderWidth = 2
        layer.cornerRadius = cornerRadius
+       makeSystem(self)
     }
     
     func customizeButton(title: String?, newTitleColor: UIColor?, newBackgroundColor: UIColor?) {

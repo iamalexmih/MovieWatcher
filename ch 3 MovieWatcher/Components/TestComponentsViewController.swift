@@ -12,7 +12,7 @@ import SnapKit
 
 class TestComponentsViewController: UIViewController {
     
-    let googleButton = GoogleButton(type: .system)
+    let googleButton = GoogleButton()
     let textFieldWithLabel = TextFieldWithLabel()
     let searchTextField = SearchTextField()
     let logOutTemplateButton = LogOutTemplateButton()
@@ -34,10 +34,9 @@ class TestComponentsViewController: UIViewController {
         view.addSubview(googleButton)
         
         googleButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(32)
             make.top.equalTo(view.snp.top).offset(50)
             make.height.equalTo(60)
-            make.width.equalTo(250)
         }
     }
     

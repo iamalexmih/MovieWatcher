@@ -13,9 +13,9 @@ class SearchTextField: UIView {
     lazy var stackView = UIStackView()
     lazy var searchImageView = UIImageView()
     lazy var searchTextField = UITextField()
-    lazy var cancelButton = UIButton()
+    lazy var cancelButton = UIButton(type: .system)
     lazy var breakView = UIView()
-    lazy var filterButton = UIButton()
+    lazy var filterButton = UIButton(type: .system)
 
     override init(frame: CGRect) {
         super.init(frame: frame)

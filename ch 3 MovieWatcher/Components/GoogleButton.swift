@@ -33,7 +33,6 @@ class GoogleButton: UIButton {
         layer.borderWidth = 2
         layer.borderColor = UIColor.black.cgColor
         translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraint(equalToConstant: 56).isActive = true
-        widthAnchor.constraint(equalToConstant: 327).isActive = true
+        makeSystem(self)
     }
 }

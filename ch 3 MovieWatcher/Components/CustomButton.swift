@@ -27,5 +27,6 @@ class CustomButton: UIButton {
         backgroundColor = UIColor(named: Resources.Colors.accent)
         layer.cornerRadius = 26
         translatesAutoresizingMaskIntoConstraints = false
+        makeSystem(self)
     }
 }
