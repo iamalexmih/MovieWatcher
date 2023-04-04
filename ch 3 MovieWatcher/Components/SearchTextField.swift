@@ -6,7 +6,7 @@ class SearchTextField: UIView {
     let cancelButtonImage = UIImage(systemName: Resources.Image.closeImage)
     let filterButtonImage = UIImage(systemName: Resources.Image.filterImage)
     let iconColor = UIColor(named: Resources.Colors.inactive)
-    let buttonsColor = UIColor(named: Resources.Colors.backGround)
+    let buttonsColor = UIColor(named: Resources.Colors.text)
     var textFieldPlaceHolder = "Search"
 
     lazy var containerView = UIView()
@@ -54,7 +54,7 @@ class SearchTextField: UIView {
         }
 
         containerView.addSubview(searchTextField)
-        searchTextField.backgroundColor = .white
+        searchTextField.backgroundColor = .clear
         searchTextField.placeholder = textFieldPlaceHolder
         searchTextField.snp.makeConstraints { make in
             make.left.equalTo(searchImageView.snp_rightMargin).inset(-16)

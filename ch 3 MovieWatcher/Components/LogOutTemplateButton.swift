@@ -13,7 +13,7 @@ class LogOutTemplateButton: UIButton {
     var fontSize: CGFloat = 20
     
     var defaultText = "Log Out"
-    var titleColor: UIColor = .purple
+    var titleColor: UIColor = UIColor(named: Resources.Colors.accent) ?? .purple
     var bgColor: UIColor = .clear
     
     override init(frame: CGRect) {

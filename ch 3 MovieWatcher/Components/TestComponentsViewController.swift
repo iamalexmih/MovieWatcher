@@ -21,7 +21,7 @@ class TestComponentsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .lightGray
+        view.backgroundColor = UIColor(named: Resources.Colors.backGround)
 
         addGoogleButtonOnView()
         addTextFieldWithLabel()
