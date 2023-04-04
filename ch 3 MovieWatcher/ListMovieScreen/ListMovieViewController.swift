@@ -11,4 +11,10 @@ import UIKit
 
 class ListMovieViewController: UIViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .black
+    }
+    
 }
