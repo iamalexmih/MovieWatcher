@@ -13,9 +13,9 @@ class CustomTabBarController: UITabBarController {
         super.viewDidLoad()
         
         let filterViewController = UINavigationController(rootViewController: FilterViewController())
-        let listMovieViewController = UINavigationController(rootViewController: ListMovieViewController())
+        let listMovieViewController = UINavigationController(rootViewController: SearchViewController())
         let homeViewController = UINavigationController(rootViewController: HomeViewController())
-        let movieDetailViewController = UINavigationController(rootViewController: MoviewDetailViewController())
+        let movieDetailViewController = UINavigationController(rootViewController: MovieDetailViewController())
         let settingViewController = UINavigationController(rootViewController: SettingViewController())
         setViewControllers([filterViewController,
                             listMovieViewController,

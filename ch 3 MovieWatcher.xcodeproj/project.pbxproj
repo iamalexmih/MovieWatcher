@@ -25,11 +25,11 @@
 		B5B1D19729D9DC75006966FF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D19629D9DC75006966FF /* LoginViewController.swift */; };
 		B5B1D19929D9DC8E006966FF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D19829D9DC8E006966FF /* ProfileViewController.swift */; };
 		B5B1D19B29D9DCAC006966FF /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D19A29D9DCAC006966FF /* SettingViewController.swift */; };
-		B5B1D19D29D9DCCE006966FF /* MoviewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D19C29D9DCCE006966FF /* MoviewDetailViewController.swift */; };
+		B5B1D19D29D9DCCE006966FF /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D19C29D9DCCE006966FF /* MovieDetailViewController.swift */; };
 		B5B1D19F29D9DCFE006966FF /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D19E29D9DCFE006966FF /* FilterViewController.swift */; };
 		B5B1D1A129D9DD1E006966FF /* ChangeAvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D1A029D9DD1E006966FF /* ChangeAvatarViewController.swift */; };
 		B5B1D1A329D9DD4B006966FF /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D1A229D9DD4B006966FF /* MovieCell.swift */; };
-		B5B1D1A529D9DD77006966FF /* ListMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D1A429D9DD77006966FF /* ListMovieViewController.swift */; };
+		B5B1D1A529D9DD77006966FF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D1A429D9DD77006966FF /* SearchViewController.swift */; };
 		B5B1D1A729D9DD8E006966FF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D1A629D9DD8E006966FF /* HomeViewController.swift */; };
 		B5B1D1A929D9DDA3006966FF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D1A829D9DDA3006966FF /* NetworkService.swift */; };
 		B5B1D1AC29D9DDE3006966FF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B5B1D1AB29D9DDE3006966FF /* Kingfisher */; };
@@ -65,11 +65,11 @@
 		B5B1D19629D9DC75006966FF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B5B1D19829D9DC8E006966FF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B5B1D19A29D9DCAC006966FF /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		B5B1D19C29D9DCCE006966FF /* MoviewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviewDetailViewController.swift; sourceTree = "<group>"; };
+		B5B1D19C29D9DCCE006966FF /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		B5B1D19E29D9DCFE006966FF /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		B5B1D1A029D9DD1E006966FF /* ChangeAvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAvatarViewController.swift; sourceTree = "<group>"; };
 		B5B1D1A229D9DD4B006966FF /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
-		B5B1D1A429D9DD77006966FF /* ListMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMovieViewController.swift; sourceTree = "<group>"; };
+		B5B1D1A429D9DD77006966FF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		B5B1D1A629D9DD8E006966FF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B5B1D1A829D9DDA3006966FF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		B5B6B14D29DC47C500F79E98 /* LogOutTemplateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutTemplateButton.swift; sourceTree = "<group>"; };
@@ -134,13 +134,14 @@
 				B5B1D18029D9D7C0006966FF /* Application */,
 				B5B1D17029D9D7B0006966FF /* ViewController.swift */,
 				57E6209729DB4BFF00260AF5 /* CustomTabBarController.swift */,
+				B5B1D18D29D9DA87006966FF /* Cell */,
 				B5B1D1B729DA0787006966FF /* Components */,
 				B5B1D19029D9DB9A006966FF /* Service */,
 				B5B1D18E29D9DB45006966FF /* HomeScreen */,
-				B5B1D18C29D9DA75006966FF /* ListMovieScreen */,
+				B5B1D18C29D9DA75006966FF /* SearchScreen */,
 				B5B1D18B29D9DA06006966FF /* ChangeAvatarView */,
 				B5B1D18A29D9D9F7006966FF /* FilterView */,
-				B5B1D18929D9D9CE006966FF /* MoviewDetailScreen */,
+				B5B1D18929D9D9CE006966FF /* MovieDetailScreen */,
 				B5B1D18729D9D991006966FF /* SettingScreen */,
 				B5B1D18829D9D9AD006966FF /* ProfileScreen */,
 				B5B1D18629D9D974006966FF /* LoginScreen */,
@@ -213,12 +214,12 @@
 			path = ProfileScreen;
 			sourceTree = "<group>";
 		};
-		B5B1D18929D9D9CE006966FF /* MoviewDetailScreen */ = {
+		B5B1D18929D9D9CE006966FF /* MovieDetailScreen */ = {
 			isa = PBXGroup;
 			children = (
-				B5B1D19C29D9DCCE006966FF /* MoviewDetailViewController.swift */,
+				B5B1D19C29D9DCCE006966FF /* MovieDetailViewController.swift */,
 			);
-			path = MoviewDetailScreen;
+			path = MovieDetailScreen;
 			sourceTree = "<group>";
 		};
 		B5B1D18A29D9D9F7006966FF /* FilterView */ = {
@@ -237,21 +238,20 @@
 			path = ChangeAvatarView;
 			sourceTree = "<group>";
 		};
-		B5B1D18C29D9DA75006966FF /* ListMovieScreen */ = {
+		B5B1D18C29D9DA75006966FF /* SearchScreen */ = {
 			isa = PBXGroup;
 			children = (
-				B5B1D18D29D9DA87006966FF /* MovieCell */,
-				B5B1D1A429D9DD77006966FF /* ListMovieViewController.swift */,
+				B5B1D1A429D9DD77006966FF /* SearchViewController.swift */,
 			);
-			path = ListMovieScreen;
+			path = SearchScreen;
 			sourceTree = "<group>";
 		};
-		B5B1D18D29D9DA87006966FF /* MovieCell */ = {
+		B5B1D18D29D9DA87006966FF /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				B5B1D1A229D9DD4B006966FF /* MovieCell.swift */,
 			);
-			path = MovieCell;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		B5B1D18E29D9DB45006966FF /* HomeScreen */ = {
@@ -449,7 +449,7 @@
 				B5B1D18429D9D90A006966FF /* Resource.swift in Sources */,
 				B5B1D19329D9DC20006966FF /* OnBoardingScreenViewController.swift in Sources */,
 				B5B1D1A729D9DD8E006966FF /* HomeViewController.swift in Sources */,
-				B5B1D19D29D9DCCE006966FF /* MoviewDetailViewController.swift in Sources */,
+				B5B1D19D29D9DCCE006966FF /* MovieDetailViewController.swift in Sources */,
 				B5B1D19F29D9DCFE006966FF /* FilterViewController.swift in Sources */,
 				B5B1D19529D9DC50006966FF /* RegisterViewController.swift in Sources */,
 				B5B6B14E29DC47C500F79E98 /* LogOutTemplateButton.swift in Sources */,
@@ -464,7 +464,7 @@
 				B5B1D1A129D9DD1E006966FF /* ChangeAvatarViewController.swift in Sources */,
 				B5B6B15029DC688C00F79E98 /* TestComponentsViewController.swift in Sources */,
 				B5B1D16F29D9D7B0006966FF /* SceneDelegate.swift in Sources */,
-				B5B1D1A529D9DD77006966FF /* ListMovieViewController.swift in Sources */,
+				B5B1D1A529D9DD77006966FF /* SearchViewController.swift in Sources */,
 				00F1E97429DC55DB00F5FBF7 /* CustomButton.swift in Sources */,
 				8E06F09F29DB5335006B2DED /* SearchTextField.swift in Sources */,
 			);
