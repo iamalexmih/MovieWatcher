@@ -20,5 +20,10 @@ enum Resources {
     
     enum Image {
         static let imageExample = "imageExample"
+        static let googleSymbol = "googleSymbol"
+    }
+    
+    enum Font {
+        static let jakartaFont = "PlusJakartaSans"
     }
 }
