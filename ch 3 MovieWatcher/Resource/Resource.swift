@@ -20,6 +20,15 @@ enum Resources {
     
     enum Image {
         static let imageExample = "imageExample"
+        static let tabBarHome = "GroupHome"
+        static let tabBarFavorites = "Heart"
+        static let tabBarFavoritesFill = "HeartFill"
+        static let tabBarSetting = "Profile"
+        static let tabBarSettingFill = "ProfileFill"
+        static let tabBarSearch = "Search"
+        static let tabBarSearchFill = "SearchFill"
+        static let tabBarRecentWatch = "Video"
+        static let tabBarRecentWatchFill = "Subtract"
         static let googleSymbol = "googleSymbol"
     }
     
