@@ -34,10 +34,6 @@ custom_rules:
         regex: '(^ *//\w+)'
         message: "There should be a space after //"
         severity: warning
-    
-    print_using:
-        regex: 'print'
-        message: "Print decrease performance of the app"
 
     custom_rules: # Правило, проверяющее именование с суффиксом -id. (например: userId — верно, userID — неверно)
       id_suffix_naming:

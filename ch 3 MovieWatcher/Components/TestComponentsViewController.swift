@@ -32,8 +32,28 @@ class TestComponentsViewController: UIViewController {
         addLogOutTemplateButton()
         addCustomButton()
         addTextFieldWithLabelStack()
+        
+        
+        getPopularMovies()
     }
     
+    
+    // MARK: - Сетевые запросы
+    func getPopularMovies() {
+        NetworkService.shared.getDiscoverMovies { result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    print(data.results)
+                }
+            case .failure(_):
+                print("Error, .....")
+            }
+        }
+    }
+    
+    
+    // MARK: - Компоненты
     func addGoogleButtonOnView() {
         view.addSubview(googleButton)
         
