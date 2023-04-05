@@ -52,7 +52,7 @@ extension RecentWatchViewController: UICollectionViewDelegate, UICollectionViewD
             if let cell = cell {
                 if let selectedCellColour = UIColor(named: Resources.Colors.accent) {
                     setupUICell(cell: cell, color: selectedCellColour)
-                    cell.categoryLabel.textColor = .white
+//                    cell.categoryLabel.textColor = .white
                 }
             }
             
