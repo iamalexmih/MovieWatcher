@@ -20,6 +20,9 @@
 		B551394C29DCA817005CD307 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394B29DCA817005CD307 /* FavoriteViewController.swift */; };
 		B551394F29DCA886005CD307 /* RecantWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394E29DCA886005CD307 /* RecantWatchViewController.swift */; };
 		B551395529DDEDD4005CD307 /* TextFieldWithLabelStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551395429DDEDD4005CD307 /* TextFieldWithLabelStack.swift */; };
+		B551395829DDFD98005CD307 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551395729DDFD98005CD307 /* MovieModel.swift */; };
+		B551395A29DDFDC9005CD307 /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551395929DDFDC9005CD307 /* ApiKey.swift */; };
+		B551395C29DDFF99005CD307 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551395B29DDFF99005CD307 /* ApiError.swift */; };
 		B5B1D16D29D9D7B0006966FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D16C29D9D7B0006966FF /* AppDelegate.swift */; };
 		B5B1D16F29D9D7B0006966FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D16E29D9D7B0006966FF /* SceneDelegate.swift */; };
 		B5B1D17129D9D7B0006966FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D17029D9D7B0006966FF /* ViewController.swift */; };
@@ -64,6 +67,9 @@
 		B551394B29DCA817005CD307 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		B551394E29DCA886005CD307 /* RecantWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecantWatchViewController.swift; sourceTree = "<group>"; };
 		B551395429DDEDD4005CD307 /* TextFieldWithLabelStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldWithLabelStack.swift; sourceTree = "<group>"; };
+		B551395729DDFD98005CD307 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		B551395929DDFDC9005CD307 /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
+		B551395B29DDFF99005CD307 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		B5B1D16929D9D7B0006966FF /* ch 3 MovieWatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ch 3 MovieWatcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B1D16C29D9D7B0006966FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5B1D16E29D9D7B0006966FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +146,15 @@
 			path = RecentWatchScreen;
 			sourceTree = "<group>";
 		};
+		B551395629DDFD7E005CD307 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B551395729DDFD98005CD307 /* MovieModel.swift */,
+				B551395B29DDFF99005CD307 /* ApiError.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		B5B1D16029D9D7B0006966FF = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +183,7 @@
 				57E6209729DB4BFF00260AF5 /* CustomTabBarController.swift */,
 				B5B1D18D29D9DA87006966FF /* Cell */,
 				B5B1D1B729DA0787006966FF /* Components */,
+				B551395629DDFD7E005CD307 /* Models */,
 				B5B1D19029D9DB9A006966FF /* Service */,
 				B5B1D18E29D9DB45006966FF /* HomeScreen */,
 				B5B1D18C29D9DA75006966FF /* SearchScreen */,
@@ -299,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				B5B1D1A829D9DDA3006966FF /* NetworkService.swift */,
+				B551395929DDFDC9005CD307 /* ApiKey.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -488,8 +505,11 @@
 				B5B1D1A729D9DD8E006966FF /* HomeViewController.swift in Sources */,
 				B5B1D19D29D9DCCE006966FF /* MovieDetailViewController.swift in Sources */,
 				B5B1D19F29D9DCFE006966FF /* FilterViewController.swift in Sources */,
+				B551395A29DDFDC9005CD307 /* ApiKey.swift in Sources */,
 				B5B1D19529D9DC50006966FF /* RegisterViewController.swift in Sources */,
 				B5B6B14E29DC47C500F79E98 /* LogOutTemplateButton.swift in Sources */,
+				B551395829DDFD98005CD307 /* MovieModel.swift in Sources */,
+				B551395C29DDFF99005CD307 /* ApiError.swift in Sources */,
 				B551394829DC9717005CD307 /* UIView + ext.swift in Sources */,
 				B5B1D19B29D9DCAC006966FF /* SettingViewController.swift in Sources */,
 				B5B1D1A929D9DDA3006966FF /* NetworkService.swift in Sources */,

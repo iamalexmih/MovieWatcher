@@ -52,12 +52,12 @@ class TextFieldWithLabelStack: UIStackView {
     private func setupLabelAndTexField() {
         label.text = labelText
         label.font = UIFont.systemFont(ofSize: 14)
-        //TODO: Цвета из ресурсов Resources.Colors.secondText
+        // TODO: Цвета из ресурсов Resources.Colors.secondText
         label.textColor = .secondaryLabel
         label.translatesAutoresizingMaskIntoConstraints = false
         
         
-        //TODO: Нет бэкграунда у текст поля
+        // TODO: Нет бэкграунда у текст поля
         textField.isSecureTextEntry = isSecure
         textField.placeholder = placeholderText
         textField.font = UIFont.systemFont(ofSize: 16)
