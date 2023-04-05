@@ -16,6 +16,7 @@
 		B551394829DC9717005CD307 /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394729DC9717005CD307 /* UIView + ext.swift */; };
 		B551394C29DCA817005CD307 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394B29DCA817005CD307 /* FavoriteViewController.swift */; };
 		B551394F29DCA886005CD307 /* RecantWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394E29DCA886005CD307 /* RecantWatchViewController.swift */; };
+		B551395529DDEDD4005CD307 /* TextFieldWithLabelStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551395429DDEDD4005CD307 /* TextFieldWithLabelStack.swift */; };
 		B5B1D16D29D9D7B0006966FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D16C29D9D7B0006966FF /* AppDelegate.swift */; };
 		B5B1D16F29D9D7B0006966FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D16E29D9D7B0006966FF /* SceneDelegate.swift */; };
 		B5B1D17129D9D7B0006966FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D17029D9D7B0006966FF /* ViewController.swift */; };
@@ -56,6 +57,7 @@
 		B551394729DC9717005CD307 /* UIView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ext.swift"; sourceTree = "<group>"; };
 		B551394B29DCA817005CD307 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		B551394E29DCA886005CD307 /* RecantWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecantWatchViewController.swift; sourceTree = "<group>"; };
+		B551395429DDEDD4005CD307 /* TextFieldWithLabelStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldWithLabelStack.swift; sourceTree = "<group>"; };
 		B5B1D16929D9D7B0006966FF /* ch 3 MovieWatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ch 3 MovieWatcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B1D16C29D9D7B0006966FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5B1D16E29D9D7B0006966FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 		B5B1D1B729DA0787006966FF /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B551395429DDEDD4005CD307 /* TextFieldWithLabelStack.swift */,
 				8727A1CA29DB00B400C3D087 /* GoogleButton.swift */,
 				63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */,
 				8E06F09E29DB5335006B2DED /* SearchTextField.swift */,
@@ -467,6 +470,7 @@
 			files = (
 				B5B1D1A329D9DD4B006966FF /* MovieCell.swift in Sources */,
 				B5B1D19729D9DC75006966FF /* LoginViewController.swift in Sources */,
+				B551395529DDEDD4005CD307 /* TextFieldWithLabelStack.swift in Sources */,
 				B5B1D17129D9D7B0006966FF /* ViewController.swift in Sources */,
 				B5B1D18429D9D90A006966FF /* Resource.swift in Sources */,
 				B5B1D19329D9DC20006966FF /* OnBoardingScreenViewController.swift in Sources */,
