@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Heart.png",
+      "filename" : "filmstrip.png",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "Heart 1.png",
+      "filename" : "filmstrip 1.png",
       "idiom" : "universal"
     }
   ],

@@ -5,6 +5,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>PlusJakartaSans.ttf</string>
+		<string>Montserrat.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
