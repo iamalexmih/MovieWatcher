@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class RecentWatchView: UIView {
 
@@ -50,18 +51,20 @@ class RecentWatchView: UIView {
     }
     
     private func setupConstrains() {
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: topAnchor),
-            collectionView.centerYAnchor.constraint(equalTo: topAnchor, constant: 30),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
-            
-            moviesTableView.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 10),
-            moviesTableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -27),
-            moviesTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            moviesTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15)
-            
-        ])
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.centerY.equalTo(self.snp.top).inset(30)
+            make.left.equalToSuperview().inset(15)
+            make.right.equalToSuperview().inset(-15)
+        }
+        
+        moviesTableView.snp.makeConstraints { make in
+            make.top.equalTo(collectionView.snp.bottom).inset(-10)
+            make.bottom.equalToSuperview().inset(-27)
+            make.left.equalToSuperview().inset(15)
+            make.right.equalToSuperview().inset(15)
+        }
     }
 }
 

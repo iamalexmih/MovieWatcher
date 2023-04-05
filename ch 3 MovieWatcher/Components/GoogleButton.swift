@@ -8,9 +8,7 @@
 import UIKit
 
 class GoogleButton: UIButton {
-    
-    var basicTitleColour: UIColor = UIColor(named: "textColor") ?? .black
-    
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupButton()
@@ -24,7 +22,7 @@ class GoogleButton: UIButton {
     private func setupButton() {
         setTitle("Continue with Google", for: .normal)
         titleLabel?.font = UIFont(name: Resources.Font.jakartaFontSemiBold, size: 16)
-        setTitleColor(basicTitleColour, for: .normal)
+        setTitleColor(UIColor(named: Resources.Colors.text), for: .normal)
         contentMode = .center
         setImage(UIImage(named: Resources.Image.googleSymbol), for: .normal)
         imageEdgeInsets.left = -20

@@ -6,12 +6,11 @@
 //
 
 import UIKit
-
+import SnapKit
 
 class RecentWatchViewController: UIViewController {
     
     private let recentWatchView = RecentWatchView()
-    var selectedCategory = "All"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +24,10 @@ class RecentWatchViewController: UIViewController {
     
     private func setupView() {
         view.addSubview(recentWatchView)
-        NSLayoutConstraint.activate([
-            recentWatchView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            recentWatchView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            recentWatchView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            recentWatchView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
+        
+        recentWatchView.snp.makeConstraints { make in
+            make.top.left.bottom.right.equalTo(self.view.safeAreaLayoutGuide)
+        }
     }
     
     private func setupUICell(cell: UICollectionViewCell, color: UIColor) {
@@ -46,6 +43,8 @@ class RecentWatchViewController: UIViewController {
 extension RecentWatchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(recentWatchView.lastIndexActive)
+        print("INDEX \(indexPath)")
         recentWatchView.isSelected = false
         if recentWatchView.lastIndexActive != indexPath {
             
@@ -55,24 +54,26 @@ extension RecentWatchViewController: UICollectionViewDelegate, UICollectionViewD
                     setupUICell(cell: cell, color: selectedCellColour)
                     cell.categoryLabel.textColor = .white
                 }
-                selectedCategory = recentWatchView.categories[indexPath.row]
             }
             
-            if let cell1 = collectionView.cellForItem(at: recentWatchView.lastIndexActive) as? CategoryCell {
-                setupUICell(cell: cell1, color: .white)
-                cell1.categoryLabel.textColor = UIColor(named: Resources.Colors.categoryColour)
+            if let previousCell = collectionView.cellForItem(at: recentWatchView.lastIndexActive) as? CategoryCell {
+                setupUICell(cell: previousCell, color: .white)
+                previousCell.categoryLabel.textColor = UIColor(named: Resources.Colors.categoryColour)
             }
             recentWatchView.lastIndexActive = indexPath
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if recentWatchView.isSelected && indexPath == [0, 0] {
-            if let selectedCellColour = UIColor(named: Resources.Colors.accent) {
+        
+        // Делаем выбранной первую категорию при переходе на экран
+        
+        // TODO: - Как-то сделать белым текст ячейки
+            guard let selectedCellColour = UIColor(named: Resources.Colors.accent) else { return }
+            if recentWatchView.isSelected && indexPath == [0, 0] {
                 setupUICell(cell: cell, color: selectedCellColour)
                 recentWatchView.isSelected = false
                 recentWatchView.lastIndexActive = [0, 0]
-            }
         }
     }
     
@@ -94,12 +95,13 @@ extension RecentWatchViewController: UICollectionViewDelegate, UICollectionViewD
         cell.configure(with: category)
         
         return cell
-        
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         let text = recentWatchView.categories[indexPath.row]
-        let cellWidth = text.size(withAttributes: [.font: UIFont(name: Resources.Font.jakartaFont, size: 12) as Any]).width + 40
+        let cellWidth = text.size(withAttributes: [.font: UIFont(name: Resources.Font.jakartaFont,
+                                                                 size: 12) as Any]).width + 40
         return CGSize(width: cellWidth, height: 36)
     }
 }

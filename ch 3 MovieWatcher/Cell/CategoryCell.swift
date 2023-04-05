@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class CategoryCell: UICollectionViewCell {
     
@@ -16,6 +17,7 @@ class CategoryCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
         label.textColor = UIColor(named: Resources.Colors.categoryColour)
         label.font = UIFont(name: Resources.Font.jakartaFont, size: 12)
         return label
@@ -40,12 +42,9 @@ class CategoryCell: UICollectionViewCell {
     }
     
     private func setupConstraints() {
-        categoryLabel.textAlignment = .center
-        NSLayoutConstraint.activate([
-            categoryLabel.topAnchor.constraint(equalTo: topAnchor),
-            categoryLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            categoryLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            categoryLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
+        
+        categoryLabel.snp.makeConstraints { make in
+            make.top.bottom.left.right.equalToSuperview()
+        }
     }
 }

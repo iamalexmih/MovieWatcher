@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SnapKit
 
 
 class MovieCell: UITableViewCell {
@@ -80,10 +80,10 @@ class MovieCell: UITableViewCell {
     }()
     
     private lazy var actionButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.backgroundColor = UIColor(named: Resources.Colors.accent)
         button.setTitle("Action", for: .normal)
-        button.titleLabel?.textColor = UIColor(named: Resources.Colors.text)
+        button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: Resources.Font.jakartaFont, size: 10)
         button.titleLabel?.contentMode = .center
         button.layer.cornerRadius = 6
@@ -97,7 +97,7 @@ class MovieCell: UITableViewCell {
     }
     
     lazy var favouriteButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "heart"), for: .normal)
         button.tintColor = UIColor(named: Resources.Colors.categoryColour)
         button.addTarget(self, action: #selector(favouriteButtonPressed), for: .touchUpInside)
@@ -143,35 +143,45 @@ class MovieCell: UITableViewCell {
     
     private func setupConstraints() {
         
-        NSLayoutConstraint.activate([
-            
-            movieImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
-            movieImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-            movieImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24),
-            movieImage.widthAnchor.constraint(equalToConstant: self.frame.width / 3 + 10),
-            
-            movieName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
-            movieName.leadingAnchor.constraint(equalTo: movieImage.trailingAnchor, constant: 10),
-//            movieName.trailingAnchor.constraint(equalTo: favouriteButton.leadingAnchor, constant: -60),
-            
-            favouriteButton.heightAnchor.constraint(equalToConstant: 17),
-            favouriteButton.widthAnchor.constraint(equalToConstant: 19),
-            favouriteButton.topAnchor.constraint(equalTo: topAnchor, constant: 0),
-            favouriteButton.leadingAnchor.constraint(equalTo: movieName.trailingAnchor, constant: 54),
-            
-            timeStack.topAnchor.constraint(equalTo: movieName.bottomAnchor, constant: 13),
-            timeStack.leadingAnchor.constraint(equalTo: movieImage.trailingAnchor, constant: 15),
-            
-            calendarStack.topAnchor.constraint(equalTo: timeStack.bottomAnchor, constant: 13),
-            calendarStack.leadingAnchor.constraint(equalTo: movieImage.trailingAnchor, constant: 15),
-            
-            filmstripView.topAnchor.constraint(equalTo: calendarStack.bottomAnchor, constant: 13),
-            filmstripView.leadingAnchor.constraint(equalTo: movieImage.trailingAnchor, constant: 15),
-            
-            actionButton.topAnchor.constraint(equalTo: calendarStack.bottomAnchor, constant: 8),
-            actionButton.leadingAnchor.constraint(equalTo: filmstripView.trailingAnchor, constant: 5),
-            actionButton.widthAnchor.constraint(equalToConstant: 65)
-        ])
+        movieImage.snp.makeConstraints { make in
+            make.top.equalTo(contentView)
+            make.left.equalToSuperview()
+            make.bottom.equalTo(contentView.snp.bottom).inset(24)
+            make.width.equalTo(self.frame.width / 3 + 10)
+        }
+        
+        movieName.snp.makeConstraints { make in
+            make.top.equalTo(contentView)
+            make.left.equalTo(movieImage.snp.right).inset(-10)
+        }
+        
+        favouriteButton.snp.makeConstraints { make in
+            make.height.equalTo(17)
+            make.width.equalTo(19)
+            make.top.equalToSuperview()
+            make.left.equalTo(movieName.snp.right).inset(-54)
+        }
+        
+        timeStack.snp.makeConstraints { make in
+            make.top.equalTo(movieName.snp.bottom).inset(-13)
+            make.left.equalTo(movieImage.snp.right).inset(-15)
+        }
+        
+        calendarStack.snp.makeConstraints { make in
+            make.top.equalTo(timeStack.snp.bottom).inset(-13)
+            make.left.equalTo(movieImage.snp.right).inset(-15)
+        }
+        
+        filmstripView.snp.makeConstraints { make in
+            make.top.equalTo(calendarStack.snp.bottom).inset(-13)
+            make.left.equalTo(movieImage.snp.right).inset(-15)
+        }
+        
+        actionButton.snp.makeConstraints { make in
+            make.top.equalTo(calendarStack.snp.bottom).inset(-8)
+            make.left.equalTo(filmstripView.snp.right).inset(-5)
+            make.width.equalTo(65)
+
+        }
     }
-    
 }
