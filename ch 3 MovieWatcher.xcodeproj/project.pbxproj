@@ -14,6 +14,7 @@
 		8727A1CB29DB00B400C3D087 /* GoogleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8727A1CA29DB00B400C3D087 /* GoogleButton.swift */; };
 		87B2286229DD756A0088AF8F /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B2286129DD756A0088AF8F /* CategoryCell.swift */; };
 		87B2286429DD76020088AF8F /* RecentWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B2286329DD76020088AF8F /* RecentWatchView.swift */; };
+		87B2286629DD9FB10088AF8F /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87B2286529DD9FB10088AF8F /* Montserrat.ttf */; };
 		8E06F09F29DB5335006B2DED /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F09E29DB5335006B2DED /* SearchTextField.swift */; };
 		B551394829DC9717005CD307 /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394729DC9717005CD307 /* UIView + ext.swift */; };
 		B551394C29DCA817005CD307 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394B29DCA817005CD307 /* FavoriteViewController.swift */; };
@@ -56,6 +57,7 @@
 		8727A1CA29DB00B400C3D087 /* GoogleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleButton.swift; sourceTree = "<group>"; };
 		87B2286129DD756A0088AF8F /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		87B2286329DD76020088AF8F /* RecentWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWatchView.swift; sourceTree = "<group>"; };
+		87B2286529DD9FB10088AF8F /* Montserrat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Montserrat.ttf; sourceTree = "<group>"; };
 		8E06F09E29DB5335006B2DED /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		B551394729DC9717005CD307 /* UIView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ext.swift"; sourceTree = "<group>"; };
 		B551394B29DCA817005CD307 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		8708DB7729DC076100CEED97 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				87B2286529DD9FB10088AF8F /* Montserrat.ttf */,
 				8708DB7829DC078300CEED97 /* PlusJakartaSans.ttf */,
 			);
 			path = Fonts;
@@ -416,6 +419,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87B2286629DD9FB10088AF8F /* Montserrat.ttf in Resources */,
 				B5B1D17929D9D7B1006966FF /* LaunchScreen.storyboard in Resources */,
 				B5B1D17629D9D7B1006966FF /* Assets.xcassets in Resources */,
 				8708DB7929DC078300CEED97 /* PlusJakartaSans.ttf in Resources */,

@@ -13,6 +13,9 @@ class MovieCell: UITableViewCell {
     
     static let identifier = "RecipeCell"
     
+    var timeStack = UIStackView()
+    var calendarStack = UIStackView()
+    
     private var movieImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "max")
@@ -37,6 +40,61 @@ class MovieCell: UITableViewCell {
         return label
     }()
     
+    private let timeImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: Resources.Image.clockImage)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private let timeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "148 Minutes"
+        label.font = UIFont(name: Resources.Font.montserratFont, size: 12)
+        label.textColor = UIColor(named: Resources.Colors.secondText)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let calendarImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: Resources.Image.calendarImage)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private let calendarLabel: UILabel = {
+        let label = UILabel()
+        label.text = "17 Sep 2021"
+        label.font = UIFont(name: Resources.Font.montserratFont, size: 12)
+        label.textColor = UIColor(named: Resources.Colors.secondText)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let filmstripView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: Resources.Image.filmstripImage)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private lazy var actionButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: Resources.Colors.accent)
+        button.setTitle("Action", for: .normal)
+        button.titleLabel?.textColor = UIColor(named: Resources.Colors.text)
+        button.titleLabel?.font = UIFont(name: Resources.Font.jakartaFont, size: 10)
+        button.titleLabel?.contentMode = .center
+        button.layer.cornerRadius = 6
+        button.addTarget(self, action: #selector(actionTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    @objc func actionTapped() {
+        print("actionTapped")
+    }
     
     lazy var favouriteButton: UIButton = {
         let button = UIButton()
@@ -65,6 +123,22 @@ class MovieCell: UITableViewCell {
         contentView.addSubview(movieImage)
         contentView.addSubview(favouriteButton)
         contentView.addSubview(movieName)
+        
+        timeStack = UIStackView(arrangedSubviews: [timeImageView, timeLabel])
+        timeStack.axis = .horizontal
+        timeStack.spacing = 5
+        timeStack.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(timeStack)
+        
+        calendarStack = UIStackView(arrangedSubviews: [calendarImageView, calendarLabel])
+        calendarStack.axis = .horizontal
+        calendarStack.spacing = 5
+        calendarStack.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(calendarStack)
+        
+        contentView.addSubview(filmstripView)
+        contentView.addSubview(actionButton)
+                
     }
     
     private func setupConstraints() {
@@ -78,13 +152,25 @@ class MovieCell: UITableViewCell {
             
             movieName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
             movieName.leadingAnchor.constraint(equalTo: movieImage.trailingAnchor, constant: 10),
-            movieName.trailingAnchor.constraint(equalTo: favouriteButton.leadingAnchor, constant: -60),
+//            movieName.trailingAnchor.constraint(equalTo: favouriteButton.leadingAnchor, constant: -60),
             
             favouriteButton.heightAnchor.constraint(equalToConstant: 17),
             favouriteButton.widthAnchor.constraint(equalToConstant: 19),
             favouriteButton.topAnchor.constraint(equalTo: topAnchor, constant: 0),
-            favouriteButton.leadingAnchor.constraint(equalTo: movieName.trailingAnchor, constant: 54)
+            favouriteButton.leadingAnchor.constraint(equalTo: movieName.trailingAnchor, constant: 54),
             
+            timeStack.topAnchor.constraint(equalTo: movieName.bottomAnchor, constant: 13),
+            timeStack.leadingAnchor.constraint(equalTo: movieImage.trailingAnchor, constant: 15),
+            
+            calendarStack.topAnchor.constraint(equalTo: timeStack.bottomAnchor, constant: 13),
+            calendarStack.leadingAnchor.constraint(equalTo: movieImage.trailingAnchor, constant: 15),
+            
+            filmstripView.topAnchor.constraint(equalTo: calendarStack.bottomAnchor, constant: 13),
+            filmstripView.leadingAnchor.constraint(equalTo: movieImage.trailingAnchor, constant: 15),
+            
+            actionButton.topAnchor.constraint(equalTo: calendarStack.bottomAnchor, constant: 8),
+            actionButton.leadingAnchor.constraint(equalTo: filmstripView.trailingAnchor, constant: 5),
+            actionButton.widthAnchor.constraint(equalToConstant: 65)
         ])
     }
     

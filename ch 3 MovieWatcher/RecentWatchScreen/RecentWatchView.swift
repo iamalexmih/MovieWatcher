@@ -28,7 +28,6 @@ class RecentWatchView: UIView {
     
     lazy var moviesTableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .red
         tableView.rowHeight = 184
         tableView.separatorStyle = .none
         tableView.translatesAutoresizingMaskIntoConstraints = false
