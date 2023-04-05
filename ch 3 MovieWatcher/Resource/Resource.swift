@@ -15,6 +15,7 @@ enum Resources {
         static let inactive = "inactiveColor"
         static let secondText = "secondTextColor"
         static let text = "textColor"
+        static let categoryColour = "categoryColor"
     }
     
     
@@ -37,5 +38,9 @@ enum Resources {
     
     enum Font {
         static let jakartaFontSemiBold = "PlusJakartaSansRoman-SemiBold"
+        static let jakartaFont = "PlusJakartaSans-Regular"
+        
+//    Family: Plus Jakarta Sans Font names: ["PlusJakartaSansRoman-ExtraLight",
+//        "PlusJakartaSansRoman-Light", "PlusJakartaSansRoman-Medium", "PlusJakartaSansRoman-Bold", "PlusJakartaSansRoman-ExtraBold"]
     }
 }
