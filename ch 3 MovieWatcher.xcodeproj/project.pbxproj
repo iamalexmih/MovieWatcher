@@ -29,6 +29,7 @@
 		B551396729DECDD9005CD307 /* PlusJakartaSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B551396229DECDD9005CD307 /* PlusJakartaSans-Italic.ttf */; };
 		B551396829DECDD9005CD307 /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B551396329DECDD9005CD307 /* PlusJakartaSans-Regular.ttf */; };
 		B551396A29DED5BE005CD307 /* UIFont + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551396929DED5BE005CD307 /* UIFont + ext.swift */; };
+		B551396C29DF1735005CD307 /* StorageGenres.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551396B29DF1735005CD307 /* StorageGenres.swift */; };
 		B5B1D16D29D9D7B0006966FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D16C29D9D7B0006966FF /* AppDelegate.swift */; };
 		B5B1D16F29D9D7B0006966FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D16E29D9D7B0006966FF /* SceneDelegate.swift */; };
 		B5B1D17129D9D7B0006966FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D17029D9D7B0006966FF /* ViewController.swift */; };
@@ -82,6 +83,7 @@
 		B551396229DECDD9005CD307 /* PlusJakartaSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Italic.ttf"; sourceTree = "<group>"; };
 		B551396329DECDD9005CD307 /* PlusJakartaSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Regular.ttf"; sourceTree = "<group>"; };
 		B551396929DED5BE005CD307 /* UIFont + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + ext.swift"; sourceTree = "<group>"; };
+		B551396B29DF1735005CD307 /* StorageGenres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageGenres.swift; sourceTree = "<group>"; };
 		B5B1D16929D9D7B0006966FF /* ch 3 MovieWatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ch 3 MovieWatcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B1D16C29D9D7B0006966FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5B1D16E29D9D7B0006966FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 		B5B1D19029D9DB9A006966FF /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				B551396B29DF1735005CD307 /* StorageGenres.swift */,
 				B5B1D18F29D9DB8F006966FF /* NetworkService */,
 			);
 			path = Service;
@@ -525,6 +528,7 @@
 				87B2286429DD76020088AF8F /* RecentWatchView.swift in Sources */,
 				B5B1D18429D9D90A006966FF /* Resource.swift in Sources */,
 				B5B1D19329D9DC20006966FF /* OnBoardingScreenViewController.swift in Sources */,
+				B551396C29DF1735005CD307 /* StorageGenres.swift in Sources */,
 				B551396A29DED5BE005CD307 /* UIFont + ext.swift in Sources */,
 				B5B1D1A729D9DD8E006966FF /* HomeViewController.swift in Sources */,
 				B5B1D19D29D9DCCE006966FF /* MovieDetailViewController.swift in Sources */,

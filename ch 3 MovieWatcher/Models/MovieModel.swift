@@ -23,3 +23,9 @@ struct Movie: Codable {
     let vote_average: Double
     // Не могу найти  длительность фильма в API
 }
+
+
+struct GenreMovie: Codable {
+    let id: Int
+    let name: String
+}
