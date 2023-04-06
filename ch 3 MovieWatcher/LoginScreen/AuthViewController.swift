@@ -8,10 +8,10 @@
 import UIKit
 import SnapKit
 
-// TODO: Simple password validation
-// TODO: hookup with firebase
-// TODO: add "cont with google func"
-// TODO: Add slide animation
+// Simple password validation
+// hookup with firebase
+// add "cont with google func"
+// Add slide animation
 
 
 class AuthViewController: UIViewController {
