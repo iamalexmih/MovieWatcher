@@ -62,7 +62,6 @@ class SearchView: UIView {
         
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(searchTextField.snp.bottom).inset(-15)
-//            make.centerY.equalTo(self.snp.top).inset(30)
             make.height.equalTo(40)
             make.left.equalToSuperview().inset(15)
             make.right.equalToSuperview().inset(-15)

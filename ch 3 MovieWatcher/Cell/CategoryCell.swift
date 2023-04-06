@@ -19,16 +19,18 @@ class CategoryCell: UICollectionViewCell {
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
         label.textColor = UIColor(named: Resources.Colors.categoryColour)
-         label.font = UIFont.jakartaRegular(size: 12)
+        label.font = UIFont.jakartaRegular(size: 12)
         return label
     }()
     
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                backgroundColor = .purple
+                backgroundColor = UIColor(named: Resources.Colors.accent)
+                categoryLabel.textColor = .white
             } else {
                 backgroundColor = .clear
+                categoryLabel.textColor = UIColor(named: Resources.Colors.categoryColour)
             }
         }
     }

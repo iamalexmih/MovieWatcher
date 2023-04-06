@@ -20,7 +20,7 @@
 		8E06F09F29DB5335006B2DED /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F09E29DB5335006B2DED /* SearchTextField.swift */; };
 		B551394829DC9717005CD307 /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394729DC9717005CD307 /* UIView + ext.swift */; };
 		B551394C29DCA817005CD307 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394B29DCA817005CD307 /* FavoriteViewController.swift */; };
-		B551394F29DCA886005CD307 /* RecantWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394E29DCA886005CD307 /* RecantWatchViewController.swift */; };
+		B551394F29DCA886005CD307 /* RecentWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394E29DCA886005CD307 /* RecentWatchViewController.swift */; };
 		B551395529DDEDD4005CD307 /* TextFieldWithLabelStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551395429DDEDD4005CD307 /* TextFieldWithLabelStack.swift */; };
 		B551395829DDFD98005CD307 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551395729DDFD98005CD307 /* MovieModel.swift */; };
 		B551395A29DDFDC9005CD307 /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551395929DDFDC9005CD307 /* ApiKey.swift */; };
@@ -76,7 +76,7 @@
 		8E06F09E29DB5335006B2DED /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		B551394729DC9717005CD307 /* UIView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ext.swift"; sourceTree = "<group>"; };
 		B551394B29DCA817005CD307 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
-		B551394E29DCA886005CD307 /* RecantWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecantWatchViewController.swift; sourceTree = "<group>"; };
+		B551394E29DCA886005CD307 /* RecentWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWatchViewController.swift; sourceTree = "<group>"; };
 		B551395429DDEDD4005CD307 /* TextFieldWithLabelStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldWithLabelStack.swift; sourceTree = "<group>"; };
 		B551395729DDFD98005CD307 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		B551395929DDFDC9005CD307 /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 		B551394D29DCA87A005CD307 /* RecentWatchScreen */ = {
 			isa = PBXGroup;
 			children = (
-				B551394E29DCA886005CD307 /* RecantWatchViewController.swift */,
+				B551394E29DCA886005CD307 /* RecentWatchViewController.swift */,
 				87B2286329DD76020088AF8F /* RecentWatchView.swift */,
 			);
 			path = RecentWatchScreen;
@@ -562,7 +562,7 @@
 				87B2286229DD756A0088AF8F /* CategoryCell.swift in Sources */,
 				00F1E97429DC55DB00F5FBF7 /* CustomButton.swift in Sources */,
 				8E06F09F29DB5335006B2DED /* SearchTextField.swift in Sources */,
-				B551394F29DCA886005CD307 /* RecantWatchViewController.swift in Sources */,
+				B551394F29DCA886005CD307 /* RecentWatchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

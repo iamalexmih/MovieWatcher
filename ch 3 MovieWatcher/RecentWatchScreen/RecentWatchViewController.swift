@@ -42,41 +42,6 @@ class RecentWatchViewController: UIViewController {
 
 extension RecentWatchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(recentWatchView.lastIndexActive)
-        print("INDEX \(indexPath)")
-        recentWatchView.isSelected = false
-        if recentWatchView.lastIndexActive != indexPath {
-            
-            let cell = collectionView.cellForItem(at: indexPath) as? CategoryCell
-            if let cell = cell {
-                if let selectedCellColour = UIColor(named: Resources.Colors.accent) {
-                    setupUICell(cell: cell, color: selectedCellColour)
-//                    cell.categoryLabel.textColor = .white
-                }
-            }
-            
-            if let previousCell = collectionView.cellForItem(at: recentWatchView.lastIndexActive) as? CategoryCell {
-                setupUICell(cell: previousCell, color: .white)
-                previousCell.categoryLabel.textColor = UIColor(named: Resources.Colors.categoryColour)
-            }
-            recentWatchView.lastIndexActive = indexPath
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
-        // Делаем выбранной первую категорию при переходе на экран
-        
-        // TODO: - Как-то сделать белым текст ячейки
-            guard let selectedCellColour = UIColor(named: Resources.Colors.accent) else { return }
-            if recentWatchView.isSelected && indexPath == [0, 0] {
-                setupUICell(cell: cell, color: selectedCellColour)
-                recentWatchView.isSelected = false
-                recentWatchView.lastIndexActive = [0, 0]
-        }
-    }
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -90,10 +55,8 @@ extension RecentWatchViewController: UICollectionViewDelegate, UICollectionViewD
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.identifier, for: indexPath) as? CategoryCell else {
             return UICollectionViewCell()
         }
-        setupUICell(cell: cell, color: .white)
         let category = recentWatchView.categories[indexPath.row]
         cell.configure(with: category)
-        
         return cell
     }
     
