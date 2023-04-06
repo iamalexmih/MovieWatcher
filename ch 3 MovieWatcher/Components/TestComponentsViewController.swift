@@ -13,7 +13,7 @@ import SnapKit
 class TestComponentsViewController: UIViewController {
     
     let googleButton = GoogleButton()
-    let textFieldWithLabel = TextFieldWithLabel()
+    let textFieldWithLabel = TextFieldWithLabel(labelText: "Last name", textFieldPlaceHolder: "Enter last name")
     let searchTextField = SearchTextField()
     let logOutTemplateButton = LogOutTemplateButton()
     let customButton = CustomButton(title: "Custom Button")
