@@ -10,9 +10,10 @@
 		00F1E97429DC55DB00F5FBF7 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1E97329DC55DB00F5FBF7 /* CustomButton.swift */; };
 		57E6209829DB4BFF00260AF5 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6209729DB4BFF00260AF5 /* CustomTabBarController.swift */; };
 		63E01F7929DBEFED0010C6C7 /* TextFieldWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */; };
-		6F80E8C729DEB16200F5A74E /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F80E8C629DEB16200F5A74E /* AuthViewController.swift */; };
-		8708DB7929DC078300CEED97 /* PlusJakartaSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8708DB7829DC078300CEED97 /* PlusJakartaSans.ttf */; };
+		8708DB7929DC078300CEED97 /* PlusJakartaSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8708DB7829DC078300CEED97 /* PlusJakartaSans-SemiBold.ttf */; };
 		8727A1CB29DB00B400C3D087 /* GoogleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8727A1CA29DB00B400C3D087 /* GoogleButton.swift */; };
+		87888E5929DF021F00B78B4D /* FavouriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87888E5829DF021F00B78B4D /* FavouriteView.swift */; };
+		87888E5B29DF02A300B78B4D /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87888E5A29DF02A300B78B4D /* SearchView.swift */; };
 		87B2286229DD756A0088AF8F /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B2286129DD756A0088AF8F /* CategoryCell.swift */; };
 		87B2286429DD76020088AF8F /* RecentWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B2286329DD76020088AF8F /* RecentWatchView.swift */; };
 		87B2286629DD9FB10088AF8F /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87B2286529DD9FB10088AF8F /* Montserrat.ttf */; };
@@ -24,6 +25,13 @@
 		B551395829DDFD98005CD307 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551395729DDFD98005CD307 /* MovieModel.swift */; };
 		B551395A29DDFDC9005CD307 /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551395929DDFDC9005CD307 /* ApiKey.swift */; };
 		B551395C29DDFF99005CD307 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551395B29DDFF99005CD307 /* ApiError.swift */; };
+		B551396429DECDD9005CD307 /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B551395F29DECDD9005CD307 /* PlusJakartaSans-Medium.ttf */; };
+		B551396529DECDD9005CD307 /* PlusJakartaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B551396029DECDD9005CD307 /* PlusJakartaSans-Bold.ttf */; };
+		B551396629DECDD9005CD307 /* PlusJakartaSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B551396129DECDD9005CD307 /* PlusJakartaSans-Light.ttf */; };
+		B551396729DECDD9005CD307 /* PlusJakartaSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B551396229DECDD9005CD307 /* PlusJakartaSans-Italic.ttf */; };
+		B551396829DECDD9005CD307 /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B551396329DECDD9005CD307 /* PlusJakartaSans-Regular.ttf */; };
+		B551396A29DED5BE005CD307 /* UIFont + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551396929DED5BE005CD307 /* UIFont + ext.swift */; };
+		B551396C29DF1735005CD307 /* StorageGenres.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551396B29DF1735005CD307 /* StorageGenres.swift */; };
 		B5B1D16D29D9D7B0006966FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D16C29D9D7B0006966FF /* AppDelegate.swift */; };
 		B5B1D16F29D9D7B0006966FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D16E29D9D7B0006966FF /* SceneDelegate.swift */; };
 		B5B1D17129D9D7B0006966FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D17029D9D7B0006966FF /* ViewController.swift */; };
@@ -58,9 +66,10 @@
 		57E6209729DB4BFF00260AF5 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		610D653D69895880F8210BB9 /* Pods-ch 3 MovieWatcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ch 3 MovieWatcher.debug.xcconfig"; path = "Target Support Files/Pods-ch 3 MovieWatcher/Pods-ch 3 MovieWatcher.debug.xcconfig"; sourceTree = "<group>"; };
 		63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithLabel.swift; sourceTree = "<group>"; };
-		6F80E8C629DEB16200F5A74E /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
-		8708DB7829DC078300CEED97 /* PlusJakartaSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PlusJakartaSans.ttf; sourceTree = "<group>"; };
+		8708DB7829DC078300CEED97 /* PlusJakartaSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		8727A1CA29DB00B400C3D087 /* GoogleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleButton.swift; sourceTree = "<group>"; };
+		87888E5829DF021F00B78B4D /* FavouriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteView.swift; sourceTree = "<group>"; };
+		87888E5A29DF02A300B78B4D /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		87B2286129DD756A0088AF8F /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		87B2286329DD76020088AF8F /* RecentWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWatchView.swift; sourceTree = "<group>"; };
 		87B2286529DD9FB10088AF8F /* Montserrat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Montserrat.ttf; sourceTree = "<group>"; };
@@ -72,6 +81,13 @@
 		B551395729DDFD98005CD307 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		B551395929DDFDC9005CD307 /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
 		B551395B29DDFF99005CD307 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		B551395F29DECDD9005CD307 /* PlusJakartaSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Medium.ttf"; sourceTree = "<group>"; };
+		B551396029DECDD9005CD307 /* PlusJakartaSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Bold.ttf"; sourceTree = "<group>"; };
+		B551396129DECDD9005CD307 /* PlusJakartaSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Light.ttf"; sourceTree = "<group>"; };
+		B551396229DECDD9005CD307 /* PlusJakartaSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Italic.ttf"; sourceTree = "<group>"; };
+		B551396329DECDD9005CD307 /* PlusJakartaSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Regular.ttf"; sourceTree = "<group>"; };
+		B551396929DED5BE005CD307 /* UIFont + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + ext.swift"; sourceTree = "<group>"; };
+		B551396B29DF1735005CD307 /* StorageGenres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageGenres.swift; sourceTree = "<group>"; };
 		B5B1D16929D9D7B0006966FF /* ch 3 MovieWatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ch 3 MovieWatcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B1D16C29D9D7B0006966FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5B1D16E29D9D7B0006966FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,8 +133,13 @@
 		8708DB7729DC076100CEED97 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				B551396029DECDD9005CD307 /* PlusJakartaSans-Bold.ttf */,
+				8708DB7829DC078300CEED97 /* PlusJakartaSans-SemiBold.ttf */,
+				B551396229DECDD9005CD307 /* PlusJakartaSans-Italic.ttf */,
+				B551396129DECDD9005CD307 /* PlusJakartaSans-Light.ttf */,
+				B551395F29DECDD9005CD307 /* PlusJakartaSans-Medium.ttf */,
+				B551396329DECDD9005CD307 /* PlusJakartaSans-Regular.ttf */,
 				87B2286529DD9FB10088AF8F /* Montserrat.ttf */,
-				8708DB7829DC078300CEED97 /* PlusJakartaSans.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -127,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				B551394729DC9717005CD307 /* UIView + ext.swift */,
+				B551396929DED5BE005CD307 /* UIFont + ext.swift */,
 			);
 			path = Extansions;
 			sourceTree = "<group>";
@@ -135,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				B551394B29DCA817005CD307 /* FavoriteViewController.swift */,
+				87888E5829DF021F00B78B4D /* FavouriteView.swift */,
 			);
 			path = FavoriteScreen;
 			sourceTree = "<group>";
@@ -293,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				B5B1D1A429D9DD77006966FF /* SearchViewController.swift */,
+				87888E5A29DF02A300B78B4D /* SearchView.swift */,
 			);
 			path = SearchScreen;
 			sourceTree = "<group>";
@@ -326,6 +350,7 @@
 		B5B1D19029D9DB9A006966FF /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				B551396B29DF1735005CD307 /* StorageGenres.swift */,
 				B5B1D18F29D9DB8F006966FF /* NetworkService */,
 			);
 			path = Service;
@@ -442,10 +467,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B551396729DECDD9005CD307 /* PlusJakartaSans-Italic.ttf in Resources */,
 				87B2286629DD9FB10088AF8F /* Montserrat.ttf in Resources */,
 				B5B1D17929D9D7B1006966FF /* LaunchScreen.storyboard in Resources */,
+				B551396629DECDD9005CD307 /* PlusJakartaSans-Light.ttf in Resources */,
+				B551396429DECDD9005CD307 /* PlusJakartaSans-Medium.ttf in Resources */,
+				B551396529DECDD9005CD307 /* PlusJakartaSans-Bold.ttf in Resources */,
 				B5B1D17629D9D7B1006966FF /* Assets.xcassets in Resources */,
-				8708DB7929DC078300CEED97 /* PlusJakartaSans.ttf in Resources */,
+				B551396829DECDD9005CD307 /* PlusJakartaSans-Regular.ttf in Resources */,
+				8708DB7929DC078300CEED97 /* PlusJakartaSans-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,12 +530,16 @@
 			files = (
 				B5B1D1A329D9DD4B006966FF /* MovieCell.swift in Sources */,
 				B5B1D19729D9DC75006966FF /* LoginViewController.swift in Sources */,
+				87888E5929DF021F00B78B4D /* FavouriteView.swift in Sources */,
 				B551395529DDEDD4005CD307 /* TextFieldWithLabelStack.swift in Sources */,
 				B5B1D17129D9D7B0006966FF /* ViewController.swift in Sources */,
 				87B2286429DD76020088AF8F /* RecentWatchView.swift in Sources */,
 				B5B1D18429D9D90A006966FF /* Resource.swift in Sources */,
 				B5B1D19329D9DC20006966FF /* OnBoardingScreenViewController.swift in Sources */,
+				B551396C29DF1735005CD307 /* StorageGenres.swift in Sources */,
+				B551396A29DED5BE005CD307 /* UIFont + ext.swift in Sources */,
 				B5B1D1A729D9DD8E006966FF /* HomeViewController.swift in Sources */,
+				87888E5B29DF02A300B78B4D /* SearchView.swift in Sources */,
 				B5B1D19D29D9DCCE006966FF /* MovieDetailViewController.swift in Sources */,
 				B5B1D19F29D9DCFE006966FF /* FilterViewController.swift in Sources */,
 				B551395A29DDFDC9005CD307 /* ApiKey.swift in Sources */,

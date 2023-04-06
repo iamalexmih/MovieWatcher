@@ -19,7 +19,7 @@ class CategoryCell: UICollectionViewCell {
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
         label.textColor = UIColor(named: Resources.Colors.categoryColour)
-        label.font = UIFont(name: Resources.Font.jakartaFont, size: 12)
+         label.font = UIFont.jakartaRegular(size: 12)
         return label
     }()
     

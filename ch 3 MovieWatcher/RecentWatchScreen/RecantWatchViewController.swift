@@ -100,8 +100,7 @@ extension RecentWatchViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let text = recentWatchView.categories[indexPath.row]
-        let cellWidth = text.size(withAttributes: [.font: UIFont(name: Resources.Font.jakartaFont,
-                                                                 size: 12) as Any]).width + 40
+        let cellWidth = text.size(withAttributes: [.font: UIFont.jakartaRomanSemiBold(size: 16) as Any]).width + 40
         return CGSize(width: cellWidth, height: 36)
     }
 }

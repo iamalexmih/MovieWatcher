@@ -4,7 +4,12 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>PlusJakartaSans.ttf</string>
+		<string>PlusJakartaSans-SemiBold.ttf</string>
+		<string>PlusJakartaSans-Bold.ttf</string>
+		<string>PlusJakartaSans-Italic.ttf</string>
+		<string>PlusJakartaSans-Light.ttf</string>
+		<string>PlusJakartaSans-Medium.ttf</string>
+		<string>PlusJakartaSans-Regular.ttf</string>
 		<string>Montserrat.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>

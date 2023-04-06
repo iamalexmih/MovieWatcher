@@ -10,8 +10,8 @@ import SnapKit
 
 class TextFieldWithLabel: UIView {
     
-    var textFieldPlaceHolder = "Enter name"
-    var labelText = "First Name"
+    private var textFieldPlaceHolder: String = "Enter name"
+    private var labelText: String = "First Name"
     
     lazy var containerView = UIView()
     lazy var label = UILabel()
@@ -19,22 +19,28 @@ class TextFieldWithLabel: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        commonInit()
+        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        commonInit()
-    }
-    
-    private func commonInit() {
         setup()
     }
+    
+    init(labelText: String, textFieldPlaceHolder: String) {
+        super.init(frame: .zero)
+        
+        self.labelText = labelText
+        self.textFieldPlaceHolder = textFieldPlaceHolder
+        
+        setup()
+    }
+    
     
     private func setup() {
         addSubview(containerView)
         containerView.layer.masksToBounds = true
-        containerView.backgroundColor = .white
+        containerView.backgroundColor = .clear
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

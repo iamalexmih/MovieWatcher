@@ -13,7 +13,8 @@ import SnapKit
 class TestComponentsViewController: UIViewController {
     
     let googleButton = GoogleButton()
-    let textFieldWithLabel = TextFieldWithLabel()
+    let textFieldWithLabel = TextFieldWithLabel(labelText: "Last name",
+                                                textFieldPlaceHolder: "Enter last name")
     let searchTextField = SearchTextField()
     let logOutTemplateButton = LogOutTemplateButton()
     let customButton = CustomButton(title: "Custom Button")
@@ -33,10 +34,16 @@ class TestComponentsViewController: UIViewController {
         addCustomButton()
         addTextFieldWithLabelStack()
         
-        
         getPopularMovies()
     }
     
+    // Посмотреть доступные шрифты в Xcode
+    func printFonts() {
+        for family in UIFont.familyNames.sorted() {
+            let name = UIFont.fontNames(forFamilyName: family)
+            print("Family: \(family) Font name: \(name)")
+        }
+    }
     
     // MARK: - Сетевые запросы
     func getPopularMovies() {
@@ -45,6 +52,12 @@ class TestComponentsViewController: UIViewController {
             case .success(let data):
                 DispatchQueue.main.async {
                     print(data.results)
+                    let movie = data.results[0]
+                    let genreIds =  movie.genre_ids
+                    let namesGenre = NetworkService.shared.getNameGenreForOneMovie(movieGenresId: genreIds,
+                                                                  arrayGenres: StorageGenres.shared.listGenres)
+                    
+                    print("Жанры Фильма \(movie.original_title): ", namesGenre)
                 }
             case .failure(_):
                 print("Error, .....")
@@ -115,4 +128,5 @@ class TestComponentsViewController: UIViewController {
             make.height.equalTo(90)
         }
     }
+    
 }

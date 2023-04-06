@@ -31,7 +31,7 @@ class MovieCell: UITableViewCell {
         let label = UILabel()
         label.text = "Mad Max Collection"
         label.textColor = .black
-        label.font = UIFont(name: Resources.Font.jakartaFont, size: 18)
+        label.font = UIFont.jakartaBold(size: 18)
         label.font = .systemFont(ofSize: 18)
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
@@ -50,7 +50,7 @@ class MovieCell: UITableViewCell {
     private let timeLabel: UILabel = {
         let label = UILabel()
         label.text = "148 Minutes"
-        label.font = UIFont(name: Resources.Font.montserratFont, size: 12)
+        label.font = UIFont.montserratRomanMedium(size: 12)
         label.textColor = UIColor(named: Resources.Colors.secondText)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -66,7 +66,7 @@ class MovieCell: UITableViewCell {
     private let calendarLabel: UILabel = {
         let label = UILabel()
         label.text = "17 Sep 2021"
-        label.font = UIFont(name: Resources.Font.montserratFont, size: 12)
+        label.font = UIFont.montserratRomanMedium(size: 12)
         label.textColor = UIColor(named: Resources.Colors.secondText)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -84,7 +84,7 @@ class MovieCell: UITableViewCell {
         button.backgroundColor = UIColor(named: Resources.Colors.accent)
         button.setTitle("Action", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: Resources.Font.jakartaFont, size: 10)
+        button.titleLabel?.font = UIFont.jakartaRomanSemiBold(size: 10)
         button.titleLabel?.contentMode = .center
         button.layer.cornerRadius = 6
         button.addTarget(self, action: #selector(actionTapped), for: .touchUpInside)
