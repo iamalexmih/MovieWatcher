@@ -18,7 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         let testComponentsViewController = TestComponentsViewController()
         let tabBar = CustomTabBarController()
-        window?.rootViewController = testComponentsViewController
+        let navControllerForAuth = UINavigationController.init(rootViewController: AuthViewController())
+       
+        window?.rootViewController = navControllerForAuth
         window?.makeKeyAndVisible()
     }
 }
