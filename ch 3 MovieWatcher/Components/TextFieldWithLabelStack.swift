@@ -52,12 +52,9 @@ class TextFieldWithLabelStack: UIStackView {
     private func setupLabelAndTexField() {
         label.text = labelText
         label.font = UIFont.systemFont(ofSize: 14)
-        // TODO: Цвета из ресурсов Resources.Colors.secondText
-        label.textColor = .secondaryLabel
+        label.textColor = UIColor(named: Resources.Colors.secondText)
         label.translatesAutoresizingMaskIntoConstraints = false
         
-        
-        // TODO: Нет бэкграунда у текст поля
         textField.isSecureTextEntry = isSecure
         textField.placeholder = placeholderText
         textField.font = UIFont.systemFont(ofSize: 16)
@@ -68,14 +65,17 @@ class TextFieldWithLabelStack: UIStackView {
             make.height.equalTo(52)
         }
         
+    // TODO: Fix dark mode color bug (border doesn't change)
         let textfieldInset = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textField.frame.height))
         textField.leftView = textfieldInset
         textField.rightView = textfieldInset
         textField.leftViewMode = .always
         
         textField.layer.cornerRadius = 20
-              
-        textField.backgroundColor = UIColor(named: Resources.Colors.backGround)
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor(named: Resources.Colors.textFieldBorder)?.cgColor
+        
+        textField.backgroundColor = UIColor(named: Resources.Colors.textFieldBackground)
     }
     
 }

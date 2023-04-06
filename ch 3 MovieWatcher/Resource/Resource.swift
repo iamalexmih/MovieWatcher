@@ -16,6 +16,8 @@ enum Resources {
         static let secondText = "secondTextColor"
         static let text = "textColor"
         static let categoryColour = "categoryColor"
+        static let textFieldBackground = "bgTextFieldColor"
+        static let textFieldBorder = "bgTextFieldBorderColor"
     }
     
     
