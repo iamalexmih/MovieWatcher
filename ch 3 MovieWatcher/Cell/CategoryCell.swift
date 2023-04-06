@@ -23,10 +23,31 @@ class CategoryCell: UICollectionViewCell {
         return label
     }()
     
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                backgroundColor = .purple
+            } else {
+                backgroundColor = .clear
+            }
+        }
+    }
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
         setupConstraints()
+        setupUICell()
+    }
+    
+    
+    func setupUICell() {
+        backgroundColor = .clear
+        layer.borderWidth = 1
+        layer.borderColor = UIColor(named: Resources.Colors.categoryColour)?.cgColor
+        layer.masksToBounds = false
+        layer.cornerRadius = 15
     }
     
     required init?(coder: NSCoder) {

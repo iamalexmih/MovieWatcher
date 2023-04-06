@@ -14,8 +14,8 @@ class SearchView: UIView {
                       "Documentary", "Drama", "Family", "Fantasy", "History", "Horror",
                       "Music", "Romance", "Science Fiction", "TV Movie", "Thriller", "War", "Western"]
     
-    var isSelected = true
-    var lastIndexActive: IndexPath = [0, 1]
+//    var isSelected = true
+//    var lastIndexActive: IndexPath = [0, 1]
     
     let searchTextField = SearchTextField()
     
