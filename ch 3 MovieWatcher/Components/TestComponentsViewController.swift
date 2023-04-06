@@ -13,7 +13,8 @@ import SnapKit
 class TestComponentsViewController: UIViewController {
     
     let googleButton = GoogleButton()
-    let textFieldWithLabel = TextFieldWithLabel(labelText: "Last name", textFieldPlaceHolder: "Enter last name")
+    let textFieldWithLabel = TextFieldWithLabel(labelText: "Last name",
+                                                textFieldPlaceHolder: "Enter last name")
     let searchTextField = SearchTextField()
     let logOutTemplateButton = LogOutTemplateButton()
     let customButton = CustomButton(title: "Custom Button")
@@ -33,10 +34,16 @@ class TestComponentsViewController: UIViewController {
         addCustomButton()
         addTextFieldWithLabelStack()
         
-        
-        getPopularMovies()
+        printFonts()
+//        getPopularMovies()
     }
     
+    func printFonts() {
+        for family in UIFont.familyNames.sorted() {
+            let name = UIFont.fontNames(forFamilyName: family)
+            print("Family: \(family) Font name: \(name)")
+        }
+    }
     
     // MARK: - Сетевые запросы
     func getPopularMovies() {

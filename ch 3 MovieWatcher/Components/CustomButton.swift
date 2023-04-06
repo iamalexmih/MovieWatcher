@@ -21,7 +21,7 @@ class CustomButton: UIButton {
     }
 
     private func setupButton() {
-        titleLabel?.font = UIFont(name: Resources.Font.jakartaFontSemiBold, size: 16)
+        titleLabel?.font = UIFont.jakartaRomanSemiBold(size: 16)
         setTitleColor(.white, for: .normal)
         contentMode = .center
         backgroundColor = UIColor(named: Resources.Colors.accent)

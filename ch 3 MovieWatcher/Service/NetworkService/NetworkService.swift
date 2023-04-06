@@ -62,8 +62,6 @@ final class NetworkService {
     }
     
     
-    
-    
     private func performRequest<T: Decodable>(with urlString: String,
                                               type: T.Type,
                                               completion: @escaping (Result<T, RecipeError>) -> Void) {

@@ -5,7 +5,7 @@
 //  Created by Алексей Попроцкий on 02.04.2023.
 //
 
-import Foundation
+import UIKit
 
 enum Resources {
     enum Colors {
@@ -42,16 +42,42 @@ enum Resources {
     }
     
     enum Font {
-        static let jakartaFontSemiBold = "PlusJakartaSansRoman-SemiBold"
-        static let jakartaFont = "PlusJakartaSans-Regular"
-        static let montserratFont = "MontserratRoman-Regular"
+        // MARK: Jakarta Roman Font
+//        static let jakartaRomanExtraLigh = "PlusJakartaSansRoman-ExtraLight"
+//        static let jakartaRomanLight = "PlusJakartaSansRoman-Light"
+//        static let jakartaRomanMedium = "PlusJakartaSansRoman-Medium"
+//        static let jakartaRomanSemiBold = "PlusJakartaSansRoman-SemiBold"
+//        static let jakartaRomanBold = "PlusJakartaSansRoman-Bold"
+//        static let jakartaRomanExtraBold = "PlusJakartaSansRoman-ExtraBold"
         
-//    Family: Plus Jakarta Sans Font names: ["PlusJakartaSansRoman-ExtraLight",
-//        "PlusJakartaSansRoman-Light", "PlusJakartaSansRoman-Medium", "PlusJakartaSansRoman-Bold", "PlusJakartaSansRoman-ExtraBold"]
+        // MARK: Jakarta Font
+//        static let jakartaLight = "PlusJakartaSans-Light"
+//        static let jakartaMedium = "PlusJakartaSans-Medium"
+//        static let jakartaRegular = "PlusJakartaSans-Regular"
+//        static let jakartaItalic = "PlusJakartaSans-Italic"
+//        static let jakartaBold = "PlusJakartaSans-Bold"
+        
+        // MARK: Montserrat Font
+//        static let montserratFont = "MontserratRoman-Regular"
+    }
+        
+        
+//    Family: Plus Jakarta Sans Font names: [
+//        "PlusJakartaSans-Regular",
+//        "PlusJakartaSans-Italic",
+//        "PlusJakartaSansRoman-ExtraLight",
+//        "PlusJakartaSansRoman-Light",
+//        "PlusJakartaSans-Light",
+//        "PlusJakartaSansRoman-Medium",
+//        "PlusJakartaSans-Medium",
+//        "PlusJakartaSansRoman-SemiBold",
+//        "PlusJakartaSansRoman-Bold",
+//        "PlusJakartaSans-Bold",
+//        "PlusJakartaSansRoman-ExtraBold"
+//        ]
         
 //    "Montserrat-Thin", "MontserratRoman-ExtraLight", "MontserratRoman-Light", "MontserratRoman-Medium",
 //        "MontserratRoman-SemiBold", "MontserratRoman-Bold", "MontserratRoman-ExtraBold", "MontserratRoman-Black"]
-        
-        
-    }
+//
 }
+
