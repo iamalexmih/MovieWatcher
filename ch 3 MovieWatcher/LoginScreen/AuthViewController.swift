@@ -8,6 +8,12 @@
 import UIKit
 import SnapKit
 
+// TODO: Simple password validation
+// TODO: hookup with firebase
+// TODO: add "cont with google func"
+// TODO: Add slide animation
+
+
 class AuthViewController: UIViewController {
     
     // MARK: - UI Elements
@@ -44,11 +50,11 @@ class AuthViewController: UIViewController {
     }
     
     func presentAuthOptions() {
-        // TODO: add sliding animation from bottom
+
     }
     
     // MARK: - Button Logic
-    // TODO: finalize button logic
+
     func addActionsToButtons() {
         emailButton.addTarget(self, action: #selector(continueWithEmail(_:)), for: .touchUpInside)
         googleButton.addTarget(self, action: #selector(continueWithGoogle(_:)), for: .touchUpInside)
@@ -106,11 +112,11 @@ class AuthViewController: UIViewController {
         
         titleLabel.text = "Create account"
         titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        titleLabel.textColor = UIColor(named: Resources.Colors.text)
+        titleLabel.textColor = UIColor(named: Resources.Colors.backGround)
         
         subtitleLabel.text = "Some gibberish text to fill in empty space"
         subtitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        subtitleLabel.textColor = UIColor(named: Resources.Colors.text)
+        subtitleLabel.textColor = UIColor(named: Resources.Colors.backGround)
     }
     
     func setupBottomStack() {
@@ -149,12 +155,6 @@ class AuthViewController: UIViewController {
         
         loginButton.setTitle("Login", for: .normal)
         loginButton.setTitleColor(UIColor(named: Resources.Colors.accent), for: .normal)
-        
-        loginStack.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(93)
-            make.leading.trailing.equalToSuperview().inset(65)
-        }
-        
     }
     
     
@@ -181,6 +181,11 @@ class AuthViewController: UIViewController {
             make.top.equalToSuperview().inset(47)
             make.trailing.leading.equalToSuperview().inset(24)
             make.bottom.equalToSuperview().inset(250)
+        }
+        
+        loginStack.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(93)
+            make.leading.trailing.equalToSuperview().inset(65)
         }
     }
     
