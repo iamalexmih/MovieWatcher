@@ -17,6 +17,9 @@ class TestComponentsViewController: UIViewController {
     let searchTextField = SearchTextField()
     let logOutTemplateButton = LogOutTemplateButton()
     let customButton = CustomButton(title: "Custom Button")
+    let textFieldWithLabelStack = TextFieldWithLabelStack(labelText: "First Name",
+                                                          placeholderText: "Enter your name",
+                                                          isSecure: false)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +31,29 @@ class TestComponentsViewController: UIViewController {
         addSearchTextField()
         addLogOutTemplateButton()
         addCustomButton()
+        addTextFieldWithLabelStack()
+        
+        
+        getPopularMovies()
     }
     
+    
+    // MARK: - Сетевые запросы
+    func getPopularMovies() {
+        NetworkService.shared.getDiscoverMovies { result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    print(data.results)
+                }
+            case .failure(_):
+                print("Error, .....")
+            }
+        }
+    }
+    
+    
+    // MARK: - Компоненты
     func addGoogleButtonOnView() {
         view.addSubview(googleButton)
         
@@ -78,6 +102,17 @@ class TestComponentsViewController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(32)
             make.top.equalTo(logOutTemplateButton.snp.bottom).offset(50)
             make.height.equalTo(60)
+        }
+    }
+    
+    
+    func addTextFieldWithLabelStack() {
+        view.addSubview(textFieldWithLabelStack)
+        
+        textFieldWithLabelStack.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(32)
+            make.top.equalTo(customButton.snp.bottom).offset(50)
+            make.height.equalTo(90)
         }
     }
 }

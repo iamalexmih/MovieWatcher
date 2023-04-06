@@ -12,10 +12,17 @@
 		63E01F7929DBEFED0010C6C7 /* TextFieldWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */; };
 		8708DB7929DC078300CEED97 /* PlusJakartaSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8708DB7829DC078300CEED97 /* PlusJakartaSans.ttf */; };
 		8727A1CB29DB00B400C3D087 /* GoogleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8727A1CA29DB00B400C3D087 /* GoogleButton.swift */; };
+		87B2286229DD756A0088AF8F /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B2286129DD756A0088AF8F /* CategoryCell.swift */; };
+		87B2286429DD76020088AF8F /* RecentWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B2286329DD76020088AF8F /* RecentWatchView.swift */; };
+		87B2286629DD9FB10088AF8F /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87B2286529DD9FB10088AF8F /* Montserrat.ttf */; };
 		8E06F09F29DB5335006B2DED /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F09E29DB5335006B2DED /* SearchTextField.swift */; };
 		B551394829DC9717005CD307 /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394729DC9717005CD307 /* UIView + ext.swift */; };
 		B551394C29DCA817005CD307 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394B29DCA817005CD307 /* FavoriteViewController.swift */; };
 		B551394F29DCA886005CD307 /* RecantWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394E29DCA886005CD307 /* RecantWatchViewController.swift */; };
+		B551395529DDEDD4005CD307 /* TextFieldWithLabelStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551395429DDEDD4005CD307 /* TextFieldWithLabelStack.swift */; };
+		B551395829DDFD98005CD307 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551395729DDFD98005CD307 /* MovieModel.swift */; };
+		B551395A29DDFDC9005CD307 /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551395929DDFDC9005CD307 /* ApiKey.swift */; };
+		B551395C29DDFF99005CD307 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551395B29DDFF99005CD307 /* ApiError.swift */; };
 		B5B1D16D29D9D7B0006966FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D16C29D9D7B0006966FF /* AppDelegate.swift */; };
 		B5B1D16F29D9D7B0006966FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D16E29D9D7B0006966FF /* SceneDelegate.swift */; };
 		B5B1D17129D9D7B0006966FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D17029D9D7B0006966FF /* ViewController.swift */; };
@@ -52,10 +59,17 @@
 		63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithLabel.swift; sourceTree = "<group>"; };
 		8708DB7829DC078300CEED97 /* PlusJakartaSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PlusJakartaSans.ttf; sourceTree = "<group>"; };
 		8727A1CA29DB00B400C3D087 /* GoogleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleButton.swift; sourceTree = "<group>"; };
+		87B2286129DD756A0088AF8F /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		87B2286329DD76020088AF8F /* RecentWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWatchView.swift; sourceTree = "<group>"; };
+		87B2286529DD9FB10088AF8F /* Montserrat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Montserrat.ttf; sourceTree = "<group>"; };
 		8E06F09E29DB5335006B2DED /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		B551394729DC9717005CD307 /* UIView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ext.swift"; sourceTree = "<group>"; };
 		B551394B29DCA817005CD307 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		B551394E29DCA886005CD307 /* RecantWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecantWatchViewController.swift; sourceTree = "<group>"; };
+		B551395429DDEDD4005CD307 /* TextFieldWithLabelStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldWithLabelStack.swift; sourceTree = "<group>"; };
+		B551395729DDFD98005CD307 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		B551395929DDFDC9005CD307 /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
+		B551395B29DDFF99005CD307 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		B5B1D16929D9D7B0006966FF /* ch 3 MovieWatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ch 3 MovieWatcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B1D16C29D9D7B0006966FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5B1D16E29D9D7B0006966FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +115,7 @@
 		8708DB7729DC076100CEED97 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				87B2286529DD9FB10088AF8F /* Montserrat.ttf */,
 				8708DB7829DC078300CEED97 /* PlusJakartaSans.ttf */,
 			);
 			path = Fonts;
@@ -122,12 +137,22 @@
 			path = FavoriteScreen;
 			sourceTree = "<group>";
 		};
-		B551394D29DCA87A005CD307 /* RecantWatchScreen */ = {
+		B551394D29DCA87A005CD307 /* RecentWatchScreen */ = {
 			isa = PBXGroup;
 			children = (
 				B551394E29DCA886005CD307 /* RecantWatchViewController.swift */,
+				87B2286329DD76020088AF8F /* RecentWatchView.swift */,
 			);
-			path = RecantWatchScreen;
+			path = RecentWatchScreen;
+			sourceTree = "<group>";
+		};
+		B551395629DDFD7E005CD307 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B551395729DDFD98005CD307 /* MovieModel.swift */,
+				B551395B29DDFF99005CD307 /* ApiError.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		B5B1D16029D9D7B0006966FF = {
@@ -153,11 +178,12 @@
 			children = (
 				B5B1D18029D9D7C0006966FF /* Application */,
 				B5B1D17029D9D7B0006966FF /* ViewController.swift */,
-				B551394D29DCA87A005CD307 /* RecantWatchScreen */,
+				B551394D29DCA87A005CD307 /* RecentWatchScreen */,
 				B551394A29DCA756005CD307 /* FavoriteScreen */,
 				57E6209729DB4BFF00260AF5 /* CustomTabBarController.swift */,
 				B5B1D18D29D9DA87006966FF /* Cell */,
 				B5B1D1B729DA0787006966FF /* Components */,
+				B551395629DDFD7E005CD307 /* Models */,
 				B5B1D19029D9DB9A006966FF /* Service */,
 				B5B1D18E29D9DB45006966FF /* HomeScreen */,
 				B5B1D18C29D9DA75006966FF /* SearchScreen */,
@@ -272,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				B5B1D1A229D9DD4B006966FF /* MovieCell.swift */,
+				87B2286129DD756A0088AF8F /* CategoryCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -288,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				B5B1D1A829D9DDA3006966FF /* NetworkService.swift */,
+				B551395929DDFDC9005CD307 /* ApiKey.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -311,6 +339,7 @@
 		B5B1D1B729DA0787006966FF /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B551395429DDEDD4005CD307 /* TextFieldWithLabelStack.swift */,
 				8727A1CA29DB00B400C3D087 /* GoogleButton.swift */,
 				63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */,
 				8E06F09E29DB5335006B2DED /* SearchTextField.swift */,
@@ -410,6 +439,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87B2286629DD9FB10088AF8F /* Montserrat.ttf in Resources */,
 				B5B1D17929D9D7B1006966FF /* LaunchScreen.storyboard in Resources */,
 				B5B1D17629D9D7B1006966FF /* Assets.xcassets in Resources */,
 				8708DB7929DC078300CEED97 /* PlusJakartaSans.ttf in Resources */,
@@ -467,14 +497,19 @@
 			files = (
 				B5B1D1A329D9DD4B006966FF /* MovieCell.swift in Sources */,
 				B5B1D19729D9DC75006966FF /* LoginViewController.swift in Sources */,
+				B551395529DDEDD4005CD307 /* TextFieldWithLabelStack.swift in Sources */,
 				B5B1D17129D9D7B0006966FF /* ViewController.swift in Sources */,
+				87B2286429DD76020088AF8F /* RecentWatchView.swift in Sources */,
 				B5B1D18429D9D90A006966FF /* Resource.swift in Sources */,
 				B5B1D19329D9DC20006966FF /* OnBoardingScreenViewController.swift in Sources */,
 				B5B1D1A729D9DD8E006966FF /* HomeViewController.swift in Sources */,
 				B5B1D19D29D9DCCE006966FF /* MovieDetailViewController.swift in Sources */,
 				B5B1D19F29D9DCFE006966FF /* FilterViewController.swift in Sources */,
+				B551395A29DDFDC9005CD307 /* ApiKey.swift in Sources */,
 				B5B1D19529D9DC50006966FF /* RegisterViewController.swift in Sources */,
 				B5B6B14E29DC47C500F79E98 /* LogOutTemplateButton.swift in Sources */,
+				B551395829DDFD98005CD307 /* MovieModel.swift in Sources */,
+				B551395C29DDFF99005CD307 /* ApiError.swift in Sources */,
 				B551394829DC9717005CD307 /* UIView + ext.swift in Sources */,
 				B5B1D19B29D9DCAC006966FF /* SettingViewController.swift in Sources */,
 				B5B1D1A929D9DDA3006966FF /* NetworkService.swift in Sources */,
@@ -488,6 +523,7 @@
 				B5B6B15029DC688C00F79E98 /* TestComponentsViewController.swift in Sources */,
 				B5B1D16F29D9D7B0006966FF /* SceneDelegate.swift in Sources */,
 				B5B1D1A529D9DD77006966FF /* SearchViewController.swift in Sources */,
+				87B2286229DD756A0088AF8F /* CategoryCell.swift in Sources */,
 				00F1E97429DC55DB00F5FBF7 /* CustomButton.swift in Sources */,
 				8E06F09F29DB5335006B2DED /* SearchTextField.swift in Sources */,
 				B551394F29DCA886005CD307 /* RecantWatchViewController.swift in Sources */,

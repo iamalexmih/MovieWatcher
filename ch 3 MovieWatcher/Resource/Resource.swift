@@ -15,6 +15,7 @@ enum Resources {
         static let inactive = "inactiveColor"
         static let secondText = "secondTextColor"
         static let text = "textColor"
+        static let categoryColour = "categoryColor"
     }
     
     
@@ -33,9 +34,22 @@ enum Resources {
         static let tabBarRecentWatch = "Video"
         static let tabBarRecentWatchFill = "Subtract"
         static let googleSymbol = "googleSymbol"
+        static let clockImage = "Clock"
+        static let calendarImage = "Calendar"
+        static let filmstripImage = "filmstrip"
     }
     
     enum Font {
         static let jakartaFontSemiBold = "PlusJakartaSansRoman-SemiBold"
+        static let jakartaFont = "PlusJakartaSans-Regular"
+        static let montserratFont = "MontserratRoman-Regular"
+        
+//    Family: Plus Jakarta Sans Font names: ["PlusJakartaSansRoman-ExtraLight",
+//        "PlusJakartaSansRoman-Light", "PlusJakartaSansRoman-Medium", "PlusJakartaSansRoman-Bold", "PlusJakartaSansRoman-ExtraBold"]
+        
+//    "Montserrat-Thin", "MontserratRoman-ExtraLight", "MontserratRoman-Light", "MontserratRoman-Medium",
+//        "MontserratRoman-SemiBold", "MontserratRoman-Bold", "MontserratRoman-ExtraBold", "MontserratRoman-Black"]
+        
+        
     }
 }
