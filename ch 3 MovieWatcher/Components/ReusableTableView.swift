@@ -7,12 +7,15 @@
 
 import UIKit
 
-class MyTableView: UIView {
+class ReusableTableView: UIView {
 
     private lazy var tableView = UITableView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        self.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         
         tableView.rowHeight = 184
         tableView.separatorStyle = .none
@@ -22,9 +25,6 @@ class MyTableView: UIView {
         tableView.delegate = self
         tableView.register(MovieCell.self, forCellReuseIdentifier: MovieCell.identifier)
         tableView.backgroundColor = .white
-        
-        self.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
 
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -36,7 +36,7 @@ class MyTableView: UIView {
     }
 }
 
-extension MyTableView: UITableViewDelegate, UITableViewDataSource {
+extension ReusableTableView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10

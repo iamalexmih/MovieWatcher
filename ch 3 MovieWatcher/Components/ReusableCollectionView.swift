@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MyCollectionView: UIView {
+class ReusableCollectionView: UIView {
     
     private var collectionView: UICollectionView!
     
@@ -31,6 +31,10 @@ class MyCollectionView: UIView {
         self.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
+        // Выделяем первую ячейку при загрузке
+        let firstIndexPath = IndexPath(item: 0, section: 0)
+        collectionView.selectItem(at: firstIndexPath, animated: false, scrollPosition: .centeredHorizontally)
+        
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -41,7 +45,7 @@ class MyCollectionView: UIView {
     }
 }
 
-extension MyCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ReusableCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
