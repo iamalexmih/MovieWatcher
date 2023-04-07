@@ -28,13 +28,15 @@ class CategoryCell: UICollectionViewCell {
             if isSelected {
                 backgroundColor = UIColor(named: Resources.Colors.accent)
                 categoryLabel.textColor = .white
+                layer.borderColor = UIColor(named: Resources.Colors.accent)?.cgColor
+                
             } else {
                 backgroundColor = .clear
                 categoryLabel.textColor = UIColor(named: Resources.Colors.categoryColour)
+                layer.borderColor = UIColor(named: Resources.Colors.categoryColour)?.cgColor
             }
         }
     }
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,7 +44,6 @@ class CategoryCell: UICollectionViewCell {
         setupConstraints()
         setupUICell()
     }
-    
     
     func setupUICell() {
         backgroundColor = .clear

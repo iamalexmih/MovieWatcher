@@ -12,6 +12,15 @@ class RecentWatchViewController: UIViewController {
     
     private let recentWatchView = RecentWatchView()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupView()
+        
+        let firstIndexPath = IndexPath(item: 0, section: 0)
+        recentWatchView.collectionView.selectItem(at: firstIndexPath, animated: false, scrollPosition: .centeredHorizontally)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

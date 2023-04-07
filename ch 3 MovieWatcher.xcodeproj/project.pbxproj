@@ -17,6 +17,8 @@
 		87B2286229DD756A0088AF8F /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B2286129DD756A0088AF8F /* CategoryCell.swift */; };
 		87B2286429DD76020088AF8F /* RecentWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B2286329DD76020088AF8F /* RecentWatchView.swift */; };
 		87B2286629DD9FB10088AF8F /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87B2286529DD9FB10088AF8F /* Montserrat.ttf */; };
+		87BD3C4329E0215F0092A8FC /* MyCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BD3C4229E0215F0092A8FC /* MyCollectionView.swift */; };
+		87BD3C4529E058A40092A8FC /* MyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BD3C4429E058A40092A8FC /* MyTableView.swift */; };
 		8E06F09F29DB5335006B2DED /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F09E29DB5335006B2DED /* SearchTextField.swift */; };
 		B551394829DC9717005CD307 /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394729DC9717005CD307 /* UIView + ext.swift */; };
 		B551394C29DCA817005CD307 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394B29DCA817005CD307 /* FavoriteViewController.swift */; };
@@ -73,6 +75,8 @@
 		87B2286129DD756A0088AF8F /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		87B2286329DD76020088AF8F /* RecentWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWatchView.swift; sourceTree = "<group>"; };
 		87B2286529DD9FB10088AF8F /* Montserrat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Montserrat.ttf; sourceTree = "<group>"; };
+		87BD3C4229E0215F0092A8FC /* MyCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionView.swift; sourceTree = "<group>"; };
+		87BD3C4429E058A40092A8FC /* MyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableView.swift; sourceTree = "<group>"; };
 		8E06F09E29DB5335006B2DED /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		B551394729DC9717005CD307 /* UIView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ext.swift"; sourceTree = "<group>"; };
 		B551394B29DCA817005CD307 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -373,6 +377,8 @@
 				B5B6B14D29DC47C500F79E98 /* LogOutTemplateButton.swift */,
 				00F1E97329DC55DB00F5FBF7 /* CustomButton.swift */,
 				B5B6B14F29DC688C00F79E98 /* TestComponentsViewController.swift */,
+				87BD3C4229E0215F0092A8FC /* MyCollectionView.swift */,
+				87BD3C4429E058A40092A8FC /* MyTableView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -532,6 +538,7 @@
 				87888E5929DF021F00B78B4D /* FavouriteView.swift in Sources */,
 				B551395529DDEDD4005CD307 /* TextFieldWithLabelStack.swift in Sources */,
 				B5B1D17129D9D7B0006966FF /* ViewController.swift in Sources */,
+				87BD3C4529E058A40092A8FC /* MyTableView.swift in Sources */,
 				87B2286429DD76020088AF8F /* RecentWatchView.swift in Sources */,
 				B5B1D18429D9D90A006966FF /* Resource.swift in Sources */,
 				B5B1D19329D9DC20006966FF /* OnBoardingScreenViewController.swift in Sources */,
@@ -546,6 +553,7 @@
 				B5B6B14E29DC47C500F79E98 /* LogOutTemplateButton.swift in Sources */,
 				B551395829DDFD98005CD307 /* MovieModel.swift in Sources */,
 				B551395C29DDFF99005CD307 /* ApiError.swift in Sources */,
+				87BD3C4329E0215F0092A8FC /* MyCollectionView.swift in Sources */,
 				B551394829DC9717005CD307 /* UIView + ext.swift in Sources */,
 				B5B1D19B29D9DCAC006966FF /* SettingViewController.swift in Sources */,
 				B5B1D1A929D9DDA3006966FF /* NetworkService.swift in Sources */,

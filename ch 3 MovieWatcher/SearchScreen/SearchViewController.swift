@@ -16,7 +16,12 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupView()
+        
+        // Делаем первую ячейку выбранной
+        let firstIndexPath = IndexPath(item: 0, section: 0)
+        searchView.collectionView.selectItem(at: firstIndexPath, animated: false, scrollPosition: .centeredHorizontally)
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
