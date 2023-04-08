@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		00F1E97429DC55DB00F5FBF7 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F1E97329DC55DB00F5FBF7 /* CustomButton.swift */; };
+		5770CA7029E0C43F000CED66 /* HomeViewMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5770CA6F29E0C43F000CED66 /* HomeViewMovieCell.swift */; };
+		5770CA7229E0C45D000CED66 /* ButtonCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5770CA7129E0C45D000CED66 /* ButtonCollectionView.swift */; };
+		5770CA7429E0C47E000CED66 /* BoxViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5770CA7329E0C47E000CED66 /* BoxViewCell.swift */; };
+		5770CA7729E0C4A7000CED66 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5770CA7629E0C4A7000CED66 /* ListItem.swift */; };
+		5770CA7929E0C4BB000CED66 /* FilmType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5770CA7829E0C4BB000CED66 /* FilmType.swift */; };
+		5770CA7C29E0C4DB000CED66 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5770CA7B29E0C4DB000CED66 /* MockData.swift */; };
+		5770CA7E29E0C4EF000CED66 /* ListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5770CA7D29E0C4EF000CED66 /* ListSection.swift */; };
+		5770CA8029E0C535000CED66 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5770CA7F29E0C535000CED66 /* UIStackView.swift */; };
 		57E6209829DB4BFF00260AF5 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6209729DB4BFF00260AF5 /* CustomTabBarController.swift */; };
 		63E01F7929DBEFED0010C6C7 /* TextFieldWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */; };
 		8708DB7929DC078300CEED97 /* PlusJakartaSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8708DB7829DC078300CEED97 /* PlusJakartaSans-SemiBold.ttf */; };
@@ -62,6 +70,14 @@
 /* Begin PBXFileReference section */
 		00F1E97329DC55DB00F5FBF7 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		359A23F88600928C5A777E35 /* Pods_ch_3_MovieWatcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ch_3_MovieWatcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5770CA6F29E0C43F000CED66 /* HomeViewMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewMovieCell.swift; sourceTree = "<group>"; };
+		5770CA7129E0C45D000CED66 /* ButtonCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCollectionView.swift; sourceTree = "<group>"; };
+		5770CA7329E0C47E000CED66 /* BoxViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxViewCell.swift; sourceTree = "<group>"; };
+		5770CA7629E0C4A7000CED66 /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
+		5770CA7829E0C4BB000CED66 /* FilmType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmType.swift; sourceTree = "<group>"; };
+		5770CA7B29E0C4DB000CED66 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		5770CA7D29E0C4EF000CED66 /* ListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSection.swift; sourceTree = "<group>"; };
+		5770CA7F29E0C535000CED66 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		57E6209729DB4BFF00260AF5 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		610D653D69895880F8210BB9 /* Pods-ch 3 MovieWatcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ch 3 MovieWatcher.debug.xcconfig"; path = "Target Support Files/Pods-ch 3 MovieWatcher/Pods-ch 3 MovieWatcher.debug.xcconfig"; sourceTree = "<group>"; };
 		63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithLabel.swift; sourceTree = "<group>"; };
@@ -128,6 +144,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5770CA6E29E0C425000CED66 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5770CA6F29E0C43F000CED66 /* HomeViewMovieCell.swift */,
+				5770CA7129E0C45D000CED66 /* ButtonCollectionView.swift */,
+				5770CA7329E0C47E000CED66 /* BoxViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		5770CA7529E0C490000CED66 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5770CA7629E0C4A7000CED66 /* ListItem.swift */,
+				5770CA7829E0C4BB000CED66 /* FilmType.swift */,
+				5770CA7B29E0C4DB000CED66 /* MockData.swift */,
+				5770CA7D29E0C4EF000CED66 /* ListSection.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		8708DB7729DC076100CEED97 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +184,7 @@
 			children = (
 				B551394729DC9717005CD307 /* UIView + ext.swift */,
 				B551396929DED5BE005CD307 /* UIFont + ext.swift */,
+				5770CA7F29E0C535000CED66 /* UIStackView.swift */,
 			);
 			path = Extansions;
 			sourceTree = "<group>";
@@ -327,6 +365,8 @@
 		B5B1D18E29D9DB45006966FF /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
+				5770CA7529E0C490000CED66 /* Models */,
+				5770CA6E29E0C425000CED66 /* Cells */,
 				B5B1D1A629D9DD8E006966FF /* HomeViewController.swift */,
 			);
 			path = HomeScreen;
@@ -533,19 +573,26 @@
 				B5B1D19329D9DC20006966FF /* OnBoardingScreenViewController.swift in Sources */,
 				B551396C29DF1735005CD307 /* StorageGenres.swift in Sources */,
 				B551396A29DED5BE005CD307 /* UIFont + ext.swift in Sources */,
+				5770CA7929E0C4BB000CED66 /* FilmType.swift in Sources */,
 				B5B1D1A729D9DD8E006966FF /* HomeViewController.swift in Sources */,
 				B5B1D19D29D9DCCE006966FF /* MovieDetailViewController.swift in Sources */,
 				B5B1D19F29D9DCFE006966FF /* FilterViewController.swift in Sources */,
 				B551395A29DDFDC9005CD307 /* ApiKey.swift in Sources */,
+				5770CA7429E0C47E000CED66 /* BoxViewCell.swift in Sources */,
+				5770CA7E29E0C4EF000CED66 /* ListSection.swift in Sources */,
+				5770CA7029E0C43F000CED66 /* HomeViewMovieCell.swift in Sources */,
 				B5B1D19529D9DC50006966FF /* RegisterViewController.swift in Sources */,
+				5770CA7C29E0C4DB000CED66 /* MockData.swift in Sources */,
 				B5B6B14E29DC47C500F79E98 /* LogOutTemplateButton.swift in Sources */,
 				B551395829DDFD98005CD307 /* MovieModel.swift in Sources */,
+				5770CA7729E0C4A7000CED66 /* ListItem.swift in Sources */,
 				B551395C29DDFF99005CD307 /* ApiError.swift in Sources */,
 				87BD3C4329E0215F0092A8FC /* ReusableCollectionView.swift in Sources */,
 				B551394829DC9717005CD307 /* UIView + ext.swift in Sources */,
 				B5B1D19B29D9DCAC006966FF /* SettingViewController.swift in Sources */,
 				B5B1D1A929D9DDA3006966FF /* NetworkService.swift in Sources */,
 				8727A1CB29DB00B400C3D087 /* GoogleButton.swift in Sources */,
+				5770CA7229E0C45D000CED66 /* ButtonCollectionView.swift in Sources */,
 				B551394C29DCA817005CD307 /* FavoriteViewController.swift in Sources */,
 				B5B1D16D29D9D7B0006966FF /* AppDelegate.swift in Sources */,
 				57E6209829DB4BFF00260AF5 /* CustomTabBarController.swift in Sources */,
@@ -558,7 +605,8 @@
 				87B2286229DD756A0088AF8F /* CategoryCell.swift in Sources */,
 				00F1E97429DC55DB00F5FBF7 /* CustomButton.swift in Sources */,
 				8E06F09F29DB5335006B2DED /* SearchTextField.swift in Sources */,
-				B551394F29DCA886005CD307 /* RecentWatchViewController.swift in Sources */,
+				B551394F29DCA886005CD307 /* RecantWatchViewController.swift in Sources */,
+				5770CA8029E0C535000CED66 /* UIStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
