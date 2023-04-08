@@ -24,8 +24,8 @@ class LoginViewController: UIViewController {
         var arr: [UIView] = []
         
         let names = [
-            ("E-mail", "Enter your email address"),
-            ("Password", "Enter your password")
+        ("E-mail", "Enter your email address"),
+        ("Password", "Enter your password")
         ]
         
         for (label, placeholder) in names {
@@ -41,8 +41,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - Variables
     
-    var email: String?
-    var password: String?
+    var authModel: AuthModel?
   
     // MARK: - VC LifeCycle
     
@@ -52,21 +51,29 @@ class LoginViewController: UIViewController {
         title = "Login"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .bold)]
         setupUI()
+        addActionsToButtons()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if let model = authModel {
+            model.destroyNavigationStack(in: navigationController)
+        }
+    }
     
     // MARK: - Button Logic
-    // TODO: finalize button logic
+
     func addActionsToButtons() {
         loginButton.addTarget(self, action: #selector(login(_:)), for: .touchUpInside)
     }
     
  
     @objc func login(_ sender: UIButton) {
-//        email = validatedEmail()
-//        let loginVC = LoginViewController()
-//        loginVC.email = email
-//        navigationController?.pushViewController(loginVC, animated: true)
+        if var model = authModel {
+            model.checkFields(textFieldArr, isRegistration: false)
+            model.transitionToMainScreen(controller: self, isRegistration: false)
+        }
     }
     
     // MARK: - UI Setup section
@@ -76,6 +83,14 @@ class LoginViewController: UIViewController {
         setuTopStack()
         setupMiddleStack()
         setConstraints()
+        getEmailFromPreviousScreen()
+    }
+    
+    func getEmailFromPreviousScreen() {
+        if let authModel = authModel,
+           let email = authModel.unValidatedEmail {
+            (textFieldArr[0] as? TextFieldWithLabelStack)?.textField.text = email
+        }
     }
     
     func setuTopStack() {

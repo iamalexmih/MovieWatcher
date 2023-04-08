@@ -8,8 +8,8 @@
 import UIKit
 import SnapKit
 
-// Simple password validation
-// hookup with firebase
+// Simple password validation -- DONE
+// hookup with firebase -- DONE
 // add "cont with google func"
 // Add slide animation
 
@@ -37,7 +37,7 @@ class AuthViewController: UIViewController {
     
     // MARK: - Variables
     
-    var email: String?
+
     
     // MARK: - VC LifeCycle
     
@@ -62,9 +62,9 @@ class AuthViewController: UIViewController {
     }
     
     @objc func continueWithEmail(_ sender: UIButton) {
-        email = validatedEmail()
         let regVC = RegisterViewController()
-        regVC.email = email
+        regVC.authModel = AuthModel()
+        regVC.authModel.unValidatedEmail = getEmail()
         navigationController?.pushViewController(regVC, animated: true)
     }
     
@@ -73,17 +73,14 @@ class AuthViewController: UIViewController {
     }
     
     @objc func login(_ sender: UIButton) {
-        email = validatedEmail()
         let loginVC = LoginViewController()
-        loginVC.email = email
+        loginVC.authModel = AuthModel()
+        loginVC.authModel?.unValidatedEmail = getEmail()
         navigationController?.pushViewController(loginVC, animated: true)
     }
     
-    func validatedEmail() -> String {
-        if let email = emailTextField.textField.text {
-            return email
-        }
-        return "error"
+    func getEmail() -> String? {
+        return emailTextField.textField.text
     }
     
     // MARK: - UI Setup section
@@ -164,7 +161,6 @@ class AuthViewController: UIViewController {
         loginButton.setTitle("Login", for: .normal)
         loginButton.setTitleColor(UIColor(named: Resources.Colors.accent), for: .normal)
     }
-    
     
     func setConstraints() {
         topStack.snp.makeConstraints { make in
