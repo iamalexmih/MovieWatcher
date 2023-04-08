@@ -28,10 +28,15 @@ class SearchTextField: UIView {
     }
 
     private func commonInit() {
-        setupConstraints()
+        configureContainerView()
+        configureSearchImageView()
+        configureSearchTextField()
+        configureCancelButton()
+        configureBreakView()
+        configureFilterButton()
     }
 
-    private func setupConstraints() {
+    private func configureContainerView() {
         addSubview(containerView)
         containerView.layer.borderColor = UIColor(named: Resources.Colors.accent)?.cgColor
         containerView.layer.borderWidth = 1
@@ -43,7 +48,9 @@ class SearchTextField: UIView {
             make.top.equalToSuperview()
             make.bottom.equalToSuperview()
         }
+    }
 
+    private func configureSearchImageView() {
         containerView.addSubview(searchImageView)
         searchImageView.image = searchImageViewImage
         searchImageView.tintColor = iconColor
@@ -52,16 +59,22 @@ class SearchTextField: UIView {
             make.centerY.equalTo(containerView)
             make.width.height.equalTo(18)
         }
+    }
 
+    private func configureSearchTextField() {
         containerView.addSubview(searchTextField)
         searchTextField.backgroundColor = .clear
         searchTextField.placeholder = textFieldPlaceHolder
+        searchTextField.font = .jakartaMedium(size: 16)
+        searchTextField.textColor = UIColor(named: Resources.Colors.text)
         searchTextField.snp.makeConstraints { make in
             make.left.equalTo(searchImageView.snp_rightMargin).inset(-16)
             make.height.equalTo(24)
             make.centerY.equalTo(containerView)
         }
+    }
 
+    private func configureCancelButton() {
         containerView.addSubview(cancelButton)
         cancelButton.setImage(cancelButtonImage, for: .normal)
         cancelButton.tintColor = buttonsColor
@@ -70,7 +83,9 @@ class SearchTextField: UIView {
             make.width.height.equalTo(18)
             make.centerY.equalTo(containerView)
         }
+    }
 
+    private func configureBreakView() {
         containerView.addSubview(breakView)
         breakView.backgroundColor = iconColor
         breakView.snp.makeConstraints { make in
@@ -79,7 +94,9 @@ class SearchTextField: UIView {
             make.height.equalTo(18)
             make.centerY.equalTo(containerView)
         }
+    }
 
+    private func configureFilterButton() {
         containerView.addSubview(filterButton)
         filterButton.setImage(filterButtonImage, for: .normal)
         filterButton.tintColor = buttonsColor
