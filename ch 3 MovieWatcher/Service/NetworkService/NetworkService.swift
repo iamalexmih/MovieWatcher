@@ -116,8 +116,6 @@ final class NetworkService {
 
     
     
-    
-    
     // Общий запрос с дженерик JSONDecoder.
     private func performRequest<T: Decodable>(with urlString: String,
                                               type: T.Type,

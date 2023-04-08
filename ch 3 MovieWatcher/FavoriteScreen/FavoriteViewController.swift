@@ -11,40 +11,24 @@ import SnapKit
 
 class FavoriteViewController: UIViewController {
     
-    private let favouriteView = FavouriteView()
+    private var tableView = ReusableTableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        favouriteView.moviesTableView.dataSource = self
-        favouriteView.moviesTableView.delegate = self
-        setupView()
+        view.addSubview(tableView)
+
+        setupConstrains()
     }
     
-    private func setupView() {
-        view.addSubview(favouriteView)
+    private func setupConstrains() {
         
-        favouriteView.snp.makeConstraints { make in
-            make.top.left.bottom.right.equalTo(self.view.safeAreaLayoutGuide)
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(self.view.safeAreaLayoutGuide).inset(15)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide)
+            make.left.equalToSuperview().inset(15)
+            make.right.equalToSuperview().inset(15)
         }
     }
 }
 
-
-extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.identifier, for: indexPath) as? MovieCell else {
-            return UITableViewCell()
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-}

@@ -33,3 +33,12 @@ extension UIView {
         UIView.animate(withDuration: 0.15) { self.alpha = 1 }
     }
 }
+
+// Для добавления нескольких элементов на Вью
+extension UIView {
+    func addSubviews(_ views: UIView...) {
+        views.forEach({
+            addSubview($0)
+        })
+    }
+}
