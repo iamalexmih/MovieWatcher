@@ -1,0 +1,199 @@
+//
+//  AuthViewController.swift
+//  ch 3 MovieWatcher
+//
+//  Created by Андрей Бородкин on 06.04.2023.
+//
+
+import UIKit
+import SnapKit
+
+// Simple password validation
+// hookup with firebase
+// add "cont with google func"
+// Add slide animation
+
+
+class AuthViewController: UIViewController {
+    
+    // MARK: - UI Elements
+    var titleLabel = UILabel()
+    var subtitleLabel = UILabel()
+    let topStack = UIStackView()
+    
+    var logo = UIImageView()
+    
+    let authOptionsView = UIView()
+    let bottomStack = UIStackView()
+    
+    let emailTextField = TextFieldWithLabelStack(labelText: "Email", placeholderText: "Enter your email address", isSecure: false)
+    let emailButton = CustomButton(title: "Continue with Email")
+    let tempLabel = UILabel()
+    let googleButton = GoogleButton()
+    
+    let loginStack = UIStackView()
+    let loginLabel = UILabel()
+    let loginButton = UIButton()
+    
+    // MARK: - Variables
+    
+    var email: String?
+    
+    // MARK: - VC LifeCycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupUI()
+        addActionsToButtons()
+        presentAuthOptions()
+    }
+    
+    func presentAuthOptions() {
+
+    }
+    
+    // MARK: - Button Logic
+
+    func addActionsToButtons() {
+        emailButton.addTarget(self, action: #selector(continueWithEmail(_:)), for: .touchUpInside)
+        googleButton.addTarget(self, action: #selector(continueWithGoogle(_:)), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(login(_:)), for: .touchUpInside)
+    }
+    
+    @objc func continueWithEmail(_ sender: UIButton) {
+        email = validatedEmail()
+        let regVC = RegisterViewController()
+        regVC.email = email
+        navigationController?.pushViewController(regVC, animated: true)
+    }
+    
+    @objc func continueWithGoogle(_ sender: UIButton) {
+        
+    }
+    
+    @objc func login(_ sender: UIButton) {
+        email = validatedEmail()
+        let loginVC = LoginViewController()
+        loginVC.email = email
+        navigationController?.pushViewController(loginVC, animated: true)
+    }
+    
+    func validatedEmail() -> String {
+        if let email = emailTextField.textField.text {
+            return email
+        }
+        return "error"
+    }
+    
+    // MARK: - UI Setup section
+    func setupUI() {
+        view.backgroundColor = UIColor(named: Resources.Colors.accent)
+        
+        [topStack, titleLabel, subtitleLabel, logo, authOptionsView].forEach { item in
+           view.addSubview(item)
+           item.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
+        setuTopStack()
+        
+        logo.image = UIImage(named: Resources.Image.googleSymbol)
+        
+        setupBottomStack()
+        setConstraints()
+    }
+    
+    func setuTopStack() {
+        topStack.addArrangedSubview(titleLabel)
+        topStack.addArrangedSubview(subtitleLabel)
+        topStack.axis = .vertical
+        topStack.spacing = 8
+        topStack.alignment = .center
+        
+        titleLabel.text = "Create account"
+        titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        titleLabel.textColor = UIColor(named: Resources.Colors.backGround)
+        
+        subtitleLabel.text = "Some gibberish text to fill in empty space"
+        subtitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        subtitleLabel.textColor = UIColor(named: Resources.Colors.backGround)
+    }
+    
+    func setupBottomStack() {
+        
+        [bottomStack, emailTextField, emailButton, tempLabel, googleButton, loginStack, loginLabel, loginButton].forEach {authOptionsView.addSubview($0)}
+        bottomStack.translatesAutoresizingMaskIntoConstraints = false
+        
+        authOptionsView.backgroundColor = .white
+        
+        authOptionsView.layer.cornerRadius = 20
+        
+        tempLabel.text = "Or Continue With"
+        tempLabel.textColor = UIColor(named: Resources.Colors.secondText)
+        
+        var stackArr = [emailTextField, emailButton, tempLabel, googleButton]
+        
+        stackArr.forEach {bottomStack.addArrangedSubview($0); $0.translatesAutoresizingMaskIntoConstraints = false}
+        bottomStack.axis = .vertical
+        bottomStack.distribution = .equalCentering
+        bottomStack.spacing = 10
+        
+        stackArr.removeFirst()
+        stackArr.forEach { element in
+            element.snp.makeConstraints { make in
+                make.height.equalTo(65)
+            }
+        }
+        
+        loginStack.addArrangedSubview(loginLabel)
+        loginStack.addArrangedSubview(loginButton)
+        loginStack.axis = .horizontal
+        
+        loginLabel.text = "Already have an account?"
+        loginLabel.textColor = UIColor(named: Resources.Colors.secondText)
+        loginLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        
+        loginButton.setTitle("Login", for: .normal)
+        loginButton.setTitleColor(UIColor(named: Resources.Colors.accent), for: .normal)
+    }
+    
+    
+    func setConstraints() {
+        topStack.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalToSuperview().inset(74)
+        }
+        
+        logo.snp.makeConstraints { make in
+            make.centerY.centerX.equalToSuperview()
+            make.height.width.equalTo(100)
+        }
+        
+        authOptionsView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalTo(view.frame.height-200)
+            make.top.equalToSuperview().inset(200)
+            make.bottom.equalToSuperview()
+        }
+        
+        bottomStack.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(47)
+            make.trailing.leading.equalToSuperview().inset(24)
+            make.bottom.equalToSuperview().inset(250)
+        }
+        
+        loginStack.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(93)
+            make.leading.trailing.equalToSuperview().inset(65)
+        }
+    }
+    
+}
+
+
+// MARK: - TextField Delegate Ext
+
+extension AuthViewController: UITextFieldDelegate {
+    
+}

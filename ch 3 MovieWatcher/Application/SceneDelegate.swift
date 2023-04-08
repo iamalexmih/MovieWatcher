@@ -18,7 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         let testComponentsViewController = TestComponentsViewController()
         let tabBar = CustomTabBarController()
-        window?.rootViewController = tabBar
+        let navControllerForAuth = UINavigationController.init(rootViewController: AuthViewController())
+        UINavigationBar.appearance().backIndicatorImage = UIImage(systemName: "arrow.left.circle.fill")
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.left.circle.fill")
+        
+        window?.rootViewController = navControllerForAuth
         window?.makeKeyAndVisible()
     }
 }
