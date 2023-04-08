@@ -31,6 +31,7 @@ struct AuthModel {
     var unValidatedEmail: String?
     var validatedEmail: String?
     var validatedPassword: String?
+    var tempPassword: String?
     
     // var profile: Profile?
     
@@ -126,11 +127,13 @@ struct AuthModel {
                 errorSet.insert(Errors.weakPassword.rawValue)
                 // errorDescription += (Errors.weakPassword.rawValue + "\n")
             }
+            tempPassword = text
         case "Confirm Password":
-            if validatedPassword != text {
+            if tempPassword != text {
                 errorSet.insert(Errors.psswrdNoMatch.rawValue)
                 // errorDescription += (Errors.psswrdNoMatch.rawValue + "\n")
             }
+            tempPassword = nil
         default: break
         }
     }
