@@ -17,19 +17,19 @@ class RegisterViewController: UIViewController {
     var subtitleLabel = UILabel()
     let topStack = UIStackView()
     
-      
+    
     let middleStack = UIStackView()
     
     lazy var textFieldArr: [UIView] = {
-       
+        
         var arr: [UIView] = []
         
         let names = [
-        ("First Name", "Enter your name"),
-        ("Last Name", "Enter your surname"),
-        ("E-mail", "Enter your email address"),
-        ("Password", "Enter your password"),
-        ("Confirm Password", "Confirm your password")
+            ("First Name", "Enter your name"),
+            ("Last Name", "Enter your surname"),
+            ("E-mail", "Enter your email address"),
+            ("Password", "Enter your password"),
+            ("Confirm Password", "Confirm your password")
         ]
         
         for (label, placeholder) in names {
@@ -39,7 +39,7 @@ class RegisterViewController: UIViewController {
         }
         return arr
     }()
- 
+    
     let singUpButton = CustomButton(title: "Sign Up")
     
     let loginStack = UIStackView()
@@ -48,16 +48,13 @@ class RegisterViewController: UIViewController {
     
     // MARK: - Variables
     
-    var firstName: String?
-    var lastName: String?
-    var email: String?
-    var password: String?
-  
+    var authModel: AuthModel!
+    
     // MARK: - VC LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-              
+        
         title = "Sign Up"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .bold)]
         navigationItem.backBarButtonItem = UIBarButtonItem(
@@ -66,6 +63,7 @@ class RegisterViewController: UIViewController {
             target: self,
             action: nil)
         navigationController?.navigationBar.tintColor = UIColor(named: Resources.Colors.secondText)
+        
         setupUI()
         addActionsToButtons()
     }
@@ -73,11 +71,7 @@ class RegisterViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        guard let navArray = navigationController?.viewControllers else {return}
-        if navArray.count > 2 {
-            navigationController?.viewControllers.remove(at: 1)
-        }
-        
+        authModel.destroyNavigationStack(in: navigationController)
     }
     
     // MARK: - Button Logic
@@ -87,31 +81,24 @@ class RegisterViewController: UIViewController {
     }
     
     @objc func signUp(_ sender: UIButton) {
-//        email = validatedEmail()
-//        let regVC = RegisterViewController()
-//        regVC.email = email
-//        navigationController?.pushViewController(regVC, animated: true)
+        authModel.checkFields(textFieldArr, isRegistration: true)
+        authModel.transitionToMainScreen(controller: self, isRegistration: true)
     }
-        
+    
     @objc func login(_ sender: UIButton) {
         let loginVC = LoginViewController()
-        loginVC.email = email
+        authModel.unValidatedEmail = (textFieldArr[2] as? TextFieldWithLabelStack)?.textField.text
+        loginVC.authModel = authModel
         navigationController?.pushViewController(loginVC, animated: true)
     }
     
-//    func validatedEmail() -> String {
-//        if let email = emailTextField.textField.text {
-//            return email
-//        }
-//        return "error"
-//    }
     
     // MARK: - UI Setup section
     func setupUI() {
         view.backgroundColor = .systemBackground
-       
+        
         [titleLabel, subtitleLabel, topStack,
-         middleStack, singUpButton, loginStack, loginLabel, loginButton].forEach{ item in
+         middleStack, singUpButton, loginStack, loginLabel, loginButton].forEach { item in
             view.addSubview(item)
             item.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -120,6 +107,13 @@ class RegisterViewController: UIViewController {
         setupMiddleStack()
         setupLoginStack()
         setConstraints()
+        getEmailFromPreviousScreen()
+    }
+    
+    func getEmailFromPreviousScreen() {
+        if let email = authModel.unValidatedEmail {
+            (textFieldArr[2] as? TextFieldWithLabelStack)?.textField.text = email
+        }
     }
     
     func setuTopStack() {
@@ -140,7 +134,7 @@ class RegisterViewController: UIViewController {
     }
     
     func setupMiddleStack() {
-       
+        
         textFieldArr.append(singUpButton)
         textFieldArr.forEach {view.addSubview($0)}
         textFieldArr.forEach {middleStack.addArrangedSubview($0); $0.translatesAutoresizingMaskIntoConstraints = false}
@@ -152,7 +146,7 @@ class RegisterViewController: UIViewController {
     }
     
     func setupLoginStack() {
-
+        
         loginButton.isUserInteractionEnabled = true
         
         loginStack.addArrangedSubview(loginLabel)
@@ -165,7 +159,7 @@ class RegisterViewController: UIViewController {
         
         loginButton.setTitle("Login", for: .normal)
         loginButton.setTitleColor(UIColor(named: Resources.Colors.accent), for: .normal)
-  
+        
     }
     
     func setConstraints() {
@@ -173,7 +167,7 @@ class RegisterViewController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(20)
             make.top.equalToSuperview().inset(120)
         }
-         
+        
         middleStack.snp.makeConstraints { make in
             make.top.equalTo(topStack.snp_bottomMargin).inset(-40)
             make.trailing.leading.equalToSuperview().inset(24)
