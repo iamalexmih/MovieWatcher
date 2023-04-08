@@ -111,7 +111,7 @@ class RegisterViewController: UIViewController {
         view.backgroundColor = .systemBackground
        
         [titleLabel, subtitleLabel, topStack,
-         middleStack, singUpButton, loginStack, loginLabel, loginButton].forEach{ item in
+         middleStack, singUpButton, loginStack, loginLabel, loginButton].forEach { item in
             view.addSubview(item)
             item.translatesAutoresizingMaskIntoConstraints = false
         }

@@ -24,8 +24,8 @@ class LoginViewController: UIViewController {
         var arr: [UIView] = []
         
         let names = [
-        ("E-mail", "Enter your email address"),
-        ("Password", "Enter your password"),
+            ("E-mail", "Enter your email address"),
+            ("Password", "Enter your password")
         ]
         
         for (label, placeholder) in names {

@@ -120,12 +120,20 @@ class AuthViewController: UIViewController {
     }
     
     func setupBottomStack() {
+        [
+            bottomStack,
+            emailTextField,
+            emailButton,
+            tempLabel,
+            googleButton,
+            loginStack,
+            loginLabel,
+            loginButton
+        ].forEach {authOptionsView.addSubview($0)}
         
-        [bottomStack, emailTextField, emailButton, tempLabel, googleButton, loginStack, loginLabel, loginButton].forEach {authOptionsView.addSubview($0)}
         bottomStack.translatesAutoresizingMaskIntoConstraints = false
         
         authOptionsView.backgroundColor = .white
-        
         authOptionsView.layer.cornerRadius = 20
         
         tempLabel.text = "Or Continue With"

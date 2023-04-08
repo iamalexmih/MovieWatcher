@@ -151,7 +151,7 @@ class MovieDetailViewController: UIViewController {
         storyLineLabel.text = "Story line"
         storyLineLabel.numberOfLines = 0
         storyLineLabel.textAlignment = .left
-        storyLineLabel.font = .jakartaRomanSemiBold(size: 16) //изменить
+        storyLineLabel.font = .jakartaRomanSemiBold(size: 16) // изменить
         storyLineLabel.textColor = UIColor(named: Resources.Colors.text)
         storyLineLabel.snp.makeConstraints { make in
             make.top.equalTo(ratingView.snp.bottom).inset(-32)
@@ -177,7 +177,7 @@ class MovieDetailViewController: UIViewController {
         castAndCrewHeaderLabel.text = "Cast and Crew"
         castAndCrewHeaderLabel.numberOfLines = 0
         castAndCrewHeaderLabel.textAlignment = .left
-        castAndCrewHeaderLabel.font = .jakartaRomanSemiBold(size: 16) //изменить
+        castAndCrewHeaderLabel.font = .jakartaRomanSemiBold(size: 16) // изменить
         castAndCrewHeaderLabel.textColor = UIColor(named: Resources.Colors.text)
         castAndCrewHeaderLabel.snp.makeConstraints { make in
             make.top.equalTo(descriptionOfMovieLabel.snp.bottom).inset(-24)
