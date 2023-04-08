@@ -18,6 +18,7 @@ enum Resources {
         static let categoryColour = "categoryColor"
         static let textFieldBackground = "bgTextFieldColor"
         static let textFieldBorder = "bgTextFieldBorderColor"
+        static let yellowStar = "yellowStar"
     }
     
     
@@ -39,6 +40,7 @@ enum Resources {
         static let clockImage = "Clock"
         static let calendarImage = "Calendar"
         static let filmstripImage = "filmstrip"
+        static let starRaitingImage = "star"
     }
     
     enum Font {
