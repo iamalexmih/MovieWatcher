@@ -32,6 +32,8 @@
 		8E6E226A29E14BE2009D1807 /* MovieDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E226929E14BE2009D1807 /* MovieDetailsView.swift */; };
 		8E6E226C29E14C00009D1807 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E226B29E14C00009D1807 /* StarRatingView.swift */; };
 		8E6E226E29E14DAE009D1807 /* CastAndCrewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E226D29E14DAE009D1807 /* CastAndCrewCell.swift */; };
+		8EA9AC2F29E2D7500011E2FA /* OnBoardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9AC2E29E2D7500011E2FA /* OnBoardingPageView.swift */; };
+		8EA9AC3129E2D7670011E2FA /* OnBoardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9AC3029E2D7670011E2FA /* OnBoardingPage.swift */; };
 		B551394829DC9717005CD307 /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394729DC9717005CD307 /* UIView + ext.swift */; };
 		B551394C29DCA817005CD307 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394B29DCA817005CD307 /* FavoriteViewController.swift */; };
 		B551394F29DCA886005CD307 /* RecentWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551394E29DCA886005CD307 /* RecentWatchViewController.swift */; };
@@ -102,6 +104,8 @@
 		8E6E226929E14BE2009D1807 /* MovieDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsView.swift; sourceTree = "<group>"; };
 		8E6E226B29E14C00009D1807 /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
 		8E6E226D29E14DAE009D1807 /* CastAndCrewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastAndCrewCell.swift; sourceTree = "<group>"; };
+		8EA9AC2E29E2D7500011E2FA /* OnBoardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPageView.swift; sourceTree = "<group>"; };
+		8EA9AC3029E2D7670011E2FA /* OnBoardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPage.swift; sourceTree = "<group>"; };
 		B551394729DC9717005CD307 /* UIView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ext.swift"; sourceTree = "<group>"; };
 		B551394B29DCA817005CD307 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		B551394E29DCA886005CD307 /* RecentWatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWatchViewController.swift; sourceTree = "<group>"; };
@@ -308,6 +312,8 @@
 			isa = PBXGroup;
 			children = (
 				B5B1D19229D9DC20006966FF /* OnBoardingScreenViewController.swift */,
+				8EA9AC2E29E2D7500011E2FA /* OnBoardingPageView.swift */,
+				8EA9AC3029E2D7670011E2FA /* OnBoardingPage.swift */,
 			);
 			path = OnBoardingScreen;
 			sourceTree = "<group>";
@@ -591,15 +597,14 @@
 				B551395529DDEDD4005CD307 /* TextFieldWithLabelStack.swift in Sources */,
 				B5B1D17129D9D7B0006966FF /* ViewController.swift in Sources */,
 				8E6E226829E14BBB009D1807 /* CastAndCrewCollectionView.swift in Sources */,
-				87B2286429DD76020088AF8F /* RecentWatchView.swift in Sources */,
 				87BD3C4529E058A40092A8FC /* ReusableTableView.swift in Sources */,
 				B5B1D18429D9D90A006966FF /* Resource.swift in Sources */,
 				B5B1D19329D9DC20006966FF /* OnBoardingScreenViewController.swift in Sources */,
 				B551396C29DF1735005CD307 /* StorageGenres.swift in Sources */,
 				B551396A29DED5BE005CD307 /* UIFont + ext.swift in Sources */,
+				8EA9AC2F29E2D7500011E2FA /* OnBoardingPageView.swift in Sources */,
 				5770CA7929E0C4BB000CED66 /* FilmType.swift in Sources */,
 				B5B1D1A729D9DD8E006966FF /* HomeViewController.swift in Sources */,
-				87888E5B29DF02A300B78B4D /* SearchView.swift in Sources */,
 				6FD0894629DF2B0A0030BBCF /* AuthViewController.swift in Sources */,
 				B5B1D19D29D9DCCE006966FF /* MovieDetailViewController.swift in Sources */,
 				8E6E226E29E14DAE009D1807 /* CastAndCrewCell.swift in Sources */,
@@ -627,6 +632,7 @@
 				57E6209829DB4BFF00260AF5 /* CustomTabBarController.swift in Sources */,
 				6F19E43329E17F6600969FD6 /* AuthModel.swift in Sources */,
 				B5B1D19929D9DC8E006966FF /* ProfileViewController.swift in Sources */,
+				8EA9AC3129E2D7670011E2FA /* OnBoardingPage.swift in Sources */,
 				63E01F7929DBEFED0010C6C7 /* TextFieldWithLabel.swift in Sources */,
 				B5B1D1A129D9DD1E006966FF /* ChangeAvatarViewController.swift in Sources */,
 				B5B6B15029DC688C00F79E98 /* TestComponentsViewController.swift in Sources */,
@@ -635,7 +641,7 @@
 				87B2286229DD756A0088AF8F /* CategoryCell.swift in Sources */,
 				00F1E97429DC55DB00F5FBF7 /* CustomButton.swift in Sources */,
 				8E06F09F29DB5335006B2DED /* SearchTextField.swift in Sources */,
-				B551394F29DCA886005CD307 /* RecantWatchViewController.swift in Sources */,
+				B551394F29DCA886005CD307 /* RecentWatchViewController.swift in Sources */,
 				5770CA8029E0C535000CED66 /* UIStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
