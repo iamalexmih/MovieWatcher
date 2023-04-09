@@ -41,6 +41,8 @@ enum Resources {
         static let calendarImage = "Calendar"
         static let filmstripImage = "filmstrip"
         static let starRaitingImage = "star"
+        static let onBoardingIcons = "backgroundImages"
+        static let personImage = "personImageView"
     }
     
     enum Font {
