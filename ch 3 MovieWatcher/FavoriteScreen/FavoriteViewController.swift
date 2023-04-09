@@ -11,11 +11,12 @@ import SnapKit
 
 class FavoriteViewController: UIViewController {
     
-    private var tableView = ReusableTableView()
+    var tableView = ReusableTableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.delegateForCell = self
         view.backgroundColor = .white
         view.addSubview(tableView)
         setupConstrains()
@@ -29,6 +30,13 @@ class FavoriteViewController: UIViewController {
             make.left.equalToSuperview().inset(15)
             make.right.equalToSuperview().inset(15)
         }
+    }
+}
+
+extension FavoriteViewController: ReusableTableViewDelegate {
+    func didSelectTableViewCell(_ cell: UITableViewCell) {
+        let detailedVC = MovieDetailViewController()
+        navigationController?.pushViewController(detailedVC, animated: true)
     }
 }
 

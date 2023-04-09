@@ -35,6 +35,12 @@ class MovieDetailViewController: UIViewController {
     lazy var participantCollectionView = CastAndCrewCollectionView()
     lazy var bottomView = UIView()
     lazy var watchButton = CustomButton(title: "Watch now")
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        self.hidesBottomBarWhenPushed = true
+//        CustomTabBarController().tabBar.isHidden = true
+    }
 
 
     override func viewDidLoad() {

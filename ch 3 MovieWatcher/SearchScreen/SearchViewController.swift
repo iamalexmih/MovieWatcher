@@ -22,6 +22,8 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegateForCell = self
         view.backgroundColor = .white
     }
     
@@ -46,5 +48,12 @@ class SearchViewController: UIViewController {
             make.left.equalToSuperview().inset(15)
             make.right.equalToSuperview().inset(15)
         }
+    }
+}
+
+extension SearchViewController: ReusableTableViewDelegate {
+    func didSelectTableViewCell(_ cell: UITableViewCell) {
+        let detailedVC = MovieDetailViewController()
+        navigationController?.pushViewController(detailedVC, animated: true)
     }
 }
