@@ -18,6 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
+
+        let settingViewController = SettingViewController()
         let testComponentsViewController = TestComponentsViewController()
         let tabBar = CustomTabBarController()
         let navControllerForAuth = UINavigationController.init(rootViewController: AuthViewController())
@@ -25,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UINavigationBar.appearance().backIndicatorImage = UIImage(systemName: "arrow.left.circle.fill")
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.left.circle.fill")
         
-        window?.rootViewController = navControllerForAuth
+        window?.rootViewController = settingViewController
         window?.makeKeyAndVisible()
     }
 }
