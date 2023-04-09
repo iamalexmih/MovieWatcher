@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UINavigationBar.appearance().backIndicatorImage = UIImage(systemName: "arrow.left.circle.fill")
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.left.circle.fill")
         
-        window?.rootViewController = settingViewController
+        window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
     }
 }
