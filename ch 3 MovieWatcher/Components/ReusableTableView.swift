@@ -59,15 +59,5 @@ extension ReusableTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailedVC = MovieDetailViewController()
-//        // Get the current root view controller
-//        if let rootViewController = UIApplication.shared.keyWindow?.rootViewController {
-//            // Present the view controller
-//            // Delay the presentation until the next run loop
-//            DispatchQueue.main.async {
-//                rootViewController.present(detailedVC, animated: true, completion: nil)
-//            }
-//        }
-        
     }
 }
