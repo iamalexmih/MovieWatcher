@@ -41,16 +41,16 @@ enum Resources {
         static let calendarImage = "Calendar"
         static let filmstripImage = "filmstrip"
         static let starRaitingImage = "star"
+        static let onBoardingIcons = "backgroundImages"
+        static let personImage = "personImageView"
+        
         // SettingScreenImages
         static let profileSettingScreen = "profileSettingScreen"
         static let headInProfileSetting = "headInProfileSetting"
         static let fleshInProfileSetting = "fleshInProfileSetting"
         static let changePasswordProfileSetting = "changePasswordProfileSetting"
         static let forgotPasswordProfileSetting = "forgotPasswordProfileSetting"
-        static let darkModeProfileSetting = "darkModeProfileSetting"
-
-
-
+        static let darkModeProfileSetting = "darkModeProfileSetting" 
     }
     
     enum Font {
