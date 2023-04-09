@@ -11,7 +11,7 @@ class CustomButton: UIButton {
 
     init(title: String) {
         super.init(frame: .zero)
-        setTitle("Continue", for: .normal)
+        setTitle(title, for: .normal)
         setupButton()
     }
 
