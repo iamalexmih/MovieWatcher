@@ -19,29 +19,41 @@ class ReusableCollectionView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        configureCollection()
+        setCollectionDelegates()
+        self.addSubview(collectionView)
+        setupConstraints()
+        makeFirstCellActive()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configureCollection() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .white
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
+    }
+    
+    func setCollectionDelegates() {
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
-        collectionView.backgroundColor = .white
-        
-        self.addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Выделяем первую ячейку при загрузке
-        let firstIndexPath = IndexPath(item: 0, section: 0)
-        collectionView.selectItem(at: firstIndexPath, animated: false, scrollPosition: .centeredHorizontally)
-        
+    }
+    
+    private func setupConstraints() {
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func makeFirstCellActive() {
+        let firstIndexPath = IndexPath(item: 0, section: 0)
+        collectionView.selectItem(at: firstIndexPath, animated: false, scrollPosition: .centeredHorizontally)
     }
 }
 
