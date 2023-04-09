@@ -6,26 +6,35 @@
 //
 
 import UIKit
+import SnapKit
 
 class ReusableTableView: UIView {
-
+    
     private lazy var tableView = UITableView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        configureTable()
+        setTableDelegates()
         self.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        
+        setupConstraints()
+    }
+    
+    func configureTable() {
         tableView.rowHeight = 184
         tableView.separatorStyle = .none
+        tableView.backgroundColor = .white
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        
+        tableView.register(MovieCell.self, forCellReuseIdentifier: MovieCell.identifier)
+    }
+    
+    func setTableDelegates() {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(MovieCell.self, forCellReuseIdentifier: MovieCell.identifier)
-        tableView.backgroundColor = .white
-
+    }
+    
+    func setupConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -50,6 +59,5 @@ extension ReusableTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
 }
