@@ -16,13 +16,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        let testComponentsViewController = TestComponentsViewController()
-        let tabBar = CustomTabBarController()
-        let navControllerForAuth = UINavigationController.init(rootViewController: AuthViewController())
-        UINavigationBar.appearance().backIndicatorImage = UIImage(systemName: "arrow.left.circle.fill")
-        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.left.circle.fill")
+        let settingViewController = SettingViewController()
+//        let tabBar = CustomTabBarController()
+//        let navControllerForAuth = UINavigationController.init(rootViewController: AuthViewController())
+//        UINavigationBar.appearance().backIndicatorImage = UIImage(systemName: "arrow.left.circle.fill")
+//        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.left.circle.fill")
         
-        window?.rootViewController = navControllerForAuth
+        window?.rootViewController = settingViewController
         window?.makeKeyAndVisible()
     }
 }
