@@ -45,51 +45,12 @@ enum Resources {
         static let personImage = "personImageView"
         
         // SettingScreenImages
-        static let profileSettingScreen = "profileSettingScreen"
-        static let headInProfileSetting = "headInProfileSetting"
-        static let fleshInProfileSetting = "fleshInProfileSetting"
-        static let changePasswordProfileSetting = "changePasswordProfileSetting"
-        static let forgotPasswordProfileSetting = "forgotPasswordProfileSetting"
-        static let darkModeProfileSetting = "darkModeProfileSetting" 
+        static let profileSettingScreen = "ProfileSettingScreen"
+        static let headInProfileSetting = "HeadInProfileSetting"
+        static let fleshInProfileSetting = "FleshInProfileSetting"
+        static let changePasswordProfileSetting = "ChangePasswordProfileSetting"
+        static let forgotPasswordProfileSetting = "ForgotPasswordProfileSetting"
+        static let darkModeProfileSetting = "DarkModeProfileSetting"
     }
-    
-    enum Font {
-        // MARK: Jakarta Roman Font
-//        static let jakartaRomanExtraLigh = "PlusJakartaSansRoman-ExtraLight"
-//        static let jakartaRomanLight = "PlusJakartaSansRoman-Light"
-//        static let jakartaRomanMedium = "PlusJakartaSansRoman-Medium"
-//        static let jakartaRomanSemiBold = "PlusJakartaSansRoman-SemiBold"
-//        static let jakartaRomanBold = "PlusJakartaSansRoman-Bold"
-//        static let jakartaRomanExtraBold = "PlusJakartaSansRoman-ExtraBold"
-        
-        // MARK: Jakarta Font
-//        static let jakartaLight = "PlusJakartaSans-Light"
-//        static let jakartaMedium = "PlusJakartaSans-Medium"
-//        static let jakartaRegular = "PlusJakartaSans-Regular"
-//        static let jakartaItalic = "PlusJakartaSans-Italic"
-//        static let jakartaBold = "PlusJakartaSans-Bold"
-        
-        // MARK: Montserrat Font
-//        static let montserratFont = "MontserratRoman-Regular"
-    }
-        
-        
-//    Family: Plus Jakarta Sans Font names: [
-//        "PlusJakartaSans-Regular",
-//        "PlusJakartaSans-Italic",
-//        "PlusJakartaSansRoman-ExtraLight",
-//        "PlusJakartaSansRoman-Light",
-//        "PlusJakartaSans-Light",
-//        "PlusJakartaSansRoman-Medium",
-//        "PlusJakartaSans-Medium",
-//        "PlusJakartaSansRoman-SemiBold",
-//        "PlusJakartaSansRoman-Bold",
-//        "PlusJakartaSans-Bold",
-//        "PlusJakartaSansRoman-ExtraBold"
-//        ]
-        
-//    "Montserrat-Thin", "MontserratRoman-ExtraLight", "MontserratRoman-Light", "MontserratRoman-Medium",
-//        "MontserratRoman-SemiBold", "MontserratRoman-Bold", "MontserratRoman-ExtraBold", "MontserratRoman-Black"]
-//
 }
 
