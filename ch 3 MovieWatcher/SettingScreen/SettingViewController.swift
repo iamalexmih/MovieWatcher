@@ -4,20 +4,20 @@ import SnapKit
 class SettingViewController: UIViewController {
 
     let headerLabel = UILabel()
-    let avatarView = UIImageView(image: UIImage(named: "ProfileSettingScreen"))
+    let avatarView = UIImageView()
     let nameLabel = UILabel()
     let nickNameLabel = UILabel()
     let personalInfo = UILabel()
-    let headInProfileSetting = UIImageView(image: UIImage(named: "HeadInProfileSetting"))
-    let fleshInProfileSetting = UIImageView(image: UIImage(named: "FleshInProfileSetting"))
+    let headInProfileSetting = UIImageView()
+    let fleshInProfileSetting = UIImageView()
     let profileButton = UIButton()
     let chevronButton = UIButton()
     let security = UILabel()
-    let changePasswordProfileSettingImage = UIImageView(image: UIImage(named: "ChangePasswordProfileSetting"))
+    let changePasswordProfileSettingImage = UIImageView()
     let changePasswordProfileSettingTextButton = UIButton()
-    let forgotPasswordProfileSettingImage = UIImageView(image: UIImage(named: "ForgotPasswordProfileSetting"))
+    let forgotPasswordProfileSettingImage = UIImageView()
     let forgotPasswordButton = UIButton()
-    let darkModeSettingImage = UIImageView(image: UIImage(named: "DarkModeProfileSetting"))
+    let darkModeSettingImage = UIImageView()
     let darkModeSettingLabel = UILabel()
     let toggle = UISwitch()
     let logOutTemplateButton = LogOutTemplateButton()
@@ -67,6 +67,7 @@ class SettingViewController: UIViewController {
     }
 
     func setupAvatarView() {
+        avatarView.image = UIImage(named: Resources.Image.profileSettingScreen)
         avatarView.contentMode = .scaleAspectFit
         avatarView.layer.cornerRadius = 28
         avatarView.clipsToBounds = true
@@ -118,6 +119,7 @@ class SettingViewController: UIViewController {
     }
 
     func setupHeadInProfileSetting() {
+        headInProfileSetting.image = UIImage(named: Resources.Image.headInProfileSetting)
         headInProfileSetting.contentMode = .scaleAspectFit
         view.addSubview(headInProfileSetting)
 
@@ -129,6 +131,7 @@ class SettingViewController: UIViewController {
     }
 
     func setupFleshInProfileSetting() {
+        fleshInProfileSetting.image = UIImage(named: Resources.Image.fleshInProfileSetting)
         fleshInProfileSetting.contentMode = .scaleAspectFit
         view.addSubview(fleshInProfileSetting)
 
@@ -177,6 +180,7 @@ class SettingViewController: UIViewController {
     }
 
     func setupChangePasswordProfileSettingImage() {
+        changePasswordProfileSettingImage.image = UIImage(named: Resources.Image.changePasswordProfileSetting)
         view.addSubview(changePasswordProfileSettingImage)
         changePasswordProfileSettingImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(387)
@@ -197,6 +201,7 @@ class SettingViewController: UIViewController {
     }
 
     func setupForgotPasswordProfileSettingImage() {
+        forgotPasswordProfileSettingImage.image = UIImage(named: Resources.Image.forgotPasswordProfileSetting)
         view.addSubview(forgotPasswordProfileSettingImage)
         forgotPasswordProfileSettingImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(432)
@@ -217,6 +222,7 @@ class SettingViewController: UIViewController {
     }
 
     func setupDarkModeSettingImage() {
+        darkModeSettingImage.image = UIImage(named: Resources.Image.darkModeProfileSetting)
         view.addSubview(darkModeSettingImage)
         darkModeSettingImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(475)
