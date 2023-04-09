@@ -79,22 +79,32 @@ class MovieCell: UITableViewCell {
         return imageView
     }()
     
-    private lazy var actionButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(named: Resources.Colors.accent)
-        button.setTitle("Action", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.jakartaRomanSemiBold(size: 10)
-        button.titleLabel?.contentMode = .center
-        button.layer.cornerRadius = 6
-        button.addTarget(self, action: #selector(actionTapped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    private let categoryLabel: UILabel = {
+       let label = UILabel()
+        label.text = "Action"
+        label.font = UIFont.montserratRomanMedium(size: 12)
+        label.contentMode = .center
+        label.textColor = UIColor(named: Resources.Colors.secondText)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
-    @objc func actionTapped() {
-        print("actionTapped")
-    }
+//    private lazy var actionButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.backgroundColor = UIColor(named: Resources.Colors.accent)
+//        button.setTitle("Action", for: .normal)
+//        button.setTitleColor(.white, for: .normal)
+//        button.titleLabel?.font = UIFont.jakartaRomanSemiBold(size: 10)
+//        button.titleLabel?.contentMode = .center
+//        button.layer.cornerRadius = 6
+//        button.addTarget(self, action: #selector(actionTapped), for: .touchUpInside)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        return button
+//    }()
+//
+//    @objc func actionTapped() {
+//        print("actionTapped")
+//    }
     
     lazy var favouriteButton: UIButton = {
         let button = UIButton(type: .system)
@@ -137,7 +147,7 @@ class MovieCell: UITableViewCell {
         addSubview(calendarStack)
         
         contentView.addSubview(filmstripView)
-        contentView.addSubview(actionButton)
+        contentView.addSubview(categoryLabel)
                 
     }
     
@@ -177,11 +187,9 @@ class MovieCell: UITableViewCell {
             make.left.equalTo(movieImage.snp.right).inset(-15)
         }
         
-        actionButton.snp.makeConstraints { make in
-            make.top.equalTo(calendarStack.snp.bottom).inset(-8)
-            make.left.equalTo(filmstripView.snp.right).inset(-5)
-            make.width.equalTo(65)
-
+        categoryLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(filmstripView.snp.centerY)
+            make.left.equalTo(filmstripView.snp.right).inset(-6)
         }
     }
 }

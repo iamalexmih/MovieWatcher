@@ -15,12 +15,12 @@ class FavoriteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .white
         view.addSubview(tableView)
-
         setupConstrains()
     }
-    
+        
     private func setupConstrains() {
         
         tableView.snp.makeConstraints { make in
