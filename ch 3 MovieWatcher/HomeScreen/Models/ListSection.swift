@@ -7,6 +7,7 @@
 
 import Foundation
 
+// swiftlint:disable all
 enum ListSection {
 //    case person([ListItem])
     case popularCategory([ListItem])

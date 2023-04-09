@@ -73,6 +73,8 @@
 		B5B1D1B629D9FBB1006966FF /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5B1D1B529D9FBB1006966FF /* SnapKit */; };
 		B5B6B14E29DC47C500F79E98 /* LogOutTemplateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B6B14D29DC47C500F79E98 /* LogOutTemplateButton.swift */; };
 		B5B6B15029DC688C00F79E98 /* TestComponentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B6B14F29DC688C00F79E98 /* TestComponentsViewController.swift */; };
+		B5EF3B3429E2EF8E00183201 /* TextViewWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF3B3329E2EF8E00183201 /* TextViewWithLabel.swift */; };
+		B5EF3B3629E330B400183201 /* CheckGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF3B3529E330B400183201 /* CheckGenderView.swift */; };
 		D4022D1487FF89F97179087C /* Pods_ch_3_MovieWatcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359A23F88600928C5A777E35 /* Pods_ch_3_MovieWatcher.framework */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +144,8 @@
 		B5B1D1A829D9DDA3006966FF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		B5B6B14D29DC47C500F79E98 /* LogOutTemplateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutTemplateButton.swift; sourceTree = "<group>"; };
 		B5B6B14F29DC688C00F79E98 /* TestComponentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestComponentsViewController.swift; sourceTree = "<group>"; };
+		B5EF3B3329E2EF8E00183201 /* TextViewWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewWithLabel.swift; sourceTree = "<group>"; };
+		B5EF3B3529E330B400183201 /* CheckGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckGenderView.swift; sourceTree = "<group>"; };
 		D4C9D26B5DDDFDA94E958ED2 /* Pods-ch 3 MovieWatcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ch 3 MovieWatcher.release.xcconfig"; path = "Target Support Files/Pods-ch 3 MovieWatcher/Pods-ch 3 MovieWatcher.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -429,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				B551395429DDEDD4005CD307 /* TextFieldWithLabelStack.swift */,
+				B5EF3B3329E2EF8E00183201 /* TextViewWithLabel.swift */,
 				8727A1CA29DB00B400C3D087 /* GoogleButton.swift */,
 				63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */,
 				8E06F09E29DB5335006B2DED /* SearchTextField.swift */,
@@ -437,6 +442,7 @@
 				B5B6B14F29DC688C00F79E98 /* TestComponentsViewController.swift */,
 				87BD3C4229E0215F0092A8FC /* ReusableCollectionView.swift */,
 				87BD3C4429E058A40092A8FC /* ReusableTableView.swift */,
+				B5EF3B3529E330B400183201 /* CheckGenderView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -595,6 +601,7 @@
 				B5B1D1A329D9DD4B006966FF /* MovieCell.swift in Sources */,
 				B5B1D19729D9DC75006966FF /* LoginViewController.swift in Sources */,
 				B551395529DDEDD4005CD307 /* TextFieldWithLabelStack.swift in Sources */,
+				B5EF3B3629E330B400183201 /* CheckGenderView.swift in Sources */,
 				B5B1D17129D9D7B0006966FF /* ViewController.swift in Sources */,
 				8E6E226829E14BBB009D1807 /* CastAndCrewCollectionView.swift in Sources */,
 				87BD3C4529E058A40092A8FC /* ReusableTableView.swift in Sources */,
@@ -626,6 +633,7 @@
 				B5B1D19B29D9DCAC006966FF /* SettingViewController.swift in Sources */,
 				B5B1D1A929D9DDA3006966FF /* NetworkService.swift in Sources */,
 				8727A1CB29DB00B400C3D087 /* GoogleButton.swift in Sources */,
+				B5EF3B3429E2EF8E00183201 /* TextViewWithLabel.swift in Sources */,
 				5770CA7229E0C45D000CED66 /* ButtonCollectionView.swift in Sources */,
 				B551394C29DCA817005CD307 /* FavoriteViewController.swift in Sources */,
 				B5B1D16D29D9D7B0006966FF /* AppDelegate.swift in Sources */,
