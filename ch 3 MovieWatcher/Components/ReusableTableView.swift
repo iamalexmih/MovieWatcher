@@ -8,9 +8,14 @@
 import UIKit
 import SnapKit
 
+protocol ReusableTableViewDelegate: AnyObject {
+    func didSelectTableViewCell(_ cell: UITableViewCell)
+}
+
 class ReusableTableView: UIView {
     
     private lazy var tableView = UITableView()
+    weak var delegateForCell: ReusableTableViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -59,5 +64,7 @@ extension ReusableTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        delegateForCell?.didSelectTableViewCell(cell)
     }
 }
