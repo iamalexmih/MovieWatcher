@@ -43,10 +43,12 @@ class MovieDetailViewController: UIViewController {
 //        self.hidesBottomBarWhenPushed = true
 //        CustomTabBarController().tabBar.isHidden = true
         tabBarController?.tabBar.isHidden = true
-        // TODO: Теперь tabBar надо снова показать при возврате назад
     }
 
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
