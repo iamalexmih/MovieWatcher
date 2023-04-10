@@ -36,18 +36,25 @@ class MovieDetailViewController: UIViewController {
     lazy var bottomView = UIView()
     lazy var watchButton = CustomButton(title: "Watch now")
     
+    
+    // MARK: - VC LifeCycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        self.hidesBottomBarWhenPushed = true
 //        CustomTabBarController().tabBar.isHidden = true
+        tabBarController?.tabBar.isHidden = true
+        // TODO: Теперь tabBar надо снова показать при возврате назад
     }
 
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
         configure()
     }
+    
+    
     private func configure() {
         configureBottomView()
         configureWatchButton()

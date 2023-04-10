@@ -74,7 +74,8 @@
 		B5B6B14E29DC47C500F79E98 /* LogOutTemplateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B6B14D29DC47C500F79E98 /* LogOutTemplateButton.swift */; };
 		B5B6B15029DC688C00F79E98 /* TestComponentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B6B14F29DC688C00F79E98 /* TestComponentsViewController.swift */; };
 		B5EF3B3429E2EF8E00183201 /* TextViewWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF3B3329E2EF8E00183201 /* TextViewWithLabel.swift */; };
-		B5EF3B3629E330B400183201 /* CheckGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF3B3529E330B400183201 /* CheckGenderView.swift */; };
+		B5EF3B3629E330B400183201 /* CheckGenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF3B3529E330B400183201 /* CheckGenderButton.swift */; };
+		B5EF3B3B29E35F3700183201 /* CheckGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF3B3A29E35F3700183201 /* CheckGenderView.swift */; };
 		D4022D1487FF89F97179087C /* Pods_ch_3_MovieWatcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359A23F88600928C5A777E35 /* Pods_ch_3_MovieWatcher.framework */; };
 /* End PBXBuildFile section */
 
@@ -145,7 +146,8 @@
 		B5B6B14D29DC47C500F79E98 /* LogOutTemplateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutTemplateButton.swift; sourceTree = "<group>"; };
 		B5B6B14F29DC688C00F79E98 /* TestComponentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestComponentsViewController.swift; sourceTree = "<group>"; };
 		B5EF3B3329E2EF8E00183201 /* TextViewWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewWithLabel.swift; sourceTree = "<group>"; };
-		B5EF3B3529E330B400183201 /* CheckGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckGenderView.swift; sourceTree = "<group>"; };
+		B5EF3B3529E330B400183201 /* CheckGenderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckGenderButton.swift; sourceTree = "<group>"; };
+		B5EF3B3A29E35F3700183201 /* CheckGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckGenderView.swift; sourceTree = "<group>"; };
 		D4C9D26B5DDDFDA94E958ED2 /* Pods-ch 3 MovieWatcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ch 3 MovieWatcher.release.xcconfig"; path = "Target Support Files/Pods-ch 3 MovieWatcher/Pods-ch 3 MovieWatcher.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -259,23 +261,14 @@
 			children = (
 				B5B1D18029D9D7C0006966FF /* Application */,
 				B5B1D17029D9D7B0006966FF /* ViewController.swift */,
-				B551394D29DCA87A005CD307 /* RecentWatchScreen */,
-				B551394A29DCA756005CD307 /* FavoriteScreen */,
 				57E6209729DB4BFF00260AF5 /* CustomTabBarController.swift */,
+				B5EF3B3929E35E9A00183201 /* Screens */,
 				B5B1D18D29D9DA87006966FF /* Cell */,
 				B5B1D1B729DA0787006966FF /* Components */,
 				B551395629DDFD7E005CD307 /* Models */,
 				B5B1D19029D9DB9A006966FF /* Service */,
-				B5B1D18E29D9DB45006966FF /* HomeScreen */,
-				B5B1D18C29D9DA75006966FF /* SearchScreen */,
 				B5B1D18B29D9DA06006966FF /* ChangeAvatarView */,
 				B5B1D18A29D9D9F7006966FF /* FilterView */,
-				B5B1D18929D9D9CE006966FF /* MovieDetailScreen */,
-				B5B1D18729D9D991006966FF /* SettingScreen */,
-				B5B1D18829D9D9AD006966FF /* ProfileScreen */,
-				B5B1D18629D9D974006966FF /* LoginScreen */,
-				B5B1D19129D9DBD8006966FF /* RegisterScreen */,
-				B5B1D18529D9D96D006966FF /* OnBoardingScreen */,
 				B5B1D18129D9D7F4006966FF /* Resource */,
 				B551394929DC98B9005CD307 /* Extansions */,
 				B5B1D18229D9D83A006966FF /* Supporting */,
@@ -342,6 +335,7 @@
 		B5B1D18829D9D9AD006966FF /* ProfileScreen */ = {
 			isa = PBXGroup;
 			children = (
+				B5EF3B3729E35E4C00183201 /* ProfileScreenComponents */,
 				B5B1D19829D9DC8E006966FF /* ProfileViewController.swift */,
 			);
 			path = ProfileScreen;
@@ -432,19 +426,52 @@
 		B5B1D1B729DA0787006966FF /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				B551395429DDEDD4005CD307 /* TextFieldWithLabelStack.swift */,
-				B5EF3B3329E2EF8E00183201 /* TextViewWithLabel.swift */,
-				8727A1CA29DB00B400C3D087 /* GoogleButton.swift */,
-				63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */,
-				8E06F09E29DB5335006B2DED /* SearchTextField.swift */,
-				B5B6B14D29DC47C500F79E98 /* LogOutTemplateButton.swift */,
-				00F1E97329DC55DB00F5FBF7 /* CustomButton.swift */,
-				B5B6B14F29DC688C00F79E98 /* TestComponentsViewController.swift */,
+				B5EF3B3829E35E7100183201 /* Buttons */,
 				87BD3C4229E0215F0092A8FC /* ReusableCollectionView.swift */,
 				87BD3C4429E058A40092A8FC /* ReusableTableView.swift */,
-				B5EF3B3529E330B400183201 /* CheckGenderView.swift */,
+				B551395429DDEDD4005CD307 /* TextFieldWithLabelStack.swift */,
+				63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */,
+				8E06F09E29DB5335006B2DED /* SearchTextField.swift */,
+				B5B6B14F29DC688C00F79E98 /* TestComponentsViewController.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		B5EF3B3729E35E4C00183201 /* ProfileScreenComponents */ = {
+			isa = PBXGroup;
+			children = (
+				B5EF3B3529E330B400183201 /* CheckGenderButton.swift */,
+				B5EF3B3329E2EF8E00183201 /* TextViewWithLabel.swift */,
+				B5EF3B3A29E35F3700183201 /* CheckGenderView.swift */,
+			);
+			path = ProfileScreenComponents;
+			sourceTree = "<group>";
+		};
+		B5EF3B3829E35E7100183201 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				8727A1CA29DB00B400C3D087 /* GoogleButton.swift */,
+				B5B6B14D29DC47C500F79E98 /* LogOutTemplateButton.swift */,
+				00F1E97329DC55DB00F5FBF7 /* CustomButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		B5EF3B3929E35E9A00183201 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				B551394A29DCA756005CD307 /* FavoriteScreen */,
+				B5B1D18E29D9DB45006966FF /* HomeScreen */,
+				B5B1D18629D9D974006966FF /* LoginScreen */,
+				B5B1D18929D9D9CE006966FF /* MovieDetailScreen */,
+				B5B1D18529D9D96D006966FF /* OnBoardingScreen */,
+				B5B1D18829D9D9AD006966FF /* ProfileScreen */,
+				B551394D29DCA87A005CD307 /* RecentWatchScreen */,
+				B5B1D19129D9DBD8006966FF /* RegisterScreen */,
+				B5B1D18C29D9DA75006966FF /* SearchScreen */,
+				B5B1D18729D9D991006966FF /* SettingScreen */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		C9B9F91534EAC03D42F01CA1 /* Pods */ = {
@@ -601,7 +628,7 @@
 				B5B1D1A329D9DD4B006966FF /* MovieCell.swift in Sources */,
 				B5B1D19729D9DC75006966FF /* LoginViewController.swift in Sources */,
 				B551395529DDEDD4005CD307 /* TextFieldWithLabelStack.swift in Sources */,
-				B5EF3B3629E330B400183201 /* CheckGenderView.swift in Sources */,
+				B5EF3B3629E330B400183201 /* CheckGenderButton.swift in Sources */,
 				B5B1D17129D9D7B0006966FF /* ViewController.swift in Sources */,
 				8E6E226829E14BBB009D1807 /* CastAndCrewCollectionView.swift in Sources */,
 				87BD3C4529E058A40092A8FC /* ReusableTableView.swift in Sources */,
@@ -622,6 +649,7 @@
 				5770CA7E29E0C4EF000CED66 /* ListSection.swift in Sources */,
 				5770CA7029E0C43F000CED66 /* HomeViewMovieCell.swift in Sources */,
 				B5B1D19529D9DC50006966FF /* RegisterViewController.swift in Sources */,
+				B5EF3B3B29E35F3700183201 /* CheckGenderView.swift in Sources */,
 				5770CA7C29E0C4DB000CED66 /* MockData.swift in Sources */,
 				B5B6B14E29DC47C500F79E98 /* LogOutTemplateButton.swift in Sources */,
 				B551395829DDFD98005CD307 /* MovieModel.swift in Sources */,
