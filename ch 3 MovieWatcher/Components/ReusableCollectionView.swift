@@ -8,9 +8,15 @@
 import UIKit
 import SnapKit
 
+
+protocol CollectionDidSelectProtocol: AnyObject {
+    func getMoviesFromCategory(nameGenre: String)
+}
+
 class ReusableCollectionView: UIView {
     
     private var collectionView: UICollectionView!
+    weak var delegateCollectionDidSelect: CollectionDidSelectProtocol?
     
     private var categories = ["All", "Action", "Adventure", "Animation", "Comedy", "Crime",
                               "Documentary", "Drama", "Family", "Fantasy", "History", "Horror",
@@ -82,5 +88,9 @@ extension ReusableCollectionView: UICollectionViewDelegate, UICollectionViewData
         let text = categories[indexPath.row]
         let cellWidth = text.size(withAttributes: [.font: UIFont.jakartaRomanSemiBold(size: 16) as Any]).width + 40
         return CGSize(width: cellWidth, height: 36)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegateCollectionDidSelect?.getMoviesFromCategory(nameGenre: categories[indexPath.item])
     }
 }

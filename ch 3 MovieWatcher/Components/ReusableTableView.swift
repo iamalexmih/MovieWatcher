@@ -14,8 +14,9 @@ protocol ReusableTableViewDelegate: AnyObject {
 
 class ReusableTableView: UIView {
     
-    private lazy var tableView = UITableView()
+    lazy var tableView = UITableView()
     weak var delegateForCell: ReusableTableViewDelegate?
+    var movies: [Movie] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -53,13 +54,15 @@ class ReusableTableView: UIView {
 extension ReusableTableView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.identifier, for: indexPath) as? MovieCell else {
             return UITableViewCell()
         }
+        let movie = movies[indexPath.row]
+        cell.configure(movie: movie)
         return cell
     }
     
