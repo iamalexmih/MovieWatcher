@@ -29,6 +29,9 @@ final class ProfileViewController: UIViewController {
     private let locationView = TextViewWithLabel(labelText: "Location",
                                          placeholderText: "Enter your location address")
     
+    private let checkGenderView = CheckGenderView()
+
+    
     private let buttonSaveChanges = CustomButton(title: "Save Changes")
     let stackView = UIStackView()
     private var arrayElemets: [UIView] = []
@@ -37,7 +40,7 @@ final class ProfileViewController: UIViewController {
     // MARK: - VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        arrayElemets = [firstNameView, lastNameView, emailView, dateBirthView]
+        arrayElemets = [firstNameView, lastNameView, emailView, dateBirthView, checkGenderView]
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
         addSubView()
         setConstraints()
@@ -56,7 +59,8 @@ final class ProfileViewController: UIViewController {
         stackView.addArrangedSubview(lastNameView)
         stackView.addArrangedSubview(emailView)
         stackView.addArrangedSubview(dateBirthView)
-        stackView.addArrangedSubview(locationView)
+        stackView.addArrangedSubview(checkGenderView)
+//        stackView.addArrangedSubview(locationView)
     }
     
     private func setConstraints() {

@@ -21,6 +21,7 @@ class TestComponentsViewController: UIViewController {
     let textFieldWithLabelStack = TextFieldWithLabelStack(labelText: "First Name",
                                                           placeholderText: "Enter your name",
                                                           isSecure: false)
+    let checkGenderView = CheckGenderView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +34,8 @@ class TestComponentsViewController: UIViewController {
         addLogOutTemplateButton()
         addCustomButton()
         addTextFieldWithLabelStack()
-        
-        getPopularMovies()
+        addCheckGenderView()
+//        getPopularMovies()
     }
     
     // Посмотреть доступные шрифты в Xcode
@@ -129,4 +130,14 @@ class TestComponentsViewController: UIViewController {
         }
     }
     
+    
+    func addCheckGenderView() {
+        view.addSubview(checkGenderView)
+        
+        checkGenderView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(32)
+            make.top.equalTo(textFieldWithLabelStack.snp.bottom).offset(50)
+            make.height.equalTo(90)
+        }
+    }
 }
