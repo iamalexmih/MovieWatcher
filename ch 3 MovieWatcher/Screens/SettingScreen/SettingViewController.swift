@@ -21,7 +21,7 @@ class SettingViewController: UIViewController {
     let darkModeSettingLabel = UILabel()
     let toggle = UISwitch()
     let logOutTemplateButton = LogOutTemplateButton()
-    var isDarkModeEnabled = false
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -175,7 +175,7 @@ class SettingViewController: UIViewController {
 
     func setupChangePasswordProfileSettingTextButton() {
         changePasswordProfileSettingTextButton.setTitle("Change Password", for: .normal)
-        changePasswordProfileSettingTextButton.setTitleColor(.black, for: .normal)
+        changePasswordProfileSettingTextButton.setTitleColor(UIColor(named: Resources.Colors.text), for: .normal)
         changePasswordProfileSettingTextButton.titleLabel?.font = UIFont.jakartaRomanSemiBold(size: 16)
         view.addSubview(changePasswordProfileSettingTextButton)
 
@@ -196,7 +196,7 @@ class SettingViewController: UIViewController {
 
     func setupForgotPasswordButton() {
         forgotPasswordButton.setTitle("Forgot Password", for: .normal)
-        forgotPasswordButton.setTitleColor(.black, for: .normal)
+        forgotPasswordButton.setTitleColor(UIColor(named: Resources.Colors.text), for: .normal)
         forgotPasswordButton.titleLabel?.font = UIFont.jakartaRomanSemiBold(size: 16)
         view.addSubview(forgotPasswordButton)
 
@@ -236,13 +236,10 @@ class SettingViewController: UIViewController {
     }
 
     @objc func setupToggleDarkMode() {
-        isDarkModeEnabled = !isDarkModeEnabled
-        if isDarkModeEnabled {
-            view.backgroundColor = .white
-            toggle.backgroundColor = .white
+        if toggle.isOn {
+            overrideUserInterfaceStyle = .dark
         } else {
-            view.backgroundColor = .black
-            toggle.backgroundColor = .black
+            overrideUserInterfaceStyle = .light
         }
     }
 
