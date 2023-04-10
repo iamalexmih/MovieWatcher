@@ -21,6 +21,7 @@ class SettingViewController: UIViewController {
     let darkModeSettingLabel = UILabel()
     let toggle = UISwitch()
     let logOutTemplateButton = LogOutTemplateButton()
+    var isDarkModeEnabled = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,7 @@ class SettingViewController: UIViewController {
         setupDarkModeSettingImage()
         setupDarkModeSettingLabel()
         setupToggle()
+        setupToggleDarkMode()
         setupLogOutTemplateButton()
 
     }
@@ -247,6 +249,18 @@ class SettingViewController: UIViewController {
         toggle.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(470)
             make.right.equalToSuperview().inset(30)
+        }
+        toggle.addTarget(self, action: #selector(setupToggleDarkMode), for: .touchUpInside)
+    }
+
+    @objc func setupToggleDarkMode() {
+        isDarkModeEnabled = !isDarkModeEnabled
+        if isDarkModeEnabled {
+            view.backgroundColor = .white
+            toggle.backgroundColor = .white
+        } else {
+            view.backgroundColor = .black
+            toggle.backgroundColor = .black
         }
     }
 
