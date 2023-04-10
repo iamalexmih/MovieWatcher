@@ -199,7 +199,7 @@ struct AuthModel {
         if let email = validatedEmail,
            let password = validatedPassword {
             
-            Auth.auth().signIn(withEmail: email, password: password) {authResult, error in
+            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                 if let error = error {
                     let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default))

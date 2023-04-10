@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 
 class MovieCell: UITableViewCell {
@@ -89,22 +90,6 @@ class MovieCell: UITableViewCell {
         return label
     }()
     
-//    private lazy var actionButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.backgroundColor = UIColor(named: Resources.Colors.accent)
-//        button.setTitle("Action", for: .normal)
-//        button.setTitleColor(.white, for: .normal)
-//        button.titleLabel?.font = UIFont.jakartaRomanSemiBold(size: 10)
-//        button.titleLabel?.contentMode = .center
-//        button.layer.cornerRadius = 6
-//        button.addTarget(self, action: #selector(actionTapped), for: .touchUpInside)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        return button
-//    }()
-//
-//    @objc func actionTapped() {
-//        print("actionTapped")
-//    }
     
     lazy var favouriteButton: UIButton = {
         let button = UIButton(type: .system)
@@ -129,6 +114,19 @@ class MovieCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func configure(movie: Movie) {
+        movieName.text = movie.original_title
+        calendarLabel.text = movie.release_date
+        categoryLabel.text = NetworkService.shared.getNameGenreForOneMovie(
+            movieGenresId: movie.genre_ids.first ?? 7777,
+            arrayGenres: StorageGenres.shared.listGenres
+        )
+        
+        guard let urlPoster = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
+        movieImage.kf.setImage(with: URL(string: urlPoster))
+    }
+    
     private func setupViews() {
         contentView.addSubview(movieImage)
         contentView.addSubview(favouriteButton)

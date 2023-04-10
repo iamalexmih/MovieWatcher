@@ -13,6 +13,7 @@ class StorageGenres {
     private init() { }
     
     let listGenres: [GenreMovie] = [
+        GenreMovie(id: 8888, name: "ALL"),
         GenreMovie(id: 28, name: "Action"),
         GenreMovie(id: 12, name: "Adventure"),
         GenreMovie(id: 16, name: "Animation"),
@@ -31,6 +32,7 @@ class StorageGenres {
         GenreMovie(id: 10770, name: "TV Movie"),
         GenreMovie(id: 53, name: "Thriller"),
         GenreMovie(id: 10752, name: "War"),
-        GenreMovie(id: 37, name: "Western")
+        GenreMovie(id: 37, name: "Western"),
+        GenreMovie(id: 7777, name: "Not specified")
     ]
 }

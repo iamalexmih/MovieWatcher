@@ -73,23 +73,33 @@ final class NetworkService {
     }
     
     // Получить Название жанра к одному Фильму из его Id.
-    func getNameGenreForOneMovie(movieGenresId: [Int], arrayGenres: [GenreMovie]) -> [String] {
-        var arrayGengeName: [String] = []
-//        for genre in arrayGenres {
-//            if movie.genre_ids.contains(genre.id) {
-//                arrayGengeName.append(genre.name)
-//            }
-//        }
-        for genre in arrayGenres where movieGenresId.contains(genre.id) {
-            arrayGengeName.append(genre.name)
+    func getNameGenreForOneMovie(movieGenresId: Int, arrayGenres: [GenreMovie]) -> String {
+        var genreName: String = ""
+        
+        for genre in arrayGenres {
+            if genre.id == movieGenresId {
+                genreName = genre.name
+            }
         }
         
-        return arrayGengeName
+        return genreName
     }
     
+    // Получить Id жанра к одному Фильму из его имени.
+    func getIdGenreForOneMovie(movieGenresName: String, arrayGenres: [GenreMovie]) -> Int {
+        var genreId: Int = 0
+        
+        for genre in arrayGenres {
+            if genre.name == movieGenresName {
+                genreId = genre.id
+            }
+        }
+        
+        return genreId
+    }
     
     // Получить список популярных фильмов По категории.
-    func getListMoviesForGenres(_ genreId: String, completion: @escaping (Result<ListMovies, Error>) -> Void) {
+    func getListMoviesForGenres(_ genreId: Int, completion: @escaping (Result<ListMovies, Error>) -> Void) {
         let urlString =
         ApiConstants.baseUrl +
         "/3/discover/movie?" +
@@ -152,6 +162,19 @@ final class NetworkService {
     // За место него использовать getDiscoverMovies. Список популярных фильмов.
     func getPopularMovies(completion: @escaping (Result<ListMovies, Error>) -> Void) {
         let urlString = "\(ApiConstants.baseUrl)/3/movie/popular?api_key=\(apiKey)&language=en-US&page=1"
+        performRequest(with: urlString, type: ListMovies.self) { (result) in
+            switch result {
+            case .success(let data):
+                completion(.success(data))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    // Поиск по searchTextField
+    func search(with query: String, completion: @escaping (Result<ListMovies, Error>) -> Void) {
+        let urlString = "\(ApiConstants.baseUrl)/3/search/movie?api_key=\(apiKey)&query=\(query)"
         performRequest(with: urlString, type: ListMovies.self) { (result) in
             switch result {
             case .success(let data):
