@@ -9,9 +9,7 @@ import UIKit
 import SnapKit
 
 class TopCollectionView: UIView {
-    
-//    private let sections = MockData.shared.popularCategory
-    
+        
     lazy var topCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
@@ -64,5 +62,8 @@ extension TopCollectionView: UICollectionViewDelegate, UICollectionViewDataSourc
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width / 2,
                       height: collectionView.frame.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
 }

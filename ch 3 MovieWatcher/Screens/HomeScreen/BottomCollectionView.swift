@@ -9,8 +9,6 @@ import UIKit
 
 class BottomCollectionView: UIView {
     
-    //    private let sections = MockData.shared.popularCategory
-    
     lazy var collectionBoxOfficeView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical

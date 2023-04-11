@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class BoxViewCell: UICollectionViewCell {
     
@@ -66,6 +67,43 @@ class BoxViewCell: UICollectionViewCell {
         return label
     }()
     
+    private let starImage: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: Resources.Image.starRaitingImage)?.withRenderingMode(.alwaysOriginal)
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
+    private let starRating: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.jakartaBold(size: 12)
+        label.text = "4.4"
+        label.textColor = UIColor(named: Resources.Colors.yellowStar)
+        label.minimumScaleFactor = 0.5
+        label.numberOfLines = 1
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let votesNumber: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.jakartaRegular(size: 12)
+        label.text = "(54)"
+        label.textColor = UIColor(named: Resources.Colors.categoryColour)
+        label.minimumScaleFactor = 0.5
+        label.numberOfLines = 1
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+        
+    private var ratingStack: UIStackView = {
+        var stack = UIStackView()
+        stack.axis = .horizontal
+        stack.spacing = 5
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -84,6 +122,10 @@ class BoxViewCell: UICollectionViewCell {
         addSubview(timeImageView)
         addSubview(timeLabel)
         addSubview(favoriteButton)
+        ratingStack.addArrangedSubview(starImage)
+        ratingStack.addArrangedSubview(starRating)
+        ratingStack.addArrangedSubview(votesNumber)
+        addSubview(ratingStack)
     }
     
     func configureCell(filmImage: String, categoryFilmName: String, filmName: String, time: Int) {
@@ -122,7 +164,10 @@ class BoxViewCell: UICollectionViewCell {
             
             timeLabel.centerYAnchor.constraint(equalTo: timeImageView.centerYAnchor),
             timeLabel.leadingAnchor.constraint(equalTo: timeImageView.trailingAnchor, constant: 3),
-            timeLabel.heightAnchor.constraint(equalToConstant: 15)
+            timeLabel.heightAnchor.constraint(equalToConstant: 15),
+            
+            ratingStack.centerYAnchor.constraint(equalTo: timeLabel.centerYAnchor),
+            ratingStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0)
 
         ])
     }

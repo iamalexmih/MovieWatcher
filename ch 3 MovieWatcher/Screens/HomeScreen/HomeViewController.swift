@@ -23,7 +23,6 @@ class HomeViewController: UIViewController {
     lazy var boxOfficeLabel = UILabel()
     lazy var seeAllButton = UIButton(type: .system)
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -109,6 +108,8 @@ class HomeViewController: UIViewController {
         seeAllButton.setTitleColor(UIColor(named: Resources.Colors.accent), for: .normal)
         seeAllButton.translatesAutoresizingMaskIntoConstraints = false
     }
+    
+
     
     
     //MARK: - Constraints
