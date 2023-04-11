@@ -10,7 +10,7 @@ import SnapKit
 
 class TopCollectionView: UIView {
     
-    private let sections = MockData.shared.popularCategory
+//    private let sections = MockData.shared.popularCategory
     
     lazy var topCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -28,13 +28,6 @@ class TopCollectionView: UIView {
         self.addSubview(topCollectionView)
         setupConstraints()
     }
-    
-//    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-//        super.init(frame: frame, collectionViewLayout: layout)
-//        setCollectionDelegates()
-//        self.addSubview(topCollectionView)
-//        setupConstraints()
-//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -55,7 +48,7 @@ class TopCollectionView: UIView {
 extension TopCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sections.count
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -63,8 +56,7 @@ extension TopCollectionView: UICollectionViewDelegate, UICollectionViewDataSourc
                                                             for: indexPath) as? HomeViewMovieCell else {
             return UICollectionViewCell()
         }
-        let model = sections.items[indexPath.row]
-        cell.configureCell(filmImage: model.image, categoryFilmName: model.category, filmName: model.name)
+        cell.configureCell(filmImage: "filmPoster", categoryFilmName: "Adventure", filmName: "Die Hard")
         return cell
     }
     

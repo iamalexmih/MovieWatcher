@@ -9,7 +9,7 @@ import UIKit
 
 class BottomCollectionView: UIView {
     
-    private let sections = MockData.shared.popularCategory
+    //    private let sections = MockData.shared.popularCategory
     
     lazy var collectionBoxOfficeView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -63,8 +63,7 @@ extension BottomCollectionView: UICollectionViewDelegate, UICollectionViewDataSo
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BoxViewCell.identifier, for: indexPath) as? BoxViewCell else {
             return UICollectionViewCell()
         }
-        let model = sections.items[indexPath.row]
-        cell.configureCell(filmImage: model.image, categoryFilmName: model.category, filmName: model.name, time: model.time)
+        cell.configureCell(filmImage: "filmPoster", categoryFilmName: "Action", filmName: "Luck", time: 149)
         return cell
     }
     

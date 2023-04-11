@@ -11,78 +11,18 @@ import SnapKit
 // swiftlint:disable all
 class HomeViewController: UIViewController {
     
-    // WelcomeUser
-    var userStack = UIStackView()
-    
-    private let sections = MockData.shared.popularCategory
-    
     private let topCollectionView = TopCollectionView()
-    private let collectionButtonView = ReusableCollectionView()
-    private let collectionBoxOfficeView = BottomCollectionView()
+    private let filmsCategoriesCollection = ReusableCollectionView()
+    private let boxOfficeCollection = BottomCollectionView()
     
-    private let userImage: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: Resources.Image.tabBarSettingFill)
-        image.layer.cornerRadius = 20
-        image.layer.masksToBounds = true
-        image.clipsToBounds = true
-        image.contentMode = .scaleAspectFill
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
+    lazy var userImage = UIImageView()
+    lazy var personLabel = UILabel()
+    lazy var streamingLoversLabel = UILabel()
+    var userStack = UIStackView()
+    lazy var categoryLabel = UILabel()
+    lazy var boxOfficeLabel = UILabel()
+    lazy var seeAllButton = UIButton(type: .system)
     
-    private let personLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Hi, Vasya"
-        label.adjustsFontSizeToFitWidth = true
-        label.font = UIFont.jakartaBold(size: 18)
-        label.minimumScaleFactor = 0.5
-        label.numberOfLines = 1
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let label: UILabel = {
-        let label = UILabel()
-        label.adjustsFontSizeToFitWidth = true
-        label.font = UIFont.jakartaRomanSemiBold(size: 12)
-        label.text = "only streaming movie lovers"
-        label.textColor = UIColor(named: Resources.Colors.secondText)
-        label.minimumScaleFactor = 0.5
-        label.numberOfLines = 1
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let categoryLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Category"
-        label.adjustsFontSizeToFitWidth = true
-        label.font = UIFont.jakartaBold(size: 18)
-        label.minimumScaleFactor = 0.5
-        label.numberOfLines = 1
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let boxOfficeLabel: UILabel = {
-        let label = UILabel()
-        label.adjustsFontSizeToFitWidth = true
-        label.font = UIFont.jakartaBold(size: 18)
-        label.minimumScaleFactor = 0.7
-        label.numberOfLines = 1
-        label.text = "Box Office"
-        label.textAlignment = .left
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    lazy var seeAllButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("See All", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,22 +33,82 @@ class HomeViewController: UIViewController {
     }
     
     private func setupViews() {
+        configureUserImage()
+        configurePersonLabel()
+        configureStreamingLoversLabel()
+        view.addSubviews(topCollectionView, filmsCategoriesCollection, boxOfficeCollection)
+        configureUserSTack()
+        configureCategoryLabel()
+        configureBoxOfficeLabel()
+        configureSeeAllButton()
+    }
+    
+    //MARK: - Configuring UI Elements
+    
+    func configureUserImage() {
         view.addSubview(userImage)
-        
-        userStack = UIStackView(arrangedSubviews: [personLabel, label])
+        userImage.image = UIImage(named: Resources.Image.tabBarSettingFill)
+        userImage.layer.cornerRadius = 20
+        userImage.layer.masksToBounds = true
+        userImage.clipsToBounds = true
+        userImage.contentMode = .scaleAspectFill
+        userImage.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func configurePersonLabel() {
+        personLabel.text = "Hi, Vasya"
+        personLabel.adjustsFontSizeToFitWidth = true
+        personLabel.font = UIFont.jakartaBold(size: 18)
+        personLabel.minimumScaleFactor = 0.5
+        personLabel.numberOfLines = 1
+        personLabel.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func configureStreamingLoversLabel() {
+        streamingLoversLabel.adjustsFontSizeToFitWidth = true
+        streamingLoversLabel.font = UIFont.jakartaRomanSemiBold(size: 12)
+        streamingLoversLabel.text = "only streaming movie lovers"
+        streamingLoversLabel.textColor = UIColor(named: Resources.Colors.secondText)
+        streamingLoversLabel.minimumScaleFactor = 0.5
+        streamingLoversLabel.numberOfLines = 1
+        streamingLoversLabel.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func configureUserSTack() {
+        userStack = UIStackView(arrangedSubviews: [personLabel, streamingLoversLabel])
         userStack.axis = .vertical
         userStack.spacing = 5
         userStack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(userStack)
-        view.addSubview(categoryLabel)
-        
-        view.addSubviews(topCollectionView, collectionButtonView, collectionBoxOfficeView)
-        
-        view.addSubview(boxOfficeLabel)
-        view.addSubview(seeAllButton)
     }
     
-    //MARK: - UI Elements
+    func configureCategoryLabel() {
+        view.addSubview(categoryLabel)
+        categoryLabel.text = "Category"
+        categoryLabel.adjustsFontSizeToFitWidth = true
+        categoryLabel.font = UIFont.jakartaBold(size: 18)
+        categoryLabel.minimumScaleFactor = 0.5
+        categoryLabel.numberOfLines = 1
+        categoryLabel.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func configureBoxOfficeLabel() {
+        view.addSubview(boxOfficeLabel)
+        boxOfficeLabel.adjustsFontSizeToFitWidth = true
+        boxOfficeLabel.font = UIFont.jakartaBold(size: 18)
+        boxOfficeLabel.minimumScaleFactor = 0.7
+        boxOfficeLabel.numberOfLines = 1
+        boxOfficeLabel.text = "Box Office"
+        boxOfficeLabel.textAlignment = .left
+        boxOfficeLabel.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func configureSeeAllButton() {
+        view.addSubview(seeAllButton)
+        seeAllButton.setTitle("See All", for: .normal)
+        seeAllButton.setTitleColor(UIColor(named: Resources.Colors.accent), for: .normal)
+        seeAllButton.translatesAutoresizingMaskIntoConstraints = false
+    }
     
     
     //MARK: - Constraints
@@ -140,25 +140,25 @@ class HomeViewController: UIViewController {
             make.width.equalTo(100)
         }
         
-        collectionButtonView.snp.makeConstraints { make in
+        filmsCategoriesCollection.snp.makeConstraints { make in
             make.top.equalTo(categoryLabel.snp.bottom).inset(-15)
             make.left.right.equalToSuperview().inset(20)
             make.height.equalTo(36)
         }
         
         boxOfficeLabel.snp.makeConstraints { make in
-            make.top.equalTo(collectionButtonView.snp.bottom).inset(-15)
-            make.left.right.equalToSuperview().inset(20)
+            make.top.equalTo(filmsCategoriesCollection.snp.bottom).inset(-15)
+            make.left.equalToSuperview().inset(20)
             make.width.equalTo(100)
         }
         
         seeAllButton.snp.makeConstraints { make in
             make.right.equalToSuperview().inset(20)
-            make.top.equalTo(collectionButtonView.snp.bottom).inset(-15)
+            make.top.equalTo(filmsCategoriesCollection.snp.bottom).inset(-15)
             make.width.equalTo(50)
         }
         
-        collectionBoxOfficeView.snp.makeConstraints { make in
+        boxOfficeCollection.snp.makeConstraints { make in
             make.top.equalTo(boxOfficeLabel.snp.bottom).inset(-15)
             make.left.right.equalToSuperview().inset(20)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(-10)
