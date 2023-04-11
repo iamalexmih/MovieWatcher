@@ -109,8 +109,8 @@ class SettingViewController: UIViewController {
         view.addSubview(headInProfileSetting)
 
         headInProfileSetting.snp.makeConstraints { make in
-            make.top.equalTo(personalInfo.snp.bottom).offset(19)
-            make.left.equalToSuperview().offset(-15)
+            make.top.equalTo(personalInfo.snp.bottom).offset(21)
+            make.left.equalToSuperview().offset(-8)
             make.right.equalToSuperview().inset(327)
         }
     }
@@ -122,7 +122,7 @@ class SettingViewController: UIViewController {
 
         fleshInProfileSetting.snp.makeConstraints { make in
             make.top.equalTo(headInProfileSetting.snp.bottom).offset(2)
-            make.left.equalToSuperview().offset(-15)
+            make.left.equalToSuperview().offset(-8)
             make.right.equalToSuperview().inset(327)
         }
     }
@@ -189,7 +189,7 @@ class SettingViewController: UIViewController {
         forgotPasswordProfileSettingImage.image = UIImage(named: Resources.Image.forgotPasswordProfileSetting)
         view.addSubview(forgotPasswordProfileSettingImage)
         forgotPasswordProfileSettingImage.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(362)
+            make.top.equalToSuperview().offset(367)
             make.left.equalToSuperview().offset(32)
         }
     }
@@ -210,7 +210,7 @@ class SettingViewController: UIViewController {
         darkModeSettingImage.image = UIImage(named: Resources.Image.darkModeProfileSetting)
         view.addSubview(darkModeSettingImage)
         darkModeSettingImage.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(385)
+            make.top.equalToSuperview().offset(420)
             make.left.equalToSuperview().offset(32)
         }
     }
