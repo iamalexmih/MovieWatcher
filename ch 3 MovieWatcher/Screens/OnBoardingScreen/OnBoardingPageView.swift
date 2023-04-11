@@ -34,18 +34,19 @@ class OnBoardingPageView: UIView {
         titleLabel.numberOfLines = 2
         titleLabel.font = .jakartaBold(size: 24)
         titleLabel.textAlignment = .center
+        titleLabel.setContentHuggingPriority(.required, for: .vertical)
         subtitleLabel.textColor = UIColor(named: Resources.Colors.secondText)
         subtitleLabel.numberOfLines = 3
         subtitleLabel.font = .jakartaRegular(size: 14)
         subtitleLabel.textAlignment = .center
+        subtitleLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
         titleLabel.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(16)
             make.top.equalToSuperview()
         }
-
         subtitleLabel.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(16)
-            make.top.equalTo(titleLabel.snp.bottom).inset(8)
+            make.top.equalTo(titleLabel.snp.bottom).inset(-8)
             make.bottom.equalToSuperview()
         }
     }
