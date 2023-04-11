@@ -19,7 +19,7 @@ class MovieCell: UITableViewCell {
     
     private var movieImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "max")
+        image.image = UIImage(named: "questionmark")
         image.contentMode = .scaleAspectFill
         image.translatesAutoresizingMaskIntoConstraints = false
         image.layer.cornerRadius = 10
