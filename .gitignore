@@ -4,6 +4,10 @@ ch 3 MovieWatcher.xcodeproj/xcuserdata/borodkinav.xcuserdatad/
 ch 3 MovieWatcher.xcworkspace/xcuserdata/borodkinav.xcuserdatad/
 *.xcuserstate
 
+## User settings
+xcuserdata/
+xcuserdata
+
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,swift,xcode
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,swift,xcode
