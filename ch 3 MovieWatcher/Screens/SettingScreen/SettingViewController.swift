@@ -21,6 +21,7 @@ class SettingViewController: UIViewController {
     let darkModeSettingLabel = UILabel()
     let toggle = UISwitch()
     let logOutTemplateButton = LogOutTemplateButton()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
