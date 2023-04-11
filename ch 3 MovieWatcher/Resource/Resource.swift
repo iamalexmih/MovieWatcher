@@ -43,6 +43,7 @@ enum Resources {
         static let starRaitingImage = "star"
         static let onBoardingIcons = "backgroundImages"
         static let personImage = "personImageView"
+        static let moviemaxIcon = "moviemaxIcon"
         
         // SettingScreenImages
         static let profileSettingScreen = "profileSettingScreen"
