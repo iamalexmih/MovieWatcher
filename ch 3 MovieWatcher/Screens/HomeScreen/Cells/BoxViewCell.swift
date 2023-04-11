@@ -10,11 +10,11 @@ import UIKit
 class BoxViewCell: UICollectionViewCell {
     
     static let identifier = "BoxViewCell"
-    private let sections = MockData.shared.popularCategory
     
     lazy var favoriteButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: Resources.Image.tabBarFavorites), for: .normal)
+        button.setImage(UIImage(systemName: "heart"), for: .normal)
+        button.tintColor = UIColor(named: Resources.Colors.categoryColour)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -32,7 +32,8 @@ class BoxViewCell: UICollectionViewCell {
     private let categoryFilmLabel: UILabel = {
        let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
-        label.font = UIFont.systemFont(ofSize: 12, weight: .bold)
+        label.font = UIFont.montserratRomanMedium(size: 12)
+        label.textColor = UIColor(named: Resources.Colors.secondText)
         label.minimumScaleFactor = 0.7
         label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -42,7 +43,7 @@ class BoxViewCell: UICollectionViewCell {
     private let filmNameLabel: UILabel = {
        let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font = UIFont.jakartaBold(size: 18)
         label.minimumScaleFactor = 0.5
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -51,10 +52,6 @@ class BoxViewCell: UICollectionViewCell {
     private let timeImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.image = UIImage(named: Resources.Image.clockImage)
-        imageView.contentMode = .scaleAspectFill
-//        imageView.contentScaleFactor = 1.0
-//        imageView.layer.cornerRadius = 20
-//        imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -62,7 +59,8 @@ class BoxViewCell: UICollectionViewCell {
     private let timeLabel: UILabel = {
        let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font = UIFont.montserratRomanMedium(size: 12)
+        label.textColor = UIColor(named: Resources.Colors.secondText)
         label.minimumScaleFactor = 0.5
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -119,8 +117,8 @@ class BoxViewCell: UICollectionViewCell {
 
             timeImageView.topAnchor.constraint(equalTo: filmNameLabel.bottomAnchor, constant: 15),
             timeImageView.leadingAnchor.constraint(equalTo: filmImageView.trailingAnchor, constant: 10),
-            timeImageView.heightAnchor.constraint(equalToConstant: 20),
-            timeImageView.widthAnchor.constraint(equalToConstant: 20),
+            timeImageView.heightAnchor.constraint(equalToConstant: 13),
+            timeImageView.widthAnchor.constraint(equalToConstant: 13),
             
             timeLabel.centerYAnchor.constraint(equalTo: timeImageView.centerYAnchor),
             timeLabel.leadingAnchor.constraint(equalTo: timeImageView.trailingAnchor, constant: 3),
