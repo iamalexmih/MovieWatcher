@@ -63,6 +63,7 @@ extension ReusableTableView: UITableViewDelegate, UITableViewDataSource {
         }
         let movie = movies[indexPath.row]
         cell.configure(movie: movie)
+        cell.selectionStyle = .none
         return cell
     }
     
