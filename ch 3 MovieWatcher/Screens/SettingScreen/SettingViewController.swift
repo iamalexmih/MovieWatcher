@@ -140,8 +140,8 @@ class SettingViewController: UIViewController {
         view.addSubview(chevronButton)
 
         chevronButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(375)
-            make.top.equalToSuperview().offset(255)
+            make.leading.equalToSuperview().offset(320)
+            make.top.equalToSuperview().offset(260)
             make.width.equalTo(16)
             make.height.equalTo(16)
         }
