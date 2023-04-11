@@ -73,6 +73,7 @@
 		B5B1D1B629D9FBB1006966FF /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B5B1D1B529D9FBB1006966FF /* SnapKit */; };
 		B5B6B14E29DC47C500F79E98 /* LogOutTemplateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B6B14D29DC47C500F79E98 /* LogOutTemplateButton.swift */; };
 		B5B6B15029DC688C00F79E98 /* TestComponentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B6B14F29DC688C00F79E98 /* TestComponentsViewController.swift */; };
+		B5C25E7229E55FD2000DE9D7 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B5C25E7129E55FD2000DE9D7 /* Lottie */; };
 		B5EF3B3429E2EF8E00183201 /* TextViewWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF3B3329E2EF8E00183201 /* TextViewWithLabel.swift */; };
 		B5EF3B3629E330B400183201 /* CheckGenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF3B3529E330B400183201 /* CheckGenderButton.swift */; };
 		B5EF3B3B29E35F3700183201 /* CheckGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF3B3A29E35F3700183201 /* CheckGenderView.swift */; };
@@ -157,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5B1D1AC29D9DDE3006966FF /* Kingfisher in Frameworks */,
+				B5C25E7229E55FD2000DE9D7 /* Lottie in Frameworks */,
 				B5B1D1B329D9DE83006966FF /* FirebaseStorage in Frameworks */,
 				B5B1D1AF29D9DE83006966FF /* FirebaseAuth in Frameworks */,
 				B5B1D1B129D9DE83006966FF /* FirebaseFirestore in Frameworks */,
@@ -515,6 +517,7 @@
 				B5B1D1B029D9DE83006966FF /* FirebaseFirestore */,
 				B5B1D1B229D9DE83006966FF /* FirebaseStorage */,
 				B5B1D1B529D9FBB1006966FF /* SnapKit */,
+				B5C25E7129E55FD2000DE9D7 /* Lottie */,
 			);
 			productName = "ch 3 MovieWatcher";
 			productReference = B5B1D16929D9D7B0006966FF /* ch 3 MovieWatcher.app */;
@@ -548,6 +551,7 @@
 				B5B1D1AA29D9DDE3006966FF /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				B5B1D1AD29D9DE83006966FF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				B5B1D1B429D9FBB1006966FF /* XCRemoteSwiftPackageReference "SnapKit" */,
+				B5C25E7029E55FD2000DE9D7 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = B5B1D16A29D9D7B0006966FF /* Products */;
 			projectDirPath = "";
@@ -922,6 +926,14 @@
 				kind = branch;
 			};
 		};
+		B5C25E7029E55FD2000DE9D7 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -949,6 +961,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B5B1D1B429D9FBB1006966FF /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		B5C25E7129E55FD2000DE9D7 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5C25E7029E55FD2000DE9D7 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
