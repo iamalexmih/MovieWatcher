@@ -92,7 +92,7 @@ extension SearchViewController: CollectionDidSelectProtocol {
                         self.movieTableView.tableView.reloadData()
                     }
                 case .failure(let failure):
-                    print("ошибка получения фильма по жанру")
+                    print("Error receiving film by genre \(failure)")
                 }
             }
         }

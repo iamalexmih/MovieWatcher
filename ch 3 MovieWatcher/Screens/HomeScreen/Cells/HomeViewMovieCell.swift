@@ -11,7 +11,6 @@ class HomeViewMovieCell: UICollectionViewCell {
     
     static let identifier = "HomeViewMovieCell"
     private let sections = MockData.shared.popularCategory
-
     
     private let filmImageView: UIImageView = {
        let imageView = UIImageView()

@@ -59,8 +59,8 @@ class TestComponentsViewController: UIViewController {
                     
                     print("Жанры Фильма \(movie.original_title): ", namesGenre)
                 }
-            case .failure(_):
-                print("Error, .....")
+            case .failure(let error):
+                print("Error, \(error)")
             }
         }
     }
