@@ -79,7 +79,7 @@ class SearchTextField: UIView {
         cancelButton.setImage(cancelButtonImage, for: .normal)
         cancelButton.tintColor = buttonsColor
         cancelButton.snp.makeConstraints { make in
-            make.left.equalTo(searchTextField.snp_rightMargin).inset(-16)
+            make.left.equalTo(searchTextField.snp.right).inset(-8)
             make.width.height.equalTo(18)
             make.centerY.equalTo(containerView)
         }
@@ -89,7 +89,7 @@ class SearchTextField: UIView {
         containerView.addSubview(breakView)
         breakView.backgroundColor = iconColor
         breakView.snp.makeConstraints { make in
-            make.left.equalTo(cancelButton.snp_rightMargin).inset(-16)
+            make.left.equalTo(cancelButton.snp.right).inset(-8)
             make.width.equalTo(1)
             make.height.equalTo(18)
             make.centerY.equalTo(containerView)
@@ -102,7 +102,7 @@ class SearchTextField: UIView {
         filterButton.tintColor = buttonsColor
         filterButton.snp.makeConstraints { make in
             make.right.equalToSuperview().inset(16)
-            make.left.equalTo(breakView).inset(16)
+            make.left.equalTo(breakView.snp.right).inset(-8)
             make.width.height.equalTo(18)
             make.centerY.equalTo(containerView)
         }
