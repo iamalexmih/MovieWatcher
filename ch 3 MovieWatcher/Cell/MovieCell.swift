@@ -34,8 +34,7 @@ class MovieCell: UITableViewCell {
         label.textColor = .black
         label.font = UIFont.jakartaBold(size: 18)
         label.font = .systemFont(ofSize: 18)
-        label.numberOfLines = 1
-        label.adjustsFontSizeToFitWidth = true
+        label.numberOfLines = 0
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -161,13 +160,14 @@ class MovieCell: UITableViewCell {
         movieName.snp.makeConstraints { make in
             make.top.equalTo(contentView)
             make.left.equalTo(movieImage.snp.right).inset(-10)
+            make.right.equalTo(favouriteButton.snp.left).inset(-5)
         }
         
         favouriteButton.snp.makeConstraints { make in
             make.height.equalTo(17)
             make.width.equalTo(19)
-            make.top.equalToSuperview()
-            make.left.equalTo(movieName.snp.right).inset(-54)
+            make.top.equalTo(contentView)
+            make.right.equalTo(-5)
         }
         
         timeStack.snp.makeConstraints { make in
