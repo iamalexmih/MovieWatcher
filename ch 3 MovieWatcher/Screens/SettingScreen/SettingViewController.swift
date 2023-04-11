@@ -22,7 +22,6 @@ class SettingViewController: UIViewController {
     let toggle = UISwitch()
     let logOutTemplateButton = LogOutTemplateButton()
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -101,7 +100,8 @@ class SettingViewController: UIViewController {
     }
 
     func setupHeadInProfileSetting() {
-        headInProfileSetting.image = UIImage(named: Resources.Image.headInProfileSetting)
+        let image = UIImage(named: Resources.Image.headInProfileSetting)?.withTintColor(.label)
+        headInProfileSetting.image = image
         headInProfileSetting.contentMode = .scaleAspectFit
         view.addSubview(headInProfileSetting)
 
@@ -112,7 +112,8 @@ class SettingViewController: UIViewController {
     }
 
     func setupFleshInProfileSetting() {
-        fleshInProfileSetting.image = UIImage(named: Resources.Image.fleshInProfileSetting)
+        let image = UIImage(named: Resources.Image.fleshInProfileSetting)?.withTintColor(.label)
+        fleshInProfileSetting.image = image
         fleshInProfileSetting.contentMode = .scaleAspectFit
         view.addSubview(fleshInProfileSetting)
 
@@ -160,7 +161,9 @@ class SettingViewController: UIViewController {
     }
 
     func setupChangePasswordProfileSettingImage() {
-        changePasswordProfileSettingImage.image = UIImage(named: Resources.Image.changePasswordProfileSetting)
+        let image = UIImage(named: Resources.Image.changePasswordProfileSetting)?.withTintColor(.label)
+        changePasswordProfileSettingImage.image = image
+        changePasswordProfileSettingImage.contentMode = .scaleAspectFit
         view.addSubview(changePasswordProfileSettingImage)
         changePasswordProfileSettingImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(332)
@@ -181,7 +184,9 @@ class SettingViewController: UIViewController {
     }
 
     func setupForgotPasswordProfileSettingImage() {
-        forgotPasswordProfileSettingImage.image = UIImage(named: Resources.Image.forgotPasswordProfileSetting)
+        let image = UIImage(named: Resources.Image.forgotPasswordProfileSetting)?.withTintColor(.label)
+        forgotPasswordProfileSettingImage.image = image
+        forgotPasswordProfileSettingImage.contentMode = .scaleAspectFit
         view.addSubview(forgotPasswordProfileSettingImage)
         forgotPasswordProfileSettingImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(382)
@@ -202,7 +207,9 @@ class SettingViewController: UIViewController {
     }
 
     func setupDarkModeSettingImage() {
-        darkModeSettingImage.image = UIImage(named: Resources.Image.darkModeProfileSetting)
+        let image = UIImage(named: Resources.Image.darkModeProfileSetting)?.withTintColor(.label)
+        darkModeSettingImage.image = image
+        darkModeSettingImage.contentMode = .scaleAspectFit
         view.addSubview(darkModeSettingImage)
         darkModeSettingImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(430)
