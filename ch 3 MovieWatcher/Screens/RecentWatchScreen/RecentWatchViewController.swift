@@ -44,6 +44,10 @@ class RecentWatchViewController: UIViewController {
 }
 
 extension RecentWatchViewController: ReusableTableViewDelegate {
+    func updateListMovieCoreData() {
+        
+    }
+    
     func didSelectTableViewCell(_ cell: UITableViewCell) {
         let detailedVC = MovieDetailViewController()
         navigationController?.pushViewController(detailedVC, animated: true)

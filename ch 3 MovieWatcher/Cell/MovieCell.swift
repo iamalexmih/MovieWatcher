@@ -10,122 +10,210 @@ import SnapKit
 import Kingfisher
 
 
+
+protocol FavoriteMovieCellProtocol: AnyObject {
+    func didPressFavoriteButton()
+}
+
+
 class MovieCell: UITableViewCell {
     
     static let identifier = "RecipeCell"
     
+    private var movieId: Int = 0
+    weak var delegateFavoriteButton: FavoriteMovieCellProtocol?
+    
     var timeStack = UIStackView()
     var calendarStack = UIStackView()
     
-    private var movieImage: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "questionmark")
-        image.contentMode = .scaleAspectFill
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.layer.cornerRadius = 10
-        image.layer.masksToBounds = true
-        image.clipsToBounds = true
-        return image
-    }()
+    private var movieImage: UIImageView = UIImageView()
+    private var movieName: UILabel = UILabel()
+    private let timeImageView: UIImageView = UIImageView()
+    private let timeLabel: UILabel = UILabel()
+    private let calendarImageView: UIImageView = UIImageView()
+    private let calendarLabel: UILabel = UILabel()
+    private let filmstripView: UIImageView = UIImageView()
+    private let categoryLabel: UILabel = UILabel()
+    private var favouriteButton: UIButton = UIButton(type: .system)
+
     
-    private var movieName: UILabel = {
-        let label = UILabel()
-        label.text = "Mad Max Collection"
-        label.textColor = .black
-        label.font = UIFont.jakartaBold(size: 18)
-        label.font = .systemFont(ofSize: 18)
-        label.numberOfLines = 0
-        label.textAlignment = .left
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let timeImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: Resources.Image.clockImage)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    private let timeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "148 Minutes"
-        label.font = UIFont.montserratRomanMedium(size: 12)
-        label.textColor = UIColor(named: Resources.Colors.secondText)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let calendarImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: Resources.Image.calendarImage)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    private let calendarLabel: UILabel = {
-        let label = UILabel()
-        label.text = "17 Sep 2021"
-        label.font = UIFont.montserratRomanMedium(size: 12)
-        label.textColor = UIColor(named: Resources.Colors.secondText)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let filmstripView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: Resources.Image.filmstripImage)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    private let categoryLabel: UILabel = {
-       let label = UILabel()
-        label.text = "Action"
-        label.font = UIFont.montserratRomanMedium(size: 12)
-        label.contentMode = .center
-        label.textColor = UIColor(named: Resources.Colors.secondText)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    
-    lazy var favouriteButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "heart"), for: .normal)
-        button.tintColor = UIColor(named: Resources.Colors.categoryColour)
-        button.addTarget(self, action: #selector(favouriteButtonPressed), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    @objc func favouriteButtonPressed() {
-        print("Favourite PRESSED")
-        }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .systemBackground
+        configureElementUI()
         setupViews()
         setupConstraints()
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(movie: Movie) {
+    
+    func configureForNetwork(movie: Movie) {
         movieName.text = movie.original_title
         calendarLabel.text = movie.release_date
         categoryLabel.text = NetworkService.shared.getNameGenreForOneMovie(
             movieGenresId: movie.genre_ids.first ?? 7777,
             arrayGenres: StorageGenres.shared.listGenres
         )
-        
-        guard let urlPoster = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
-        movieImage.kf.setImage(with: URL(string: urlPoster))
+        movieId = movie.id
+        synchFavoriteWithNetwork(movieId)
+        guard let posterPath = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
+        let urlPoster = URL(string: posterPath)
+        movieImage.kf.setImage(with: urlPoster) { result in
+            switch result {
+            case .success(let value):
+                let imageData = value.image.pngData()
+                self.saveImageCoreData(imageData: imageData, movie: movie)
+            case .failure(let error):
+                print("Error kf: \(error)")
+            }
+        }
     }
     
+    
+    @objc func favouriteButtonPressed() {
+        print("Favourite PRESSED")
+        if CoreDataService.shared.fetchDataId(id: movieId, parentCategory: "FavoriteViewController").isEmpty {
+           // Добавить в Избранное
+            let selectedMovieInCommonList = CoreDataService.shared.fetchDataId(id: movieId, parentCategory: "SearchViewController").first!
+            let categoryEntityFavorite = CategoryScreenEntity(context: CoreDataService.shared.viewContext)
+            categoryEntityFavorite.name = "FavoriteViewController"
+            let categoryEntitySearch = CategoryScreenEntity(context: CoreDataService.shared.viewContext)
+            categoryEntitySearch.name = "SearchViewController"
+            
+            let setParents = NSSet(objects: categoryEntityFavorite, categoryEntitySearch)
+            selectedMovieInCommonList.parentCategory = setParents
+            selectedMovieInCommonList.favorite = !selectedMovieInCommonList.favorite
+            CoreDataService.shared.save()
+            setImageButtonFavorite(isFavorite: selectedMovieInCommonList.favorite)
+        } else {
+            // Удалить из избранного
+            let selectedMovieInFavoriteList = CoreDataService.shared.fetchDataId(id: movieId, parentCategory: "FavoriteViewController").first!
+            let categoryEntity = CategoryScreenEntity(context: CoreDataService.shared.viewContext)
+            categoryEntity.name = "SearchViewController"
+            let setParents = NSSet(objects: categoryEntity)
+            selectedMovieInFavoriteList.parentCategory = setParents
+            selectedMovieInFavoriteList.favorite = !selectedMovieInFavoriteList.favorite
+            CoreDataService.shared.save()
+            setImageButtonFavorite(isFavorite: selectedMovieInFavoriteList.favorite)
+        }
+        delegateFavoriteButton?.didPressFavoriteButton()
+    }
+    
+    
+    func synchFavoriteWithNetwork(_ movieId: Int) {
+        // Если массив содержит элемент, то значит кино в избранном. значить поставить сердечко
+        if !CoreDataService.shared.fetchDataId(id: movieId, parentCategory: "FavoriteViewController").isEmpty {
+            setImageButtonFavorite(isFavorite: true)
+        }
+    }
+    
+}
+
+
+
+// MARK: - Core Data
+extension MovieCell {
+    
+    func setDataForCellCoreData(movieEntity: MovieEntity) {
+        calendarLabel.text = movieEntity.releaseDate
+        movieName.text = movieEntity.title
+        movieId = Int(movieEntity.id)
+        setImageButtonFavorite(isFavorite: movieEntity.favorite)
+        let imageDataDefault = UIImage(systemName: "questionmark")?.pngData()
+        let imageEntity = CoreDataService.shared.fetchImageUseMovieId(id: Int(movieEntity.id))
+        if let imageEntity = imageEntity {
+            movieImage.image = UIImage(data: imageEntity.imageData ?? imageDataDefault!)
+        }
+    }
+    
+    
+    func saveImageCoreData(imageData: Data?, movie: Movie) {
+        // Если фильма с id xxx нет в хранилище, то тогда добавить.
+        let imageEntity = CoreDataService.shared.fetchImageUseMovieId(id: movie.genre_ids.first!)
+        if imageEntity == nil {
+            let imageDataDefault = UIImage(systemName: "questionmark")?.pngData()
+            
+            let newImageEntity = ImageEntity(context: CoreDataService.shared.viewContext)
+            newImageEntity.id = Int64(movie.id)
+            newImageEntity.imageData = imageData ?? imageDataDefault
+            
+            CoreDataService.shared.save()
+        }
+    }
+    
+}
+
+
+
+// MARK: - Configure element UI
+extension MovieCell {
+    
+    private func setImageButtonFavorite(isFavorite: Bool) {
+        if isFavorite {
+            favouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else {
+            favouriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+    }
+    
+    private func configureElementUI() {
+        movieImage.image = UIImage(named: "questionmark")
+        movieImage.contentMode = .scaleAspectFill
+        movieImage.translatesAutoresizingMaskIntoConstraints = false
+        movieImage.layer.cornerRadius = 10
+        movieImage.layer.masksToBounds = true
+        movieImage.clipsToBounds = true
+        
+        movieName.text = "Mad Max Collection"
+        movieName.textColor = .black
+        movieName.font = UIFont.jakartaBold(size: 18)
+        movieName.font = .systemFont(ofSize: 18)
+        movieName.numberOfLines = 0
+        movieName.textAlignment = .left
+        movieName.translatesAutoresizingMaskIntoConstraints = false
+        
+        timeImageView.image = UIImage(named: Resources.Image.clockImage)
+        timeImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        timeLabel.text = "148 Minutes"
+        timeLabel.font = UIFont.montserratRomanMedium(size: 12)
+        timeLabel.textColor = UIColor(named: Resources.Colors.secondText)
+        timeLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        calendarImageView.image = UIImage(named: Resources.Image.calendarImage)
+        calendarImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        calendarLabel.text = "17 Sep 2021"
+        calendarLabel.font = UIFont.montserratRomanMedium(size: 12)
+        calendarLabel.textColor = UIColor(named: Resources.Colors.secondText)
+        calendarLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        filmstripView.image = UIImage(named: Resources.Image.filmstripImage)
+        filmstripView.translatesAutoresizingMaskIntoConstraints = false
+        
+        categoryLabel.text = "Action"
+        categoryLabel.font = UIFont.montserratRomanMedium(size: 12)
+        categoryLabel.contentMode = .center
+        categoryLabel.textColor = UIColor(named: Resources.Colors.secondText)
+        categoryLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        favouriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        favouriteButton.tintColor = UIColor(named: Resources.Colors.categoryColour)
+        favouriteButton.addTarget(self, action: #selector(favouriteButtonPressed), for: .touchUpInside)
+        favouriteButton.translatesAutoresizingMaskIntoConstraints = false
+    }
+}
+
+
+
+// MARK: - Set Layout
+extension MovieCell {
+
     private func setupViews() {
         contentView.addSubview(movieImage)
         contentView.addSubview(favouriteButton)
@@ -145,11 +233,10 @@ class MovieCell: UITableViewCell {
         
         contentView.addSubview(filmstripView)
         contentView.addSubview(categoryLabel)
-                
     }
     
+    
     private func setupConstraints() {
-        
         movieImage.snp.makeConstraints { make in
             make.top.equalTo(contentView)
             make.left.equalToSuperview()

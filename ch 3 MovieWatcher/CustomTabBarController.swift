@@ -47,7 +47,12 @@ extension CustomTabBarController {
             controller.tabBarItem.image = UIImage(named: Resources.Image.tabBarRecentWatch)
             controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarRecentWatchFill)
         case "Home":
-            setupMiddleButton()
+//            setupMiddleButton()
+            controller.tabBarItem.image = UIImage(named: Resources.Image.tabBarHome)?
+                .withRenderingMode(.alwaysOriginal)
+            
+            controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarHome)?
+                .withRenderingMode(.alwaysOriginal)
         case "Favorites":
             controller.tabBarItem.image = UIImage(named: Resources.Image.tabBarFavorites)
             controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarFavoritesFill)
@@ -67,7 +72,7 @@ extension CustomTabBarController {
 
         menuButton.layer.cornerRadius = menuButtonFrame.height / 2
         view.addSubview(menuButton)
-
+        
         menuButton.setImage(UIImage(named: Resources.Image.tabBarHome), for: .normal)
         menuButton.imageEdgeInsets.top = -35
         menuButton.addTarget(self, action: #selector(menuButtonAction(sender:)), for: .touchUpInside)

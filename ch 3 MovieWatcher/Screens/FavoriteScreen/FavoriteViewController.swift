@@ -11,7 +11,7 @@ import SnapKit
 
 class FavoriteViewController: UIViewController {
     
-    var movieTableView = ReusableTableView()
+    private var movieTableView = ReusableTableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +21,12 @@ class FavoriteViewController: UIViewController {
         view.addSubview(movieTableView)
         setupConstrains()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        movieTableView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "FavoriteViewController")
+    }
+    
         
     private func setupConstrains() {
         
@@ -34,6 +40,10 @@ class FavoriteViewController: UIViewController {
 }
 
 extension FavoriteViewController: ReusableTableViewDelegate {
+    func updateListMovieCoreData() {
+        movieTableView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "FavoriteViewController")
+    }
+    
     func didSelectTableViewCell(_ cell: UITableViewCell) {
         let detailedVC = MovieDetailViewController()
         navigationController?.pushViewController(detailedVC, animated: true)

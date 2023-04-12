@@ -22,7 +22,6 @@ class SettingViewController: UIViewController {
     let toggle = UISwitch()
     let logOutTemplateButton = LogOutTemplateButton()
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -57,8 +56,8 @@ class SettingViewController: UIViewController {
         view.addSubview(avatarView)
 
         avatarView.snp.makeConstraints { make in
-            make.top.equalTo(view.snp.topMargin).offset(38)
             make.left.equalToSuperview().offset(24)
+            make.top.equalToSuperview().offset(144)
             make.width.equalTo(56)
             make.height.equalTo(56)
         }
@@ -71,9 +70,8 @@ class SettingViewController: UIViewController {
         view.addSubview(nameLabel)
 
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.snp.topMargin).offset(38)
-            make.left.equalTo(avatarView.snp.right).offset(16)
-            make.right.equalToSuperview().inset(24)
+            make.left.equalToSuperview().offset(92)
+            make.top.equalToSuperview().offset(147)
         }
     }
 
@@ -84,9 +82,8 @@ class SettingViewController: UIViewController {
         view.addSubview(nickNameLabel)
 
         nickNameLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(2)
-            make.left.equalTo(avatarView.snp.right).offset(16)
-            make.right.equalToSuperview().inset(24)
+            make.left.equalToSuperview().offset(92)
+            make.top.equalToSuperview().offset(172)
         }
     }
 
@@ -97,33 +94,32 @@ class SettingViewController: UIViewController {
         view.addSubview(personalInfo)
 
         personalInfo.snp.makeConstraints { make in
-            make.top.equalTo(view.snp.topMargin).offset(120)
             make.left.equalToSuperview().offset(24)
-            make.right.equalToSuperview().inset(268)
+            make.top.equalToSuperview().offset(222)
         }
     }
 
     func setupHeadInProfileSetting() {
-        headInProfileSetting.image = UIImage(named: Resources.Image.headInProfileSetting)
+        let image = UIImage(named: Resources.Image.headInProfileSetting)?.withTintColor(.label)
+        headInProfileSetting.image = image
         headInProfileSetting.contentMode = .scaleAspectFit
         view.addSubview(headInProfileSetting)
 
         headInProfileSetting.snp.makeConstraints { make in
-            make.top.equalTo(personalInfo.snp.bottom).offset(21)
-            make.left.equalToSuperview().offset(-8)
-            make.right.equalToSuperview().inset(327)
+            make.top.equalToSuperview().offset(258)
+            make.left.equalToSuperview().offset(35)
         }
     }
 
     func setupFleshInProfileSetting() {
-        fleshInProfileSetting.image = UIImage(named: Resources.Image.fleshInProfileSetting)
+        let image = UIImage(named: Resources.Image.fleshInProfileSetting)?.withTintColor(.label)
+        fleshInProfileSetting.image = image
         fleshInProfileSetting.contentMode = .scaleAspectFit
         view.addSubview(fleshInProfileSetting)
 
         fleshInProfileSetting.snp.makeConstraints { make in
-            make.top.equalTo(headInProfileSetting.snp.bottom).offset(2)
-            make.left.equalToSuperview().offset(-8)
-            make.right.equalToSuperview().inset(327)
+            make.top.equalToSuperview().offset(268)
+            make.left.equalToSuperview().offset(32)
         }
     }
 
@@ -135,7 +131,7 @@ class SettingViewController: UIViewController {
 
         profileButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(60)
-            make.top.equalToSuperview().offset(240)
+            make.top.equalToSuperview().offset(250)
         }
     }
 
@@ -145,8 +141,8 @@ class SettingViewController: UIViewController {
         view.addSubview(chevronButton)
 
         chevronButton.snp.makeConstraints { make in
-            make.centerY.equalTo(profileButton.snp.centerY)
-            make.trailing.equalTo(view.snp.trailing).offset(-29)
+            make.top.equalToSuperview().offset(260)
+            make.right.equalToSuperview().inset(30)
             make.width.equalTo(16)
             make.height.equalTo(16)
         }
@@ -159,16 +155,18 @@ class SettingViewController: UIViewController {
         view.addSubview(security)
 
         security.snp.makeConstraints { make in
-            make.top.equalTo(view.snp.topMargin).offset(190)
-            make.left.equalToSuperview().offset(24)
+            make.leading.equalToSuperview().offset(24)
+            make.top.equalToSuperview().offset(295)
         }
     }
 
     func setupChangePasswordProfileSettingImage() {
-        changePasswordProfileSettingImage.image = UIImage(named: Resources.Image.changePasswordProfileSetting)
+        let image = UIImage(named: Resources.Image.changePasswordProfileSetting)?.withTintColor(.label)
+        changePasswordProfileSettingImage.image = image
+        changePasswordProfileSettingImage.contentMode = .scaleAspectFit
         view.addSubview(changePasswordProfileSettingImage)
         changePasswordProfileSettingImage.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(317)
+            make.top.equalToSuperview().offset(332)
             make.left.equalToSuperview().offset(32)
         }
     }
@@ -181,15 +179,17 @@ class SettingViewController: UIViewController {
 
         changePasswordProfileSettingTextButton.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(60)
-            make.top.equalToSuperview().offset(310)
+            make.top.equalToSuperview().offset(325)
         }
     }
 
     func setupForgotPasswordProfileSettingImage() {
-        forgotPasswordProfileSettingImage.image = UIImage(named: Resources.Image.forgotPasswordProfileSetting)
+        let image = UIImage(named: Resources.Image.forgotPasswordProfileSetting)?.withTintColor(.label)
+        forgotPasswordProfileSettingImage.image = image
+        forgotPasswordProfileSettingImage.contentMode = .scaleAspectFit
         view.addSubview(forgotPasswordProfileSettingImage)
         forgotPasswordProfileSettingImage.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(367)
+            make.top.equalToSuperview().offset(382)
             make.left.equalToSuperview().offset(32)
         }
     }
@@ -202,15 +202,17 @@ class SettingViewController: UIViewController {
 
         forgotPasswordButton.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(60)
-            make.top.equalToSuperview().offset(360)
+            make.top.equalToSuperview().offset(375)
         }
     }
 
     func setupDarkModeSettingImage() {
-        darkModeSettingImage.image = UIImage(named: Resources.Image.darkModeProfileSetting)
+        let image = UIImage(named: Resources.Image.darkModeProfileSetting)?.withTintColor(.label)
+        darkModeSettingImage.image = image
+        darkModeSettingImage.contentMode = .scaleAspectFit
         view.addSubview(darkModeSettingImage)
         darkModeSettingImage.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(420)
+            make.top.equalToSuperview().offset(430)
             make.left.equalToSuperview().offset(32)
         }
     }
@@ -222,14 +224,14 @@ class SettingViewController: UIViewController {
 
         darkModeSettingLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(60)
-            make.top.equalToSuperview().offset(420)
+            make.top.equalToSuperview().offset(430)
         }
     }
 
     func setupToggle() {
         view.addSubview(toggle)
         toggle.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(410)
+            make.top.equalToSuperview().offset(425)
             make.right.equalToSuperview().inset(30)
         }
         toggle.addTarget(self, action: #selector(setupToggleDarkMode), for: .touchUpInside)
