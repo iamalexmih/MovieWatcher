@@ -22,7 +22,7 @@ class RecentWatchViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.delegateForCell = self
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: Resources.Colors.backGround)
     }
     
     private func setupConstrains() {

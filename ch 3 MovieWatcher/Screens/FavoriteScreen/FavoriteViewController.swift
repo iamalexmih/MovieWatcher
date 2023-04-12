@@ -17,7 +17,7 @@ class FavoriteViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.delegateForCell = self
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: Resources.Colors.backGround)
         view.addSubview(tableView)
         setupConstrains()
     }

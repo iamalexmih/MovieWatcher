@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import SnapKit
 
 class CustomTabBarController: UITabBarController {
-
+    
+    let menuButton = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,7 +35,7 @@ class CustomTabBarController: UITabBarController {
 
 }
 
-private extension CustomTabBarController {
+extension CustomTabBarController {
     func customizeTabBar(_ controller: UINavigationController, name: String) {
         controller.viewControllers[0].title = name
         
@@ -56,8 +59,7 @@ private extension CustomTabBarController {
     }
     
     func setupMiddleButton() {
-        let menuButton = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
-
+        
         var menuButtonFrame = menuButton.frame
         menuButtonFrame.origin.y = view.bounds.height - menuButtonFrame.height
         menuButtonFrame.origin.x = view.bounds.width / 2 - menuButtonFrame.size.width / 2
@@ -69,7 +71,7 @@ private extension CustomTabBarController {
         menuButton.setImage(UIImage(named: Resources.Image.tabBarHome), for: .normal)
         menuButton.imageEdgeInsets.top = -35
         menuButton.addTarget(self, action: #selector(menuButtonAction(sender:)), for: .touchUpInside)
-
+        
         view.layoutIfNeeded()
     }
 

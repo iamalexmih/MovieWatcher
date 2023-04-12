@@ -30,7 +30,7 @@ class ReusableTableView: UIView {
     func configureTable() {
         tableView.rowHeight = 184
         tableView.separatorStyle = .none
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = UIColor(named: Resources.Colors.backGround)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(MovieCell.self, forCellReuseIdentifier: MovieCell.identifier)
     }

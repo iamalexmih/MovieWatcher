@@ -16,6 +16,7 @@ class BoxViewCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "heart"), for: .normal)
         button.tintColor = UIColor(named: Resources.Colors.categoryColour)
+        button.addTarget(self, action: #selector(favouriteButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -115,6 +116,10 @@ class BoxViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc private func favouriteButtonTapped() {
+        print("TAPPED")
+    }
+    
     func setupView() {
         addSubview(filmImageView)
         addSubview(categoryFilmLabel)
@@ -139,7 +144,7 @@ class BoxViewCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             
-            favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
             favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             favoriteButton.heightAnchor.constraint(equalToConstant: 25),
             favoriteButton.widthAnchor.constraint(equalToConstant: 25),
@@ -167,7 +172,7 @@ class BoxViewCell: UICollectionViewCell {
             timeLabel.heightAnchor.constraint(equalToConstant: 15),
             
             ratingStack.centerYAnchor.constraint(equalTo: timeLabel.centerYAnchor),
-            ratingStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0)
+            ratingStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5)
 
         ])
     }
