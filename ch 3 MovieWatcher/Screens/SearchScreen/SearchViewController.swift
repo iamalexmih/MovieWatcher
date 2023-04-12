@@ -19,10 +19,13 @@ class SearchViewController: UIViewController {
     // MARK: - VC LifeCycle
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         view.addSubviews(searchTextField, collectionView, movieTableView)
         setupConstrains()
         
-        movieTableView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "SearchViewController")
+        if movieTableView.listMovieNetwork.isEmpty {
+            movieTableView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "SearchViewController")
+        }
     }
     
     
@@ -93,7 +96,9 @@ extension SearchViewController {
 // MARK: - Table View Delegate
 extension SearchViewController: ReusableTableViewDelegate {
     func updateListMovieCoreData() {
-        movieTableView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "SearchViewController")
+        if movieTableView.listMovieNetwork.isEmpty {
+            movieTableView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "SearchViewController")
+        }
     }
     
     func didSelectTableViewCell(_ cell: UITableViewCell) {
