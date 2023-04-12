@@ -78,7 +78,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - UI Setup section
     func setupUI() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = UIColor(named: Resources.Colors.backGround)
        
         setuTopStack()
         setupMiddleStack()

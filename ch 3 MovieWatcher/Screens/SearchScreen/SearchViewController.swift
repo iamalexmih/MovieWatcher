@@ -31,8 +31,8 @@ class SearchViewController: UIViewController {
         
         movieTableView.delegateForCell = self
         collectionView.delegateCollectionDidSelect = self
-        view.backgroundColor = .white
-        
+        view.backgroundColor = UIColor(named: Resources.Colors.backGround)
+
         popularMovie()
     }
     

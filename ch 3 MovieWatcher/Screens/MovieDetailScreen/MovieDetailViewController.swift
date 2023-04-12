@@ -36,12 +36,11 @@ class MovieDetailViewController: UIViewController {
     lazy var bottomView = UIView()
     lazy var watchButton = CustomButton(title: "Watch now")
     
+
     
     // MARK: - VC LifeCycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.hidesBottomBarWhenPushed = true
-//        CustomTabBarController().tabBar.isHidden = true
         tabBarController?.tabBar.isHidden = true
     }
 
