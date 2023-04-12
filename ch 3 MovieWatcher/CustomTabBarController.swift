@@ -43,44 +43,26 @@ extension CustomTabBarController {
         
         switch name {
         case "Search":
-            controller.tabBarItem.image = UIImage(named: Resources.Image.tabBarSearch)
+            controller.tabBarItem.image = UIImage(named: Resources.Image.tabBarSearch)?.withRenderingMode(.alwaysOriginal)
             controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarSearchFill)?.withRenderingMode(.alwaysOriginal)
         case "Recent Watch":
-            controller.tabBarItem.image = UIImage(named: Resources.Image.tabBarRecentWatch)
+            controller.tabBarItem.image = UIImage(named: Resources.Image.tabBarRecentWatch)?.withRenderingMode(.alwaysOriginal)
             controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarRecentWatchFill)?.withRenderingMode(.alwaysOriginal)
         case "Home":
-//            setupMiddleButton()
             controller.tabBarItem.image = UIImage(named: Resources.Image.tabBarHome)?
                 .withRenderingMode(.alwaysOriginal)
             
             controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarHome)?
                 .withRenderingMode(.alwaysOriginal)
         case "Favorites":
-            controller.tabBarItem.image = UIImage(named: Resources.Image.tabBarFavorites)
-            controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarFavoritesFill)?.withRenderingMode(.alwaysOriginal)
+            controller.tabBarItem.image = UIImage(named: Resources.Image.favourites)?.withRenderingMode(.alwaysOriginal)
+            controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.favouritesFill)?.withRenderingMode(.alwaysOriginal)
         case "Setting":
-            controller.tabBarItem.image = UIImage(named: Resources.Image.tabBarSetting)
+            controller.tabBarItem.image = UIImage(named: Resources.Image.tabBarSetting)?.withRenderingMode(.alwaysOriginal)
             controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarSettingFill)?.withRenderingMode(.alwaysOriginal)
         default: break
         }
     }
-    
-//    func setupMiddleButton() {
-//
-//        var menuButtonFrame = menuButton.frame
-//        menuButtonFrame.origin.y = view.bounds.height - menuButtonFrame.height
-//        menuButtonFrame.origin.x = view.bounds.width / 2 - menuButtonFrame.size.width / 2
-//        menuButton.frame = menuButtonFrame
-//
-//        menuButton.layer.cornerRadius = menuButtonFrame.height / 2
-//        view.addSubview(menuButton)
-//
-//        menuButton.setImage(UIImage(named: Resources.Image.tabBarHome), for: .normal)
-//        menuButton.imageEdgeInsets.top = -35
-//        menuButton.addTarget(self, action: #selector(menuButtonAction(sender:)), for: .touchUpInside)
-//
-//        view.layoutIfNeeded()
-//    }
 
     // MARK: - Actions
 
