@@ -41,7 +41,7 @@ class ReusableCollectionView: UIView {
         layout.scrollDirection = .horizontal
         collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = UIColor(named: Resources.Colors.backGround)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
     }

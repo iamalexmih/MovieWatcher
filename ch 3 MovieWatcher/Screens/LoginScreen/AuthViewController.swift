@@ -130,7 +130,8 @@ class AuthViewController: UIViewController {
         
         bottomStack.translatesAutoresizingMaskIntoConstraints = false
         
-        authOptionsView.backgroundColor = .white
+        authOptionsView.backgroundColor = UIColor(named: Resources.Colors.backGround)
+
         authOptionsView.layer.cornerRadius = 20
         
         tempLabel.text = "Or Continue With"

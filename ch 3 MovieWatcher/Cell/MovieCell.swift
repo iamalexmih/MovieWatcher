@@ -251,10 +251,10 @@ extension MovieCell {
         }
         
         favouriteButton.snp.makeConstraints { make in
-            make.height.equalTo(17)
-            make.width.equalTo(19)
+            make.height.equalTo(20)
+            make.width.equalTo(23)
             make.top.equalTo(contentView)
-            make.right.equalTo(-5)
+            make.right.equalTo(-7)
         }
         
         timeStack.snp.makeConstraints { make in

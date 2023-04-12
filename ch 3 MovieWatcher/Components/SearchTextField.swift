@@ -63,7 +63,7 @@ class SearchTextField: UIView {
 
     private func configureSearchTextField() {
         containerView.addSubview(searchTextField)
-        searchTextField.backgroundColor = .clear
+        searchTextField.backgroundColor = UIColor(named: Resources.Colors.backGround)
         searchTextField.placeholder = textFieldPlaceHolder
         searchTextField.font = .jakartaMedium(size: 16)
         searchTextField.textColor = UIColor(named: Resources.Colors.text)
