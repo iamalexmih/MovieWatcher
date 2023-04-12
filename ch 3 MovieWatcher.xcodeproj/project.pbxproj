@@ -77,6 +77,7 @@
 		B5C25E7729E5A626000DE9D7 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5C25E7429E5A626000DE9D7 /* CoreDataModel.xcdatamodeld */; };
 		B5C25E7A29E6A084000DE9D7 /* UserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C25E7929E6A084000DE9D7 /* UserInfoService.swift */; };
 		B5C25E7C29E6A345000DE9D7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C25E7B29E6A345000DE9D7 /* UserModel.swift */; };
+		B5C25E7E29E75B63000DE9D7 /* NavBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C25E7D29E75B62000DE9D7 /* NavBarController.swift */; };
 		B5EF3B3429E2EF8E00183201 /* TextViewWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF3B3329E2EF8E00183201 /* TextViewWithLabel.swift */; };
 		B5EF3B3629E330B400183201 /* CheckGenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF3B3529E330B400183201 /* CheckGenderButton.swift */; };
 		B5EF3B3B29E35F3700183201 /* CheckGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF3B3A29E35F3700183201 /* CheckGenderView.swift */; };
@@ -152,6 +153,7 @@
 		B5C25E7529E5A626000DE9D7 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		B5C25E7929E6A084000DE9D7 /* UserInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoService.swift; sourceTree = "<group>"; };
 		B5C25E7B29E6A345000DE9D7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		B5C25E7D29E75B62000DE9D7 /* NavBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarController.swift; sourceTree = "<group>"; };
 		B5EF3B3329E2EF8E00183201 /* TextViewWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewWithLabel.swift; sourceTree = "<group>"; };
 		B5EF3B3529E330B400183201 /* CheckGenderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckGenderButton.swift; sourceTree = "<group>"; };
 		B5EF3B3A29E35F3700183201 /* CheckGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckGenderView.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				8E92CEC629E5680300DB826A /* movieAnimation.json */,
 				B5B1D18029D9D7C0006966FF /* Application */,
 				57E6209729DB4BFF00260AF5 /* CustomTabBarController.swift */,
+				B5C25E7D29E75B62000DE9D7 /* NavBarController.swift */,
 				B5EF3B3929E35E9A00183201 /* Screens */,
 				B5B1D18D29D9DA87006966FF /* Cell */,
 				B5B1D1B729DA0787006966FF /* Components */,
@@ -666,6 +669,7 @@
 				8E6E226E29E14DAE009D1807 /* CastAndCrewCell.swift in Sources */,
 				B5B1D19F29D9DCFE006966FF /* FilterViewController.swift in Sources */,
 				B551395A29DDFDC9005CD307 /* ApiKey.swift in Sources */,
+				B5C25E7E29E75B63000DE9D7 /* NavBarController.swift in Sources */,
 				5770CA7429E0C47E000CED66 /* BoxViewCell.swift in Sources */,
 				8E6E226C29E14C00009D1807 /* StarRatingView.swift in Sources */,
 				5770CA7029E0C43F000CED66 /* HomeViewMovieCell.swift in Sources */,

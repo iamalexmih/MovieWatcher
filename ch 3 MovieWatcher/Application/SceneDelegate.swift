@@ -8,6 +8,7 @@
 import UIKit
 
 
+
 // swiftlint:disable all
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -19,17 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
 
-        let settingViewController = SettingViewController()
-        let testComponentsViewController = TestComponentsViewController()
-        let tabBar = CustomTabBarController()
-        let navControllerForAuth = UINavigationController.init(rootViewController: AuthViewController())
-        let onBoardingViewController = OnBoardingViewController()
-        UINavigationBar.appearance().backIndicatorImage = UIImage(systemName: "arrow.left.circle.fill")
-        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.left.circle.fill")
-        UINavigationBar.appearance().backgroundColor = UIColor(named: Resources.Colors.backGround)
-        UINavigationBar.appearance().tintColor = .systemGray
-        
-        window?.rootViewController = tabBar
+//        let settingViewController = SettingViewController()
+//        let tabBar = CustomTabBarController()
+        let navControllerForAuth = NavBarController(rootViewController: AuthViewController())
+//        let onBoardingViewController = OnBoardingViewController()
+    
+        window?.rootViewController = navControllerForAuth
         window?.makeKeyAndVisible()
     }
 }

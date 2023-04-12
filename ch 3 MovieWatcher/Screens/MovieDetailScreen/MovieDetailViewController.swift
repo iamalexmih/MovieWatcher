@@ -109,7 +109,8 @@ extension MovieDetailViewController {
         shadowView.backgroundColor = .clear
         shadowView.layer.shadowColor = UIColor.black.cgColor
         shadowView.layer.shadowOpacity = 0.25
-        shadowView.layer.shadowRadius = 60
+        // уменьшил радиус тени. на нав баре появлялась белая видимая граница.
+        shadowView.layer.shadowRadius = 30 // было 60
         shadowView.layer.shadowOffset = CGSize(width: 0, height: 20)
         shadowView.snp.makeConstraints { make in
             make.top.equalTo(containerView.snp.top).offset(30)

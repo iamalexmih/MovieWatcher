@@ -23,6 +23,7 @@ enum Resources {
     
     
     enum Image {
+        static let arrowBack = "ArrowBack"
         static let imageExample = "imageExample"
         static let searchImage = "magnifyingglass"
         static let closeImage = "multiply"
