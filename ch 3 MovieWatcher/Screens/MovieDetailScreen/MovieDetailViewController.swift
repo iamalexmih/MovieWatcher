@@ -9,16 +9,16 @@ import UIKit
 import SnapKit
 
 class MovieDetailViewController: UIViewController {
-
+    
     let rating = 1.9
-
+    
     var movieImage = UIImage(named: "filmPoster")
     var movieNameLabelText = "Movie name"
     var releaseDateText = "17 Sep 2020"
     var durationText = "148 minutes"
     var genreText = "Action"
-
-
+    
+    
     lazy var scrollView = UIScrollView()
     lazy var containerView = UIView()
     lazy var shadowView = UIView()
@@ -36,25 +36,36 @@ class MovieDetailViewController: UIViewController {
     lazy var bottomView = UIView()
     lazy var watchButton = CustomButton(title: "Watch now")
     
-
+    
     
     // MARK: - VC LifeCycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         tabBarController?.tabBar.isHidden = false
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
         configure()
     }
     
+    
+    @objc private func watchButtonPress() {
+        print("watch Button Press")
+        // По нажатию на кнопку, добавить этот фильм в Кор дату категорию просмотренно. 
+    }
+}
+
+
+
+// MARK: - Конфигурация лэйблов и констрейнтов
+extension MovieDetailViewController {
    
     private func configure() {
         configureBottomView()
@@ -229,6 +240,7 @@ class MovieDetailViewController: UIViewController {
     private func configureWatchButton() {
         bottomView.addSubview(watchButton)
         watchButton.setTitle("Watch Now", for: .normal)
+        watchButton.addTarget(self, action: #selector(watchButtonPress), for: .touchUpInside)
         watchButton.snp.makeConstraints { make in
             make.centerY.centerX.equalToSuperview()
             make.height.equalTo(56)
