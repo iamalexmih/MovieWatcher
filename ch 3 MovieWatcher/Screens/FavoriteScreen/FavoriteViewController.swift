@@ -13,6 +13,8 @@ class FavoriteViewController: UIViewController {
     
     private var movieTableView = ReusableTableView()
     
+    // MARK: - VC LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,6 +40,7 @@ class FavoriteViewController: UIViewController {
         }
     }
 }
+
 
 extension FavoriteViewController: ReusableTableViewDelegate {
     func updateListMovieCoreData() {
