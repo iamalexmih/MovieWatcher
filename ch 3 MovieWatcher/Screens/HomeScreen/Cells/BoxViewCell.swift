@@ -14,7 +14,7 @@ class BoxViewCell: UICollectionViewCell {
     
     lazy var favoriteButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "heart"), for: .normal)
+        button.setImage(UIImage(named: Resources.Image.favourites)?.withRenderingMode(.alwaysOriginal), for: .normal)
         button.tintColor = UIColor(named: Resources.Colors.categoryColour)
         button.addTarget(self, action: #selector(favouriteButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false

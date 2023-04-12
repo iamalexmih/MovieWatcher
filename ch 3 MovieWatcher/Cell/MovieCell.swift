@@ -59,7 +59,7 @@ class MovieCell: UITableViewCell {
     
     
     func configureForNetwork(movie: Movie) {
-        favouriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        favouriteButton.setImage(UIImage(named: Resources.Image.favourites)?.withRenderingMode(.alwaysOriginal), for: .normal)
         movieName.text = movie.original_title
         calendarLabel.text = movie.release_date
         categoryLabel.text = NetworkService.shared.getNameGenreForOneMovie(
@@ -160,9 +160,9 @@ extension MovieCell {
     
     private func setImageButtonFavorite(isFavorite: Bool) {
         if isFavorite {
-            favouriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            favouriteButton.setImage(UIImage(named: Resources.Image.favouritesFill)?.withRenderingMode(.alwaysOriginal), for: .normal)
         } else {
-            favouriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            favouriteButton.setImage(UIImage(named: Resources.Image.favourites)?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
     }
     
@@ -207,7 +207,7 @@ extension MovieCell {
         categoryLabel.textColor = UIColor(named: Resources.Colors.secondText)
         categoryLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        favouriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        favouriteButton.setImage(UIImage(named: Resources.Image.favourites)?.withRenderingMode(.alwaysOriginal), for: .normal)
         favouriteButton.tintColor = UIColor(named: Resources.Colors.categoryColour)
         favouriteButton.addTarget(self, action: #selector(favouriteButtonPressed), for: .touchUpInside)
         favouriteButton.translatesAutoresizingMaskIntoConstraints = false
