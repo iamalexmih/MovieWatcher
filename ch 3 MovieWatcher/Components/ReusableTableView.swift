@@ -95,6 +95,7 @@ extension ReusableTableView: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.selectionStyle = .none
+        cell.backgroundColor = UIColor(named: Resources.Colors.backGround)
         return cell
     }
     

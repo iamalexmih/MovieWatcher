@@ -33,7 +33,7 @@ class CategoryCell: UICollectionViewCell {
             } else {
                 backgroundColor = .clear
                 categoryLabel.textColor = UIColor(named: Resources.Colors.categoryColour)
-                layer.borderColor = UIColor(named: Resources.Colors.categoryColour)?.cgColor
+                layer.borderColor = UIColor(named: Resources.Colors.inactive)?.cgColor
             }
         }
     }
@@ -48,7 +48,7 @@ class CategoryCell: UICollectionViewCell {
     func setupUICell() {
         backgroundColor = .clear
         layer.borderWidth = 1
-        layer.borderColor = UIColor(named: Resources.Colors.categoryColour)?.cgColor
+        layer.borderColor = UIColor(named: Resources.Colors.inactive)?.cgColor
         layer.masksToBounds = false
         layer.cornerRadius = 15
     }
