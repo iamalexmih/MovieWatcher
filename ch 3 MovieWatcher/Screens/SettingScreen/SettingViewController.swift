@@ -241,12 +241,18 @@ extension SettingViewController {
         }
         toggle.addTarget(self, action: #selector(setupToggleDarkMode), for: .touchUpInside)
     }
-
+    
     @objc func setupToggleDarkMode() {
+        
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        let window = windowScene?.windows.first
+        
+        
         if toggle.isOn {
-            overrideUserInterfaceStyle = .dark
+            window?.overrideUserInterfaceStyle = .dark
         } else {
-            overrideUserInterfaceStyle = .light
+            window?.overrideUserInterfaceStyle = .light
         }
     }
 

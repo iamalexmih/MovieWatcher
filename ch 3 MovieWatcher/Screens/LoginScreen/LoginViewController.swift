@@ -71,7 +71,8 @@ class LoginViewController: UIViewController {
  
     @objc func login(_ sender: UIButton) {
         if var model = authModel {
-            model.checkFields(textFieldArr, isRegistration: false)
+            // TODO: Валидация Выключенна для тестов
+//            model.checkFields(textFieldArr, isRegistration: false)
             model.transitionToMainScreen(controller: self, isRegistration: false)
         }
     }
