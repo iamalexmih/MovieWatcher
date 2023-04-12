@@ -1,9 +1,8 @@
 import UIKit
 import SnapKit
+import FirebaseAuth
 
 class SettingViewController: UIViewController {
-
-
     let avatarView = UIImageView()
     let nameLabel = UILabel()
     let nickNameLabel = UILabel()
@@ -47,6 +46,10 @@ class SettingViewController: UIViewController {
         setupLogOutTemplateButton()
 
     }
+}
+
+// MARK: Extension
+extension SettingViewController {
 
     func setupAvatarView() {
         avatarView.image = UIImage(named: Resources.Image.profileSettingScreen)
@@ -176,6 +179,7 @@ class SettingViewController: UIViewController {
         changePasswordProfileSettingTextButton.setTitleColor(UIColor(named: Resources.Colors.text), for: .normal)
         changePasswordProfileSettingTextButton.titleLabel?.font = UIFont.jakartaRomanSemiBold(size: 16)
         view.addSubview(changePasswordProfileSettingTextButton)
+        changePasswordProfileSettingTextButton.addTarget(self, action: #selector(changePassword), for: .touchUpInside)
 
         changePasswordProfileSettingTextButton.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(60)
@@ -199,6 +203,7 @@ class SettingViewController: UIViewController {
         forgotPasswordButton.setTitleColor(UIColor(named: Resources.Colors.text), for: .normal)
         forgotPasswordButton.titleLabel?.font = UIFont.jakartaRomanSemiBold(size: 16)
         view.addSubview(forgotPasswordButton)
+        forgotPasswordButton.addTarget(self, action: #selector(forgotPassword), for: .touchUpInside)
 
         forgotPasswordButton.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(60)
@@ -255,6 +260,55 @@ class SettingViewController: UIViewController {
             make.right.equalToSuperview().inset(20)
             make.left.equalToSuperview().inset(20)
 
-            }
         }
     }
+
+    @objc
+    private func changePassword() {
+        var oldPasswordTextField = UITextField()
+        var newPasswordTextField = UITextField()
+
+        let alert = UIAlertController(title: "Enter the password", message: "", preferredStyle: .alert)
+        let changeAction = UIAlertAction(title: "Change", style: .default) { _ in
+            print(oldPasswordTextField.text!)
+            print(newPasswordTextField.text!)
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+
+        alert.addTextField { textfield in
+            oldPasswordTextField = textfield
+            textfield.placeholder = "Old password"
+        }
+
+        alert.addTextField { textfield in
+            newPasswordTextField = textfield
+            textfield.placeholder = "New password"
+        }
+        alert.addAction(changeAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+
+    }
+
+    @objc
+    private func forgotPassword() {
+        var textField = UITextField()
+        let alert = UIAlertController(title: "Enter your e-mail", message: "", preferredStyle: .alert)
+        let changeAction = UIAlertAction(title: "Get link!", style: .default) { _  in
+            guard let email = textField.text else { return }
+            if (!email.isEmpty) {
+                Auth.auth().sendPasswordReset(withEmail: email)
+            }
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+        alert.addTextField { field in
+            textField = field
+            textField.placeholder = "E-mail"
+        }
+        alert.addAction(changeAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+}
