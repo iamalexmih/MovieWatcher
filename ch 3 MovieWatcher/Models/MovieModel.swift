@@ -22,6 +22,8 @@ struct Movie: Codable {
     let vote_count: Int // указывается в скобках после рейтинга фильма
     let vote_average: Double
     // Не могу найти  длительность фильма в API
+    let runtime: Int?
+    let overview: String? 
 }
 
 

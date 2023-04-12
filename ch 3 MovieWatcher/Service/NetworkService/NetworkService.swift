@@ -177,7 +177,29 @@ final class NetworkService {
     
     
     // Получить подробную информацию по фильму.
-
+    func getMovieInfo(with movieID: Int, completion: @escaping (Result<Movie, Error>) -> Void) {
+        let urlString =
+        ApiConstants.baseUrl +
+        "/3/movie/" +
+        "\(movieID)?" +
+        "api_key=" + apiKey +
+        "&language=en-US"
+        // ссылка рабочая
+        print(urlString)
+        
+        // https://api.themoviedb.org/3/movie/550?api_key=38769d870cd457a57cc2c814cebc20a2&language=en-US
+        
+        performRequest(with: urlString, type: Movie.self) { (result) in
+            switch result {
+            case .success(let data):
+                completion(.success(data))
+                print("code 200")
+            case .failure(let error):
+                print("Чет не работает инфа \(error)")
+                completion(.failure(error))
+            }
+        }
+    }
     
     
     // Общий запрос с дженерик JSONDecoder.

@@ -44,7 +44,7 @@ extension FavoriteViewController: ReusableTableViewDelegate {
         movieTableView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "FavoriteViewController")
     }
     
-    func didSelectTableViewCell(_ cell: UITableViewCell) {
+    func didSelectTableViewCell(_ cell: Int) {
         let detailedVC = MovieDetailViewController()
         navigationController?.pushViewController(detailedVC, animated: true)
     }

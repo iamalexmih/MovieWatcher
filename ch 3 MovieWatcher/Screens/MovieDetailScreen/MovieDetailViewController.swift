@@ -7,11 +7,13 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class MovieDetailViewController: UIViewController {
 
-    let rating = 1.9
-
+    var rating = 1.9
+    
+    var id = 0
     var movieImage = UIImage(named: "filmPoster")
     var movieNameLabelText = "Movie name"
     var releaseDateText = "17 Sep 2020"
@@ -54,8 +56,41 @@ class MovieDetailViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
         configure()
+        
+        // запрос для получения инфы, который передает фильм в func configure -- kompot
+        NetworkService.shared.getMovieInfo(with: id) { result in
+            switch result {
+            case .success(let data):
+                self.configureNetworkInfo(movie: data)
+//                self.ratingView.configure(rating: Int(data.vote_average.rounded()))
+            case .failure(let failure):
+                print("Info of Movie not work in MovieDetailVC")
+            }
+        }
     }
     
+    // func for set info from movie model -- kompot
+    func configureNetworkInfo(movie: Movie) {
+        guard let urlPoster = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
+        movieImageView.kf.setImage(with: URL(string: urlPoster))
+        
+        movieNameLabel.text = movie.original_title
+        
+        releaseView.detailTiTleLabel.text = movie.release_date
+        
+        guard let time = movie.runtime else { return }
+        timeView.detailTiTleLabel.text = "\(time) minutes"
+        
+        genreText = NetworkService.shared.getNameGenreForOneMovie(
+            movieGenresId: movie.genre_ids.first ?? 7777,
+            arrayGenres: StorageGenres.shared.listGenres
+        )
+        
+        self.ratingView.configure(rating: Int(movie.vote_average.rounded()))
+        
+        guard let description = movie.overview else { return }
+        descriptionOfMovieLabel.text = description
+    }
     
     private func configure() {
         configureBottomView()
@@ -154,7 +189,7 @@ class MovieDetailViewController: UIViewController {
 
     private func configureRatingView() {
         containerView.addSubview(ratingView)
-        ratingView.configure(rating: Int(rating.rounded()))
+        
         ratingView.snp.makeConstraints { make in
             make.top.equalTo(detailsStackView.snp.bottom).inset(-18)
             make.centerX.equalToSuperview()

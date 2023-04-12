@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UITextFieldDelegate {
     
     private var searchTextField = SearchTextField()
     private var collectionView = ReusableCollectionView()
@@ -28,13 +28,23 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // search network
+        searchTextField.searchTextField.delegate = self
         
         movieTableView.delegateForCell = self
         collectionView.delegateCollectionDidSelect = self
         view.backgroundColor = .white
         
-//        popularMovie()
-        searchMovie()
+        popularMovie()
+//        searchMovie()
+    }
+    
+    // заканичвает редактирование после нажатия ретерн
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        searchTextField.endEditing(true)
+        searchMovie(with: searchTextField.searchTextField.text)
+        return true
     }
     
     // MARK: - other funcs
@@ -52,10 +62,9 @@ class SearchViewController: UIViewController {
     }
     
     // network for search -- kompot -- work
-    func searchMovie() {
-        let testQuery = "avatar the"
-        let query = testQuery
-        guard !query.trimmingCharacters(in: .whitespaces).isEmpty,
+    func searchMovie(with: String?) {
+        guard let query = with,
+                !query.trimmingCharacters(in: .whitespaces).isEmpty,
                 query.trimmingCharacters(in: .whitespaces).count >= 3 else { return }
         
         NetworkService.shared.search(with: query) { result in
@@ -110,12 +119,15 @@ extension SearchViewController {
 
 // MARK: - Table View Delegate
 extension SearchViewController: ReusableTableViewDelegate {
+    
     func updateListMovieCoreData() {
         movieTableView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "SearchViewController")
     }
     
-    func didSelectTableViewCell(_ cell: UITableViewCell) {
+    func didSelectTableViewCell(_ id: Int) {
         let detailedVC = MovieDetailViewController()
+        detailedVC.id = id
+        print("передает id ")
         navigationController?.pushViewController(detailedVC, animated: true)
     }
 }

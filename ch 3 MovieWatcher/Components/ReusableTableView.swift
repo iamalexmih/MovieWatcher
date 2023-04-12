@@ -10,7 +10,7 @@ import SnapKit
 
 
 protocol ReusableTableViewDelegate: AnyObject {
-    func didSelectTableViewCell(_ cell: UITableViewCell)
+    func didSelectTableViewCell(_ cell: Int)
     func updateListMovieCoreData()
 }
 
@@ -100,7 +100,8 @@ extension ReusableTableView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        delegateForCell?.didSelectTableViewCell(cell)
+        let movie = listMovieNetwork[indexPath.row]
+        delegateForCell?.didSelectTableViewCell(movie.id)
     }
 }
 
