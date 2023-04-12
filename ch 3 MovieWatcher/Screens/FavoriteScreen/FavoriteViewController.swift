@@ -11,20 +11,20 @@ import SnapKit
 
 class FavoriteViewController: UIViewController {
     
-    var tableView = ReusableTableView()
+    var movieTableView = ReusableTableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegateForCell = self
+        movieTableView.delegateForCell = self
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
-        view.addSubview(tableView)
+        view.addSubview(movieTableView)
         setupConstrains()
     }
         
     private func setupConstrains() {
         
-        tableView.snp.makeConstraints { make in
+        movieTableView.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide).inset(15)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide)
             make.left.equalToSuperview().inset(15)
