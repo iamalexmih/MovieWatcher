@@ -35,6 +35,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         collectionView.delegateCollectionDidSelect = self
         view.backgroundColor = .white
         
+        searchTextField.cancelButton.addTarget(self, action: #selector(clearButtonPressed), for: .touchUpInside)
+        
         popularMovie()
 //        searchMovie()
     }
@@ -45,6 +47,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         searchTextField.endEditing(true)
         searchMovie(with: searchTextField.searchTextField.text)
         return true
+    }
+    
+    @objc func clearButtonPressed() {
+        searchTextField.searchTextField.text = ""
     }
     
     // MARK: - other funcs
@@ -65,14 +71,21 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     func searchMovie(with: String?) {
         guard let query = with,
                 !query.trimmingCharacters(in: .whitespaces).isEmpty,
-                query.trimmingCharacters(in: .whitespaces).count >= 3 else { return }
+                query.trimmingCharacters(in: .whitespaces).count >= 3 else {
+            popularMovie()
+            return
+        }
         
-        NetworkService.shared.search(with: query) { result in
-            switch result {
-            case .success(let data):
-                self.movieTableView.listMovieNetwork = data.results
-            case .failure(let failure):
-                print("searchMovie in searchVC \(failure)")
+        if query.isEmpty {
+            popularMovie()
+        } else {
+            NetworkService.shared.search(with: query) { result in
+                switch result {
+                case .success(let data):
+                    self.movieTableView.listMovieNetwork = data.results
+                case .failure(let failure):
+                    print("searchMovie in searchVC \(failure)")
+                }
             }
         }
     }
