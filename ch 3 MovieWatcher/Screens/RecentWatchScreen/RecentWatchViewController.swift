@@ -11,22 +11,27 @@ import SnapKit
 class RecentWatchViewController: UIViewController {
     
     private var collectionView = ReusableCollectionView()
-    private lazy var tableView = ReusableTableView()
+    private var recentWatchTableView = ReusableTableView()
     
+    
+    // MARK: - VC LifeCycle
     override func viewWillAppear(_ animated: Bool) {
-        view.addSubviews(collectionView, tableView)
+        super.viewWillAppear(animated)
+        view.addSubviews(collectionView, recentWatchTableView)
         setupConstrains()
+        recentWatchTableView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "RecentWatchViewController")
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegateForCell = self
+        recentWatchTableView.delegateForCell = self
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
     }
     
+  // MARK: - Setup constrains
     private func setupConstrains() {
-        
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide).inset(15)
             make.height.equalTo(40)
@@ -34,7 +39,7 @@ class RecentWatchViewController: UIViewController {
             make.right.equalToSuperview().inset(-15)
         }
         
-        tableView.snp.makeConstraints { make in
+        recentWatchTableView.snp.makeConstraints { make in
             make.top.equalTo(collectionView.snp.bottom).offset(15)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide)
             make.left.equalToSuperview().inset(15)
@@ -42,6 +47,7 @@ class RecentWatchViewController: UIViewController {
         }
     }
 }
+
 
 extension RecentWatchViewController: ReusableTableViewDelegate {
     func updateListMovieCoreData() {
