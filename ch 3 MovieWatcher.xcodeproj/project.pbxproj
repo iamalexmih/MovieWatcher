@@ -50,7 +50,6 @@
 		B551396C29DF1735005CD307 /* StorageGenres.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551396B29DF1735005CD307 /* StorageGenres.swift */; };
 		B5B1D16D29D9D7B0006966FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D16C29D9D7B0006966FF /* AppDelegate.swift */; };
 		B5B1D16F29D9D7B0006966FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D16E29D9D7B0006966FF /* SceneDelegate.swift */; };
-		B5B1D17129D9D7B0006966FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D17029D9D7B0006966FF /* ViewController.swift */; };
 		B5B1D17629D9D7B1006966FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B1D17529D9D7B1006966FF /* Assets.xcassets */; };
 		B5B1D17929D9D7B1006966FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B1D17729D9D7B1006966FF /* LaunchScreen.storyboard */; };
 		B5B1D18429D9D90A006966FF /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D18329D9D90A006966FF /* Resource.swift */; };
@@ -131,7 +130,6 @@
 		B5B1D16929D9D7B0006966FF /* ch 3 MovieWatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ch 3 MovieWatcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B1D16C29D9D7B0006966FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5B1D16E29D9D7B0006966FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B5B1D17029D9D7B0006966FF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B5B1D17529D9D7B1006966FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5B1D17829D9D7B1006966FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5B1D17A29D9D7B1006966FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -268,7 +266,6 @@
 			children = (
 				8E92CEC629E5680300DB826A /* movieAnimation.json */,
 				B5B1D18029D9D7C0006966FF /* Application */,
-				B5B1D17029D9D7B0006966FF /* ViewController.swift */,
 				57E6209729DB4BFF00260AF5 /* CustomTabBarController.swift */,
 				B5EF3B3929E35E9A00183201 /* Screens */,
 				B5B1D18D29D9DA87006966FF /* Cell */,
@@ -655,7 +652,6 @@
 				B5B1D19729D9DC75006966FF /* LoginViewController.swift in Sources */,
 				B551395529DDEDD4005CD307 /* TextFieldWithLabelStack.swift in Sources */,
 				B5EF3B3629E330B400183201 /* CheckGenderButton.swift in Sources */,
-				B5B1D17129D9D7B0006966FF /* ViewController.swift in Sources */,
 				8E6E226829E14BBB009D1807 /* CastAndCrewCollectionView.swift in Sources */,
 				87BD3C4529E058A40092A8FC /* ReusableTableView.swift in Sources */,
 				B5B1D18429D9D90A006966FF /* Resource.swift in Sources */,

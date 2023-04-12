@@ -42,7 +42,7 @@ class SearchViewController: UIViewController {
         NetworkService.shared.getPopularMovies { result in
             switch result {
             case .success(let data):
-//                self.movieTableView.listMovieNetwork = data.results
+                self.movieTableView.listMovieNetwork = data.results
                 self.saveCoreDataForSearchScreen(listMovieNetwork: data.results)
             case .failure(let failure):
                 print("screen SearchVC \(failure)")

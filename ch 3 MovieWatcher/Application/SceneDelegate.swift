@@ -26,6 +26,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let onBoardingViewController = OnBoardingViewController()
         UINavigationBar.appearance().backIndicatorImage = UIImage(systemName: "arrow.left.circle.fill")
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.left.circle.fill")
+        UINavigationBar.appearance().backgroundColor = UIColor(named: Resources.Colors.backGround)
+        UINavigationBar.appearance().tintColor = .systemGray
         
         window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
