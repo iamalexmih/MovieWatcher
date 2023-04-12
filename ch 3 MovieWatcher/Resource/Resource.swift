@@ -46,12 +46,12 @@ enum Resources {
         static let moviemaxIcon = "moviemaxIcon"
         
         // SettingScreenImages
-        static let profileSettingScreen = "profileSettingScreen"
-        static let headInProfileSetting = "headInProfileSetting"
-        static let fleshInProfileSetting = "fleshInProfileSetting"
-        static let changePasswordProfileSetting = "changePasswordProfileSetting"
-        static let forgotPasswordProfileSetting = "forgotPasswordProfileSetting"
-        static let darkModeProfileSetting = "darkModeProfileSetting"
+        static let profileSettingScreen = "ProfileSettingScreen"
+        static let headInProfileSetting = "HeadInProfileSetting"
+        static let fleshInProfileSetting = "FleshInProfileSetting"
+        static let changePasswordProfileSetting = "ChangePasswordProfileSetting"
+        static let forgotPasswordProfileSetting = "ForgotPasswordProfileSetting"
+        static let darkModeProfileSetting = "DarkModeProfileSetting"
     }
 }
 
