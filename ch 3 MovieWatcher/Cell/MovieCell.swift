@@ -134,7 +134,7 @@ extension MovieCell {
     
     func saveImageCoreData(imageData: Data?, movie: Movie) {
         // Если фильма с id xxx нет в хранилище, то тогда добавить.
-        let imageEntity = CoreDataService.shared.fetchImageUseMovieId(id: movie.genre_ids.first!)
+        let imageEntity = CoreDataService.shared.fetchImageUseMovieId(id: movie.genre_ids.first ?? 7777)
         if imageEntity == nil {
             let imageDataDefault = UIImage(systemName: "questionmark")?.pngData()
             

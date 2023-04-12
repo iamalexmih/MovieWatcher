@@ -11,6 +11,15 @@ class BottomCollectionView: UIView {
     
     //    private let sections = MockData.shared.popularCategory
     
+    // for Network in BoxOffice -- kompot
+    var listMovieNetwork: [Movie] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionBoxOfficeView.reloadData()
+            }
+        }
+    }
+    
     lazy var collectionBoxOfficeView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
@@ -55,7 +64,8 @@ extension BottomCollectionView: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+//        return 10
+        return listMovieNetwork.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -63,7 +73,11 @@ extension BottomCollectionView: UICollectionViewDelegate, UICollectionViewDataSo
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BoxViewCell.identifier, for: indexPath) as? BoxViewCell else {
             return UICollectionViewCell()
         }
-        cell.configureCell(filmImage: "filmPoster", categoryFilmName: "Action", filmName: "Luck", time: 149)
+        
+//        cell.configureCell(filmImage: "filmPoster", categoryFilmName: "Action", filmName: "Luck", time: 149)
+        
+        // for Network -- kompot
+        cell.configureNetworkCell(movie: listMovieNetwork[indexPath.row])
         return cell
     }
     

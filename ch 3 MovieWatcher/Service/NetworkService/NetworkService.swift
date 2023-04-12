@@ -47,6 +47,50 @@ final class NetworkService {
         }
     }
     
+    // Список фильмов в топе рейтинга
+    // for homeScreen - TopCollectionView -- kompot -- now in progress
+    func getTopRated(completion: @escaping (Result<ListMovies, Error>) -> Void) {
+        let urlString =
+        ApiConstants.baseUrl +
+        "/3/movie/top_rated?" +
+        "api_key=" + apiKey +
+        "&language=en-US" +
+        "&page=1"
+        
+        performRequest(with: urlString, type: ListMovies.self) { (result) in
+            switch result {
+            case .success(let data):
+                print("Yes 1111")
+
+                completion(.success(data))
+                
+            case .failure(let error):
+                print("Shit 1111")
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    // Список фильмов, которые в настоящее время в прокате в кинотеатрах
+    // for homeScreen - BottomCollectionView -- kompot -- work
+    func getNowPlaying(completion: @escaping (Result<ListMovies, Error>) -> Void) {
+        let urlString =
+        ApiConstants.baseUrl +
+        "/3/movie/now_playing?" +
+        "api_key=" + apiKey +
+        "&language=en-US" +
+        "&page=1"
+        
+        performRequest(with: urlString, type: ListMovies.self) { (result) in
+            switch result {
+            case .success(let data):
+                completion(.success(data))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
     
     // Постер к фильму.
     func makeUrlForPoster(posterPath: String?) -> String? {
@@ -58,6 +102,16 @@ final class NetworkService {
         return posterURL
     }
     
+//    // Получить runtime фильма по ID
+//    func getRuntimeForMovie(movieId: Int?) -> Void {
+//        guard let id = movieId else { return }
+//        let runtimeURL =
+//        ApiConstants.baseUrl +
+//        "/3/movie/" + "\(id)?" +
+//        "api_key=" + apiKey +
+//        "&language=en-US"
+//
+//    }
     
     // Получить список всех жанров фильмов.
     func getListGenre(completion: @escaping (Result<[GenreMovie], Error>) -> Void) {
@@ -173,6 +227,7 @@ final class NetworkService {
     }
     
     // Поиск по searchTextField
+    // network for search -- kompot -- work
     func search(with query: String, completion: @escaping (Result<ListMovies, Error>) -> Void) {
         let urlString = "\(ApiConstants.baseUrl)/3/search/movie?api_key=\(apiKey)&query=\(query)"
         performRequest(with: urlString, type: ListMovies.self) { (result) in

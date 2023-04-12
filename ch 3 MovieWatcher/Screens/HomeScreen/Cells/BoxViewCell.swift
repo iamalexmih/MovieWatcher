@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class BoxViewCell: UICollectionViewCell {
     
@@ -91,6 +92,22 @@ class BoxViewCell: UICollectionViewCell {
         categoryFilmLabel.text = categoryFilmName
         filmNameLabel.text = filmName
         timeLabel.text = "\(time) minutes"
+    }
+    
+    // конфигурация ячейки через Network в BoxOffice -- kompot
+    func configureNetworkCell(movie: Movie) {
+        filmNameLabel.text = movie.original_title
+        
+//        timeLabel.text = NetworkService.shared.getRuntimeForMovie(movieId: movie.id)
+        timeLabel.text = "140 minutes"
+        categoryFilmLabel.text = NetworkService.shared.getNameGenreForOneMovie(
+            movieGenresId: movie.genre_ids.first ?? 7777,
+            arrayGenres: StorageGenres.shared.listGenres
+        )
+        
+        guard let posterPath = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
+        let urlPoster = URL(string: posterPath)
+        filmImageView.kf.setImage(with: urlPoster)
     }
     
     func setConstraints() {

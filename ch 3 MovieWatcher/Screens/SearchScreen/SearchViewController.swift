@@ -33,7 +33,8 @@ class SearchViewController: UIViewController {
         collectionView.delegateCollectionDidSelect = self
         view.backgroundColor = .white
         
-        popularMovie()
+//        popularMovie()
+        searchMovie()
     }
     
     // MARK: - other funcs
@@ -42,10 +43,27 @@ class SearchViewController: UIViewController {
         NetworkService.shared.getPopularMovies { result in
             switch result {
             case .success(let data):
-//                self.movieTableView.listMovieNetwork = data.results
+                self.movieTableView.listMovieNetwork = data.results
                 self.saveCoreDataForSearchScreen(listMovieNetwork: data.results)
             case .failure(let failure):
                 print("screen SearchVC \(failure)")
+            }
+        }
+    }
+    
+    // network for search -- kompot -- work
+    func searchMovie() {
+        let testQuery = "avatar the"
+        let query = testQuery
+        guard !query.trimmingCharacters(in: .whitespaces).isEmpty,
+                query.trimmingCharacters(in: .whitespaces).count >= 3 else { return }
+        
+        NetworkService.shared.search(with: query) { result in
+            switch result {
+            case .success(let data):
+                self.movieTableView.listMovieNetwork = data.results
+            case .failure(let failure):
+                print("Fuck search")
             }
         }
     }
