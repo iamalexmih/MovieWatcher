@@ -8,7 +8,7 @@
 import CoreData
 
 class CoreDataService {
-       
+    
     static let shared = CoreDataService()
     
     let persistentContainer: NSPersistentContainer
@@ -42,7 +42,12 @@ class CoreDataService {
             }
         }
     }
-    
+}
+
+
+// MARK: - Helpers funcs
+
+extension CoreDataService {
     
     func fetchData(parentCategory: String) -> [MovieEntity] {
         let request: NSFetchRequest<MovieEntity> = MovieEntity.fetchRequest()
@@ -53,7 +58,7 @@ class CoreDataService {
         do {
             movieEntitys = try viewContext.fetch(request)
         } catch let error {
-            print("Error load fetchTask: \(error.localizedDescription)")
+            print("Error load fetchData: \(error.localizedDescription)")
         }
         return movieEntitys
     }
@@ -101,9 +106,42 @@ class CoreDataService {
                 print("Delete All Data for MovieEntity")
             }
         } catch let error {
-            print("Error load fetchTask: \(error.localizedDescription)")
+            print("deleteAllData. Error load: \(error.localizedDescription)")
         }
         save()
     }
 }
 
+// MARK: - User
+extension CoreDataService {
+    func fetchUser(_ userId: String) -> UserEntity? {
+        let request: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
+        let predicate = NSPredicate(format: "idUser MATCHES %@", userId)
+        request.predicate = predicate
+        
+        var usersArray: [UserEntity] = []
+        do {
+            usersArray = try viewContext.fetch(request)
+        } catch let error {
+            print("fetchUser. Error load: \(error.localizedDescription)")
+        }
+        let user = usersArray.first
+        return user
+    }
+    
+    func deleteOutCoreData(user id: String) {
+        let request: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
+        let predicate = NSPredicate(format: "idUser MATCHES %@", id)
+        request.predicate = predicate
+        do {
+            let allUsersWithId = try viewContext.fetch(request)
+            for user in allUsersWithId {
+                viewContext.delete(user)
+                print("Delete data for UserEntity")
+            }
+        } catch let error {
+            print("deleteOutCoreData. Error load fetchTask: \(error.localizedDescription)")
+        }
+        save()
+    }
+}
