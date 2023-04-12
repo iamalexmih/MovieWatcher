@@ -40,7 +40,7 @@ class MovieCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .systemBackground
+        backgroundColor = UIColor(named: Resources.Colors.backGround)
         configureElementUI()
         setupViews()
         setupConstraints()
@@ -76,7 +76,6 @@ class MovieCell: UITableViewCell {
     
     
     @objc func favouriteButtonPressed() {
-        print("Favourite PRESSED")
         if CoreDataService.shared.fetchDataId(id: movieId, parentCategory: "FavoriteViewController").isEmpty {
            // Добавить в Избранное
             let selectedMovieInCommonList = CoreDataService.shared.fetchDataId(id: movieId, parentCategory: "SearchViewController").first!
@@ -170,7 +169,7 @@ extension MovieCell {
         movieImage.clipsToBounds = true
         
         movieName.text = "Mad Max Collection"
-        movieName.textColor = .black
+        movieName.textColor = UIColor(named: Resources.Colors.text)
         movieName.font = UIFont.jakartaBold(size: 18)
         movieName.font = .systemFont(ofSize: 18)
         movieName.numberOfLines = 0

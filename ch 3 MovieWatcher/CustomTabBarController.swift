@@ -31,13 +31,15 @@ class CustomTabBarController: UITabBarController {
         customizeTabBar(homeViewController, name: "Home")
         customizeTabBar(movieDetailViewController, name: "Favorites")
         customizeTabBar(settingViewController, name: "Setting")
+
     }
+    
 
 }
 
 extension CustomTabBarController {
     func customizeTabBar(_ controller: UINavigationController, name: String) {
-        controller.viewControllers[0].title = name
+        controller.viewControllers[0].title = ""
         
         switch name {
         case "Search":
@@ -63,22 +65,22 @@ extension CustomTabBarController {
         }
     }
     
-    func setupMiddleButton() {
-        
-        var menuButtonFrame = menuButton.frame
-        menuButtonFrame.origin.y = view.bounds.height - menuButtonFrame.height
-        menuButtonFrame.origin.x = view.bounds.width / 2 - menuButtonFrame.size.width / 2
-        menuButton.frame = menuButtonFrame
-
-        menuButton.layer.cornerRadius = menuButtonFrame.height / 2
-        view.addSubview(menuButton)
-        
-        menuButton.setImage(UIImage(named: Resources.Image.tabBarHome), for: .normal)
-        menuButton.imageEdgeInsets.top = -35
-        menuButton.addTarget(self, action: #selector(menuButtonAction(sender:)), for: .touchUpInside)
-        
-        view.layoutIfNeeded()
-    }
+//    func setupMiddleButton() {
+//
+//        var menuButtonFrame = menuButton.frame
+//        menuButtonFrame.origin.y = view.bounds.height - menuButtonFrame.height
+//        menuButtonFrame.origin.x = view.bounds.width / 2 - menuButtonFrame.size.width / 2
+//        menuButton.frame = menuButtonFrame
+//
+//        menuButton.layer.cornerRadius = menuButtonFrame.height / 2
+//        view.addSubview(menuButton)
+//
+//        menuButton.setImage(UIImage(named: Resources.Image.tabBarHome), for: .normal)
+//        menuButton.imageEdgeInsets.top = -35
+//        menuButton.addTarget(self, action: #selector(menuButtonAction(sender:)), for: .touchUpInside)
+//
+//        view.layoutIfNeeded()
+//    }
 
     // MARK: - Actions
 
