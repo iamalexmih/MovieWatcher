@@ -39,25 +39,30 @@ class CustomTabBarController: UITabBarController {
 
 extension CustomTabBarController {
     func customizeTabBar(_ controller: UINavigationController, name: String) {
-        controller.viewControllers[0].title = ""
+        controller.viewControllers[0].title = name
         
         switch name {
         case "Search":
+            controller.tabBarItem.title = ""
             controller.tabBarItem.image = UIImage(named: Resources.Image.tabBarSearch)?.withRenderingMode(.alwaysOriginal)
             controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarSearchFill)?.withRenderingMode(.alwaysOriginal)
         case "Recent Watch":
+            controller.tabBarItem.title = ""
             controller.tabBarItem.image = UIImage(named: Resources.Image.tabBarRecentWatch)?.withRenderingMode(.alwaysOriginal)
             controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarRecentWatchFill)?.withRenderingMode(.alwaysOriginal)
         case "Home":
+            controller.tabBarItem.title = ""
             controller.tabBarItem.image = UIImage(named: Resources.Image.tabBarHome)?
                 .withRenderingMode(.alwaysOriginal)
             
             controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarHome)?
                 .withRenderingMode(.alwaysOriginal)
         case "Favorites":
+            controller.tabBarItem.title = ""
             controller.tabBarItem.image = UIImage(named: Resources.Image.favourites)?.withRenderingMode(.alwaysOriginal)
             controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.favouritesFill)?.withRenderingMode(.alwaysOriginal)
         case "Setting":
+            controller.tabBarItem.title = ""
             controller.tabBarItem.image = UIImage(named: Resources.Image.tabBarSetting)?.withRenderingMode(.alwaysOriginal)
             controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarSettingFill)?.withRenderingMode(.alwaysOriginal)
         default: break
