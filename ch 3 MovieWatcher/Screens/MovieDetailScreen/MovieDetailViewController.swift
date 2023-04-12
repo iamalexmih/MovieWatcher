@@ -56,7 +56,7 @@ class MovieDetailViewController: UIViewController {
         configure()
     }
     
-    
+   
     private func configure() {
         configureBottomView()
         configureWatchButton()
@@ -77,7 +77,8 @@ class MovieDetailViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.backgroundColor = .clear
         scrollView.snp.makeConstraints { make in
-            make.topMargin.left.right.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.left.right.equalToSuperview()
             make.bottom.equalTo(bottomView.snp.top)
         }
     }
@@ -100,7 +101,7 @@ class MovieDetailViewController: UIViewController {
         shadowView.layer.shadowRadius = 60
         shadowView.layer.shadowOffset = CGSize(width: 0, height: 20)
         shadowView.snp.makeConstraints { make in
-            make.topMargin.equalToSuperview().inset(44)
+            make.top.equalTo(containerView.snp.top).offset(30)
             make.centerX.equalToSuperview()
             make.height.equalTo(300)
             make.width.equalTo(224)
