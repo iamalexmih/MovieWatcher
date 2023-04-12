@@ -44,7 +44,7 @@ class HomeViewController: UIViewController {
             case .success(let data):
                 self.topCollectionView.listMovieNetwork = data.results
             case .failure(let failure):
-                print("fuck top rated")
+                print("fuck top rated \(failure)")
             }
         }
     }
@@ -56,7 +56,7 @@ class HomeViewController: UIViewController {
             case .success(let data):
                 self.boxOfficeCollection.listMovieNetwork = data.results
             case .failure(let failure):
-                print("fuck now playing")
+                print("fuck now playing \(failure)")
             }
         }
     }

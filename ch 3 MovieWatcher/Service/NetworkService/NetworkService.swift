@@ -177,7 +177,7 @@ final class NetworkService {
     
     
     // Получить подробную информацию по фильму.
-    func getMovieInfo(with movieID: Int, completion: @escaping (Result<Movie, Error>) -> Void) {
+    func getMovieInfo(with movieID: Int, completion: @escaping (Result<InfoMovie, Error>) -> Void) {
         let urlString =
         ApiConstants.baseUrl +
         "/3/movie/" +
@@ -189,7 +189,7 @@ final class NetworkService {
         
         // https://api.themoviedb.org/3/movie/550?api_key=38769d870cd457a57cc2c814cebc20a2&language=en-US
         
-        performRequest(with: urlString, type: Movie.self) { (result) in
+        performRequest(with: urlString, type: InfoMovie.self) { (result) in
             switch result {
             case .success(let data):
                 completion(.success(data))

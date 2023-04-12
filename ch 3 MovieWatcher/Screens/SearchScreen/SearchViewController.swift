@@ -72,7 +72,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             case .success(let data):
                 self.movieTableView.listMovieNetwork = data.results
             case .failure(let failure):
-                print("Fuck search")
+                print("searchMovie in searchVC \(failure)")
             }
         }
     }

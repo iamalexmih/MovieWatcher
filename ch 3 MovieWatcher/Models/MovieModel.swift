@@ -31,3 +31,20 @@ struct GenreMovie: Codable {
     let id: Int
     let name: String
 }
+
+
+struct InfoMovie: Codable {
+    let id: Int
+    let original_title: String?
+    let poster_path: String?
+    let vote_average: Double
+    let release_date: String?
+    let runtime: Int?
+    let overview: String?
+    let genres: [GenreInfoMovie]?
+}
+
+struct GenreInfoMovie: Codable {
+    let id: Int?
+    let name: String?
+}

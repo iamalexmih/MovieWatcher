@@ -61,18 +61,20 @@ class MovieDetailViewController: UIViewController {
         NetworkService.shared.getMovieInfo(with: id) { result in
             switch result {
             case .success(let data):
-                self.configureNetworkInfo(movie: data)
+                DispatchQueue.main.async {
+                    self.configureNetworkInfo(movie: data)
+                }
 //                self.ratingView.configure(rating: Int(data.vote_average.rounded()))
             case .failure(let failure):
-                print("Info of Movie not work in MovieDetailVC")
+                print("Info of Movie not work in MovieDetailVC \(failure)")
             }
         }
     }
     
     // func for set info from movie model -- kompot
-    func configureNetworkInfo(movie: Movie) {
+    func configureNetworkInfo(movie: InfoMovie) {
         guard let urlPoster = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
-        movieImageView.kf.setImage(with: URL(string: urlPoster))
+        self.movieImageView.kf.setImage(with: URL(string: urlPoster))
         
         movieNameLabel.text = movie.original_title
         
@@ -81,10 +83,8 @@ class MovieDetailViewController: UIViewController {
         guard let time = movie.runtime else { return }
         timeView.detailTiTleLabel.text = "\(time) minutes"
         
-        genreText = NetworkService.shared.getNameGenreForOneMovie(
-            movieGenresId: movie.genre_ids.first ?? 7777,
-            arrayGenres: StorageGenres.shared.listGenres
-        )
+        guard let str = movie.genres?.last?.name else { return }
+        genreView.detailTiTleLabel.text = str
         
         self.ratingView.configure(rating: Int(movie.vote_average.rounded()))
         
@@ -211,7 +211,8 @@ class MovieDetailViewController: UIViewController {
 
     private func configureDescriptionOfMovieLabel() {
         containerView.addSubview(descriptionOfMovieLabel)
-        descriptionOfMovieLabel.text = "Джон Уик - на первый взгляд, самый обычный среднестатистический американец, который ведет спокойную мирную жизнь. Однако мало кто знает, что он был наёмным."
+        descriptionOfMovieLabel.text = "Джон Уик - на первый взгляд,самый обычный среднестатистический американец," +
+            "который ведет спокойную мирную жизнь. Однако мало кто знает, что он был наёмным."
         descriptionOfMovieLabel.numberOfLines = 0
         descriptionOfMovieLabel.textAlignment = .left
         descriptionOfMovieLabel.font = .jakartaMedium(size: 14)
