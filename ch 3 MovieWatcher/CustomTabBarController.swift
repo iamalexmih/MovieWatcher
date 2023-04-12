@@ -44,10 +44,10 @@ extension CustomTabBarController {
         switch name {
         case "Search":
             controller.tabBarItem.image = UIImage(named: Resources.Image.tabBarSearch)
-            controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarSearch)
+            controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarSearchFill)?.withRenderingMode(.alwaysOriginal)
         case "Recent Watch":
             controller.tabBarItem.image = UIImage(named: Resources.Image.tabBarRecentWatch)
-            controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarRecentWatchFill)
+            controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarRecentWatchFill)?.withRenderingMode(.alwaysOriginal)
         case "Home":
 //            setupMiddleButton()
             controller.tabBarItem.image = UIImage(named: Resources.Image.tabBarHome)?
@@ -57,10 +57,10 @@ extension CustomTabBarController {
                 .withRenderingMode(.alwaysOriginal)
         case "Favorites":
             controller.tabBarItem.image = UIImage(named: Resources.Image.tabBarFavorites)
-            controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarFavoritesFill)
+            controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarFavoritesFill)?.withRenderingMode(.alwaysOriginal)
         case "Setting":
             controller.tabBarItem.image = UIImage(named: Resources.Image.tabBarSetting)
-            controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarSettingFill)
+            controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarSettingFill)?.withRenderingMode(.alwaysOriginal)
         default: break
         }
     }
