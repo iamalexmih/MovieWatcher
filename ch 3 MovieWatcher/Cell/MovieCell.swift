@@ -46,6 +46,12 @@ class MovieCell: UITableViewCell {
         setupConstraints()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        movieId = 0
+        movieImage.kf.cancelDownloadTask()
+        movieImage.image = nil
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -53,6 +59,7 @@ class MovieCell: UITableViewCell {
     
     
     func configureForNetwork(movie: Movie) {
+        favouriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
         movieName.text = movie.original_title
         calendarLabel.text = movie.release_date
         categoryLabel.text = NetworkService.shared.getNameGenreForOneMovie(
@@ -60,7 +67,7 @@ class MovieCell: UITableViewCell {
             arrayGenres: StorageGenres.shared.listGenres
         )
         movieId = movie.id
-        synchFavoriteWithNetwork(movieId)
+        synchFavoriteWithNetwork(movie.id)
         guard let posterPath = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
         let urlPoster = URL(string: posterPath)
         movieImage.kf.setImage(with: urlPoster) { result in
@@ -83,12 +90,12 @@ class MovieCell: UITableViewCell {
             categoryEntityFavorite.name = "FavoriteViewController"
             let categoryEntitySearch = CategoryScreenEntity(context: CoreDataService.shared.viewContext)
             categoryEntitySearch.name = "SearchViewController"
-            
+            // Добавить фильм в две категории SearchScreen и FavoriteScreen
             let setParents = NSSet(objects: categoryEntityFavorite, categoryEntitySearch)
             selectedMovieInCommonList.parentCategory = setParents
-            selectedMovieInCommonList.favorite = !selectedMovieInCommonList.favorite
+            selectedMovieInCommonList.favorite = true
             CoreDataService.shared.save()
-            setImageButtonFavorite(isFavorite: selectedMovieInCommonList.favorite)
+            setImageButtonFavorite(isFavorite: true)
         } else {
             // Удалить из избранного
             let selectedMovieInFavoriteList = CoreDataService.shared.fetchDataId(id: movieId, parentCategory: "FavoriteViewController").first!
@@ -96,9 +103,9 @@ class MovieCell: UITableViewCell {
             categoryEntity.name = "SearchViewController"
             let setParents = NSSet(objects: categoryEntity)
             selectedMovieInFavoriteList.parentCategory = setParents
-            selectedMovieInFavoriteList.favorite = !selectedMovieInFavoriteList.favorite
+            selectedMovieInFavoriteList.favorite = false
             CoreDataService.shared.save()
-            setImageButtonFavorite(isFavorite: selectedMovieInFavoriteList.favorite)
+            setImageButtonFavorite(isFavorite: false)
         }
         delegateFavoriteButton?.didPressFavoriteButton()
     }
@@ -110,7 +117,6 @@ class MovieCell: UITableViewCell {
             setImageButtonFavorite(isFavorite: true)
         }
     }
-    
 }
 
 

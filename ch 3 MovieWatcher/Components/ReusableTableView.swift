@@ -16,7 +16,7 @@ protocol ReusableTableViewDelegate: AnyObject {
 
 class ReusableTableView: UIView {
     
-    lazy var tableView = UITableView()
+    var tableView = UITableView()
     weak var delegateForCell: ReusableTableViewDelegate?
     
     var listMovieNetwork: [Movie] = [] {
@@ -87,10 +87,8 @@ extension ReusableTableView: UITableViewDelegate, UITableViewDataSource {
         cell.delegateFavoriteButton = self
         
         if listMovieNetwork.isEmpty {
-            print("setDataForCellCoreData")
             cell.setDataForCellCoreData(movieEntity: listMovieCoreData[indexPath.row])
         } else {
-            print("configureForNetwork")
             cell.configureForNetwork(movie: listMovieNetwork[indexPath.row])
         }
         
@@ -109,5 +107,6 @@ extension ReusableTableView: UITableViewDelegate, UITableViewDataSource {
 extension ReusableTableView: FavoriteMovieCellProtocol {
     func didPressFavoriteButton() {
         delegateForCell?.updateListMovieCoreData()
+        tableView.reloadData()
     }
 }
