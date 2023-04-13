@@ -60,12 +60,8 @@ final class NetworkService {
         performRequest(with: urlString, type: ListMovies.self) { (result) in
             switch result {
             case .success(let data):
-                print("Yes 1111")
-
                 completion(.success(data))
-                
             case .failure(let error):
-                print("Shit 1111")
                 completion(.failure(error))
             }
         }
@@ -99,7 +95,18 @@ final class NetworkService {
         "\(ApiConstants.posterUrl)" +
         "/t/p/w\(200)/" +
         "\(posterPath)"
+        
         return posterURL
+    }
+    
+    // photo person from cast and crew
+    func makeUrlForPhoto(photoPath: String?) -> String? {
+        guard let photoPath = photoPath else { return nil }
+        let photoUrl =
+        ApiConstants.posterUrl +
+        "/t/p/w500" + photoPath
+        
+        return photoUrl
     }
     
 //    // Получить runtime фильма по ID
@@ -184,10 +191,6 @@ final class NetworkService {
         "\(movieID)?" +
         "api_key=" + apiKey +
         "&language=en-US"
-        // ссылка рабочая
-        print(urlString)
-        
-        // https://api.themoviedb.org/3/movie/550?api_key=38769d870cd457a57cc2c814cebc20a2&language=en-US
         
         performRequest(with: urlString, type: InfoMovie.self) { (result) in
             switch result {
@@ -196,6 +199,26 @@ final class NetworkService {
                 print("code 200")
             case .failure(let error):
                 print("Чет не работает инфа \(error)")
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    // request for get cast and crew in movie info 
+    func getCastCrew(with movieID: Int, completion: @escaping (Result<CastCrew, Error>) -> Void) {
+        let urlString =
+        ApiConstants.baseUrl +
+        "/3/movie/" + "\(movieID)" +
+        "/credits?" + "api_key=" +
+        apiKey + "&language=en-US"
+        
+        performRequest(with: urlString, type: CastCrew.self) { (result) in
+            switch result {
+            case .success(let data):
+                print("Yeeeeee ")
+                completion(.success(data))
+            case .failure(let error):
+                print("castcrew not work \(error)")
                 completion(.failure(error))
             }
         }

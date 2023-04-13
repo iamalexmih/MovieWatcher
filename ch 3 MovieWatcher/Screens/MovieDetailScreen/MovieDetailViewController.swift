@@ -69,6 +69,17 @@ class MovieDetailViewController: UIViewController {
                 print("Info of Movie not work in MovieDetailVC \(failure)")
             }
         }
+        
+        NetworkService.shared.getCastCrew(with: id) { result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    self.participantCollectionView.listCastNetwork = data.cast
+                }
+            case .failure(let failure):
+                print("Cast in MovieDetail don't work")
+            }
+        }
     }
     
     // func for set info from movie model -- kompot
