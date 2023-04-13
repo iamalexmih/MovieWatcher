@@ -80,6 +80,18 @@ class MovieCell: UITableViewCell {
                 print("Error kf: \(error)")
             }
         }
+        
+        NetworkService.shared.getMovieInfo(with: movie.id) { result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    guard let time = data.runtime else { return }
+                    self.timeLabel.text = "\(time) minutes"
+                }
+            case .failure(let failure):
+                self.timeLabel.text = "140 minutes"
+            }
+        }
     }
     
     func configureCellCoreData(movieEntity: MovieEntity) {

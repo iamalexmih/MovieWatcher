@@ -97,7 +97,7 @@ class MovieDetailViewController: UIViewController {
         guard let str = movie.genres?.last?.name else { return }
         genreView.detailTiTleLabel.text = str
         
-        self.ratingView.configure(rating: Int(movie.vote_average.rounded()))
+        self.ratingView.configure(rating: (Int(movie.vote_average.rounded()) / 2 ))
         
         guard let description = movie.overview else { return }
         descriptionOfMovieLabel.text = description
