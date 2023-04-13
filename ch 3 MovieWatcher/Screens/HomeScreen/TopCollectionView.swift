@@ -19,6 +19,14 @@ class TopCollectionView: UIView {
         }
     }
     
+    var listMovieCoreData: [MovieEntity] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.topCollectionView.reloadData()
+            }
+        }
+    }
+    
     private let flowLayout = UICollectionViewFlowLayout()
     
     lazy var topCollectionView: GeminiCollectionView = {
@@ -40,7 +48,6 @@ class TopCollectionView: UIView {
         page.currentPageIndicatorTintColor = UIColor(named: Resources.Colors.accent)
         page.translatesAutoresizingMaskIntoConstraints = false
         return page
-
     }()
     
     override init(frame: CGRect) {
