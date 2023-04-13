@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navControllerForAuth = NavBarController(rootViewController: AuthViewController())
         let onBoardingViewController = OnBoardingViewController()
     
-        window?.rootViewController = settingViewController
+        window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
     }
 }
