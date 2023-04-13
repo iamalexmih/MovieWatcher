@@ -42,6 +42,7 @@ class SettingViewController: UIViewController {
         setupDarkModeSettingImage()
         setupDarkModeSettingLabel()
         setupToggle()
+        setAppTheme()
         setupToggleDarkMode()
         setupLogOutTemplateButton()
 
@@ -233,6 +234,12 @@ extension SettingViewController {
         }
     }
 
+    func setAppTheme() {
+        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
+        let window = UIApplication.shared.windows.first
+        window?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
+    }
+
     func setupToggle() {
         view.addSubview(toggle)
         toggle.snp.makeConstraints { make in
@@ -240,20 +247,15 @@ extension SettingViewController {
             make.right.equalToSuperview().inset(30)
         }
         toggle.addTarget(self, action: #selector(setupToggleDarkMode), for: .touchUpInside)
+        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
+        toggle.isOn = isDarkMode
     }
-    
+
     @objc func setupToggleDarkMode() {
-        
-        let scenes = UIApplication.shared.connectedScenes
-        let windowScene = scenes.first as? UIWindowScene
-        let window = windowScene?.windows.first
-        
-        
-        if toggle.isOn {
-            window?.overrideUserInterfaceStyle = .dark
-        } else {
-            window?.overrideUserInterfaceStyle = .light
-        }
+        let isDarkMode = toggle.isOn
+        let window = UIApplication.shared.windows.first
+        window?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
+        UserDefaults.standard.set(isDarkMode, forKey: "isDarkMode")
     }
 
     func setupLogOutTemplateButton() {
@@ -271,25 +273,22 @@ extension SettingViewController {
 
     @objc
     private func changePassword() {
-        var oldPasswordTextField = UITextField()
         var newPasswordTextField = UITextField()
-
         let alert = UIAlertController(title: "Enter the password", message: "", preferredStyle: .alert)
         let changeAction = UIAlertAction(title: "Change", style: .default) { _ in
-            print(oldPasswordTextField.text!)
-            print(newPasswordTextField.text!)
+            guard let password = newPasswordTextField.text else { return }
+            if (!password.isEmpty) {
+                Auth.auth().currentUser?.updatePassword(to: password) { error in
+                   print("Error  - updatePassword\(error)")
+                }
+            }
         }
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
 
         alert.addTextField { textfield in
-            oldPasswordTextField = textfield
-            textfield.placeholder = "Old password"
-        }
-
-        alert.addTextField { textfield in
             newPasswordTextField = textfield
-            textfield.placeholder = "New password"
+            newPasswordTextField.placeholder = "New password"
         }
         alert.addAction(changeAction)
         alert.addAction(cancelAction)
@@ -304,7 +303,9 @@ extension SettingViewController {
         let changeAction = UIAlertAction(title: "Get link!", style: .default) { _  in
             guard let email = textField.text else { return }
             if (!email.isEmpty) {
-                Auth.auth().sendPasswordReset(withEmail: email)
+                Auth.auth().sendPasswordReset(withEmail: email) { error in
+                    print("Error sendPasswordReset - \(error)")
+                 }
             }
         }
 

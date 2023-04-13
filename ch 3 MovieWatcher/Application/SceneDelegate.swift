@@ -28,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let navControllerForAuth = NavBarController(rootViewController: screenSaverViewController)
     
-        window?.rootViewController = navControllerForAuth
+        window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
     }
 }

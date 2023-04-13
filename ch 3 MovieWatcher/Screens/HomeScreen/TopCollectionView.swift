@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Gemini
 
 class TopCollectionView: UIView {
     
@@ -18,30 +19,37 @@ class TopCollectionView: UIView {
         }
     }
     
-    var listMovieCoreData: [MovieEntity] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.topCollectionView.reloadData()
-            }
-        }
-    }
+    private let flowLayout = UICollectionViewFlowLayout()
     
-    lazy var topCollectionView: UICollectionView = {
-        let flowLayout = UICollectionViewFlowLayout()
+    lazy var topCollectionView: GeminiCollectionView = {
         flowLayout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.backgroundColor = UIColor(named: Resources.Colors.backGround)
+        let collectionView = GeminiCollectionView(frame: .zero, collectionViewLayout: flowLayout)
+//        collectionView.backgroundColor = UIColor(named: Resources.Colors.backGround)
+        collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(HomeViewMovieCell.self, forCellWithReuseIdentifier: HomeViewMovieCell.identifier)
-        return collectionView
+            return collectionView
+    }()
+    
+    lazy var pageControl: UIPageControl = {
+        let page = UIPageControl()
+        page.numberOfPages = 3
+        page.currentPage = 0
+        page.pageIndicatorTintColor = .lightGray
+        page.currentPageIndicatorTintColor = UIColor(named: Resources.Colors.accent)
+        page.translatesAutoresizingMaskIntoConstraints = false
+        return page
+
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setCollectionDelegates()
         self.addSubview(topCollectionView)
+        self.addSubview(pageControl)
         setupConstraints()
+        configureAnimation()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,6 +65,22 @@ class TopCollectionView: UIView {
         topCollectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        pageControl.snp.makeConstraints { make in
+            make.top.equalTo(topCollectionView.snp.bottom).inset(-5)
+            make.centerX.equalToSuperview()
+        }
+    }
+    
+    func configureAnimation() {
+        topCollectionView.gemini
+            .circleRotationAnimation()
+            .cornerRadius(15)
+            .radius(1500)
+            .rotateDirection(.anticlockwise)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        topCollectionView.animateVisibleCells()
     }
 }
 
@@ -88,5 +112,20 @@ extension TopCollectionView: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let cell = cell as? GeminiCell {
+            self.topCollectionView.animateCell(cell)
+        }
+        // анимация для page controll
+        let pagesCount = listMovieNetwork.count / 3
+        if indexPath.item < pagesCount {
+            pageControl.currentPage = 0
+        } else if indexPath.item < pagesCount * 2 {
+            pageControl.currentPage = 1
+        } else {
+            pageControl.currentPage = pagesCount
+        }
     }
 }
