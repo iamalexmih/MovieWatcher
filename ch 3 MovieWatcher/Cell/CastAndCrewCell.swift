@@ -24,6 +24,19 @@ class CastAndCrewCell: UICollectionViewCell {
         configure()
 //        contentView.backgroundColor = .clear
     }
+    
+    // network for configure cell in castCrew -- kompot -- work 
+    func configureNetworkCell(cast: Cast) {
+        guard let name = cast.name else { return }
+        nameLabel.text = name
+        
+        guard let role = cast.known_for_department else { return }
+        roleLabel.text = role
+        
+        guard let photoPath = NetworkService.shared.makeUrlForPhoto(photoPath: cast.profile_path) else { return }
+        let urlPhoto = URL(string: photoPath)
+        photoImageView.kf.setImage(with: urlPhoto)
+    }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)

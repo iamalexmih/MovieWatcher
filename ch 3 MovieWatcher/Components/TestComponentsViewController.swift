@@ -55,7 +55,10 @@ class TestComponentsViewController: UIViewController {
                     print(data.results)
                     let movie = data.results[0]
                     let genreIds =  movie.genre_ids
-                    let namesGenre = NetworkService.shared.getNameGenreForOneMovie(movieGenresId: movie.genre_ids.first!, arrayGenres: StorageGenres.shared.listGenres)
+                    let namesGenre = NetworkService.shared.getNameGenreForOneMovie(
+                        movieGenresId: movie.genre_ids.first!,
+                        arrayGenres: StorageGenres.shared.listGenres
+                    )
                     
                     print("Жанры Фильма \(movie.original_title): ", namesGenre)
                 }

@@ -47,6 +47,46 @@ final class NetworkService {
         }
     }
     
+    // Список фильмов в топе рейтинга
+    // for homeScreen - TopCollectionView -- kompot -- work
+    func getTopRated(completion: @escaping (Result<ListMovies, Error>) -> Void) {
+        let urlString =
+        ApiConstants.baseUrl +
+        "/3/movie/top_rated?" +
+        "api_key=" + apiKey +
+        "&language=en-US" +
+        "&page=1"
+        
+        performRequest(with: urlString, type: ListMovies.self) { (result) in
+            switch result {
+            case .success(let data):
+                completion(.success(data))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    // Список фильмов, которые в настоящее время в прокате в кинотеатрах
+    // for homeScreen - BottomCollectionView -- kompot -- work
+    func getNowPlaying(completion: @escaping (Result<ListMovies, Error>) -> Void) {
+        let urlString =
+        ApiConstants.baseUrl +
+        "/3/movie/now_playing?" +
+        "api_key=" + apiKey +
+        "&language=en-US" +
+        "&page=1"
+        
+        performRequest(with: urlString, type: ListMovies.self) { (result) in
+            switch result {
+            case .success(let data):
+                completion(.success(data))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
     
     // Постер к фильму.
     func makeUrlForPoster(posterPath: String?) -> String? {
@@ -55,7 +95,19 @@ final class NetworkService {
         "\(ApiConstants.posterUrl)" +
         "/t/p/w\(200)/" +
         "\(posterPath)"
+        
         return posterURL
+    }
+    
+    
+    // photo person from cast and crew
+    func makeUrlForPhoto(photoPath: String?) -> String? {
+        guard let photoPath = photoPath else { return nil }
+        let photoUrl =
+        ApiConstants.posterUrl +
+        "/t/p/w500" + photoPath
+        
+        return photoUrl
     }
     
     
@@ -123,7 +175,45 @@ final class NetworkService {
     
     
     // Получить подробную информацию по фильму.
-
+    func getMovieInfo(with movieID: Int, completion: @escaping (Result<InfoMovie, Error>) -> Void) {
+        let urlString =
+        ApiConstants.baseUrl +
+        "/3/movie/" +
+        "\(movieID)?" +
+        "api_key=" + apiKey +
+        "&language=en-US"
+        
+        performRequest(with: urlString, type: InfoMovie.self) { (result) in
+            switch result {
+            case .success(let data):
+                completion(.success(data))
+                print("code 200")
+            case .failure(let error):
+                print("Чет не работает инфа \(error)")
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    // request for get cast and crew in movie info 
+    func getCastCrew(with movieID: Int, completion: @escaping (Result<CastCrew, Error>) -> Void) {
+        let urlString =
+        ApiConstants.baseUrl +
+        "/3/movie/" + "\(movieID)" +
+        "/credits?" + "api_key=" +
+        apiKey + "&language=en-US"
+        
+        performRequest(with: urlString, type: CastCrew.self) { (result) in
+            switch result {
+            case .success(let data):
+                print("Yeeeeee ")
+                completion(.success(data))
+            case .failure(let error):
+                print("castcrew not work \(error)")
+                completion(.failure(error))
+            }
+        }
+    }
     
     
     // Общий запрос с дженерик JSONDecoder.
@@ -173,6 +263,7 @@ final class NetworkService {
     }
     
     // Поиск по searchTextField
+    // network for search -- kompot -- work
     func search(with query: String, completion: @escaping (Result<ListMovies, Error>) -> Void) {
         let urlString = "\(ApiConstants.baseUrl)/3/search/movie?api_key=\(apiKey)&query=\(query)"
         performRequest(with: urlString, type: ListMovies.self) { (result) in
