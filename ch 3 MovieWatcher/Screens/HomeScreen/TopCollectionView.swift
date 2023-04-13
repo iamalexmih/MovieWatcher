@@ -25,7 +25,8 @@ class TopCollectionView: UIView {
     lazy var topCollectionView: GeminiCollectionView = {
         flowLayout.scrollDirection = .horizontal
         let collectionView = GeminiCollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.backgroundColor = UIColor(named: Resources.Colors.backGround)
+//        collectionView.backgroundColor = UIColor(named: Resources.Colors.backGround)
+        collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(HomeViewMovieCell.self, forCellWithReuseIdentifier: HomeViewMovieCell.identifier)
@@ -82,7 +83,6 @@ class TopCollectionView: UIView {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         topCollectionView.animateVisibleCells()
         let scrollPos = scrollView.contentOffset.x / scrollView.frame.width
-        pageControl.currentPage = Int(scrollPos)
     }
 }
 
@@ -117,7 +117,16 @@ extension TopCollectionView: UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if let cell = cell as? GeminiCell {
-             self.topCollectionView.animateCell(cell)
-         }
+            self.topCollectionView.animateCell(cell)
+        }
+        // анимация для page controll
+        let pagesCount = listMovieNetwork.count / 3
+        if indexPath.item < pagesCount {
+            pageControl.currentPage = 0
+        } else if indexPath.item < pagesCount * 2 {
+            pageControl.currentPage = 1
+        } else {
+            pageControl.currentPage = pagesCount
+        }
     }
 }
