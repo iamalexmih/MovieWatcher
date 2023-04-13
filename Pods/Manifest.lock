@@ -1,16 +1,20 @@
 PODS:
+  - Gemini (1.4.0)
   - SwiftLint (0.51.0)
 
 DEPENDENCIES:
+  - Gemini
   - SwiftLint
 
 SPEC REPOS:
   trunk:
+    - Gemini
     - SwiftLint
 
 SPEC CHECKSUMS:
+  Gemini: 4ad915cca8805577fe3021e02feeca2b77dcdbfc
   SwiftLint: 1b7561918a19e23bfed960e40759086e70f4dba5
 
-PODFILE CHECKSUM: 7eab6486f86ac1deee2cfb307430757491624681
+PODFILE CHECKSUM: 29cf48104a7182fcf3c401548625a6901ba3f787
 
 COCOAPODS: 1.12.0
