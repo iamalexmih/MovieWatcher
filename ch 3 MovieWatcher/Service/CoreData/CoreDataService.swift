@@ -45,7 +45,7 @@ class CoreDataService {
 }
 
 
-// MARK: - Helpers funcs
+// MARK: - Helpers funcs. общее назначение.
 
 extension CoreDataService {
     
@@ -94,7 +94,6 @@ extension CoreDataService {
         }
         return movieEntitys
     }
-
     
     
     func deleteAllData() {
@@ -111,6 +110,43 @@ extension CoreDataService {
         save()
     }
 }
+
+
+
+// MARK: - Частные функции
+extension CoreDataService {
+    
+    func saveCoreDataForSearchScreen(listMovieNetwork: [Movie]) {
+        let categoryEntity = CategoryScreenEntity(context: viewContext)
+        categoryEntity.name = "SearchViewController"
+        self.save()
+        
+        for movie in listMovieNetwork {
+            convertModelInMovieEntity(movie: movie, categoryEntity: categoryEntity)
+        }
+    }
+    
+    
+    func convertModelInMovieEntity(movie: Movie, categoryEntity: CategoryScreenEntity) {
+        // Если фильма с id = xxx, нет в хранилище, то тогда добавить.
+        let isExistMovieWithId = fetchDataId(id: movie.id, parentCategory: categoryEntity.name!).isEmpty
+        if isExistMovieWithId {
+            print("Если фильма с id = xxx, нет в хранилище, то тогда добавить.")
+            let movieEntity = MovieEntity(context: viewContext)
+            let setParents = NSSet(objects: categoryEntity)
+            movieEntity.parentCategory = setParents
+            movieEntity.id = Int64(movie.id)
+            movieEntity.title = movie.original_title!
+            movieEntity.posterPath = movie.poster_path ?? "N/A"
+            movieEntity.genreId = Int64(movie.genre_ids.first ?? 0)
+            movieEntity.releaseDate = movie.release_date ?? "N/A"
+            movieEntity.voteAverage = movie.vote_average
+            movieEntity.voteCount = Int64(movie.vote_count)
+        }
+        self.save()
+    }
+}
+
 
 // MARK: - User
 extension CoreDataService {

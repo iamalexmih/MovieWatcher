@@ -87,6 +87,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
                 switch result {
                 case .success(let data):
                     self.movieTableView.listMovieNetwork = data.results
+                    self.saveCoreDataForSearchScreen(listMovieNetwork: data.results)
                 case .failure(let failure):
                     print("searchMovie in searchVC \(failure)")
                 }
@@ -101,35 +102,9 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
 extension SearchViewController {
     
     func saveCoreDataForSearchScreen(listMovieNetwork: [Movie]) {
-        let categoryEntity = CategoryScreenEntity(context: CoreDataService.shared.viewContext)
-        categoryEntity.name = "SearchViewController"
-        CoreDataService.shared.save()
-        
-        for movie in listMovieNetwork {
-            convertModelInMovieEntity(movie: movie, categoryEntity: categoryEntity)
-        }
+        CoreDataService.shared.saveCoreDataForSearchScreen(listMovieNetwork: listMovieNetwork)
     }
     
-    
-    func convertModelInMovieEntity(movie: Movie, categoryEntity: CategoryScreenEntity) {
-        // Если фильма с id = xxx, нет в хранилище, то тогда добавить.
-        let isExistMovieWithId = CoreDataService.shared.fetchDataId(id: movie.id,
-                                                                    parentCategory: categoryEntity.name!).isEmpty
-        if isExistMovieWithId {
-            print("Если фильма с id = xxx, нет в хранилище, то тогда добавить.")
-            let movieEntity = MovieEntity(context: CoreDataService.shared.viewContext)
-            let setParents = NSSet(objects: categoryEntity)
-            movieEntity.parentCategory = setParents
-            movieEntity.id = Int64(movie.id)
-            movieEntity.title = movie.original_title!
-            movieEntity.posterPath = movie.poster_path ?? "N/A"
-            movieEntity.genreId = Int64(movie.genre_ids.first ?? 0)
-            movieEntity.releaseDate = movie.release_date ?? "N/A"
-            movieEntity.voteAverage = movie.vote_average
-            movieEntity.voteCount = Int64(movie.vote_count)
-        }
-        CoreDataService.shared.save()
-    }
 }
 
 
@@ -164,6 +139,7 @@ extension SearchViewController: CollectionDidSelectProtocol {
                 switch result {
                 case .success(let data):
                     self.movieTableView.listMovieNetwork = data.results
+                    self.saveCoreDataForSearchScreen(listMovieNetwork: data.results)
                     DispatchQueue.main.async {
                         self.movieTableView.tableView.reloadData()
                     }

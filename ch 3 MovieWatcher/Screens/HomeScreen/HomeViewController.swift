@@ -23,6 +23,7 @@ class HomeViewController: UIViewController {
     lazy var boxOfficeLabel = UILabel()
     lazy var seeAllButton = UIButton(type: .system)
     
+    // MARK: - VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
