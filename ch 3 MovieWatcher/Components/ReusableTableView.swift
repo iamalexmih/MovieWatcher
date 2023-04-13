@@ -21,6 +21,7 @@ class ReusableTableView: UIView {
     
     var listMovieNetwork: [Movie] = [] {
         didSet {
+            print("listMovieNetwork")
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -29,6 +30,7 @@ class ReusableTableView: UIView {
     
     var listMovieCoreData: [MovieEntity] = [] {
         didSet {
+            print("listMovieCoreData")
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -98,9 +100,12 @@ extension ReusableTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        let movie = listMovieNetwork[indexPath.row]
-        delegateForCell?.didSelectCellOpenMovieDetailScreen(movie.id)
+        if listMovieNetwork.isEmpty {
+            let movie = listMovieCoreData[indexPath.row]
+        } else {
+            let movie = listMovieNetwork[indexPath.row]
+            delegateForCell?.didSelectCellOpenMovieDetailScreen(movie.id)
+        }
     }
 }
 

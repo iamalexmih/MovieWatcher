@@ -183,6 +183,21 @@ extension CoreDataService {
         }
         self.save()
     }
+    
+    
+    func fetchRecentWatch() -> [MovieEntity] {
+        let request: NSFetchRequest<MovieEntity> = MovieEntity.fetchRequest()
+        let predicate = NSPredicate(format: "isViewed == %i", true)
+        request.predicate = predicate
+        
+        var movieEntitys: [MovieEntity] = []
+        do {
+            movieEntitys = try viewContext.fetch(request)
+        } catch let error {
+            print("Error load fetchDataId: \(error.localizedDescription)")
+        }
+        return movieEntitys
+    }
 }
 
 // MARK: - Работа с Favorite

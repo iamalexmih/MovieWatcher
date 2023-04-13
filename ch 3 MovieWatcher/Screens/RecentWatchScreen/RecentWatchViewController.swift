@@ -19,7 +19,7 @@ class RecentWatchViewController: UIViewController {
         super.viewWillAppear(animated)
         view.addSubviews(collectionView, recentWatchTableView)
         setupConstrains()
-        recentWatchTableView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "RecentWatchViewController")
+        recentWatchTableView.listMovieCoreData = CoreDataService.shared.fetchRecentWatch()
     }
     
     

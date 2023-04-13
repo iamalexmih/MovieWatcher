@@ -29,7 +29,7 @@ class GoogleButton: UIButton {
         backgroundColor = UIColor(named: Resources.Colors.backGround)
         layer.cornerRadius = 25
         layer.borderWidth = 2
-        layer.borderColor = UIColor.black.cgColor
+        layer.borderColor = UIColor(named: Resources.Colors.text)?.cgColor
         translatesAutoresizingMaskIntoConstraints = false
         makeSystem(self)
     }

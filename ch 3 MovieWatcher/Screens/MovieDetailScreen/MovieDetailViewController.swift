@@ -105,7 +105,10 @@ class MovieDetailViewController: UIViewController {
     
     @objc private func watchButtonPress() {
         print("watch Button Press")
-        // По нажатию на кнопку, добавить этот фильм в Кор дату категорию просмотренно. 
+        // По нажатию на кнопку, добавить этот фильм в Кор дату категорию просмотренно.
+        for movie in CoreDataService.shared.fetchAllMovieWith(id) {
+            movie.isViewed = true
+        }
     }
 }
 

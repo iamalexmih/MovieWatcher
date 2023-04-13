@@ -65,7 +65,6 @@ class TextFieldWithLabelStack: UIStackView {
             make.height.equalTo(52)
         }
         
-    // TODO: Fix dark mode color bug (border doesn't change)
         let textfieldInset = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textField.frame.height))
         textField.leftView = textfieldInset
         textField.rightView = textfieldInset
