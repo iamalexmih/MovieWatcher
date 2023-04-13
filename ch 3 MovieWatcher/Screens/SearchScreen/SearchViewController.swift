@@ -36,10 +36,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         
         movieTableView.delegateForCell = self
         collectionView.delegateCollectionDidSelect = self
-        view.backgroundColor = UIColor(named: Resources.Colors.backGround)
-
-        view.backgroundColor = .white
-        
+        view.backgroundColor = UIColor(named: Resources.Colors.backGround)        
         searchTextField.cancelButton.addTarget(self, action: #selector(clearButtonPressed), for: .touchUpInside)
         
 //        searchMovie()

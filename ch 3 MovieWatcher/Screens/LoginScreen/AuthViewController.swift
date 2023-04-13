@@ -109,11 +109,11 @@ class AuthViewController: UIViewController {
         
         titleLabel.text = "Create account"
         titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        titleLabel.textColor = UIColor(named: Resources.Colors.backGround)
+        titleLabel.textColor = UIColor(named: Resources.Colors.justWhite)
         
         subtitleLabel.text = "Some gibberish text to fill in empty space"
         subtitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        subtitleLabel.textColor = UIColor(named: Resources.Colors.backGround)
+        subtitleLabel.textColor = UIColor(named: Resources.Colors.justWhite)
     }
     
     func setupBottomStack() {

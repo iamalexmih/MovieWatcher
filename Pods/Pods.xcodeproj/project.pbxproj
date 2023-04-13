@@ -15,54 +15,134 @@
 			dependencies = (
 			);
 			name = SwiftLint;
-			productName = SwiftLint;
 		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		31929550867FAF4D1B3BC28E41CE378E /* Pods-ch 3 MovieWatcher-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF0C4B2BCE40AEDCC1AF3BE0D47BA2 /* Pods-ch 3 MovieWatcher-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		950151557C007DA852EBC9EEB16DB350 /* Pods-ch 3 MovieWatcher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9429825843027CF7A445CC2537BF64 /* Pods-ch 3 MovieWatcher-dummy.m */; };
-		A8C6C477EC7AC51D5EAD4512F2512A44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		05671F59BC6B23DBD3853454E2FE24E5 /* Pods-ch 3 MovieWatcher-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E4AEE8EA04EDC1103CA89B2BAB42F176 /* Pods-ch 3 MovieWatcher-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FA94C8BBCD828CC586A4C64097DA133 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		1644530B9087632C39A06B30C8371A51 /* CircleRotateAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0C2A8B8B3680F6BF15653026488CF5 /* CircleRotateAnimatable.swift */; };
+		1700B992223AB3E7410F712CA99D745A /* EasingAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71541D2200269DE863381FB1E95F9A9 /* EasingAnimatable.swift */; };
+		1ABF3063497D422EFD449E0AEE6029A4 /* Gemini-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FC80D30D4269761A82BE94DF0D5E09C2 /* Gemini-dummy.m */; };
+		1BBF4D7C8F0AB61D9414B4F4DC17599A /* GeminiCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8BB74388635DEC85F6135FB7B0F8A /* GeminiCollectionView.swift */; };
+		313E56B016048B97AB843060B2373FF2 /* CustomAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414227DD74C3E50AF2F4F7C07DF6A4F5 /* CustomAnimatable.swift */; };
+		335A82F3DE92994F230B5204DD315091 /* PitchRotationAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8CBBD2CEDD04D1CC7086545C046B49 /* PitchRotationAnimatable.swift */; };
+		388566174D01668D6254BF94B79904B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		5D901EB0E8E860D376E6514F5D5D3579 /* YawRotationAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6826CFD4A4F99C067BCA90935E23A172 /* YawRotationAnimatable.swift */; };
+		65CBB4BBD05C25160FEA1C2BDADCF6A1 /* GeminiAnimationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1E5899212A8B11B468A327E97B4A20 /* GeminiAnimationModel.swift */; };
+		6638D246331476F1C6B2A89410548133 /* CubeAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DF00D34542DEE857D2DC22FC2A0B84 /* CubeAnimatable.swift */; };
+		8A79169564F51EF15E32C1951308CD0E /* ScaleAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A368A9E8AC6952B46A1D217AC8969EA7 /* ScaleAnimatable.swift */; };
+		96AC5BB2CDF17641D8416FB455042843 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003CE0F995BE76BF83C153FEF7A81156 /* UIViewExtension.swift */; };
+		9F1A76F96078AED77F58A3E3F2F5FCF8 /* EasingFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BE7A358090AA3DCAAC03EDABB5A3DF /* EasingFunction.swift */; };
+		AB11DD1FAD6DF5E4FEDB064A208744A4 /* Pods-ch 3 MovieWatcher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 384925B14D727D58F47BD25BD1F0D934 /* Pods-ch 3 MovieWatcher-dummy.m */; };
+		BBD15B11B998BCBECBCF30D64FD7E8BB /* Gemini-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 034824C5BF8B15BF110294D059BF38D1 /* Gemini-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C39B5B85A8187BC73414A324B4279B7E /* UIAppearanceAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A6FCDB804AC720EDFE1265DEA2EB6 /* UIAppearanceAnimatable.swift */; };
+		D6B3B83B4CFC9DD9779C4F29240F5AF6 /* RollRotationAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6132071CF601B2025C335009E324B112 /* RollRotationAnimatable.swift */; };
+		EB21B7D3A2DB02DEC1B20939F1BA90D6 /* GeminiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C643A2D6AA1A4A5332182DA3EE8FE31 /* GeminiCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2531C263AED5F0C78785426EEDB7E305 /* PBXContainerItemProxy */ = {
+		31FD2D8A71893DA06A4F439BC9B1D8F9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
 			remoteInfo = SwiftLint;
 		};
+		AE422238C342569475DA171BE91DCFFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A6AC3B95F2D31FE0816D1936AFDFC4F5;
+			remoteInfo = Gemini;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		003CE0F995BE76BF83C153FEF7A81156 /* UIViewExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIViewExtension.swift; path = Gemini/UIViewExtension.swift; sourceTree = "<group>"; };
+		034824C5BF8B15BF110294D059BF38D1 /* Gemini-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Gemini-umbrella.h"; sourceTree = "<group>"; };
 		328E169F6271F8A26E089C32F7A27279 /* Pods-ch 3 MovieWatcher */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-ch 3 MovieWatcher"; path = Pods_ch_3_MovieWatcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		34B7488D43481684D50A155A07AFB91A /* Pods-ch 3 MovieWatcher-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ch 3 MovieWatcher-acknowledgements.plist"; sourceTree = "<group>"; };
-		3B4BF9C6196FCB4F78D23FC5543699EB /* Pods-ch 3 MovieWatcher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ch 3 MovieWatcher.modulemap"; sourceTree = "<group>"; };
-		3EC0124719FE8EF5FDDD72C26F8A2F57 /* SwiftLint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.debug.xcconfig; sourceTree = "<group>"; };
-		4147F8EBB37EE9A8A419A210EC878C60 /* Pods-ch 3 MovieWatcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ch 3 MovieWatcher.release.xcconfig"; sourceTree = "<group>"; };
+		32DFC5431032A7E9B6B8DA1563E1BE7D /* SwiftLint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.release.xcconfig; sourceTree = "<group>"; };
+		384925B14D727D58F47BD25BD1F0D934 /* Pods-ch 3 MovieWatcher-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ch 3 MovieWatcher-dummy.m"; sourceTree = "<group>"; };
+		3D1E5899212A8B11B468A327E97B4A20 /* GeminiAnimationModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeminiAnimationModel.swift; path = Gemini/GeminiAnimationModel.swift; sourceTree = "<group>"; };
+		411EDD974850B06184C7ACBEE385C519 /* Gemini.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Gemini.release.xcconfig; sourceTree = "<group>"; };
+		414227DD74C3E50AF2F4F7C07DF6A4F5 /* CustomAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomAnimatable.swift; path = Gemini/CustomAnimatable.swift; sourceTree = "<group>"; };
+		497DDFA0A88F09D6A120BF04E9B8C700 /* Pods-ch 3 MovieWatcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ch 3 MovieWatcher.release.xcconfig"; sourceTree = "<group>"; };
+		4E79958862A94A99F0A40F883CEB810E /* Gemini */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Gemini; path = Gemini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6132071CF601B2025C335009E324B112 /* RollRotationAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RollRotationAnimatable.swift; path = Gemini/RollRotationAnimatable.swift; sourceTree = "<group>"; };
+		6826CFD4A4F99C067BCA90935E23A172 /* YawRotationAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YawRotationAnimatable.swift; path = Gemini/YawRotationAnimatable.swift; sourceTree = "<group>"; };
+		6D3ED45AD174B0EE96F6CCAB683FF00E /* Pods-ch 3 MovieWatcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ch 3 MovieWatcher.debug.xcconfig"; sourceTree = "<group>"; };
+		72BE7A358090AA3DCAAC03EDABB5A3DF /* EasingFunction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EasingFunction.swift; path = Gemini/EasingFunction.swift; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		7EAB1DA481EDDC005A251D3A5E6BE4CD /* SwiftLint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.release.xcconfig; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A58D2554D76275C2C4961769A103EDA4 /* Pods-ch 3 MovieWatcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ch 3 MovieWatcher.debug.xcconfig"; sourceTree = "<group>"; };
-		A7DDC0BA7CAAA361FE8C4A753951C363 /* Pods-ch 3 MovieWatcher-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ch 3 MovieWatcher-acknowledgements.markdown"; sourceTree = "<group>"; };
-		B2B957F7648730097BFDD60102A4731D /* Pods-ch 3 MovieWatcher-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ch 3 MovieWatcher-Info.plist"; sourceTree = "<group>"; };
-		BCCF0C4B2BCE40AEDCC1AF3BE0D47BA2 /* Pods-ch 3 MovieWatcher-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ch 3 MovieWatcher-umbrella.h"; sourceTree = "<group>"; };
-		FB9429825843027CF7A445CC2537BF64 /* Pods-ch 3 MovieWatcher-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ch 3 MovieWatcher-dummy.m"; sourceTree = "<group>"; };
+		7639F3E561A19E2013B2C2269CE3471C /* Pods-ch 3 MovieWatcher-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ch 3 MovieWatcher-frameworks.sh"; sourceTree = "<group>"; };
+		8A0C2A8B8B3680F6BF15653026488CF5 /* CircleRotateAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CircleRotateAnimatable.swift; path = Gemini/CircleRotateAnimatable.swift; sourceTree = "<group>"; };
+		8C2A6FCDB804AC720EDFE1265DEA2EB6 /* UIAppearanceAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIAppearanceAnimatable.swift; path = Gemini/UIAppearanceAnimatable.swift; sourceTree = "<group>"; };
+		8C643A2D6AA1A4A5332182DA3EE8FE31 /* GeminiCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeminiCell.swift; path = Gemini/GeminiCell.swift; sourceTree = "<group>"; };
+		9A33E0D60A10259522E9496F7AD9DEC8 /* Pods-ch 3 MovieWatcher-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ch 3 MovieWatcher-acknowledgements.plist"; sourceTree = "<group>"; };
+		9BC1DE7676B8A137CC7DF22DDA542D9D /* SwiftLint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.debug.xcconfig; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A100AD871874ADE9F81F3BEC44375A06 /* Gemini.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Gemini.modulemap; sourceTree = "<group>"; };
+		A34CC33DDB321A4D49224CD40251A365 /* Gemini-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Gemini-prefix.pch"; sourceTree = "<group>"; };
+		A368A9E8AC6952B46A1D217AC8969EA7 /* ScaleAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScaleAnimatable.swift; path = Gemini/ScaleAnimatable.swift; sourceTree = "<group>"; };
+		A71541D2200269DE863381FB1E95F9A9 /* EasingAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EasingAnimatable.swift; path = Gemini/EasingAnimatable.swift; sourceTree = "<group>"; };
+		B6DF00D34542DEE857D2DC22FC2A0B84 /* CubeAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CubeAnimatable.swift; path = Gemini/CubeAnimatable.swift; sourceTree = "<group>"; };
+		BE40482FAE5F86319F783FEBBD86EA27 /* Gemini-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Gemini-Info.plist"; sourceTree = "<group>"; };
+		C2C9917F606E2060715BEC0A46964542 /* Pods-ch 3 MovieWatcher-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ch 3 MovieWatcher-Info.plist"; sourceTree = "<group>"; };
+		CE374C93AAC5BC979D5D824D568CE7CB /* Pods-ch 3 MovieWatcher-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ch 3 MovieWatcher-acknowledgements.markdown"; sourceTree = "<group>"; };
+		DCE8BB74388635DEC85F6135FB7B0F8A /* GeminiCollectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeminiCollectionView.swift; path = Gemini/GeminiCollectionView.swift; sourceTree = "<group>"; };
+		E4AEE8EA04EDC1103CA89B2BAB42F176 /* Pods-ch 3 MovieWatcher-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ch 3 MovieWatcher-umbrella.h"; sourceTree = "<group>"; };
+		EA8CBBD2CEDD04D1CC7086545C046B49 /* PitchRotationAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PitchRotationAnimatable.swift; path = Gemini/PitchRotationAnimatable.swift; sourceTree = "<group>"; };
+		ECBD043B11EB4F2A9EFBD54557A8022F /* Gemini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Gemini.debug.xcconfig; sourceTree = "<group>"; };
+		F6CAD7B4494CF681A5D02272B348F0C5 /* Pods-ch 3 MovieWatcher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ch 3 MovieWatcher.modulemap"; sourceTree = "<group>"; };
+		FC80D30D4269761A82BE94DF0D5E09C2 /* Gemini-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Gemini-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		28CFBA8B0BC3AC126DD812BBECC80000 /* Frameworks */ = {
+		3663F1B3DDE072E9151016CEA98C3AD1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8C6C477EC7AC51D5EAD4512F2512A44 /* Foundation.framework in Frameworks */,
+				388566174D01668D6254BF94B79904B4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6578492BEBA8E0C050AFCD8ABB46B72 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FA94C8BBCD828CC586A4C64097DA133 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33059770D7DB14E5C9D9F9B8574E23D6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4E79958862A94A99F0A40F883CEB810E /* Gemini */,
+				328E169F6271F8A26E089C32F7A27279 /* Pods-ch 3 MovieWatcher */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4FEEAF0F59955EC05C5BD267D2ADEAAF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B457A39F8202EB2F94BAED17B2FC18D4 /* Gemini */,
+				D194359C95A4C4C9B144F18D88C80991 /* SwiftLint */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		54A0ADA67668BA99B0E4948B08C1FFEE /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BFF518B8DAF40976A103E395681CBD0B /* Pods-ch 3 MovieWatcher */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -71,54 +151,44 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		6B8EF6AC5CD2FB945DE0833E369209A3 /* Targets Support Files */ = {
+		B457A39F8202EB2F94BAED17B2FC18D4 /* Gemini */ = {
 			isa = PBXGroup;
 			children = (
-				AF5444F075097F00B72AF41E12090481 /* Pods-ch 3 MovieWatcher */,
+				8A0C2A8B8B3680F6BF15653026488CF5 /* CircleRotateAnimatable.swift */,
+				B6DF00D34542DEE857D2DC22FC2A0B84 /* CubeAnimatable.swift */,
+				414227DD74C3E50AF2F4F7C07DF6A4F5 /* CustomAnimatable.swift */,
+				A71541D2200269DE863381FB1E95F9A9 /* EasingAnimatable.swift */,
+				72BE7A358090AA3DCAAC03EDABB5A3DF /* EasingFunction.swift */,
+				3D1E5899212A8B11B468A327E97B4A20 /* GeminiAnimationModel.swift */,
+				8C643A2D6AA1A4A5332182DA3EE8FE31 /* GeminiCell.swift */,
+				DCE8BB74388635DEC85F6135FB7B0F8A /* GeminiCollectionView.swift */,
+				EA8CBBD2CEDD04D1CC7086545C046B49 /* PitchRotationAnimatable.swift */,
+				6132071CF601B2025C335009E324B112 /* RollRotationAnimatable.swift */,
+				A368A9E8AC6952B46A1D217AC8969EA7 /* ScaleAnimatable.swift */,
+				8C2A6FCDB804AC720EDFE1265DEA2EB6 /* UIAppearanceAnimatable.swift */,
+				003CE0F995BE76BF83C153FEF7A81156 /* UIViewExtension.swift */,
+				6826CFD4A4F99C067BCA90935E23A172 /* YawRotationAnimatable.swift */,
+				FEC20206C9D8181B2AFD270F3CDD798D /* Support Files */,
 			);
-			name = "Targets Support Files";
+			name = Gemini;
+			path = Gemini;
 			sourceTree = "<group>";
 		};
-		7FDA596DBE0337ACDFE55A210D54EF26 /* Support Files */ = {
+		BFF518B8DAF40976A103E395681CBD0B /* Pods-ch 3 MovieWatcher */ = {
 			isa = PBXGroup;
 			children = (
-				3EC0124719FE8EF5FDDD72C26F8A2F57 /* SwiftLint.debug.xcconfig */,
-				7EAB1DA481EDDC005A251D3A5E6BE4CD /* SwiftLint.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftLint";
-			sourceTree = "<group>";
-		};
-		965877409E01FB3D85D85E90E6B30185 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D96179D43A67C5D5323B0682D32C133C /* SwiftLint */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		AF5444F075097F00B72AF41E12090481 /* Pods-ch 3 MovieWatcher */ = {
-			isa = PBXGroup;
-			children = (
-				3B4BF9C6196FCB4F78D23FC5543699EB /* Pods-ch 3 MovieWatcher.modulemap */,
-				A7DDC0BA7CAAA361FE8C4A753951C363 /* Pods-ch 3 MovieWatcher-acknowledgements.markdown */,
-				34B7488D43481684D50A155A07AFB91A /* Pods-ch 3 MovieWatcher-acknowledgements.plist */,
-				FB9429825843027CF7A445CC2537BF64 /* Pods-ch 3 MovieWatcher-dummy.m */,
-				B2B957F7648730097BFDD60102A4731D /* Pods-ch 3 MovieWatcher-Info.plist */,
-				BCCF0C4B2BCE40AEDCC1AF3BE0D47BA2 /* Pods-ch 3 MovieWatcher-umbrella.h */,
-				A58D2554D76275C2C4961769A103EDA4 /* Pods-ch 3 MovieWatcher.debug.xcconfig */,
-				4147F8EBB37EE9A8A419A210EC878C60 /* Pods-ch 3 MovieWatcher.release.xcconfig */,
+				F6CAD7B4494CF681A5D02272B348F0C5 /* Pods-ch 3 MovieWatcher.modulemap */,
+				CE374C93AAC5BC979D5D824D568CE7CB /* Pods-ch 3 MovieWatcher-acknowledgements.markdown */,
+				9A33E0D60A10259522E9496F7AD9DEC8 /* Pods-ch 3 MovieWatcher-acknowledgements.plist */,
+				384925B14D727D58F47BD25BD1F0D934 /* Pods-ch 3 MovieWatcher-dummy.m */,
+				7639F3E561A19E2013B2C2269CE3471C /* Pods-ch 3 MovieWatcher-frameworks.sh */,
+				C2C9917F606E2060715BEC0A46964542 /* Pods-ch 3 MovieWatcher-Info.plist */,
+				E4AEE8EA04EDC1103CA89B2BAB42F176 /* Pods-ch 3 MovieWatcher-umbrella.h */,
+				6D3ED45AD174B0EE96F6CCAB683FF00E /* Pods-ch 3 MovieWatcher.debug.xcconfig */,
+				497DDFA0A88F09D6A120BF04E9B8C700 /* Pods-ch 3 MovieWatcher.release.xcconfig */,
 			);
 			name = "Pods-ch 3 MovieWatcher";
 			path = "Target Support Files/Pods-ch 3 MovieWatcher";
-			sourceTree = "<group>";
-		};
-		C7FFCEDE6574CD730A8406073DA54981 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				328E169F6271F8A26E089C32F7A27279 /* Pods-ch 3 MovieWatcher */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -126,10 +196,19 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				965877409E01FB3D85D85E90E6B30185 /* Pods */,
-				C7FFCEDE6574CD730A8406073DA54981 /* Products */,
-				6B8EF6AC5CD2FB945DE0833E369209A3 /* Targets Support Files */,
+				4FEEAF0F59955EC05C5BD267D2ADEAAF /* Pods */,
+				33059770D7DB14E5C9D9F9B8574E23D6 /* Products */,
+				54A0ADA67668BA99B0E4948B08C1FFEE /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		D194359C95A4C4C9B144F18D88C80991 /* SwiftLint */ = {
+			isa = PBXGroup;
+			children = (
+				D5A5C6CFEAD4CCAB0D2B5273C29F9A81 /* Support Files */,
+			);
+			name = SwiftLint;
+			path = SwiftLint;
 			sourceTree = "<group>";
 		};
 		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
@@ -140,22 +219,47 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D96179D43A67C5D5323B0682D32C133C /* SwiftLint */ = {
+		D5A5C6CFEAD4CCAB0D2B5273C29F9A81 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				7FDA596DBE0337ACDFE55A210D54EF26 /* Support Files */,
+				9BC1DE7676B8A137CC7DF22DDA542D9D /* SwiftLint.debug.xcconfig */,
+				32DFC5431032A7E9B6B8DA1563E1BE7D /* SwiftLint.release.xcconfig */,
 			);
-			path = SwiftLint;
+			name = "Support Files";
+			path = "../Target Support Files/SwiftLint";
+			sourceTree = "<group>";
+		};
+		FEC20206C9D8181B2AFD270F3CDD798D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A100AD871874ADE9F81F3BEC44375A06 /* Gemini.modulemap */,
+				FC80D30D4269761A82BE94DF0D5E09C2 /* Gemini-dummy.m */,
+				BE40482FAE5F86319F783FEBBD86EA27 /* Gemini-Info.plist */,
+				A34CC33DDB321A4D49224CD40251A365 /* Gemini-prefix.pch */,
+				034824C5BF8B15BF110294D059BF38D1 /* Gemini-umbrella.h */,
+				ECBD043B11EB4F2A9EFBD54557A8022F /* Gemini.debug.xcconfig */,
+				411EDD974850B06184C7ACBEE385C519 /* Gemini.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Gemini";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		CE889D435B4C47B09C09BD7D329A0536 /* Headers */ = {
+		20119364B2609B8E6CCA804EECEBB1C1 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31929550867FAF4D1B3BC28E41CE378E /* Pods-ch 3 MovieWatcher-umbrella.h in Headers */,
+				05671F59BC6B23DBD3853454E2FE24E5 /* Pods-ch 3 MovieWatcher-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8EE1A6B78A81D70B55E01806892097DB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBD15B11B998BCBECBCF30D64FD7E8BB /* Gemini-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,21 +268,40 @@
 /* Begin PBXNativeTarget section */
 		0E6D12A6FF2FE40171A4DF560151F3F9 /* Pods-ch 3 MovieWatcher */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AE17BE05B1A5C068877723888AB55401 /* Build configuration list for PBXNativeTarget "Pods-ch 3 MovieWatcher" */;
+			buildConfigurationList = A2048E3010AA8890A22E4617AE23AEF1 /* Build configuration list for PBXNativeTarget "Pods-ch 3 MovieWatcher" */;
 			buildPhases = (
-				CE889D435B4C47B09C09BD7D329A0536 /* Headers */,
-				DFEFE25E1E8DED94CD01AE0FE93134B1 /* Sources */,
-				28CFBA8B0BC3AC126DD812BBECC80000 /* Frameworks */,
-				1A9A243BD19D5D3C699748C517C70B01 /* Resources */,
+				20119364B2609B8E6CCA804EECEBB1C1 /* Headers */,
+				FE9C0DCE2318D3AE814776C78070F788 /* Sources */,
+				D6578492BEBA8E0C050AFCD8ABB46B72 /* Frameworks */,
+				057E3DE38FBD4C988C3D235129E32AB1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				29FC983AD0883CFEEE48735F600174A5 /* PBXTargetDependency */,
+				BB0346852A38F467637BF2D28AB0A5EE /* PBXTargetDependency */,
+				818D9143F905FF957F717DAAF2F47C6D /* PBXTargetDependency */,
 			);
 			name = "Pods-ch 3 MovieWatcher";
 			productName = Pods_ch_3_MovieWatcher;
 			productReference = 328E169F6271F8A26E089C32F7A27279 /* Pods-ch 3 MovieWatcher */;
+			productType = "com.apple.product-type.framework";
+		};
+		A6AC3B95F2D31FE0816D1936AFDFC4F5 /* Gemini */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6475238BB09AAF0FB50939C40809CC87 /* Build configuration list for PBXNativeTarget "Gemini" */;
+			buildPhases = (
+				8EE1A6B78A81D70B55E01806892097DB /* Headers */,
+				9E81C879DAED884F5AC60615C2EA7616 /* Sources */,
+				3663F1B3DDE072E9151016CEA98C3AD1 /* Frameworks */,
+				796ABDBDF4E76B48EA2E3E299981B259 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Gemini;
+			productName = Gemini;
+			productReference = 4E79958862A94A99F0A40F883CEB810E /* Gemini */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -199,10 +322,11 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = C7FFCEDE6574CD730A8406073DA54981 /* Products */;
+			productRefGroup = 33059770D7DB14E5C9D9F9B8574E23D6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				A6AC3B95F2D31FE0816D1936AFDFC4F5 /* Gemini */,
 				0E6D12A6FF2FE40171A4DF560151F3F9 /* Pods-ch 3 MovieWatcher */,
 				52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */,
 			);
@@ -210,7 +334,14 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1A9A243BD19D5D3C699748C517C70B01 /* Resources */ = {
+		057E3DE38FBD4C988C3D235129E32AB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		796ABDBDF4E76B48EA2E3E299981B259 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -220,29 +351,57 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		DFEFE25E1E8DED94CD01AE0FE93134B1 /* Sources */ = {
+		9E81C879DAED884F5AC60615C2EA7616 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				950151557C007DA852EBC9EEB16DB350 /* Pods-ch 3 MovieWatcher-dummy.m in Sources */,
+				1644530B9087632C39A06B30C8371A51 /* CircleRotateAnimatable.swift in Sources */,
+				6638D246331476F1C6B2A89410548133 /* CubeAnimatable.swift in Sources */,
+				313E56B016048B97AB843060B2373FF2 /* CustomAnimatable.swift in Sources */,
+				1700B992223AB3E7410F712CA99D745A /* EasingAnimatable.swift in Sources */,
+				9F1A76F96078AED77F58A3E3F2F5FCF8 /* EasingFunction.swift in Sources */,
+				1ABF3063497D422EFD449E0AEE6029A4 /* Gemini-dummy.m in Sources */,
+				65CBB4BBD05C25160FEA1C2BDADCF6A1 /* GeminiAnimationModel.swift in Sources */,
+				EB21B7D3A2DB02DEC1B20939F1BA90D6 /* GeminiCell.swift in Sources */,
+				1BBF4D7C8F0AB61D9414B4F4DC17599A /* GeminiCollectionView.swift in Sources */,
+				335A82F3DE92994F230B5204DD315091 /* PitchRotationAnimatable.swift in Sources */,
+				D6B3B83B4CFC9DD9779C4F29240F5AF6 /* RollRotationAnimatable.swift in Sources */,
+				8A79169564F51EF15E32C1951308CD0E /* ScaleAnimatable.swift in Sources */,
+				C39B5B85A8187BC73414A324B4279B7E /* UIAppearanceAnimatable.swift in Sources */,
+				96AC5BB2CDF17641D8416FB455042843 /* UIViewExtension.swift in Sources */,
+				5D901EB0E8E860D376E6514F5D5D3579 /* YawRotationAnimatable.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE9C0DCE2318D3AE814776C78070F788 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB11DD1FAD6DF5E4FEDB064A208744A4 /* Pods-ch 3 MovieWatcher-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		29FC983AD0883CFEEE48735F600174A5 /* PBXTargetDependency */ = {
+		818D9143F905FF957F717DAAF2F47C6D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftLint;
 			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
-			targetProxy = 2531C263AED5F0C78785426EEDB7E305 /* PBXContainerItemProxy */;
+			targetProxy = 31FD2D8A71893DA06A4F439BC9B1D8F9 /* PBXContainerItemProxy */;
+		};
+		BB0346852A38F467637BF2D28AB0A5EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Gemini;
+			target = A6AC3B95F2D31FE0816D1936AFDFC4F5 /* Gemini */;
+			targetProxy = AE422238C342569475DA171BE91DCFFD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		2D957FE89537CA064D616A3F055529C8 /* Debug */ = {
+		0CB7891BE70BC25269E58F9859E8CEB4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A58D2554D76275C2C4961769A103EDA4 /* Pods-ch 3 MovieWatcher.debug.xcconfig */;
+			baseConfigurationReference = 497DDFA0A88F09D6A120BF04E9B8C700 /* Pods-ch 3 MovieWatcher.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -272,10 +431,80 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		341B90F4EAE7BA7CA125C9ED818EB32C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECBD043B11EB4F2A9EFBD54557A8022F /* Gemini.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Gemini/Gemini-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Gemini/Gemini-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Gemini/Gemini.modulemap";
+				PRODUCT_MODULE_NAME = Gemini;
+				PRODUCT_NAME = Gemini;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		8742E15C4B33B4EBF96A2225E775D7DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 411EDD974850B06184C7ACBEE385C519 /* Gemini.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Gemini/Gemini-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Gemini/Gemini-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Gemini/Gemini.modulemap";
+				PRODUCT_MODULE_NAME = Gemini;
+				PRODUCT_NAME = Gemini;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		8DE5143C03248BB6CD542DE3963D6F3A /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -405,26 +634,9 @@
 			};
 			name = Release;
 		};
-		AD81E62ACCB0B7A923FC8AA288F9921E /* Release */ = {
+		A7C533E9C73F23CEDA4C071B73B64892 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7EAB1DA481EDDC005A251D3A5E6BE4CD /* SwiftLint.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		D0062734C1859ECB474767B1402358F1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4147F8EBB37EE9A8A419A210EC878C60 /* Pods-ch 3 MovieWatcher.release.xcconfig */;
+			baseConfigurationReference = 6D3ED45AD174B0EE96F6CCAB683FF00E /* Pods-ch 3 MovieWatcher.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -454,15 +666,31 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AD81E62ACCB0B7A923FC8AA288F9921E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32DFC5431032A7E9B6B8DA1563E1BE7D /* SwiftLint.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		EADD1F50ABC8096A0D6CB18822BB4EE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3EC0124719FE8EF5FDDD72C26F8A2F57 /* SwiftLint.debug.xcconfig */;
+			baseConfigurationReference = 9BC1DE7676B8A137CC7DF22DDA542D9D /* SwiftLint.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -488,11 +716,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AE17BE05B1A5C068877723888AB55401 /* Build configuration list for PBXNativeTarget "Pods-ch 3 MovieWatcher" */ = {
+		6475238BB09AAF0FB50939C40809CC87 /* Build configuration list for PBXNativeTarget "Gemini" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2D957FE89537CA064D616A3F055529C8 /* Debug */,
-				D0062734C1859ECB474767B1402358F1 /* Release */,
+				341B90F4EAE7BA7CA125C9ED818EB32C /* Debug */,
+				8742E15C4B33B4EBF96A2225E775D7DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A2048E3010AA8890A22E4617AE23AEF1 /* Build configuration list for PBXNativeTarget "Pods-ch 3 MovieWatcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7C533E9C73F23CEDA4C071B73B64892 /* Debug */,
+				0CB7891BE70BC25269E58F9859E8CEB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -14,6 +14,7 @@ enum Resources {
         static let cellIcon = "cellIconColor"
         static let inactive = "inactiveColor"
         static let secondText = "secondTextColor"
+        static let justWhite = "justWhite"
         static let text = "textColor"
         static let categoryColour = "categoryColor"
         static let textFieldBackground = "bgTextFieldColor"

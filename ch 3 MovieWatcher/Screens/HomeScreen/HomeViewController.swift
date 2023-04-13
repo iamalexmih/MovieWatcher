@@ -161,7 +161,7 @@ class HomeViewController: UIViewController {
         topCollectionView.snp.makeConstraints { make in
             make.top.equalTo(userImage.snp.bottom).inset(-15)
             make.height.equalTo(250)
-            make.left.right.equalToSuperview().inset(20)
+            make.left.right.equalToSuperview()
         }
         
         categoryLabel.snp.makeConstraints { make in
@@ -169,7 +169,6 @@ class HomeViewController: UIViewController {
             make.left.equalToSuperview().inset(20)
             make.width.equalTo(100)
         }
-        
         filmsCategoriesCollection.snp.makeConstraints { make in
             make.top.equalTo(categoryLabel.snp.bottom).inset(-15)
             make.left.right.equalToSuperview().inset(20)

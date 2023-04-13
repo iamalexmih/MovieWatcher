@@ -7,8 +7,9 @@
 
 import UIKit
 import Kingfisher
+import Gemini
 
-class HomeViewMovieCell: UICollectionViewCell {
+class HomeViewMovieCell: GeminiCell {
     
     static let identifier = "HomeViewMovieCell"
     
