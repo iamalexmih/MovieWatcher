@@ -9,7 +9,16 @@ import UIKit
 import SnapKit
 
 class TopCollectionView: UIView {
-        
+    
+//    private let sections = MockData.shared.popularCategory
+    var listMovieNetwork: [Movie] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.topCollectionView.reloadData()
+            }
+        }
+    }
+    
     lazy var topCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
@@ -47,7 +56,9 @@ class TopCollectionView: UIView {
 extension TopCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+//        return 10
+        // kompot - Network
+        return listMovieNetwork.count 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -55,7 +66,10 @@ extension TopCollectionView: UICollectionViewDelegate, UICollectionViewDataSourc
                                                             for: indexPath) as? HomeViewMovieCell else {
             return UICollectionViewCell()
         }
-        cell.configureCell(filmImage: "filmPoster", categoryFilmName: "Adventure", filmName: "Die Hard")
+        // kompot -- Network
+        cell.configureNetworkCell(movie: listMovieNetwork[indexPath.row])
+        
+//        cell.configureCell(filmImage: "filmPoster", categoryFilmName: "Adventure", filmName: "Die Hard")
         return cell
     }
     

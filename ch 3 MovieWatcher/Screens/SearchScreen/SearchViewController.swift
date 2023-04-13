@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UITextFieldDelegate {
     
     private var searchTextField = SearchTextField()
     private var collectionView = ReusableCollectionView()
@@ -31,12 +31,30 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // search network
+        searchTextField.searchTextField.delegate = self
         
         movieTableView.delegateForCell = self
         collectionView.delegateCollectionDidSelect = self
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
 
-        popularMovie()
+        view.backgroundColor = .white
+        
+        searchTextField.cancelButton.addTarget(self, action: #selector(clearButtonPressed), for: .touchUpInside)
+        
+//        searchMovie()
+    }
+    
+    // заканичвает редактирование после нажатия ретерн
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        searchTextField.endEditing(true)
+        searchMovie(with: searchTextField.searchTextField.text)
+        return true
+    }
+    
+    @objc func clearButtonPressed() {
+        searchTextField.searchTextField.text = ""
     }
     
     // MARK: - other funcs
@@ -49,6 +67,29 @@ class SearchViewController: UIViewController {
                 self.saveCoreDataForSearchScreen(listMovieNetwork: data.results)
             case .failure(let failure):
                 print("screen SearchVC \(failure)")
+            }
+        }
+    }
+    
+    // network for search -- kompot -- work
+    func searchMovie(with: String?) {
+        guard let query = with,
+                !query.trimmingCharacters(in: .whitespaces).isEmpty,
+                query.trimmingCharacters(in: .whitespaces).count >= 3 else {
+            popularMovie()
+            return
+        }
+        
+        if query.isEmpty {
+            popularMovie()
+        } else {
+            NetworkService.shared.search(with: query) { result in
+                switch result {
+                case .success(let data):
+                    self.movieTableView.listMovieNetwork = data.results
+                case .failure(let failure):
+                    print("searchMovie in searchVC \(failure)")
+                }
             }
         }
     }
@@ -95,14 +136,17 @@ extension SearchViewController {
 
 // MARK: - Table View Delegate
 extension SearchViewController: ReusableTableViewDelegate {
+    
     func updateListMovieCoreData() {
         if movieTableView.listMovieNetwork.isEmpty {
             movieTableView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "SearchViewController")
         }
     }
     
-    func didSelectTableViewCell(_ cell: UITableViewCell) {
+    func didSelectTableViewCell(_ id: Int) {
         let detailedVC = MovieDetailViewController()
+        detailedVC.id = id
+        print("передает id ")
         navigationController?.pushViewController(detailedVC, animated: true)
     }
 }

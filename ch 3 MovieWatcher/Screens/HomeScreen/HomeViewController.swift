@@ -27,8 +27,37 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
         
+        filmsCategoriesCollection.delegateCollectionDidSelect = self 
+        
         setupViews()
         setConstraints()
+        // network -- kompot 
+        topRated()
+        nowPlaying()
+    }
+    
+    // func for topRated - Network -- kompot - work 
+    func topRated() {
+        NetworkService.shared.getTopRated { result in
+            switch result {
+            case .success(let data):
+                self.topCollectionView.listMovieNetwork = data.results
+            case .failure(let failure):
+                print("fuck top rated \(failure)")
+            }
+        }
+    }
+    
+    // func for nowPlaying -- Network -> work -- kompot
+    func nowPlaying() {
+        NetworkService.shared.getNowPlaying { result in
+            switch result {
+            case .success(let data):
+                self.boxOfficeCollection.listMovieNetwork = data.results
+            case .failure(let failure):
+                print("fuck now playing \(failure)")
+            }
+        }
     }
     
     private func setupViews() {
@@ -168,3 +197,24 @@ class HomeViewController: UIViewController {
     }
 }
 
+extension HomeViewController: CollectionDidSelectProtocol {
+    func getMoviesFromCategory(nameGenre: String) {
+        if nameGenre == "All" {
+            nowPlaying()
+        } else {
+            let nameId = NetworkService.shared.getIdGenreForOneMovie(movieGenresName: nameGenre, arrayGenres: StorageGenres.shared.listGenres)
+            NetworkService.shared.getListMoviesForGenres(nameId) { result in
+                switch result {
+                case .success(let data):
+                    self.boxOfficeCollection.listMovieNetwork = data.results
+                    DispatchQueue.main.async {
+                        
+                        self.boxOfficeCollection.collectionBoxOfficeView.reloadData()
+                    }
+                case .failure(let failure):
+                    print("Error receiving film by genre \(failure)")
+                }
+            }
+        }
+    }
+}

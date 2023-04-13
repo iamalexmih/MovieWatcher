@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HomeViewMovieCell: UICollectionViewCell {
     
@@ -64,6 +65,20 @@ class HomeViewMovieCell: UICollectionViewCell {
         filmImageView.image = UIImage(named: filmImage)
         categoryFilmLabel.text = categoryFilmName
         filmNameLabel.text = filmName
+    }
+    
+    // конфигурация ячейки for TopCollectionView -- kompot -- work
+    func configureNetworkCell(movie: Movie) {
+        filmNameLabel.text = movie.original_title
+        
+        categoryFilmLabel.text = NetworkService.shared.getNameGenreForOneMovie(
+            movieGenresId: movie.genre_ids.first ?? 7777,
+            arrayGenres: StorageGenres.shared.listGenres
+        )
+        
+        guard let posterPath = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
+        let urlPoster = URL(string: posterPath)
+        filmImageView.kf.setImage(with: urlPoster)
     }
     
     func setConstraints() {

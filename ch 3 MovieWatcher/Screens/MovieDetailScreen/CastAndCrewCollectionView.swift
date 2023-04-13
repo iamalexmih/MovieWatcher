@@ -8,6 +8,14 @@
 import UIKit
 
 class CastAndCrewCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    var listCastNetwork: [Cast] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.reloadData()
+            }
+        }
+    }
 
     init() {
         let layout = UICollectionViewFlowLayout()
@@ -21,11 +29,16 @@ class CastAndCrewCollectionView: UICollectionView, UICollectionViewDelegate, UIC
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return listCastNetwork.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CastAndCrewCell.reuseId, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CastAndCrewCell.reuseId,
+                                                            for: indexPath) as? CastAndCrewCell else {
+            return UICollectionViewCell()
+        }
+        cell.configureNetworkCell(cast: listCastNetwork[indexPath.row])
+        
         return cell
     }
 

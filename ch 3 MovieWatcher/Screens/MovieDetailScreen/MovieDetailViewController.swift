@@ -7,11 +7,13 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class MovieDetailViewController: UIViewController {
+
+    var rating = 1.9
     
-    let rating = 1.9
-    
+    var id = 0
     var movieImage = UIImage(named: "filmPoster")
     var movieNameLabelText = "Movie name"
     var releaseDateText = "17 Sep 2020"
@@ -54,8 +56,52 @@ class MovieDetailViewController: UIViewController {
         title = "Moview Detail"
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
         configure()
+        
+        // запрос для получения инфы, который передает фильм в func configure -- kompot
+        NetworkService.shared.getMovieInfo(with: id) { result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    self.configureNetworkInfo(movie: data)
+                }
+//                self.ratingView.configure(rating: Int(data.vote_average.rounded()))
+            case .failure(let failure):
+                print("Info of Movie not work in MovieDetailVC \(failure)")
+            }
+        }
+        
+        NetworkService.shared.getCastCrew(with: id) { result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    self.participantCollectionView.listCastNetwork = data.cast
+                }
+            case .failure(let failure):
+                print("Cast in MovieDetail don't work")
+            }
+        }
     }
     
+    // func for set info from movie model -- kompot -- work
+    func configureNetworkInfo(movie: InfoMovie) {
+        guard let urlPoster = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
+        self.movieImageView.kf.setImage(with: URL(string: urlPoster))
+        
+        movieNameLabel.text = movie.original_title
+        
+        releaseView.detailTiTleLabel.text = movie.release_date
+        
+        guard let time = movie.runtime else { return }
+        timeView.detailTiTleLabel.text = "\(time) minutes"
+        
+        guard let str = movie.genres?.last?.name else { return }
+        genreView.detailTiTleLabel.text = str
+        
+        self.ratingView.configure(rating: Int(movie.vote_average.rounded()))
+        
+        guard let description = movie.overview else { return }
+        descriptionOfMovieLabel.text = description
+    }
     
     @objc private func watchButtonPress() {
         print("watch Button Press")
@@ -167,7 +213,7 @@ extension MovieDetailViewController {
 
     private func configureRatingView() {
         containerView.addSubview(ratingView)
-        ratingView.configure(rating: Int(rating.rounded()))
+        
         ratingView.snp.makeConstraints { make in
             make.top.equalTo(detailsStackView.snp.bottom).inset(-18)
             make.centerX.equalToSuperview()
@@ -189,7 +235,8 @@ extension MovieDetailViewController {
 
     private func configureDescriptionOfMovieLabel() {
         containerView.addSubview(descriptionOfMovieLabel)
-        descriptionOfMovieLabel.text = "Джон Уик - на первый взгляд, самый обычный среднестатистический американец, который ведет спокойную мирную жизнь. Однако мало кто знает, что он был наёмным."
+        descriptionOfMovieLabel.text = "Джон Уик - на первый взгляд,самый обычный среднестатистический американец," +
+            "который ведет спокойную мирную жизнь. Однако мало кто знает, что он был наёмным."
         descriptionOfMovieLabel.numberOfLines = 0
         descriptionOfMovieLabel.textAlignment = .left
         descriptionOfMovieLabel.font = .jakartaMedium(size: 14)
