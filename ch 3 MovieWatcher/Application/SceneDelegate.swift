@@ -20,12 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
 
-//        let settingViewController = SettingViewController()
-//        let tabBar = CustomTabBarController()
+        let settingViewController = SettingViewController()
+        let tabBar = CustomTabBarController()
         let navControllerForAuth = NavBarController(rootViewController: AuthViewController())
-//        let onBoardingViewController = OnBoardingViewController()
+        let onBoardingViewController = OnBoardingViewController()
     
-        window?.rootViewController = navControllerForAuth
+        window?.rootViewController = settingViewController
         window?.makeKeyAndVisible()
     }
 }
