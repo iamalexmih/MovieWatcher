@@ -21,7 +21,7 @@ struct Movie: Codable {
     let release_date: String?
     let vote_count: Int // указывается в скобках после рейтинга фильма
     let vote_average: Double
-    // Не могу найти  длительность фильма в API
+    
     // посмотреть используются ли нижние двое через модель Movie 
     let runtime: Int?
     let overview: String? 
@@ -52,10 +52,6 @@ struct GenreInfoMovie: Codable {
 
 
 // model for cast and crew of movie
-//struct ListCast: Codable {
-//    let results: [CastCrew]
-//}
-
 struct CastCrew: Codable {
     let id: Int
     let cast: [Cast]

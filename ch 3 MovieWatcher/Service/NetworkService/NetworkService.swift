@@ -48,7 +48,7 @@ final class NetworkService {
     }
     
     // Список фильмов в топе рейтинга
-    // for homeScreen - TopCollectionView -- kompot -- now in progress
+    // for homeScreen - TopCollectionView -- kompot -- work
     func getTopRated(completion: @escaping (Result<ListMovies, Error>) -> Void) {
         let urlString =
         ApiConstants.baseUrl +
@@ -99,6 +99,7 @@ final class NetworkService {
         return posterURL
     }
     
+    
     // photo person from cast and crew
     func makeUrlForPhoto(photoPath: String?) -> String? {
         guard let photoPath = photoPath else { return nil }
@@ -109,16 +110,6 @@ final class NetworkService {
         return photoUrl
     }
     
-//    // Получить runtime фильма по ID
-//    func getRuntimeForMovie(movieId: Int?) -> Void {
-//        guard let id = movieId else { return }
-//        let runtimeURL =
-//        ApiConstants.baseUrl +
-//        "/3/movie/" + "\(id)?" +
-//        "api_key=" + apiKey +
-//        "&language=en-US"
-//
-//    }
     
     // Получить список всех жанров фильмов.
     func getListGenre(completion: @escaping (Result<[GenreMovie], Error>) -> Void) {

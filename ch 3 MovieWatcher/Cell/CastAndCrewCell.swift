@@ -25,7 +25,7 @@ class CastAndCrewCell: UICollectionViewCell {
 //        contentView.backgroundColor = .clear
     }
     
-    // network for configure cell in castCrew -- kompot
+    // network for configure cell in castCrew -- kompot -- work 
     func configureNetworkCell(cast: Cast) {
         guard let name = cast.name else { return }
         nameLabel.text = name

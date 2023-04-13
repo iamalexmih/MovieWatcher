@@ -29,7 +29,6 @@ class CastAndCrewCollectionView: UICollectionView, UICollectionViewDelegate, UIC
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 10
         return listCastNetwork.count
     }
 
@@ -38,13 +37,6 @@ class CastAndCrewCollectionView: UICollectionView, UICollectionViewDelegate, UIC
                                                             for: indexPath) as? CastAndCrewCell else {
             return UICollectionViewCell()
         }
-        
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeViewMovieCell.identifier,
-//                                                            for: indexPath) as? HomeViewMovieCell else {
-//            return UICollectionViewCell()
-//        }
-        // kompot -- Network
-//        cell.configureNetworkCell(movie: listMovieNetwork[indexPath.row])
         cell.configureNetworkCell(cast: listCastNetwork[indexPath.row])
         
         return cell
