@@ -82,7 +82,6 @@ class TopCollectionView: UIView {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         topCollectionView.animateVisibleCells()
-        let scrollPos = scrollView.contentOffset.x / scrollView.frame.width
     }
 }
 
