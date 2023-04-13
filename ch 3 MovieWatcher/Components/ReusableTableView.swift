@@ -9,15 +9,15 @@ import UIKit
 import SnapKit
 
 
-protocol ReusableTableViewDelegate: AnyObject {
-    func didSelectTableViewCell(_ cell: Int)
+protocol TableAndCollectionViewProtocol: AnyObject {
+    func didSelectCellOpenMovieDetailScreen(_ cell: Int)
     func updateListMovieCoreData()
 }
 
 class ReusableTableView: UIView {
     
     var tableView = UITableView()
-    weak var delegateForCell: ReusableTableViewDelegate?
+    weak var delegateForCell: TableAndCollectionViewProtocol?
     
     var listMovieNetwork: [Movie] = [] {
         didSet {
@@ -87,7 +87,7 @@ extension ReusableTableView: UITableViewDelegate, UITableViewDataSource {
         cell.delegateFavoriteButton = self
         
         if listMovieNetwork.isEmpty {
-            cell.setDataForCellCoreData(movieEntity: listMovieCoreData[indexPath.row])
+            cell.configureCellCoreData(movieEntity: listMovieCoreData[indexPath.row])
         } else {
             cell.configureForNetwork(movie: listMovieNetwork[indexPath.row])
         }
@@ -100,12 +100,12 @@ extension ReusableTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         let movie = listMovieNetwork[indexPath.row]
-        delegateForCell?.didSelectTableViewCell(movie.id)
+        delegateForCell?.didSelectCellOpenMovieDetailScreen(movie.id)
     }
 }
 
 // MARK: - Делегат от кнопки Добавить в избранное
-extension ReusableTableView: FavoriteMovieCellProtocol {
+extension ReusableTableView: FavoriteButtonProtocol {
     func didPressFavoriteButton() {
         delegateForCell?.updateListMovieCoreData()
         tableView.reloadData()

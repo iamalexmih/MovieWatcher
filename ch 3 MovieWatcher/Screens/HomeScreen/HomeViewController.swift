@@ -23,26 +23,43 @@ class HomeViewController: UIViewController {
     lazy var boxOfficeLabel = UILabel()
     lazy var seeAllButton = UIButton(type: .system)
     
+    
     // MARK: - VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
         
-        filmsCategoriesCollection.delegateCollectionDidSelect = self 
+        boxOfficeCollection.delegateForCell = self
+        filmsCategoriesCollection.delegateCollectionDidSelect = self
         
         setupViews()
         setConstraints()
-        // network -- kompot 
+        // network -- kompot
         topRated()
         nowPlaying()
     }
     
-    // func for topRated - Network -- kompot - work 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if topCollectionView.listMovieNetwork.isEmpty {
+            topCollectionView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "HomeScreenTopRated")
+        }
+        
+        if boxOfficeCollection.listMovieNetwork.isEmpty {
+            topCollectionView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "HomeScreenBoxOfficeCollection")
+        }
+    }
+    
+    
+    // func for topRated - Network -- kompot - work
     func topRated() {
         NetworkService.shared.getTopRated { result in
             switch result {
             case .success(let data):
                 self.topCollectionView.listMovieNetwork = data.results
+                self.saveCoreDataForHomeScreenTopRated(listMovieNetwork: data.results)
             case .failure(let failure):
                 print("fuck top rated \(failure)")
             }
@@ -55,11 +72,75 @@ class HomeViewController: UIViewController {
             switch result {
             case .success(let data):
                 self.boxOfficeCollection.listMovieNetwork = data.results
+                self.saveCoreDataForHomeScreenBoxOfficeCollection(listMovieNetwork: data.results)
             case .failure(let failure):
                 print("fuck now playing \(failure)")
             }
         }
     }
+    
+
+}
+
+// MARK: - CoreData
+extension HomeViewController {
+    
+    func saveCoreDataForHomeScreenTopRated(listMovieNetwork: [Movie]) {
+        CoreDataService.shared.saveCoreDataForHomeScreenTopRated(listMovieNetwork: listMovieNetwork)
+    }
+    
+    func saveCoreDataForHomeScreenBoxOfficeCollection(listMovieNetwork: [Movie]) {
+        CoreDataService.shared.saveCoreDataForHomeScreenBoxOfficeCollection(listMovieNetwork: listMovieNetwork)
+    }
+    
+}
+
+// MARK: - Table View Delegate
+extension HomeViewController: TableAndCollectionViewProtocol {
+    
+    func updateListMovieCoreData() {
+        if boxOfficeCollection.listMovieNetwork.isEmpty {
+            boxOfficeCollection.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "HomeScreenBoxOfficeCollection")
+        }
+    }
+    
+    func didSelectCellOpenMovieDetailScreen(_ id: Int) {
+        let detailedVC = MovieDetailViewController()
+        detailedVC.id = id
+        print("передает id ")
+        navigationController?.pushViewController(detailedVC, animated: true)
+    }
+}
+
+
+// MARK: - Выбор жанра. Collection view
+extension HomeViewController: CollectionDidSelectProtocol {
+    func getMoviesFromCategory(nameGenre: String) {
+        if nameGenre == "All" {
+            nowPlaying()
+        } else {
+            let nameId = NetworkService.shared.getIdGenreForOneMovie(movieGenresName: nameGenre, arrayGenres: StorageGenres.shared.listGenres)
+            NetworkService.shared.getListMoviesForGenres(nameId) { result in
+                switch result {
+                case .success(let data):
+                    self.boxOfficeCollection.listMovieNetwork = data.results
+                    self.saveCoreDataForHomeScreenBoxOfficeCollection(listMovieNetwork: data.results)
+                    DispatchQueue.main.async {
+                        self.boxOfficeCollection.collectionBoxOfficeView.reloadData()
+                    }
+                case .failure(let failure):
+                    print("Error receiving film by genre \(failure)")
+                }
+            }
+        }
+    }
+}
+
+
+    
+    //MARK: - Configuring UI Elements
+
+extension HomeViewController {
     
     private func setupViews() {
         configureUserImage()
@@ -71,8 +152,6 @@ class HomeViewController: UIViewController {
         configureBoxOfficeLabel()
         configureSeeAllButton()
     }
-    
-    //MARK: - Configuring UI Elements
     
     func configureUserImage() {
         view.addSubview(userImage)
@@ -138,14 +217,15 @@ class HomeViewController: UIViewController {
         seeAllButton.setTitleColor(UIColor(named: Resources.Colors.accent), for: .normal)
         seeAllButton.translatesAutoresizingMaskIntoConstraints = false
     }
-    
+}
 
-    
-    
-    //MARK: - Constraints
+
+//MARK: - Constraints
+
+extension HomeViewController {
     
     func setConstraints() {
-        
+
         userImage.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide)
             make.left.equalToSuperview().inset(20)
@@ -198,24 +278,3 @@ class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController: CollectionDidSelectProtocol {
-    func getMoviesFromCategory(nameGenre: String) {
-        if nameGenre == "All" {
-            nowPlaying()
-        } else {
-            let nameId = NetworkService.shared.getIdGenreForOneMovie(movieGenresName: nameGenre, arrayGenres: StorageGenres.shared.listGenres)
-            NetworkService.shared.getListMoviesForGenres(nameId) { result in
-                switch result {
-                case .success(let data):
-                    self.boxOfficeCollection.listMovieNetwork = data.results
-                    DispatchQueue.main.async {
-                        
-                        self.boxOfficeCollection.collectionBoxOfficeView.reloadData()
-                    }
-                case .failure(let failure):
-                    print("Error receiving film by genre \(failure)")
-                }
-            }
-        }
-    }
-}

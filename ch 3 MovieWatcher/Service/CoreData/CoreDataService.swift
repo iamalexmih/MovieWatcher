@@ -67,8 +67,8 @@ extension CoreDataService {
     func fetchImageUseMovieId(id: Int) -> ImageEntity? {
         var imageEntitys: [ImageEntity] = []
         let request: NSFetchRequest<ImageEntity> = ImageEntity.fetchRequest()
-        let prdedicate = NSPredicate(format: "id == %i", id)
-        request.predicate = prdedicate
+        let predicate = NSPredicate(format: "id == %i", id)
+        request.predicate = predicate
         do {
             imageEntitys = try viewContext.fetch(request)
         } catch let error {
@@ -83,8 +83,24 @@ extension CoreDataService {
     func fetchDataId(id: Int, parentCategory: String) -> [MovieEntity] {
         let request: NSFetchRequest<MovieEntity> = MovieEntity.fetchRequest()
         let predicateCategory = NSPredicate(format: "ANY parentCategory.name MATCHES %@", parentCategory)
-        let addtionalPrdedicate = NSPredicate(format: "id == %i", id)
-        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicateCategory, addtionalPrdedicate])
+        let addtionalPredicate = NSPredicate(format: "id == %i", id)
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicateCategory, addtionalPredicate])
+        
+        var movieEntitys: [MovieEntity] = []
+        do {
+            movieEntitys = try viewContext.fetch(request)
+        } catch let error {
+            print("Error load fetchDataId: \(error.localizedDescription)")
+        }
+        return movieEntitys
+    }
+    
+    
+    // Глобальный запрос по всему хранилищю
+    func fetchAllMovieWith(_ id: Int) -> [MovieEntity] {
+        let request: NSFetchRequest<MovieEntity> = MovieEntity.fetchRequest()
+        let predicate = NSPredicate(format: "id == %i", id)
+        request.predicate = predicate
         
         var movieEntitys: [MovieEntity] = []
         do {
@@ -127,11 +143,33 @@ extension CoreDataService {
     }
     
     
+    func saveCoreDataForHomeScreenTopRated(listMovieNetwork: [Movie]) {
+        let categoryEntity = CategoryScreenEntity(context: viewContext)
+        categoryEntity.name = "HomeScreenTopRated"
+        self.save()
+        
+        for movie in listMovieNetwork {
+            convertModelInMovieEntity(movie: movie, categoryEntity: categoryEntity)
+        }
+    }
+    
+    
+    func saveCoreDataForHomeScreenBoxOfficeCollection(listMovieNetwork: [Movie]) {
+        let categoryEntity = CategoryScreenEntity(context: viewContext)
+        categoryEntity.name = "HomeScreenBoxOfficeCollection"
+        self.save()
+        
+        for movie in listMovieNetwork {
+            convertModelInMovieEntity(movie: movie, categoryEntity: categoryEntity)
+        }
+    }
+    
+    
     func convertModelInMovieEntity(movie: Movie, categoryEntity: CategoryScreenEntity) {
         // Если фильма с id = xxx, нет в хранилище, то тогда добавить.
         let isExistMovieWithId = fetchDataId(id: movie.id, parentCategory: categoryEntity.name!).isEmpty
         if isExistMovieWithId {
-            print("Если фильма с id = xxx, нет в хранилище, то тогда добавить.")
+//            print("Если фильма с id = xxx, нет в хранилище, то тогда добавить.")
             let movieEntity = MovieEntity(context: viewContext)
             let setParents = NSSet(objects: categoryEntity)
             movieEntity.parentCategory = setParents
@@ -144,6 +182,41 @@ extension CoreDataService {
             movieEntity.voteCount = Int64(movie.vote_count)
         }
         self.save()
+    }
+}
+
+// MARK: - Работа с Favorite
+extension CoreDataService {
+    
+    func addFavorite(id: Int) {
+        // Добавить в Избранное
+        for movie in fetchAllMovieWith(id) {
+            movie.favorite = true
+        }
+        self.save()
+    }
+    
+    
+    func deleteFavorite(id: Int) {
+        for movie in fetchAllMovieWith(id) {
+            movie.favorite = false
+        }
+        self.save()
+    }
+    
+    
+    func fetchAllFavorite() -> [MovieEntity] {
+        let request: NSFetchRequest<MovieEntity> = MovieEntity.fetchRequest()
+        let predicate = NSPredicate(format: "favorite == %i", true)
+        request.predicate = predicate
+        
+        var movieEntitys: [MovieEntity] = []
+        do {
+            movieEntitys = try viewContext.fetch(request)
+        } catch let error {
+            print("Error load fetchDataId: \(error.localizedDescription)")
+        }
+        return movieEntitys
     }
 }
 

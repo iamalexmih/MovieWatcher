@@ -26,7 +26,7 @@ class FavoriteViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        movieTableView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "FavoriteViewController")
+        movieTableView.listMovieCoreData = CoreDataService.shared.fetchAllFavorite()
     }
     
         
@@ -42,12 +42,12 @@ class FavoriteViewController: UIViewController {
 }
 
 
-extension FavoriteViewController: ReusableTableViewDelegate {
+extension FavoriteViewController: TableAndCollectionViewProtocol {
     func updateListMovieCoreData() {
         movieTableView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "FavoriteViewController")
     }
     
-    func didSelectTableViewCell(_ cell: Int) {
+    func didSelectCellOpenMovieDetailScreen(_ cell: Int) {
         let detailedVC = MovieDetailViewController()
         navigationController?.pushViewController(detailedVC, animated: true)
     }

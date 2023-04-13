@@ -20,10 +20,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
 
+        let screenSaverViewController = ScreenSaverViewController()
+//        let onBoardingViewController = OnBoardingViewController()
 //        let settingViewController = SettingViewController()
 //        let tabBar = CustomTabBarController()
-        let navControllerForAuth = NavBarController(rootViewController: AuthViewController())
-//        let onBoardingViewController = OnBoardingViewController()
+//        let authVC = AuthViewController()
+        
+        let navControllerForAuth = NavBarController(rootViewController: screenSaverViewController)
     
         window?.rootViewController = navControllerForAuth
         window?.makeKeyAndVisible()

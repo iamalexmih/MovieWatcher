@@ -74,7 +74,6 @@ class TextFieldWithLabelStack: UIStackView {
         textField.layer.cornerRadius = 20
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor(named: Resources.Colors.textFieldBorder)?.cgColor
-        
         textField.backgroundColor = UIColor(named: Resources.Colors.textFieldBackground)
     }
     

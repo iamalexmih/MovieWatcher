@@ -26,7 +26,7 @@ class ScreenSaverViewController: UIViewController {
         super.viewDidAppear(animated)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             let onBoardingVC = OnBoardingViewController()
-            self.present(onBoardingVC, animated: true)
+            self.navigationController?.pushViewController(onBoardingVC, animated: true)
         }
     }
 

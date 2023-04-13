@@ -10,9 +10,18 @@ import UIKit
 class BottomCollectionView: UIView {
     
     //    private let sections = MockData.shared.popularCategory
+    weak var delegateForCell: TableAndCollectionViewProtocol?
     
     // for Network in BoxOffice -- kompot
     var listMovieNetwork: [Movie] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionBoxOfficeView.reloadData()
+            }
+        }
+    }
+    
+    var listMovieCoreData: [MovieEntity] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.collectionBoxOfficeView.reloadData()
@@ -54,35 +63,55 @@ class BottomCollectionView: UIView {
     }
 }
 
-extension BottomCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension BottomCollectionView: FavoriteButtonProtocol {
+    func didPressFavoriteButton() {
+        delegateForCell?.updateListMovieCoreData()
+        collectionBoxOfficeView.reloadData()
+    }
+}
+
+
+// MARK: - Collection View Delegate
+extension BottomCollectionView: UICollectionViewDelegate,
+                                    UICollectionViewDataSource,
+                                    UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt
-                        indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 10
-        return listMovieNetwork.count
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
+        if listMovieNetwork.isEmpty {
+            return listMovieCoreData.count
+        } else {
+            return listMovieNetwork.count
+        }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BoxViewCell.identifier, for: indexPath) as? BoxViewCell else {
             return UICollectionViewCell()
         }
-        
-//        cell.configureCell(filmImage: "filmPoster", categoryFilmName: "Action", filmName: "Luck", time: 149)
-        
-        // for Network -- kompot
-        cell.configureNetworkCell(movie: listMovieNetwork[indexPath.row])
+        cell.delegateFavoriteButton = self
+        if listMovieNetwork.isEmpty {
+            cell.configureCellCoreData(movieEntity: listMovieCoreData[indexPath.row])
+        } else {
+            // for Network -- kompot
+            cell.configureNetworkCell(movie: listMovieNetwork[indexPath.row])
+        }
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width,
                       height: collectionView.frame.height / 2.1)

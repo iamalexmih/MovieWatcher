@@ -10,8 +10,15 @@ import SnapKit
 
 class TopCollectionView: UIView {
     
-//    private let sections = MockData.shared.popularCategory
     var listMovieNetwork: [Movie] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.topCollectionView.reloadData()
+            }
+        }
+    }
+    
+    var listMovieCoreData: [MovieEntity] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.topCollectionView.reloadData()
@@ -52,6 +59,7 @@ class TopCollectionView: UIView {
         }
     }
 }
+
 
 extension TopCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     

@@ -110,7 +110,7 @@ extension SearchViewController {
 
 
 // MARK: - Table View Delegate
-extension SearchViewController: ReusableTableViewDelegate {
+extension SearchViewController: TableAndCollectionViewProtocol {
     
     func updateListMovieCoreData() {
         if movieTableView.listMovieNetwork.isEmpty {
@@ -118,7 +118,7 @@ extension SearchViewController: ReusableTableViewDelegate {
         }
     }
     
-    func didSelectTableViewCell(_ id: Int) {
+    func didSelectCellOpenMovieDetailScreen(_ id: Int) {
         let detailedVC = MovieDetailViewController()
         detailedVC.id = id
         print("передает id ")

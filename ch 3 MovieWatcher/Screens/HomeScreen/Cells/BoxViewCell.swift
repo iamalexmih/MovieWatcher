@@ -12,10 +12,13 @@ import Kingfisher
 class BoxViewCell: UICollectionViewCell {
     
     static let identifier = "BoxViewCell"
+    private var movieId: Int = 0
+    weak var delegateFavoriteButton: FavoriteButtonProtocol?
     
     lazy var favoriteButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: Resources.Image.favourites)?.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(UIImage(named: Resources.Image.favourites)?.withRenderingMode(.alwaysOriginal),
+                        for: .normal)
         button.tintColor = UIColor(named: Resources.Colors.categoryColour)
         button.addTarget(self, action: #selector(favouriteButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -23,7 +26,7 @@ class BoxViewCell: UICollectionViewCell {
     }()
     
     private let filmImageView: UIImageView = {
-       let imageView = UIImageView()
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.contentScaleFactor = 1.0
         imageView.layer.cornerRadius = 20
@@ -33,7 +36,7 @@ class BoxViewCell: UICollectionViewCell {
     }()
     
     private let categoryFilmLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
         label.font = UIFont.montserratRomanMedium(size: 12)
         label.textColor = UIColor(named: Resources.Colors.secondText)
@@ -44,7 +47,7 @@ class BoxViewCell: UICollectionViewCell {
     }()
     
     private let filmNameLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
         label.font = UIFont.jakartaBold(size: 18)
         label.minimumScaleFactor = 0.5
@@ -53,14 +56,14 @@ class BoxViewCell: UICollectionViewCell {
     }()
     
     private let timeImageView: UIImageView = {
-       let imageView = UIImageView()
+        let imageView = UIImageView()
         imageView.image = UIImage(named: Resources.Image.clockImage)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private let timeLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
         label.font = UIFont.montserratRomanMedium(size: 12)
         label.textColor = UIColor(named: Resources.Colors.secondText)
@@ -97,7 +100,7 @@ class BoxViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-        
+    
     private var ratingStack: UIStackView = {
         var stack = UIStackView()
         stack.axis = .horizontal
@@ -117,9 +120,81 @@ class BoxViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc private func favouriteButtonTapped() {
-        print("TAPPED")
+    
+    func configureNetworkCell(movie: Movie) {
+        movieId = movie.id
+        favoriteButton.setImage(UIImage(named: Resources.Image.favourites)?.withRenderingMode(.alwaysOriginal),
+                        for: .normal)
+        
+        filmNameLabel.text = movie.original_title
+        //        timeLabel.text = NetworkService.shared.getRuntimeForMovie(movieId: movie.id)
+        timeLabel.text = "140 minutes"
+        categoryFilmLabel.text = NetworkService.shared.getNameGenreForOneMovie(
+            movieGenresId: movie.genre_ids.first ?? 7777,
+            arrayGenres: StorageGenres.shared.listGenres
+        )
+        synchFavoriteWithNetwork(movieId)
+        guard let posterPath = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
+        let urlPoster = URL(string: posterPath)
+        filmImageView.kf.setImage(with: urlPoster)
     }
+    
+    
+    func configureCellCoreData(movieEntity: MovieEntity) {
+        filmNameLabel.text = movieEntity.title
+        movieId = Int(movieEntity.id)
+        setImageButtonFavorite(isFavorite: movieEntity.favorite)
+        categoryFilmLabel.text = NetworkService.shared.getNameGenreForOneMovie(
+            movieGenresId: Int(movieEntity.genreId),
+            arrayGenres: StorageGenres.shared.listGenres
+        )
+        let imageDataDefault = UIImage(systemName: "questionmark")?.pngData()
+        let imageEntity = CoreDataService.shared.fetchImageUseMovieId(id: Int(movieEntity.id))
+        if let imageEntity = imageEntity {
+            filmImageView.image = UIImage(data: imageEntity.imageData ?? imageDataDefault!)
+        }
+    }
+}
+
+// MARK: - Favorite
+extension BoxViewCell {
+    
+    @objc private func favouriteButtonTapped() {
+        guard let movie = CoreDataService.shared.fetchAllMovieWith(movieId).first else { return }
+        if !movie.favorite {
+            // Добавить в Избранное
+            CoreDataService.shared.addFavorite(id: movieId)
+            setImageButtonFavorite(isFavorite: true)
+        } else {
+            // Удалить из избранного
+            CoreDataService.shared.deleteFavorite(id: movieId)
+            setImageButtonFavorite(isFavorite: false)
+        }
+        delegateFavoriteButton?.didPressFavoriteButton()
+    }
+    
+    
+    private func synchFavoriteWithNetwork(_ movieId: Int) {
+        guard let movie = CoreDataService.shared.fetchAllMovieWith(movieId).first else { return }
+        if movie.favorite {
+            setImageButtonFavorite(isFavorite: true)
+        }
+    }
+    
+    
+    private func setImageButtonFavorite(isFavorite: Bool) {
+        if isFavorite {
+            favoriteButton.setImage(UIImage(named: Resources.Image.favouritesFill)?.withRenderingMode(.alwaysOriginal), for: .normal)
+        } else {
+            favoriteButton.setImage(UIImage(named: Resources.Image.favourites)?.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+    }
+}
+
+ 
+
+// MARK: - Set constraints and add Subview
+extension BoxViewCell {
     
     func setupView() {
         addSubview(filmImageView)
@@ -134,33 +209,9 @@ class BoxViewCell: UICollectionViewCell {
         addSubview(ratingStack)
     }
     
-    func configureCell(filmImage: String, categoryFilmName: String, filmName: String, time: Int) {
-        filmImageView.image = UIImage(named: filmImage)
-        categoryFilmLabel.text = categoryFilmName
-        filmNameLabel.text = filmName
-        timeLabel.text = "\(time) minutes"
-    }
-    
-    // конфигурация ячейки через Network в BoxOffice -- kompot
-    func configureNetworkCell(movie: Movie) {
-        filmNameLabel.text = movie.original_title
-        
-//        timeLabel.text = NetworkService.shared.getRuntimeForMovie(movieId: movie.id)
-        timeLabel.text = "140 minutes"
-        categoryFilmLabel.text = NetworkService.shared.getNameGenreForOneMovie(
-            movieGenresId: movie.genre_ids.first ?? 7777,
-            arrayGenres: StorageGenres.shared.listGenres
-        )
-        
-        guard let posterPath = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
-        let urlPoster = URL(string: posterPath)
-        filmImageView.kf.setImage(with: urlPoster)
-    }
     
     func setConstraints() {
-        
         NSLayoutConstraint.activate([
-            
             favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
             favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             favoriteButton.heightAnchor.constraint(equalToConstant: 25),
@@ -190,7 +241,6 @@ class BoxViewCell: UICollectionViewCell {
             
             ratingStack.centerYAnchor.constraint(equalTo: timeLabel.centerYAnchor),
             ratingStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5)
-
         ])
     }
     

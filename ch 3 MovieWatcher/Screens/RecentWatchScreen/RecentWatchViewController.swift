@@ -49,13 +49,13 @@ class RecentWatchViewController: UIViewController {
 }
 
 
-extension RecentWatchViewController: ReusableTableViewDelegate {
+extension RecentWatchViewController: TableAndCollectionViewProtocol {
     
     func updateListMovieCoreData() {
         
     }
     
-    func didSelectTableViewCell(_ cell: Int) {
+    func didSelectCellOpenMovieDetailScreen(_ cell: Int) {
         let detailedVC = MovieDetailViewController()
         navigationController?.pushViewController(detailedVC, animated: true)
     }

@@ -11,7 +11,7 @@ import Kingfisher
 
 
 
-protocol FavoriteMovieCellProtocol: AnyObject {
+protocol FavoriteButtonProtocol: AnyObject {
     func didPressFavoriteButton()
 }
 
@@ -21,7 +21,7 @@ class MovieCell: UITableViewCell {
     static let identifier = "RecipeCell"
     
     private var movieId: Int = 0
-    weak var delegateFavoriteButton: FavoriteMovieCellProtocol?
+    weak var delegateFavoriteButton: FavoriteButtonProtocol?
     
     var timeStack = UIStackView()
     var calendarStack = UIStackView()
@@ -59,7 +59,8 @@ class MovieCell: UITableViewCell {
     
     
     func configureForNetwork(movie: Movie) {
-        favouriteButton.setImage(UIImage(named: Resources.Image.favourites)?.withRenderingMode(.alwaysOriginal), for: .normal)
+        favouriteButton.setImage(UIImage(named: Resources.Image.favourites)?.withRenderingMode(.alwaysOriginal),
+                                 for: .normal)
         movieName.text = movie.original_title
         calendarLabel.text = movie.release_date
         categoryLabel.text = NetworkService.shared.getNameGenreForOneMovie(
@@ -81,53 +82,14 @@ class MovieCell: UITableViewCell {
         }
     }
     
-    
-    @objc func favouriteButtonPressed() {
-        if CoreDataService.shared.fetchDataId(id: movieId, parentCategory: "FavoriteViewController").isEmpty {
-           // Добавить в Избранное
-            let selectedMovieInCommonList = CoreDataService.shared.fetchDataId(id: movieId, parentCategory: "SearchViewController").first!
-            let categoryEntityFavorite = CategoryScreenEntity(context: CoreDataService.shared.viewContext)
-            categoryEntityFavorite.name = "FavoriteViewController"
-            let categoryEntitySearch = CategoryScreenEntity(context: CoreDataService.shared.viewContext)
-            categoryEntitySearch.name = "SearchViewController"
-            // Добавить фильм в две категории SearchScreen и FavoriteScreen
-            let setParents = NSSet(objects: categoryEntityFavorite, categoryEntitySearch)
-            selectedMovieInCommonList.parentCategory = setParents
-            selectedMovieInCommonList.favorite = true
-            CoreDataService.shared.save()
-            setImageButtonFavorite(isFavorite: true)
-        } else {
-            // Удалить из избранного
-            let selectedMovieInFavoriteList = CoreDataService.shared.fetchDataId(id: movieId, parentCategory: "FavoriteViewController").first!
-            let categoryEntity = CategoryScreenEntity(context: CoreDataService.shared.viewContext)
-            categoryEntity.name = "SearchViewController"
-            let setParents = NSSet(objects: categoryEntity)
-            selectedMovieInFavoriteList.parentCategory = setParents
-            selectedMovieInFavoriteList.favorite = false
-            CoreDataService.shared.save()
-            setImageButtonFavorite(isFavorite: false)
-        }
-        delegateFavoriteButton?.didPressFavoriteButton()
-    }
-    
-    
-    func synchFavoriteWithNetwork(_ movieId: Int) {
-        // Если массив содержит элемент, то значит кино в избранном. значить поставить сердечко
-        if !CoreDataService.shared.fetchDataId(id: movieId, parentCategory: "FavoriteViewController").isEmpty {
-            setImageButtonFavorite(isFavorite: true)
-        }
-    }
-}
-
-
-
-// MARK: - Core Data
-extension MovieCell {
-    
-    func setDataForCellCoreData(movieEntity: MovieEntity) {
+    func configureCellCoreData(movieEntity: MovieEntity) {
         calendarLabel.text = movieEntity.releaseDate
         movieName.text = movieEntity.title
         movieId = Int(movieEntity.id)
+        categoryLabel.text = NetworkService.shared.getNameGenreForOneMovie(
+            movieGenresId: Int(movieEntity.genreId),
+            arrayGenres: StorageGenres.shared.listGenres
+        )
         setImageButtonFavorite(isFavorite: movieEntity.favorite)
         let imageDataDefault = UIImage(systemName: "questionmark")?.pngData()
         let imageEntity = CoreDataService.shared.fetchImageUseMovieId(id: Int(movieEntity.id))
@@ -135,7 +97,44 @@ extension MovieCell {
             movieImage.image = UIImage(data: imageEntity.imageData ?? imageDataDefault!)
         }
     }
+}
+
+
+// MARK: - Favorite
+extension MovieCell {
+    @objc func favouriteButtonPressed() {
+        guard let movie = CoreDataService.shared.fetchAllMovieWith(movieId).first else { return }
+        if !movie.favorite {
+            // Добавить в Избранное
+            CoreDataService.shared.addFavorite(id: movieId)
+            setImageButtonFavorite(isFavorite: true)
+        } else {
+            // Удалить из избранного
+            CoreDataService.shared.deleteFavorite(id: movieId)
+            setImageButtonFavorite(isFavorite: false)
+        }
+        delegateFavoriteButton?.didPressFavoriteButton()
+    }
     
+    func synchFavoriteWithNetwork(_ movieId: Int) {
+        guard let movie = CoreDataService.shared.fetchAllMovieWith(movieId).first else { return }
+        if movie.favorite {
+            setImageButtonFavorite(isFavorite: true)
+        }
+    }
+    
+    private func setImageButtonFavorite(isFavorite: Bool) {
+        if isFavorite {
+            favouriteButton.setImage(UIImage(named: Resources.Image.favouritesFill)?.withRenderingMode(.alwaysOriginal), for: .normal)
+        } else {
+            favouriteButton.setImage(UIImage(named: Resources.Image.favourites)?.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+    }
+}
+
+
+// MARK: - Core Data
+extension MovieCell {
     
     func saveImageCoreData(imageData: Data?, movie: Movie) {
         // Если фильма с id xxx нет в хранилище, то тогда добавить.
@@ -157,14 +156,6 @@ extension MovieCell {
 
 // MARK: - Configure element UI
 extension MovieCell {
-    
-    private func setImageButtonFavorite(isFavorite: Bool) {
-        if isFavorite {
-            favouriteButton.setImage(UIImage(named: Resources.Image.favouritesFill)?.withRenderingMode(.alwaysOriginal), for: .normal)
-        } else {
-            favouriteButton.setImage(UIImage(named: Resources.Image.favourites)?.withRenderingMode(.alwaysOriginal), for: .normal)
-        }
-    }
     
     private func configureElementUI() {
         movieImage.image = UIImage(named: "questionmark")

@@ -26,7 +26,9 @@ class AuthViewController: UIViewController {
     let authOptionsView = UIView()
     let bottomStack = UIStackView()
     
-    let emailTextField = TextFieldWithLabelStack(labelText: "Email", placeholderText: "Enter your email address", isSecure: false)
+    let emailTextField = TextFieldWithLabelStack(labelText: "Email",
+                                                 placeholderText: "Enter your email address",
+                                                 isSecure: false)
     let emailButton = CustomButton(title: "Continue with Email")
     let tempLabel = UILabel()
     let googleButton = GoogleButton()
@@ -43,7 +45,7 @@ class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.hidesBackButton = true
         setupUI()
         addActionsToButtons()
         presentAuthOptions()

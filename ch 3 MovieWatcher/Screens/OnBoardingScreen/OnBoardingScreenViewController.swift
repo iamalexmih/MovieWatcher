@@ -9,24 +9,24 @@ import UIKit
 import SnapKit
 
 class OnBoardingViewController: UIViewController {
-
+    
     lazy var backgroundImageView = UIImageView()
     lazy var personImageView = UIImageView()
     lazy var pageContainerView = UIView()
     lazy var pageScrollView = UIScrollView()
     lazy var pageChangeButton = CustomButton(title: "Continue")
     lazy var pageIndicator = InteractivePageIndicator(pages: OnBoardingPage.all.count)
-
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         commonInit()
     }
-
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
     }
-
+    
     private func commonInit() {
         modalPresentationStyle = .fullScreen
         modalTransitionStyle = .flipHorizontal
@@ -38,8 +38,54 @@ class OnBoardingViewController: UIViewController {
         configurepersonImageView()
         configurePageContainerView()
         configurePages(OnBoardingPage.all)
+        navigationItem.hidesBackButton = true
+    }
+    
+    @objc
+    private func continueButtonTapped() {
+        let page = currentPage()
+        if page < OnBoardingPage.all.count - 1 {
+            setPage(page + 1)
+        } else {
+            let authVC = AuthViewController()
+            navigationController?.pushViewController(authVC, animated: true)
+        }
+    }
+}
+
+
+extension OnBoardingViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let page = calculateScrollProgress()
+        pageIndicator.setPage(page)
     }
 
+    
+    func currentPage() -> Int {
+        Int(calculateScrollProgress())
+    }
+    
+
+    func setPage(_ page: Int) {
+        let pageWidth = pageScrollView.frame.width
+        pageScrollView.setContentOffset(.init(x: pageWidth * CGFloat(page), y: 0), animated: true)
+    }
+    
+
+    private func calculateScrollProgress() -> Float {
+        let offset = pageScrollView.contentOffset.x
+        let pageWidth = pageScrollView.frame.width
+        let currentPage = floor(offset / pageWidth)
+        let pageDelta = offset - currentPage * pageWidth
+        let page =  currentPage + pageDelta / pageWidth
+        return Float(page)
+    }
+}
+
+
+// MARK: - configure UI and constraints
+extension OnBoardingViewController {
+    
     private func configureBackgroundImages() {
         view.addSubview(backgroundImageView)
         backgroundImageView.image = UIImage(named: Resources.Image.onBoardingIcons)
@@ -51,6 +97,7 @@ class OnBoardingViewController: UIViewController {
         }
     }
 
+    
     private func configurepersonImageView() {
         view.addSubview(personImageView)
         personImageView.image = UIImage(named: Resources.Image.personImage)
@@ -61,6 +108,7 @@ class OnBoardingViewController: UIViewController {
         }
     }
 
+    
     private func configurePageContainerView() {
         view.addSubview(pageContainerView)
         pageContainerView.addSubview(pageScrollView)
@@ -120,40 +168,5 @@ class OnBoardingViewController: UIViewController {
             }
         }
     }
-
-    @objc
-    private func continueButtonTapped() {
-        let page = currentPage()
-        if page < OnBoardingPage.all.count - 1 {
-            setPage(page + 1)
-        } else {
-            let authVC = AuthViewController()
-            present(authVC, animated: true)
-        }
-    }
 }
 
-extension OnBoardingViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let page = calculateScrollProgress()
-        pageIndicator.setPage(page)
-    }
-
-    func currentPage() -> Int {
-        Int(calculateScrollProgress())
-    }
-
-    func setPage(_ page: Int) {
-        let pageWidth = pageScrollView.frame.width
-        pageScrollView.setContentOffset(.init(x: pageWidth * CGFloat(page), y: 0), animated: true)
-    }
-
-    private func calculateScrollProgress() -> Float {
-        let offset = pageScrollView.contentOffset.x
-        let pageWidth = pageScrollView.frame.width
-        let currentPage = floor(offset / pageWidth)
-        let pageDelta = offset - currentPage * pageWidth
-        let page =  currentPage + pageDelta / pageWidth
-        return Float(page)
-    }
-}
