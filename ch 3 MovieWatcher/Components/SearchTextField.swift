@@ -38,6 +38,7 @@ class SearchTextField: UIView {
 
     private func configureContainerView() {
         addSubview(containerView)
+        containerView.backgroundColor = UIColor(named: Resources.Colors.backGround)
         containerView.layer.borderColor = UIColor(named: Resources.Colors.accent)?.cgColor
         containerView.layer.borderWidth = 1
         containerView.layer.cornerRadius = 26
