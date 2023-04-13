@@ -271,25 +271,22 @@ extension SettingViewController {
 
     @objc
     private func changePassword() {
-        var oldPasswordTextField = UITextField()
         var newPasswordTextField = UITextField()
-
         let alert = UIAlertController(title: "Enter the password", message: "", preferredStyle: .alert)
         let changeAction = UIAlertAction(title: "Change", style: .default) { _ in
-            print(oldPasswordTextField.text!)
-            print(newPasswordTextField.text!)
+            guard let password = newPasswordTextField.text else { return }
+            if (!password.isEmpty) {
+                Auth.auth().currentUser?.updatePassword(to: password) { error in
+                   print("Error  - updatePassword\(error)")
+                }
+            }
         }
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
 
         alert.addTextField { textfield in
-            oldPasswordTextField = textfield
-            textfield.placeholder = "Old password"
-        }
-
-        alert.addTextField { textfield in
             newPasswordTextField = textfield
-            textfield.placeholder = "New password"
+            newPasswordTextField.placeholder = "New password"
         }
         alert.addAction(changeAction)
         alert.addAction(cancelAction)
@@ -304,7 +301,9 @@ extension SettingViewController {
         let changeAction = UIAlertAction(title: "Get link!", style: .default) { _  in
             guard let email = textField.text else { return }
             if (!email.isEmpty) {
-                Auth.auth().sendPasswordReset(withEmail: email)
+                Auth.auth().sendPasswordReset(withEmail: email) { error in
+                    print("Error sendPasswordReset - \(error)")
+                 }
             }
         }
 
