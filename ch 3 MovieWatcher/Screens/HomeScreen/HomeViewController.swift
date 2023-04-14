@@ -241,7 +241,7 @@ extension HomeViewController {
         
         topCollectionView.snp.makeConstraints { make in
             make.top.equalTo(userImage.snp.bottom).inset(-15)
-            make.height.equalTo(250)
+            make.height.equalTo(view.frame.height / 3)
             make.left.right.equalToSuperview()
         }
         
