@@ -15,7 +15,7 @@ class MovieDetailViewController: UIViewController {
     var id = 0
     var movieImage = UIImage(systemName: "questionmark")?.withTintColor(.systemGray.withAlphaComponent(0.3),
                                                                         renderingMode: .alwaysOriginal)
-    var movieNameLabelText = "Название фильма не загруженно"
+    var movieNameLabelText = "Название не загруженно"
     var releaseDateText = "17 Sep 2020"
     var durationText = "xx minutes"
     var genreText = "Film"

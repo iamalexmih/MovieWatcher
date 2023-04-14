@@ -251,6 +251,25 @@ extension CoreDataService {
         }
         return movieEntitys
     }
+    
+    
+    func fetchSearchScreenWithGenge(_ genreId: Int) -> [MovieEntity] {
+        let request: NSFetchRequest<MovieEntity> = MovieEntity.fetchRequest()
+        let predicateCategory = NSPredicate(format: "ANY parentCategory.name MATCHES %@", "SearchViewController")
+        let genreIdPredicate = NSPredicate(format: "genreId == %i", genreId)
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            predicateCategory,
+            genreIdPredicate
+        ])
+                
+        var movieEntitys: [MovieEntity] = []
+        do {
+            movieEntitys = try viewContext.fetch(request)
+        } catch let error {
+            print("Error load fetchDataId: \(error.localizedDescription)")
+        }
+        return movieEntitys
+    }
         
     
     func saveImageCoreData(imageData: Data?, movie: Movie) {
