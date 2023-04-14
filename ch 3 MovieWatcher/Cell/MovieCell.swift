@@ -75,7 +75,7 @@ class MovieCell: UITableViewCell {
             switch result {
             case .success(let value):
                 let imageData = value.image.pngData()
-                self.saveImageCoreData(imageData: imageData, movie: movie)
+                CoreDataService.shared.saveImageCoreData(imageData: imageData, movie: movie)
             case .failure(let error):
                 print("Error kf: \(error)")
             }
@@ -130,26 +130,6 @@ extension MovieCell {
             favouriteButton.setImage(UIImage(named: Resources.Image.favourites)?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
     }
-}
-
-
-// MARK: - Core Data
-extension MovieCell {
-    
-    func saveImageCoreData(imageData: Data?, movie: Movie) {
-        // Если фильма с id xxx нет в хранилище, то тогда добавить.
-        let imageEntity = CoreDataService.shared.fetchImageUseMovieId(id: movie.genre_ids.first ?? 7777)
-        if imageEntity == nil {
-            let imageDataDefault = UIImage(systemName: "questionmark")?.pngData()
-            
-            let newImageEntity = ImageEntity(context: CoreDataService.shared.viewContext)
-            newImageEntity.id = Int64(movie.id)
-            newImageEntity.imageData = imageData ?? imageDataDefault
-            
-            CoreDataService.shared.save()
-        }
-    }
-    
 }
 
 

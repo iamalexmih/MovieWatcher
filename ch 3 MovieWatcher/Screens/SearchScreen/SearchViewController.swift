@@ -117,9 +117,9 @@ extension SearchViewController: TableAndCollectionViewProtocol {
         }
     }
     
-    func didSelectCellOpenMovieDetailScreen(_ id: Int) {
+    func didSelectCellOpenMovieDetailScreen(_ movieId: Int) {
         let detailedVC = MovieDetailViewController()
-        detailedVC.id = id
+        detailedVC.id = movieId
         print("передает id ")
         navigationController?.pushViewController(detailedVC, animated: true)
     }

@@ -15,10 +15,10 @@ class MovieDetailViewController: UIViewController {
     var id = 0
     var movieImage = UIImage(systemName: "questionmark")?.withTintColor(.systemGray.withAlphaComponent(0.3),
                                                                         renderingMode: .alwaysOriginal)
-    var movieNameLabelText = "Movie name"
+    var movieNameLabelText = "Название фильма не загруженно"
     var releaseDateText = "17 Sep 2020"
-    var durationText = "148 minutes"
-    var genreText = "Action"
+    var durationText = "xx minutes"
+    var genreText = "Film"
     
     
     lazy var scrollView = UIScrollView()
@@ -300,8 +300,7 @@ extension MovieDetailViewController {
 
     private func configureDescriptionOfMovieLabel() {
         containerView.addSubview(descriptionOfMovieLabel)
-        descriptionOfMovieLabel.text = "Джон Уик - на первый взгляд,самый обычный среднестатистический американец," +
-            "который ведет спокойную мирную жизнь. Однако мало кто знает, что он был наёмным."
+        descriptionOfMovieLabel.text = "Описание не загруженно или отсутствует."
         descriptionOfMovieLabel.numberOfLines = 0
         descriptionOfMovieLabel.textAlignment = .left
         descriptionOfMovieLabel.font = .jakartaMedium(size: 14)

@@ -47,8 +47,9 @@ extension FavoriteViewController: TableAndCollectionViewProtocol {
         movieTableView.listMovieCoreData = CoreDataService.shared.fetchAllFavorite()
     }
     
-    func didSelectCellOpenMovieDetailScreen(_ cell: Int) {
+    func didSelectCellOpenMovieDetailScreen(_ movieId: Int) {
         let detailedVC = MovieDetailViewController()
+        detailedVC.id = movieId
         navigationController?.pushViewController(detailedVC, animated: true)
     }
 }

@@ -138,7 +138,15 @@ class BoxViewCell: UICollectionViewCell {
         synchFavoriteWithNetwork(movieId)
         guard let posterPath = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
         let urlPoster = URL(string: posterPath)
-        filmImageView.kf.setImage(with: urlPoster)
+        filmImageView.kf.setImage(with: urlPoster) { result in
+            switch result {
+            case .success(let value):
+                let imageData = value.image.pngData()
+                CoreDataService.shared.saveImageCoreData(imageData: imageData, movie: movie)
+            case .failure(let error):
+                print("Error kf: \(error)")
+            }
+        }
     }
     
     

@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import UIKit
 
 class CoreDataService {
     
@@ -214,9 +215,12 @@ extension CoreDataService {
     
     func fetchRecentWatch() -> [MovieEntity] {
         let request: NSFetchRequest<MovieEntity> = MovieEntity.fetchRequest()
-        let predicate = NSPredicate(format: "isViewed == %i", true)
-        request.predicate = predicate
-        
+        let predicateCategory = NSPredicate(format: "ANY parentCategory.name MATCHES %@", "GlobalCategory")
+        let isViewedPredicate = NSPredicate(format: "isViewed == %i", true)
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            predicateCategory,
+            isViewedPredicate
+        ])
         var movieEntitys: [MovieEntity] = []
         do {
             movieEntitys = try viewContext.fetch(request)
@@ -224,6 +228,43 @@ extension CoreDataService {
             print("Error load fetchDataId: \(error.localizedDescription)")
         }
         return movieEntitys
+    }
+    
+    
+    func fetchRecentWatchWithGenge(_ genreId: Int) -> [MovieEntity] {
+        let request: NSFetchRequest<MovieEntity> = MovieEntity.fetchRequest()
+        let predicateCategory = NSPredicate(format: "ANY parentCategory.name MATCHES %@", "GlobalCategory")
+        let genreIdPredicate = NSPredicate(format: "genreId == %i", genreId)
+        let isViewedPredicate = NSPredicate(format: "isViewed == %i", true)
+        
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            predicateCategory,
+            genreIdPredicate,
+            isViewedPredicate
+        ])
+                
+        var movieEntitys: [MovieEntity] = []
+        do {
+            movieEntitys = try viewContext.fetch(request)
+        } catch let error {
+            print("Error load fetchDataId: \(error.localizedDescription)")
+        }
+        return movieEntitys
+    }
+        
+    
+    func saveImageCoreData(imageData: Data?, movie: Movie) {
+        // Если фильма с id xxx нет в хранилище, то тогда добавить.
+        let imageEntity = CoreDataService.shared.fetchImageUseMovieId(id: movie.genre_ids.first ?? 7777)
+        if imageEntity == nil {
+            let imageDataDefault = UIImage(systemName: "questionmark")?.pngData()
+            
+            let newImageEntity = ImageEntity(context: CoreDataService.shared.viewContext)
+            newImageEntity.id = Int64(movie.id)
+            newImageEntity.imageData = imageData ?? imageDataDefault
+            
+            CoreDataService.shared.save()
+        }
     }
 }
 
@@ -254,8 +295,8 @@ extension CoreDataService {
     func fetchAllFavorite() -> [MovieEntity] {
         let request: NSFetchRequest<MovieEntity> = MovieEntity.fetchRequest()
         let predicateCategory = NSPredicate(format: "ANY parentCategory.name MATCHES %@", "GlobalCategory")
-        let addtionalPredicate = NSPredicate(format: "favorite == %i", true)
-        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicateCategory, addtionalPredicate])
+        let additionalPredicate = NSPredicate(format: "favorite == %i", true)
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicateCategory, additionalPredicate])
         
         var movieEntitys: [MovieEntity] = []
         do {
