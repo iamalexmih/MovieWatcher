@@ -12,7 +12,9 @@ class InteractivePageIndicator: UIView {
 
     private let stackview = UIStackView()
     private let pages: Int
-    private(set) var currentPage: Int
+//    private(set) var currentPage: Int
+    var currentPage: Int
+
 
     init(pages: Int, currentPage: Int = 0) {
         self.pages = pages

@@ -23,12 +23,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let screenSaverViewController = ScreenSaverViewController()
 //        let onBoardingViewController = OnBoardingViewController()
 //        let settingViewController = SettingViewController()
-//        let tabBar = CustomTabBarController()
+        let tabBar = CustomTabBarController()
 //        let authVC = AuthViewController()
         
         let navController = NavBarController(rootViewController: screenSaverViewController)
     
-        window?.rootViewController = navController
+        window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
     }
 }

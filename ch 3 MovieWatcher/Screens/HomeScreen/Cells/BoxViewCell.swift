@@ -27,6 +27,8 @@ class BoxViewCell: UICollectionViewCell {
     
     private let filmImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "questionmark")?.withTintColor(.systemGray.withAlphaComponent(0.3),
+                                                                             renderingMode: .alwaysOriginal)
         imageView.contentMode = .scaleAspectFill
         imageView.contentScaleFactor = 1.0
         imageView.layer.cornerRadius = 20
@@ -136,7 +138,15 @@ class BoxViewCell: UICollectionViewCell {
         synchFavoriteWithNetwork(movieId)
         guard let posterPath = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
         let urlPoster = URL(string: posterPath)
-        filmImageView.kf.setImage(with: urlPoster)
+        filmImageView.kf.setImage(with: urlPoster) { result in
+            switch result {
+            case .success(let value):
+                let imageData = value.image.pngData()
+                CoreDataService.shared.saveImageCoreData(imageData: imageData, movie: movie)
+            case .failure(let error):
+                print("Error kf: \(error)")
+            }
+        }
     }
     
     

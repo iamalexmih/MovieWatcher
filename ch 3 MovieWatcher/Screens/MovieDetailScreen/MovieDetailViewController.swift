@@ -12,13 +12,13 @@ import Kingfisher
 class MovieDetailViewController: UIViewController {
 
     var rating = 1.9
-    
     var id = 0
-    var movieImage = UIImage(named: "filmPoster")
-    var movieNameLabelText = "Movie name"
+    var movieImage = UIImage(systemName: "questionmark")?.withTintColor(.systemGray.withAlphaComponent(0.3),
+                                                                        renderingMode: .alwaysOriginal)
+    var movieNameLabelText = "Название не загруженно"
     var releaseDateText = "17 Sep 2020"
-    var durationText = "148 minutes"
-    var genreText = "Action"
+    var durationText = "xx minutes"
+    var genreText = "Film"
     
     
     lazy var scrollView = UIScrollView()
@@ -37,7 +37,7 @@ class MovieDetailViewController: UIViewController {
     lazy var participantCollectionView = CastAndCrewCollectionView()
     lazy var bottomView = UIView()
     lazy var watchButton = CustomButton(title: "Watch now")
-    
+    private let favoriteButton = UIButton(type: .system)
     
     
     // MARK: - VC LifeCycle
@@ -57,6 +57,7 @@ class MovieDetailViewController: UIViewController {
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
         configure()
         
+        // TODO: Вынести всю работу с сетью в Расширение, поставить для нее марк
         // запрос для получения инфы, который передает фильм в func configure -- kompot
         NetworkService.shared.getMovieInfo(with: id) { result in
             switch result {
@@ -82,6 +83,7 @@ class MovieDetailViewController: UIViewController {
         }
     }
     
+    
     // func for set info from movie model -- kompot -- work
     func configureNetworkInfo(movie: InfoMovie) {
         guard let urlPoster = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
@@ -101,7 +103,10 @@ class MovieDetailViewController: UIViewController {
         
         guard let description = movie.overview else { return }
         descriptionOfMovieLabel.text = description
+        
+        synchFavoriteWithNetwork(movie.id)
     }
+    
     
     @objc private func watchButtonPress() {
         print("watch Button Press")
@@ -113,12 +118,54 @@ class MovieDetailViewController: UIViewController {
 }
 
 
+// MARK: - Favorite logic
+
+extension MovieDetailViewController {
+    
+    @objc private func favoriteButtonPress() {
+        guard let movie = CoreDataService.shared.fetchAllMovieWith(id).first else { return }
+        if !movie.favorite {
+            // Добавить в Избранное
+            CoreDataService.shared.addFavorite(id: id)
+            setImageButtonFavorite(isFavorite: true)
+        } else {
+            // Удалить из избранного
+            CoreDataService.shared.deleteFavorite(id: id)
+            setImageButtonFavorite(isFavorite: false)
+        }
+    }
+    
+    func synchFavoriteWithNetwork(_ movieId: Int) {
+        guard let movie = CoreDataService.shared.fetchAllMovieWith(movieId).first else { return }
+        if movie.favorite {
+            setImageButtonFavorite(isFavorite: true)
+        }
+    }
+    
+    private func setImageButtonFavorite(isFavorite: Bool) {
+        if isFavorite {
+            favoriteButton.setImage(
+                UIImage(systemName: "heart.fill")?.withRenderingMode(.alwaysTemplate),
+                for: .normal
+            )
+            favoriteButton.tintColor = UIColor(named: Resources.Colors.accent)
+        } else {
+            favoriteButton.setImage(
+                UIImage(systemName: "heart")?.withRenderingMode(.alwaysTemplate),
+                for: .normal
+            )
+            favoriteButton.tintColor = UIColor(named: Resources.Colors.text)
+        }
+    }
+}
+
 
 // MARK: - Конфигурация лэйблов и констрейнтов
 extension MovieDetailViewController {
-   
+    
     private func configure() {
         configureBottomView()
+        configureFavoriteButton()
         configureWatchButton()
         configureScrollView()
         configureContainerView()
@@ -131,8 +178,23 @@ extension MovieDetailViewController {
         configureDescriptionOfMovieLabel()
         configurecastAndCrewHeaderLabel()
         configureCollectionView()
+        addNavigationItem()
     }
 
+    private func addNavigationItem() {
+        let barFavoriteButton = UIBarButtonItem(customView: favoriteButton)
+        navigationItem.setRightBarButtonItems([barFavoriteButton], animated: true)
+    }
+    
+    private func configureFavoriteButton() {
+        favoriteButton.setImage(
+            UIImage(systemName: "heart")?.withRenderingMode(.alwaysTemplate),
+            for: .normal
+        )
+        favoriteButton.tintColor = UIColor(named: Resources.Colors.text)
+        favoriteButton.addTarget(self, action: #selector(favoriteButtonPress), for: .touchUpInside)
+    }
+    
     private func configureScrollView() {
         view.addSubview(scrollView)
         scrollView.backgroundColor = .clear
@@ -238,8 +300,7 @@ extension MovieDetailViewController {
 
     private func configureDescriptionOfMovieLabel() {
         containerView.addSubview(descriptionOfMovieLabel)
-        descriptionOfMovieLabel.text = "Джон Уик - на первый взгляд,самый обычный среднестатистический американец," +
-            "который ведет спокойную мирную жизнь. Однако мало кто знает, что он был наёмным."
+        descriptionOfMovieLabel.text = "Описание не загруженно или отсутствует."
         descriptionOfMovieLabel.numberOfLines = 0
         descriptionOfMovieLabel.textAlignment = .left
         descriptionOfMovieLabel.font = .jakartaMedium(size: 14)

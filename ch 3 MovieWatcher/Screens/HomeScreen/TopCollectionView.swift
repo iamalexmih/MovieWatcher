@@ -28,26 +28,17 @@ class TopCollectionView: UIView {
     }
     
     private let flowLayout = UICollectionViewFlowLayout()
+    lazy var pageControl = InteractivePageIndicator(pages: 3)
+    
     
     lazy var topCollectionView: GeminiCollectionView = {
         flowLayout.scrollDirection = .horizontal
         let collectionView = GeminiCollectionView(frame: .zero, collectionViewLayout: flowLayout)
-//        collectionView.backgroundColor = UIColor(named: Resources.Colors.backGround)
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(HomeViewMovieCell.self, forCellWithReuseIdentifier: HomeViewMovieCell.identifier)
-            return collectionView
-    }()
-    
-    lazy var pageControl: UIPageControl = {
-        let page = UIPageControl()
-        page.numberOfPages = 3
-        page.currentPage = 0
-        page.pageIndicatorTintColor = .lightGray
-        page.currentPageIndicatorTintColor = UIColor(named: Resources.Colors.accent)
-        page.translatesAutoresizingMaskIntoConstraints = false
-        return page
+        return collectionView
     }()
     
     override init(frame: CGRect) {
@@ -81,7 +72,6 @@ class TopCollectionView: UIView {
     func configureAnimation() {
         topCollectionView.gemini
             .circleRotationAnimation()
-            .cornerRadius(15)
             .radius(1500)
             .rotateDirection(.anticlockwise)
     }
@@ -95,7 +85,6 @@ class TopCollectionView: UIView {
 extension TopCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 10
         // kompot - Network
         return listMovieNetwork.count 
     }
@@ -107,17 +96,15 @@ extension TopCollectionView: UICollectionViewDelegate, UICollectionViewDataSourc
         }
         // kompot -- Network
         cell.configureNetworkCell(movie: listMovieNetwork[indexPath.row])
-        
-//        cell.configureCell(filmImage: "filmPoster", categoryFilmName: "Adventure", filmName: "Die Hard")
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 2,
+        return CGSize(width: collectionView.frame.width / 2.2,
                       height: collectionView.frame.height)
     }
-    
+        
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
     
@@ -128,11 +115,11 @@ extension TopCollectionView: UICollectionViewDelegate, UICollectionViewDataSourc
         // анимация для page controll
         let pagesCount = listMovieNetwork.count / 3
         if indexPath.item < pagesCount {
-            pageControl.currentPage = 0
+            pageControl.setPage(0)
         } else if indexPath.item < pagesCount * 2 {
-            pageControl.currentPage = 1
+            pageControl.setPage(1)
         } else {
-            pageControl.currentPage = pagesCount
+            pageControl.setPage(2)
         }
     }
 }

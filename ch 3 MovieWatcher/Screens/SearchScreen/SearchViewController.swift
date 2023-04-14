@@ -25,7 +25,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         
         if movieTableView.listMovieNetwork.isEmpty {
             movieTableView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "SearchViewController")
+        } else {
+            movieTableView.tableView.reloadData()
         }
+        popularMovie()
     }
     
     
@@ -38,7 +41,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         collectionView.delegateCollectionDidSelect = self
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)        
         searchTextField.cancelButton.addTarget(self, action: #selector(clearButtonPressed), for: .touchUpInside)
-        popularMovie()
+        
 //        searchMovie()
         configureTapGesture()
     }
@@ -103,11 +106,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
 
 // MARK: - CoreData
 extension SearchViewController {
-    
     func saveCoreDataForSearchScreen(listMovieNetwork: [Movie]) {
-        CoreDataService.shared.saveCoreDataForSearchScreen(listMovieNetwork: listMovieNetwork)
+        if !listMovieNetwork.isEmpty {
+            CoreDataService.shared.saveCoreDataForSearchScreen(listMovieNetwork: listMovieNetwork)
+        }
     }
-    
 }
 
 
@@ -121,9 +124,9 @@ extension SearchViewController: TableAndCollectionViewProtocol {
         }
     }
     
-    func didSelectCellOpenMovieDetailScreen(_ id: Int) {
+    func didSelectCellOpenMovieDetailScreen(_ movieId: Int) {
         let detailedVC = MovieDetailViewController()
-        detailedVC.id = id
+        detailedVC.id = movieId
         print("передает id ")
         navigationController?.pushViewController(detailedVC, animated: true)
     }
@@ -134,20 +137,31 @@ extension SearchViewController: TableAndCollectionViewProtocol {
 // MARK: - Протокол для  collection view Жанров.
 extension SearchViewController: CollectionDidSelectProtocol {
     func getMoviesFromCategory(nameGenre: String) {
-        if nameGenre == "All" {
-            popularMovie()
+        if movieTableView.listMovieNetwork.isEmpty {
+            if nameGenre == "All" {
+                movieTableView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "SearchViewController")
+            } else {
+                let genreId = NetworkService.shared.getIdGenreForOneMovie(movieGenresName: nameGenre, arrayGenres: StorageGenres.shared.listGenres)
+                print("SearchViewController. nameGenre: \(nameGenre), genreId: \(genreId)")
+                movieTableView.listMovieCoreData = CoreDataService.shared.fetchSearchScreenWithGenge(genreId)
+            }
         } else {
-            let nameId = NetworkService.shared.getIdGenreForOneMovie(movieGenresName: nameGenre, arrayGenres: StorageGenres.shared.listGenres)
-            NetworkService.shared.getListMoviesForGenres(nameId) { result in
-                switch result {
-                case .success(let data):
-                    self.movieTableView.listMovieNetwork = data.results
-                    self.saveCoreDataForSearchScreen(listMovieNetwork: data.results)
-                    DispatchQueue.main.async {
-                        self.movieTableView.tableView.reloadData()
+            if nameGenre == "All" {
+                popularMovie()
+            } else {
+                let nameId = NetworkService.shared.getIdGenreForOneMovie(movieGenresName: nameGenre, arrayGenres: StorageGenres.shared.listGenres)
+                NetworkService.shared.getListMoviesForGenres(nameId) { result in
+                    print("")
+                    switch result {
+                    case .success(let data):
+                        self.movieTableView.listMovieNetwork = data.results
+                        self.saveCoreDataForSearchScreen(listMovieNetwork: data.results)
+                        DispatchQueue.main.async {
+                            self.movieTableView.tableView.reloadData()
+                        }
+                    case .failure(let failure):
+                        print("Error receiving film by genre \(failure)")
                     }
-                case .failure(let failure):
-                    print("Error receiving film by genre \(failure)")
                 }
             }
         }

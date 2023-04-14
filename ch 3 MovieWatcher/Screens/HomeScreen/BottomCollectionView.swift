@@ -78,7 +78,13 @@ extension BottomCollectionView: UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        
+        if listMovieNetwork.isEmpty {
+            let movie = listMovieCoreData[indexPath.row]
+            delegateForCell?.didSelectCellOpenMovieDetailScreen(Int(movie.id))
+        } else {
+            let movie = listMovieNetwork[indexPath.row]
+            delegateForCell?.didSelectCellOpenMovieDetailScreen(movie.id)
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
