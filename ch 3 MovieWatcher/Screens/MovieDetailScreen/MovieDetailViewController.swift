@@ -252,7 +252,7 @@ extension MovieDetailViewController {
         movieNameLabel.font = .jakartaBold(size: 24)
         movieNameLabel.snp.makeConstraints { make in
             make.top.equalTo(movieImageView.snp.bottom).inset(-24)
-            make.centerX.equalToSuperview()
+            make.left.right.equalToSuperview().inset(24)
         }
     }
 
