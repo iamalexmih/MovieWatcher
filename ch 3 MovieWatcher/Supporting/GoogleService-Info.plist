@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>71968815909-cei82pshrjh0c93l42nrr5e3j0jf2p15.apps.googleusercontent.com</string>
+	<string>235346459992-h5cmnoj2meft10j1dqschorpctclkpf1.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.71968815909-cei82pshrjh0c93l42nrr5e3j0jf2p15</string>
+	<string>com.googleusercontent.apps.235346459992-h5cmnoj2meft10j1dqschorpctclkpf1</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBa3u6Y4D9WsTswhf4Thy-0dBVX2AnKcgo</string>
+	<string>AIzaSyCiA8zHC-lf6ziWFCPf16gTOoqTlQZtbIY</string>
 	<key>GCM_SENDER_ID</key>
-	<string>71968815909</string>
+	<string>235346459992</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>alexei.poprotskii.ch-3-MovieWatcher</string>
 	<key>PROJECT_ID</key>
-	<string>ch-3-moviewatcher</string>
+	<string>swiftmarathon-ch3-moviewatcher</string>
 	<key>STORAGE_BUCKET</key>
-	<string>ch-3-moviewatcher.appspot.com</string>
+	<string>swiftmarathon-ch3-moviewatcher.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:71968815909:ios:238bc21472c197f082f8cc</string>
+	<string>1:235346459992:ios:cbbc8228f54e39d811792d</string>
 </dict>
 </plist>

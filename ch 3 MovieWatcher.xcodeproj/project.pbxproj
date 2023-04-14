@@ -867,6 +867,7 @@
 				DEVELOPMENT_TEAM = 37FQQ4WXUX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ch 3 MovieWatcher/Supporting/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = MovieWatcher;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -899,6 +900,7 @@
 				DEVELOPMENT_TEAM = 37FQQ4WXUX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ch 3 MovieWatcher/Supporting/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = MovieWatcher;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
