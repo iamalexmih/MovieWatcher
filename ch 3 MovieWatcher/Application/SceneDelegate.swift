@@ -27,7 +27,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        let authVC = AuthViewController()
         
         let navController = NavBarController(rootViewController: screenSaverViewController)
-    
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
     }

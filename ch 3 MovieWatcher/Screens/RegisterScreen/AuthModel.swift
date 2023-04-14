@@ -25,7 +25,7 @@ enum Errors: String {
     case psswrdNoMatch = "Your confirmation password should match the original"
 }
 
-struct AuthModel {
+class AuthModel {
     
     // MARK: - Modelt variables
     var firstName: String?
@@ -44,11 +44,12 @@ struct AuthModel {
     
     // MARK: - Firebase Authentication
     
-    private mutating func createNewUser(inCaseOfAlert controller: UIViewController) {
+    private func createNewUser(inCaseOfAlert controller: UIViewController) {
         if let email = validatedEmail,
            let password = validatedPassword {
             
-            Auth.auth().createUser(withEmail: email, password: password) { user, error in
+            Auth.auth().createUser(withEmail: email, password: password) { [weak self] user, error in
+                guard let self = self else { return }
                 if let error = error {
                     let alert = UIAlertController(title: "Create User Error",
                                                   message: error.localizedDescription,
@@ -59,14 +60,15 @@ struct AuthModel {
                 }
                 if user != nil {
                     let newUser = UserModel(idUuid: UUID().uuidString,
-                                            firstName: firstName,
-                                            lastName: lastName,
+                                            firstName: self.firstName,
+                                            lastName: self.lastName,
                                             email: email,
                                             dateBirth: nil,
                                             gender: nil,
                                             location: nil)
+                    UserInfoService.shared.currenUserEmail = email
                     UserInfoService.shared.saveInfoInCoreData(for: newUser)
-                    openTabBarController(controller)
+                    self.openTabBarController(controller)
                 }
             }
         }
@@ -74,12 +76,13 @@ struct AuthModel {
     }
     
     
-    private mutating func loginWithExistingUser(controller: UIViewController) {
+    private func loginWithExistingUser(controller: UIViewController) {
         
         if let email = validatedEmail,
            let password = validatedPassword {
             
-            Auth.auth().signIn(withEmail: email, password: password) { user, error in
+            Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
+                guard let self = self else { return }
                 if let error = error {
                     let alert = UIAlertController(title: "SignIn Error",
                                                   message: error.localizedDescription,
@@ -89,7 +92,8 @@ struct AuthModel {
                     print(error.localizedDescription)
                 }
                 if user != nil {
-                    openTabBarController(controller)
+                    UserInfoService.shared.currenUserEmail = email
+                    self.openTabBarController(controller)
                 }
             }
         }
@@ -106,7 +110,7 @@ struct AuthModel {
     
     // MARK: - Public funcs
         
-    mutating  func checkFields(_ fields: [UIView], isRegistration: Bool) {
+    func checkFields(_ fields: [UIView], isRegistration: Bool) {
         let fieldArray = prepareField(fields: fields, isRegistration)
         for field in fieldArray {
             
@@ -125,7 +129,7 @@ struct AuthModel {
         print(errorDescription)
     }
     
-    mutating func transitionToMainScreen(controller: UIViewController, isRegistration: Bool) {
+    func transitionToMainScreen(controller: UIViewController, isRegistration: Bool) {
         if errorDescription.isEmpty {
             if isRegistration {
                 createNewUser(inCaseOfAlert: controller)
@@ -163,7 +167,7 @@ struct AuthModel {
         return fieldArray
     }
     
-    private  mutating func emptyShortTest(text: String) {
+    private  func emptyShortTest(text: String) {
         if text.isEmpty {
             errorSet.insert(Errors.empty.rawValue)
             // errorDescription += (Errors.empty.rawValue + "\n")
@@ -173,7 +177,7 @@ struct AuthModel {
         }
     }
     
-    private mutating func specificTextTest(text: String, label: String) {
+    private func specificTextTest(text: String, label: String) {
         
         switch label {
         case "E-mail":
@@ -199,7 +203,7 @@ struct AuthModel {
     }
     
     
-    private mutating func convertSetToDescription() {
+    private func convertSetToDescription() {
         for item in errorSet {
             errorDescription += (item + "\n")
         }
@@ -217,7 +221,7 @@ struct AuthModel {
     }
     
     
-    private  mutating func saturateUserData(with fields: [TextFieldWithLabelStack], _ isRegistration: Bool) {
+    private  func saturateUserData(with fields: [TextFieldWithLabelStack], _ isRegistration: Bool) {
         var nameIndex = 0
         var surnameIndex = 1
         var emailIndex = 2

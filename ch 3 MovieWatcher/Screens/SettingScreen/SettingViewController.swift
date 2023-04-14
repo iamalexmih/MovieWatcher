@@ -20,12 +20,14 @@ class SettingViewController: UIViewController {
     let darkModeSettingLabel = UILabel()
     let toggle = UISwitch()
     let logOutTemplateButton = LogOutTemplateButton()
-
+    var currentUser: UserModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
-
+        loadUser()
+        
         setupAvatarView()
         setupNameLabel()
         setupNickNameLabel()
@@ -44,14 +46,21 @@ class SettingViewController: UIViewController {
         setupToggle()
         setAppTheme()
         setupToggleDarkMode()
-        setupLogOutTemplateButton()
-
+        setupLogOutTemplateButton() 
     }
 }
 
 // MARK: Extension
 extension SettingViewController {
 
+    private func loadUser() {
+        if let user = UserInfoService.shared.fetchCurrentUserCoreData() {
+            currentUser = user
+            print("user", user.lastName)
+        }
+    }
+    
+    
     func setupAvatarView() {
         avatarView.image = UIImage(named: Resources.Image.profileSettingScreen)
         avatarView.contentMode = .scaleAspectFit
@@ -68,7 +77,12 @@ extension SettingViewController {
     }
 
     func setupNameLabel() {
-        nameLabel.text = "Andy Lexian"
+        nameLabel.text = "Anonymous User"
+        if let currentUser = currentUser {
+            let firstName = currentUser.firstName ?? "Anonymous "
+            let lastName = currentUser.lastName ?? "User"
+            nameLabel.text = "\(firstName) \(lastName)"
+        }
         nameLabel.textColor = UIColor(named: Resources.Colors.text)
         nameLabel.font = UIFont.jakartaRomanSemiBold(size: 18)
         view.addSubview(nameLabel)
@@ -80,7 +94,11 @@ extension SettingViewController {
     }
 
     func setupNickNameLabel() {
-        nickNameLabel.text = "@Andy1999"
+        nickNameLabel.text = "empty"
+        if let currentUser = currentUser {
+            let email = currentUser.email
+            nickNameLabel.text = email
+        }
         nickNameLabel.textColor = UIColor(named: Resources.Colors.inactive)
         nickNameLabel.font = UIFont.jakartaRomanSemiBold(size: 18)
         view.addSubview(nickNameLabel)

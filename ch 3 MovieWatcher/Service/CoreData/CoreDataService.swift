@@ -331,13 +331,15 @@ extension CoreDataService {
 // MARK: - User
 extension CoreDataService {
     func fetchUser(_ userId: String) -> UserEntity? {
+        print("idUser", userId)
         let request: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
-        let predicate = NSPredicate(format: "idUser MATCHES %@", userId)
+        let predicate = NSPredicate(format: "email == %@", userId)
         request.predicate = predicate
         
         var usersArray: [UserEntity] = []
         do {
             usersArray = try viewContext.fetch(request)
+            print(usersArray)
         } catch let error {
             print("fetchUser. Error load: \(error.localizedDescription)")
         }
