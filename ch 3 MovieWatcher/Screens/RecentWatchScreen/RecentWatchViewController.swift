@@ -27,6 +27,7 @@ class RecentWatchViewController: UIViewController {
         super.viewDidLoad()
         
         recentWatchTableView.delegateForCell = self
+        collectionView.delegateCollectionDidSelect = self
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
     }
     
@@ -55,8 +56,23 @@ extension RecentWatchViewController: TableAndCollectionViewProtocol {
         
     }
     
-    func didSelectCellOpenMovieDetailScreen(_ cell: Int) {
+    func didSelectCellOpenMovieDetailScreen(_ movieId: Int) {
         let detailedVC = MovieDetailViewController()
+        detailedVC.id = movieId
         navigationController?.pushViewController(detailedVC, animated: true)
+    }
+}
+
+
+// MARK: - Протокол для  collection view Жанров.
+extension RecentWatchViewController: CollectionDidSelectProtocol {
+    func getMoviesFromCategory(nameGenre: String) {
+        if nameGenre == "All" {
+            recentWatchTableView.listMovieCoreData = CoreDataService.shared.fetchRecentWatch()
+        } else {
+            let genreId = NetworkService.shared.getIdGenreForOneMovie(movieGenresName: nameGenre, arrayGenres: StorageGenres.shared.listGenres)
+            
+            recentWatchTableView.listMovieCoreData = CoreDataService.shared.fetchRecentWatchWithGenge(genreId)
+        }
     }
 }

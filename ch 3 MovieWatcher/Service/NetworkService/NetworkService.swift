@@ -225,6 +225,9 @@ final class NetworkService {
             completion(.failure(.urlNotCreate))
             return
         }
+//        var urlRequest = URLRequest(url: url)
+//        urlRequest.cachePolicy = .returnCacheDataDontLoad
+//        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let response = response as? HTTPURLResponse else { return }
             let statusCode = response.statusCode
@@ -238,6 +241,7 @@ final class NetworkService {
                 completion(.failure(.dataError))
                 return
             }
+            
             do {
                 if let decodedData = try? JSONDecoder().decode(type.self, from: data) {
                     completion(.success(decodedData))

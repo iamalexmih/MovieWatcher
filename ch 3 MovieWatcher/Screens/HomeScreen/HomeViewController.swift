@@ -45,10 +45,14 @@ class HomeViewController: UIViewController {
         
         if topCollectionView.listMovieNetwork.isEmpty {
             topCollectionView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "HomeScreenTopRated")
+        } else {
+            topCollectionView.topCollectionView.reloadData()
         }
         
         if boxOfficeCollection.listMovieNetwork.isEmpty {
-            topCollectionView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "HomeScreenBoxOfficeCollection")
+        boxOfficeCollection.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "HomeScreenBoxOfficeCollection")
+        } else {
+            boxOfficeCollection.collectionBoxOfficeView.reloadData()
         }
     }
     
@@ -104,10 +108,10 @@ extension HomeViewController: TableAndCollectionViewProtocol {
         }
     }
     
-    func didSelectCellOpenMovieDetailScreen(_ id: Int) {
+    func didSelectCellOpenMovieDetailScreen(_ movieId: Int) {
         let detailedVC = MovieDetailViewController()
-        detailedVC.id = id
-        print("передает id ")
+        detailedVC.id = movieId
+        print("HomeViewController передает movieId")
         navigationController?.pushViewController(detailedVC, animated: true)
     }
 }

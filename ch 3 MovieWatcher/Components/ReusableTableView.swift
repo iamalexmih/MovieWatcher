@@ -10,7 +10,7 @@ import SnapKit
 
 
 protocol TableAndCollectionViewProtocol: AnyObject {
-    func didSelectCellOpenMovieDetailScreen(_ cell: Int)
+    func didSelectCellOpenMovieDetailScreen(_ movieId: Int)
     func updateListMovieCoreData()
 }
 
@@ -102,6 +102,7 @@ extension ReusableTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if listMovieNetwork.isEmpty {
             let movie = listMovieCoreData[indexPath.row]
+            delegateForCell?.didSelectCellOpenMovieDetailScreen(Int(movie.id))
         } else {
             let movie = listMovieNetwork[indexPath.row]
             delegateForCell?.didSelectCellOpenMovieDetailScreen(movie.id)
