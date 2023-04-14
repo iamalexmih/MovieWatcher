@@ -43,6 +43,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         searchTextField.cancelButton.addTarget(self, action: #selector(clearButtonPressed), for: .touchUpInside)
         
 //        searchMovie()
+        configureTapGesture()
     }
     
     // заканичвает редактирование после нажатия ретерн
@@ -54,6 +55,12 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     
     @objc func clearButtonPressed() {
         searchTextField.searchTextField.text = ""
+    }
+
+    //тап в любом месте экрана для скрытия клавиатуры
+    private func configureTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+               view.addGestureRecognizer(tapGesture)
     }
     
     // MARK: - other funcs
