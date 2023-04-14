@@ -241,7 +241,7 @@ extension HomeViewController {
         
         topCollectionView.snp.makeConstraints { make in
             make.top.equalTo(userImage.snp.bottom).inset(-15)
-            make.height.equalTo(view.frame.height / 3)
+            make.height.equalTo(view.frame.height / 3.2)
             make.left.right.equalToSuperview()
         }
         
@@ -271,7 +271,7 @@ extension HomeViewController {
         boxOfficeCollection.snp.makeConstraints { make in
             make.top.equalTo(boxOfficeLabel.snp.bottom).inset(-15)
             make.left.right.equalToSuperview().inset(20)
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(-10)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide)
             
         }
     }

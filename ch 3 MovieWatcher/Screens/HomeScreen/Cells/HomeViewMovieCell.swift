@@ -16,6 +16,7 @@ class HomeViewMovieCell: GeminiCell {
     private let filmImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = .red
         imageView.contentScaleFactor = 1.0
         imageView.layer.cornerRadius = 20
         imageView.layer.masksToBounds = true
@@ -88,7 +89,7 @@ class HomeViewMovieCell: GeminiCell {
             filmImageView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             filmImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             filmImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-            filmImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
+            filmImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15),
             
             filmNameLabel.leadingAnchor.constraint(equalTo: filmImageView.leadingAnchor, constant: 15),
             filmNameLabel.trailingAnchor.constraint(equalTo: filmImageView.trailingAnchor, constant: -5),
