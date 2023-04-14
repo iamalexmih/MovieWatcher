@@ -100,7 +100,7 @@ class MovieCell: UITableViewCell {
 }
 
 
-// MARK: - Favorite
+// MARK: - Favorite logic
 extension MovieCell {
     @objc func favouriteButtonPressed() {
         guard let movie = CoreDataService.shared.fetchAllMovieWith(movieId).first else { return }
@@ -158,7 +158,8 @@ extension MovieCell {
 extension MovieCell {
     
     private func configureElementUI() {
-        movieImage.image = UIImage(named: "questionmark")
+        movieImage.image = UIImage(systemName: "questionmark")?.withTintColor(.systemGray.withAlphaComponent(0.3),
+                                                                              renderingMode: .alwaysOriginal)
         movieImage.contentMode = .scaleAspectFill
         movieImage.translatesAutoresizingMaskIntoConstraints = false
         movieImage.layer.cornerRadius = 10

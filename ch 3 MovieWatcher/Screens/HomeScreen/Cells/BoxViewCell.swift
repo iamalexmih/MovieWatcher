@@ -27,6 +27,8 @@ class BoxViewCell: UICollectionViewCell {
     
     private let filmImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "questionmark")?.withTintColor(.systemGray.withAlphaComponent(0.3),
+                                                                             renderingMode: .alwaysOriginal)
         imageView.contentMode = .scaleAspectFill
         imageView.contentScaleFactor = 1.0
         imageView.layer.cornerRadius = 20

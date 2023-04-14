@@ -44,7 +44,7 @@ class FavoriteViewController: UIViewController {
 
 extension FavoriteViewController: TableAndCollectionViewProtocol {
     func updateListMovieCoreData() {
-        movieTableView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "FavoriteViewController")
+        movieTableView.listMovieCoreData = CoreDataService.shared.fetchAllFavorite()
     }
     
     func didSelectCellOpenMovieDetailScreen(_ cell: Int) {

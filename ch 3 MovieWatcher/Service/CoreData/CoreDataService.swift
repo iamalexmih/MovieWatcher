@@ -136,7 +136,6 @@ extension CoreDataService {
         let categoryEntity = CategoryScreenEntity(context: viewContext)
         categoryEntity.name = "SearchViewController"
         self.save()
-        
         for movie in listMovieNetwork {
             convertModelInMovieEntity(movie: movie, categoryEntity: categoryEntity)
         }
@@ -164,25 +163,53 @@ extension CoreDataService {
         }
     }
     
-    
     func convertModelInMovieEntity(movie: Movie, categoryEntity: CategoryScreenEntity) {
         // Если фильма с id = xxx, нет в хранилище, то тогда добавить.
-        let isExistMovieWithId = fetchDataId(id: movie.id, parentCategory: categoryEntity.name!).isEmpty
-        if isExistMovieWithId {
+        let listExistMoviesWithIdInGlobalCategory = fetchDataId(id: movie.id, parentCategory: "GlobalCategory")
+        let isNotExistMovieWithId = listExistMoviesWithIdInGlobalCategory.isEmpty
+        if isNotExistMovieWithId {
 //            print("Если фильма с id = xxx, нет в хранилище, то тогда добавить.")
-            let movieEntity = MovieEntity(context: viewContext)
-            let setParents = NSSet(objects: categoryEntity)
-            movieEntity.parentCategory = setParents
-            movieEntity.id = Int64(movie.id)
-            movieEntity.title = movie.original_title!
-            movieEntity.posterPath = movie.poster_path ?? "N/A"
-            movieEntity.genreId = Int64(movie.genre_ids.first ?? 0)
-            movieEntity.releaseDate = movie.release_date ?? "N/A"
-            movieEntity.voteAverage = movie.vote_average
-            movieEntity.voteCount = Int64(movie.vote_count)
+            let globalCategory = CategoryScreenEntity(context: viewContext)
+            globalCategory.name = "GlobalCategory"
+            let setParents = NSSet(objects: categoryEntity, globalCategory)
+            let newMovieEntity = MovieEntity(context: viewContext)
+            newMovieEntity.parentCategory = setParents
+            newMovieEntity.id = Int64(movie.id)
+            newMovieEntity.title = movie.original_title!
+            newMovieEntity.posterPath = movie.poster_path ?? "N/A"
+            newMovieEntity.genreId = Int64(movie.genre_ids.first ?? 0)
+            newMovieEntity.releaseDate = movie.release_date ?? "N/A"
+            newMovieEntity.voteAverage = movie.vote_average
+            newMovieEntity.voteCount = Int64(movie.vote_count)
         }
+//        else {
+//            let existingMovie = listExistMoviesWithIdInGlobalCategory.first!
+//            print(existingMovie)
+//            existingMovie.addToParentCategory(categoryEntity)
+//        }
         self.save()
     }
+    
+//    func convertModelInMovieEntity(movie: Movie, categoryEntity: CategoryScreenEntity) {
+//        // Если фильма с id = xxx, нет в хранилище, то тогда добавить.
+//        let isExistMovieWithId = fetchDataId(id: movie.id, parentCategory: categoryEntity.name!).isEmpty
+//        if isExistMovieWithId {
+////            print("Если фильма с id = xxx, нет в хранилище, то тогда добавить.")
+//            let movieEntity = MovieEntity(context: viewContext)
+////            let globalCategory = CategoryScreenEntity(context: viewContext)
+////            globalCategory.name = "GlobalCategory"
+//            let setParents = NSSet(objects: categoryEntity)
+//            movieEntity.parentCategory = setParents
+//            movieEntity.id = Int64(movie.id)
+//            movieEntity.title = movie.original_title!
+//            movieEntity.posterPath = movie.poster_path ?? "N/A"
+//            movieEntity.genreId = Int64(movie.genre_ids.first ?? 0)
+//            movieEntity.releaseDate = movie.release_date ?? "N/A"
+//            movieEntity.voteAverage = movie.vote_average
+//            movieEntity.voteCount = Int64(movie.vote_count)
+//        }
+//        self.save()
+//    }
     
     
     func fetchRecentWatch() -> [MovieEntity] {
@@ -207,6 +234,8 @@ extension CoreDataService {
         // Добавить в Избранное
         for movie in fetchAllMovieWith(id) {
             movie.favorite = true
+            let favoriteCategory = CategoryScreenEntity(context: viewContext)
+            movie.addToParentCategory(favoriteCategory)
         }
         self.save()
     }
@@ -215,6 +244,8 @@ extension CoreDataService {
     func deleteFavorite(id: Int) {
         for movie in fetchAllMovieWith(id) {
             movie.favorite = false
+            let favoriteCategory = CategoryScreenEntity(context: viewContext)
+            movie.removeFromParentCategory(favoriteCategory)
         }
         self.save()
     }
@@ -222,8 +253,9 @@ extension CoreDataService {
     
     func fetchAllFavorite() -> [MovieEntity] {
         let request: NSFetchRequest<MovieEntity> = MovieEntity.fetchRequest()
-        let predicate = NSPredicate(format: "favorite == %i", true)
-        request.predicate = predicate
+        let predicateCategory = NSPredicate(format: "ANY parentCategory.name MATCHES %@", "GlobalCategory")
+        let addtionalPredicate = NSPredicate(format: "favorite == %i", true)
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicateCategory, addtionalPredicate])
         
         var movieEntitys: [MovieEntity] = []
         do {

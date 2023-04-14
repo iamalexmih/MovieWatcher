@@ -19,7 +19,8 @@ class HomeViewMovieCell: GeminiCell {
         imageView.contentScaleFactor = 1.0
         imageView.layer.cornerRadius = 20
         imageView.layer.masksToBounds = true
-        imageView.image = UIImage(named: "filmPoster")
+        imageView.image = UIImage(systemName: "questionmark")?.withTintColor(.systemGray.withAlphaComponent(0.3),
+                                                                             renderingMode: .alwaysOriginal)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

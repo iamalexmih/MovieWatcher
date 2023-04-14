@@ -45,10 +45,14 @@ class HomeViewController: UIViewController {
         
         if topCollectionView.listMovieNetwork.isEmpty {
             topCollectionView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "HomeScreenTopRated")
+        } else {
+            topCollectionView.topCollectionView.reloadData()
         }
         
         if boxOfficeCollection.listMovieNetwork.isEmpty {
-            topCollectionView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "HomeScreenBoxOfficeCollection")
+        boxOfficeCollection.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "HomeScreenBoxOfficeCollection")
+        } else {
+            boxOfficeCollection.collectionBoxOfficeView.reloadData()
         }
     }
     

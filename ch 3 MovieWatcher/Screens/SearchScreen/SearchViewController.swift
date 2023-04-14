@@ -25,7 +25,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         
         if movieTableView.listMovieNetwork.isEmpty {
             movieTableView.listMovieCoreData = CoreDataService.shared.fetchData(parentCategory: "SearchViewController")
+        } else {
+            movieTableView.tableView.reloadData()
         }
+        
     }
     
     
@@ -96,11 +99,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
 
 // MARK: - CoreData
 extension SearchViewController {
-    
     func saveCoreDataForSearchScreen(listMovieNetwork: [Movie]) {
-        CoreDataService.shared.saveCoreDataForSearchScreen(listMovieNetwork: listMovieNetwork)
+        if !listMovieNetwork.isEmpty {
+            CoreDataService.shared.saveCoreDataForSearchScreen(listMovieNetwork: listMovieNetwork)
+        }
     }
-    
 }
 
 
@@ -135,6 +138,7 @@ extension SearchViewController: CollectionDidSelectProtocol {
                 switch result {
                 case .success(let data):
                     self.movieTableView.listMovieNetwork = data.results
+                    print(data.results.isEmpty)
                     self.saveCoreDataForSearchScreen(listMovieNetwork: data.results)
                     DispatchQueue.main.async {
                         self.movieTableView.tableView.reloadData()
