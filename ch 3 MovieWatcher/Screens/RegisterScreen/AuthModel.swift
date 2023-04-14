@@ -14,6 +14,8 @@ import Firebase
 // Possible bug with password confirmation
 // Add user Profile Model
 
+// Пароль больше 6 символов. Почта должна содержать @.
+// При регистрации все поля должны быть заполнены. First и Last name
 
 enum Errors: String {
     case empty = "Please don't leave empty fields"
@@ -39,6 +41,68 @@ struct AuthModel {
     
     var errorSet: Set<String> = []
     var errorDescription = ""
+    
+    // MARK: - Firebase Authentication
+    
+    private mutating func createNewUser(inCaseOfAlert controller: UIViewController) {
+        if let email = validatedEmail,
+           let password = validatedPassword {
+            
+            Auth.auth().createUser(withEmail: email, password: password) { user, error in
+                if let error = error {
+                    let alert = UIAlertController(title: "Create User Error",
+                                                  message: error.localizedDescription,
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    controller.present(alert, animated: true)
+                    print(error.localizedDescription)
+                }
+                if user != nil {
+                    let newUser = UserModel(idUuid: UUID().uuidString,
+                                            firstName: firstName,
+                                            lastName: lastName,
+                                            email: email,
+                                            dateBirth: nil,
+                                            gender: nil,
+                                            location: nil)
+                    UserInfoService.shared.saveInfoInCoreData(for: newUser)
+                    openTabBarController(controller)
+                }
+            }
+        }
+        registrationIsComplete = true
+    }
+    
+    
+    private mutating func loginWithExistingUser(controller: UIViewController) {
+        
+        if let email = validatedEmail,
+           let password = validatedPassword {
+            
+            Auth.auth().signIn(withEmail: email, password: password) { user, error in
+                if let error = error {
+                    let alert = UIAlertController(title: "SignIn Error",
+                                                  message: error.localizedDescription,
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    controller.present(alert, animated: true)
+                    print(error.localizedDescription)
+                }
+                if user != nil {
+                    openTabBarController(controller)
+                }
+            }
+        }
+    }
+    
+    
+    private func openTabBarController(_ controller: UIViewController) {
+        let rootTabBar = CustomTabBarController()
+        rootTabBar.modalTransitionStyle = .flipHorizontal
+        rootTabBar.modalPresentationStyle = .fullScreen
+        controller.present(rootTabBar, animated: true)
+    }
+    
     
     // MARK: - Public funcs
         
@@ -67,12 +131,7 @@ struct AuthModel {
                 createNewUser(inCaseOfAlert: controller)
             } else {
                 loginWithExistingUser(controller: controller)
-            }
-                       
-            let rootTabBar = CustomTabBarController()
-            rootTabBar.modalTransitionStyle = .flipHorizontal
-            rootTabBar.modalPresentationStyle = .fullScreen
-            controller.present(rootTabBar, animated: true)
+            }  
         } else {
             presentAlert(inCaseOfAlert: controller)
             errorDescription = ""
@@ -123,7 +182,8 @@ struct AuthModel {
                 // errorDescription += (Errors.missingAt.rawValue + "\n")
             }
         case "Password":
-            if text.count < 6 || !text.contains("_") {
+            if text.count < 6 {
+//            if text.count < 6 || !text.contains("_") {
                 errorSet.insert(Errors.weakPassword.rawValue)
                 // errorDescription += (Errors.weakPassword.rawValue + "\n")
             }
@@ -172,41 +232,5 @@ struct AuthModel {
         }
         validatedEmail = fields[emailIndex].textField.text!
         validatedPassword = fields[passwordIndex].textField.text!
-    }
-    
-    
-    // MARK: - Firebase Authentication
-    
-    private mutating func createNewUser(inCaseOfAlert controller: UIViewController) {
-        if let email = validatedEmail,
-           let password = validatedPassword {
-            
-            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-                if let error = error {
-                    let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default))
-                    controller.present(alert, animated: true)
-                    print(error.localizedDescription)
-                }
-            }
-        }
-        
-        registrationIsComplete = true
-    }
-    
-    private mutating func loginWithExistingUser(controller: UIViewController) {
-        
-        if let email = validatedEmail,
-           let password = validatedPassword {
-            
-            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-                if let error = error {
-                    let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default))
-                    controller.present(alert, animated: true)
-                    print(error.localizedDescription)
-                }
-            }
-        }
     }
 }

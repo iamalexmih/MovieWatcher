@@ -11,16 +11,16 @@ import Foundation
 class UserModel {
     
     let idUuid: String
-    let firstName: String
-    let lastName: String
+    let firstName: String?
+    let lastName: String?
     let email: String
     let dateBirth: Date?
     let gender: String?
     let location: String?
     
     init(idUuid: String,
-         firstName: String,
-         lastName: String,
+         firstName: String?,
+         lastName: String?,
          email: String,
          dateBirth: Date?,
          gender: String?,

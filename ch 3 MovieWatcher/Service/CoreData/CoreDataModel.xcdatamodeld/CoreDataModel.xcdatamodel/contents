@@ -24,10 +24,10 @@
         <attribute name="avatarImageData" optional="YES" attributeType="Binary"/>
         <attribute name="dateBirth" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="email" attributeType="String"/>
-        <attribute name="firstName" attributeType="String"/>
+        <attribute name="firstName" optional="YES" attributeType="String"/>
         <attribute name="gender" optional="YES" attributeType="String"/>
         <attribute name="idUser" attributeType="String"/>
-        <attribute name="lastName" attributeType="String"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
         <attribute name="location" optional="YES" attributeType="String"/>
     </entity>
 </model>
