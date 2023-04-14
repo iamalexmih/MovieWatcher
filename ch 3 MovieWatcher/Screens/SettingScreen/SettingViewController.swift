@@ -254,7 +254,7 @@ extension SettingViewController {
         toggle.isOn = isDarkMode
     }
 
-    func setupToggleDarkMode() {
+    @objc func setupToggleDarkMode() {
         toggle.addTarget(self, action: #selector(toggleDidChange(_:)), for: .valueChanged)
         toggle.isOn = ThemeManager.shared.currentTheme == .dark
     }
