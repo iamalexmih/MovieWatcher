@@ -260,7 +260,7 @@ extension MovieDetailViewController {
         containerView.addSubview(detailsStackView)
         detailsStackView.spacing = 24
         detailsStackView.axis = .horizontal
-        detailsStackView.distribution = .fillProportionally
+        detailsStackView.distribution = .fill
         detailsStackView.alignment = .center
         detailsStackView.addArrangedSubview(releaseView)
         releaseView.detailTiTleLabel.text = releaseDateText
