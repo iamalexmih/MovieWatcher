@@ -132,6 +132,7 @@ extension SettingViewController {
         profileButton.setTitleColor(UIColor(named: Resources.Colors.text), for: .normal)
         profileButton.titleLabel?.font = UIFont.jakartaRomanSemiBold(size: 16)
         view.addSubview(profileButton)
+        profileButton.addTarget(self, action: #selector(openProfile), for: .touchUpInside)
 
         profileButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(60)
@@ -260,6 +261,7 @@ extension SettingViewController {
 
     func setupLogOutTemplateButton() {
         view.addSubview(logOutTemplateButton)
+        logOutTemplateButton.addTarget(self, action: #selector(logOut), for: .touchUpInside)
 
         logOutTemplateButton.snp.makeConstraints { make in
             make.width.equalTo(367)
@@ -269,6 +271,22 @@ extension SettingViewController {
             make.left.equalToSuperview().inset(20)
 
         }
+    }
+
+    @objc
+    private func logOut() {
+        let firebaseAuth = Auth.auth()
+        do {
+          try firebaseAuth.signOut()
+            onExit()
+        } catch let signOutError as NSError {
+          print("Error signing out: %@", signOutError)
+        }
+    }
+
+    private func onExit() {
+        let authVC = AuthViewController()
+        navigationController?.pushViewController(authVC, animated: true)
     }
 
     @objc
@@ -317,5 +335,11 @@ extension SettingViewController {
         alert.addAction(changeAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
+    }
+
+    @objc
+    private func openProfile() {
+        let profileVC = ProfileViewController()
+        navigationController?.pushViewController(profileVC, animated: true)
     }
 }

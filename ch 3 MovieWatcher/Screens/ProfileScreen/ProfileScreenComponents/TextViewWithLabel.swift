@@ -50,7 +50,7 @@ class TextViewWithLabel: UIStackView {
     
     private func setupLabelAndTexField() {
         label.text = labelText
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = .jakartaMedium(size: 14)
         label.textColor = UIColor(named: Resources.Colors.secondText)
         label.translatesAutoresizingMaskIntoConstraints = false
         

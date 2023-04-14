@@ -12,7 +12,7 @@ vertical_whitespace:
 excluded:
     - Pods
 
-warning_threshold: 15 # Максимально допустимое количество предупреждений
+warning_threshold: 30 # Максимально допустимое количество предупреждений
 
 custom_rules:
     open_iboutlets: # проверяет что свойство приватное

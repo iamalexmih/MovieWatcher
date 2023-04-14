@@ -47,7 +47,7 @@ class CheckGenderView: UIView {
         }
         stackViewHorizontal.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalTo(self)
-            make.top.equalTo(titleLabel.snp.bottom)
+            make.top.equalTo(titleLabel.snp.bottom).inset(-8)
         }
     }
     
@@ -56,7 +56,9 @@ class CheckGenderView: UIView {
         stackViewHorizontal.spacing = 16
         stackViewHorizontal.distribution = .fillEqually
         
-        titleLabel.text = "123"
+        titleLabel.text = "Gender"
+        titleLabel.font = .jakartaMedium(size: 14)
+        titleLabel.textColor = UIColor(named: Resources.Colors.secondText)
     }
 }
 
