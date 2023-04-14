@@ -72,7 +72,6 @@ class TopCollectionView: UIView {
     func configureAnimation() {
         topCollectionView.gemini
             .circleRotationAnimation()
-            .cornerRadius(10)
             .radius(1500)
             .rotateDirection(.anticlockwise)
     }
