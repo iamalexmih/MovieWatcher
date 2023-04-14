@@ -8,14 +8,17 @@
 import UIKit
 import Foundation
 
+
+
+enum Theme: String {
+    case light, dark
+}
+
+
 class ThemeManager {
     static let shared = ThemeManager()
-
     private init() {}
 
-    enum Theme: String {
-        case light, dark
-    }
 
     var currentTheme: Theme = .light {
         didSet {
@@ -24,17 +27,16 @@ class ThemeManager {
     }
 
     func setTheme() {
-        if let savedTheme = UserDefaults.standard.string(forKey: "theme") {
-            currentTheme = Theme(rawValue: savedTheme)!
-        } else {
+        if loadCurrentTheme() == Theme.light.rawValue {
             currentTheme = .light
-        }
-
-        if currentTheme == .dark {
-            applyDarkTheme()
-        } else {
             applyLightTheme()
+        } else {
+            applyDarkTheme()
         }
+    }
+    
+    func loadCurrentTheme() -> String {
+        return UserDefaults.standard.string(forKey: "theme") ?? ""
     }
 
     func applyLightTheme() {

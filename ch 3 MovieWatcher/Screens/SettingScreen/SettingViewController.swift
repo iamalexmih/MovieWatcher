@@ -2,6 +2,7 @@ import UIKit
 import SnapKit
 import FirebaseAuth
 
+
 class SettingViewController: UIViewController {
     let avatarView = UIImageView()
     let nameLabel = UILabel()
@@ -22,34 +23,27 @@ class SettingViewController: UIViewController {
     let logOutTemplateButton = LogOutTemplateButton()
     var currentUser: UserModel?
     
+    // MARK: - VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         ThemeManager.shared.setTheme()
-        setupToggleDarkMode()
-
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
         loadUser()
-        
-        setupAvatarView()
-        setupNameLabel()
-        setupNickNameLabel()
-        setupPersonalInfoLabel()
-        setupHeadInProfileSetting()
-        setupFleshInProfileSetting()
-        setupProfileButton()
-        setupChevronButton()
-        setupSecurityLabel()
-        setupChangePasswordProfileSettingImage()
-        setupChangePasswordProfileSettingTextButton()
-        setupForgotPasswordProfileSettingImage()
-        setupForgotPasswordButton()
-        setupDarkModeSettingImage()
-        setupDarkModeSettingLabel()
-        setupToggle()
-        setAppTheme()
-        setupToggleDarkMode()
-        setupLogOutTemplateButton() 
+        configureScreen()
+    }
+    
+    
+    private func loadUser() {
+        if let user = UserInfoService.shared.fetchCurrentUserCoreData() {
+            currentUser = user
+        }
+    }
+    
+    @objc
+    private func openProfile() {
+        let profileVC = ProfileViewController()
+        navigationController?.pushViewController(profileVC, animated: true)
     }
 }
 
@@ -114,9 +108,11 @@ extension SettingViewController {
         let alert = UIAlertController(title: "Enter your e-mail", message: "", preferredStyle: .alert)
         let changeAction = UIAlertAction(title: "Get link!", style: .default) { _  in
             guard let email = textField.text else { return }
-            if (!email.isEmpty) {
+            if !email.isEmpty {
                 Auth.auth().sendPasswordReset(withEmail: email) { error in
-                    print("Error sendPasswordReset - \(error)")
+                    if let error = error {
+                        print("Error sendPasswordReset: \(error)")
+                    }
                  }
             }
         }
@@ -135,42 +131,54 @@ extension SettingViewController {
 
 // MARK: - logic Dark Mode
 extension SettingViewController {
-    
-    func setAppTheme() {
-        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
-        let window = UIApplication.shared.windows.first
-        window?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
-    }
-
-    func setupToggle() {
+    func configureToggle() {
         view.addSubview(toggle)
+        toggle.onTintColor = UIColor(named: Resources.Colors.accent)
         toggle.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(425)
             make.right.equalToSuperview().inset(30)
         }
-        toggle.addTarget(self, action: #selector(setupToggleDarkMode), for: .touchUpInside)
-        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
-        toggle.isOn = isDarkMode
+        setPositionToggle()
+        toggle.addTarget(self, action: #selector(toggleDidChange), for: .touchUpInside)
     }
 
-    @objc func setupToggleDarkMode() {
-        let isDarkMode = toggle.isOn
-        let window = UIApplication.shared.windows.first
-        window?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
-        UserDefaults.standard.set(isDarkMode, forKey: "isDarkMode")
+    func setPositionToggle() {
+        toggle.isOn = ThemeManager.shared.loadCurrentTheme() == Theme.dark.rawValue
     }
 
- 
+    @objc func toggleDidChange() {
+        if toggle.isOn {
+            ThemeManager.shared.currentTheme = .dark
+            ThemeManager.shared.applyDarkTheme()
+        } else {
+            ThemeManager.shared.currentTheme = .light
+            ThemeManager.shared.applyLightTheme()
+        }
+    }
 }
 
 
-// MARK: установка UI
+// MARK: - установка UI
 extension SettingViewController {
-
-    private func loadUser() {
-        if let user = UserInfoService.shared.fetchCurrentUserCoreData() {
-            currentUser = user
-        }
+    
+    private func configureScreen() {
+        setupAvatarView()
+        setupNameLabel()
+        setupNickNameLabel()
+        setupPersonalInfoLabel()
+        setupHeadInProfileSetting()
+        setupFleshInProfileSetting()
+        setupProfileButton()
+        setupChevronButton()
+        setupSecurityLabel()
+        setupChangePasswordProfileSettingImage()
+        setupChangePasswordProfileSettingTextButton()
+        setupForgotPasswordProfileSettingImage()
+        setupForgotPasswordButton()
+        setupDarkModeSettingImage()
+        setupDarkModeSettingLabel()
+        configureToggle()
+        setupLogOutTemplateButton()
     }
     
     func setupAvatarView() {
@@ -284,7 +292,6 @@ extension SettingViewController {
     }
 
     func setupSecurityLabel() {
-
         security.text = "Security"
         security.font = UIFont.jakartaLight(size: 12)
         view.addSubview(security)
@@ -312,7 +319,7 @@ extension SettingViewController {
         changePasswordProfileSettingTextButton.titleLabel?.font = UIFont.jakartaRomanSemiBold(size: 16)
         view.addSubview(changePasswordProfileSettingTextButton)
         changePasswordProfileSettingTextButton.addTarget(self, action: #selector(changePassword), for: .touchUpInside)
-
+        
         changePasswordProfileSettingTextButton.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(60)
             make.top.equalToSuperview().offset(325)
@@ -324,6 +331,7 @@ extension SettingViewController {
         forgotPasswordProfileSettingImage.image = image
         forgotPasswordProfileSettingImage.contentMode = .scaleAspectFit
         view.addSubview(forgotPasswordProfileSettingImage)
+        
         forgotPasswordProfileSettingImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(382)
             make.left.equalToSuperview().offset(32)
@@ -348,6 +356,7 @@ extension SettingViewController {
         darkModeSettingImage.image = image
         darkModeSettingImage.contentMode = .scaleAspectFit
         view.addSubview(darkModeSettingImage)
+        
         darkModeSettingImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(430)
             make.left.equalToSuperview().offset(32)
@@ -365,117 +374,15 @@ extension SettingViewController {
         }
     }
 
-    func setAppTheme() {
-        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
-        let window = UIApplication.shared.windows.first
-        window?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
-    }
-
-    func setupToggle() {
-        view.addSubview(toggle)
-        toggle.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(425)
-            make.right.equalToSuperview().inset(30)
-        }
-        toggle.addTarget(self, action: #selector(setupToggleDarkMode), for: .touchUpInside)
-        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
-        toggle.isOn = isDarkMode
-    }
-
-    @objc func setupToggleDarkMode() {
-        toggle.addTarget(self, action: #selector(toggleDidChange(_:)), for: .valueChanged)
-        toggle.isOn = ThemeManager.shared.currentTheme == .dark
-    }
-
-    @objc func toggleDidChange(_ toggle: UISwitch) {
-        if toggle.isOn {
-            ThemeManager.shared.currentTheme = .dark
-            ThemeManager.shared.applyDarkTheme()
-        } else {
-            ThemeManager.shared.currentTheme = .light
-            ThemeManager.shared.applyLightTheme()
-        }
-    }
-
     func setupLogOutTemplateButton() {
         view.addSubview(logOutTemplateButton)
-        logOutTemplateButton.addTarget(self, action: #selector(logOut), for: .touchUpInside)
+        logOutTemplateButton.addTarget(self, action: #selector(logOutButtonPress), for: .touchUpInside)
+        
         logOutTemplateButton.snp.makeConstraints { make in
             make.width.equalTo(367)
             make.height.equalTo(60)
             make.bottom.equalToSuperview().inset(87)
-            make.right.equalToSuperview().inset(20)
-            make.left.equalToSuperview().inset(20)
+            make.right.left.equalToSuperview().inset(20)
         }
-    }
-
-    @objc
-    private func logOut() {
-        let firebaseAuth = Auth.auth()
-        do {
-          try firebaseAuth.signOut()
-            onExit()
-        } catch let signOutError as NSError {
-          print("Error signing out: %@", signOutError)
-        }
-    }
-
-    private func onExit() {
-        let authVC = AuthViewController()
-        navigationController?.pushViewController(authVC, animated: true)
-    }
-
-    @objc
-    private func changePassword() {
-        var newPasswordTextField = UITextField()
-        let alert = UIAlertController(title: "Enter the password", message: "", preferredStyle: .alert)
-        let changeAction = UIAlertAction(title: "Change", style: .default) { _ in
-            guard let password = newPasswordTextField.text else { return }
-            if (!password.isEmpty) {
-                Auth.auth().currentUser?.updatePassword(to: password) { error in
-                   print("Error  - updatePassword\(error)")
-                }
-            }
-        }
-
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
-
-        alert.addTextField { textfield in
-            newPasswordTextField = textfield
-            newPasswordTextField.placeholder = "New password"
-        }
-        alert.addAction(changeAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
-
-    }
-
-    @objc
-    private func forgotPassword() {
-        var textField = UITextField()
-        let alert = UIAlertController(title: "Enter your e-mail", message: "", preferredStyle: .alert)
-        let changeAction = UIAlertAction(title: "Get link!", style: .default) { _  in
-            guard let email = textField.text else { return }
-            if (!email.isEmpty) {
-                Auth.auth().sendPasswordReset(withEmail: email) { error in
-                    print("Error sendPasswordReset - \(error)")
-                 }
-            }
-        }
-
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
-        alert.addTextField { field in
-            textField = field
-            textField.placeholder = "E-mail"
-        }
-        alert.addAction(changeAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-
-    @objc
-    private func openProfile() {
-        let profileVC = ProfileViewController()
-        navigationController?.pushViewController(profileVC, animated: true)
     }
 }
