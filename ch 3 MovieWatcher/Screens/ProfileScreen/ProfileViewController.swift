@@ -45,7 +45,12 @@ final class ProfileViewController: UIViewController {
         addSubView()
         setConstraints()
         avatarViewConfigure()
-        
+        configureTapGesture()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
     }
     
     private func addSubView() {
@@ -85,6 +90,11 @@ final class ProfileViewController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(32)
             make.bottom.equalToSuperview().inset(34)
         }
+    }
+
+    private func configureTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+               view.addGestureRecognizer(tapGesture)
     }
     
     
