@@ -50,16 +50,125 @@ class SettingViewController: UIViewController {
     }
 }
 
-// MARK: Extension
+
+// MARK: - Firebase logic
+extension SettingViewController {
+    
+    @objc
+    private func logOutButtonPress() {
+        do {
+            try Auth.auth().signOut()
+        } catch let error {
+            print("Error. logOutButtonPress. already logged out: ", error.localizedDescription)
+        }
+        guard let window = UIApplication.shared.windows.first else { return }
+        let authVC = AuthViewController()
+        let navController = NavBarController(rootViewController: authVC)
+        // Set the new rootViewController of the window.
+        // Calling "UIView.transition" below will animate the swap.
+        window.rootViewController = navController
+        // A mask of options indicating how you want to perform the animations.
+        let options: UIView.AnimationOptions = .transitionCrossDissolve
+        // The duration of the transition animation, measured in seconds.
+        let duration: TimeInterval = 0.3
+        // Creates a transition animation.
+        // Though `animations` is optional, the documentation tells us that it must not be nil. ¯\_(ツ)_/¯
+        UIView.transition(with: window, duration: duration, options: options, animations: {})
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    
+    @objc
+    private func changePassword() {
+        var newPasswordTextField = UITextField()
+        let alert = UIAlertController(title: "Enter the password", message: "", preferredStyle: .alert)
+        let changeAction = UIAlertAction(title: "Change", style: .default) { _ in
+            guard let password = newPasswordTextField.text else { return }
+            if !password.isEmpty {
+                Auth.auth().currentUser?.updatePassword(to: password) { error in
+                    if let error = error {
+                        print("Error  - updatePassword: \(error)")
+                    }
+                }
+            }
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+
+        alert.addTextField { textfield in
+            newPasswordTextField = textfield
+            newPasswordTextField.placeholder = "New password"
+        }
+        alert.addAction(changeAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+
+    }
+
+    @objc
+    private func forgotPassword() {
+        var textField = UITextField()
+        let alert = UIAlertController(title: "Enter your e-mail", message: "", preferredStyle: .alert)
+        let changeAction = UIAlertAction(title: "Get link!", style: .default) { _  in
+            guard let email = textField.text else { return }
+            if (!email.isEmpty) {
+                Auth.auth().sendPasswordReset(withEmail: email) { error in
+                    print("Error sendPasswordReset - \(error)")
+                 }
+            }
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+        alert.addTextField { field in
+            textField = field
+            textField.placeholder = "E-mail"
+        }
+        alert.addAction(changeAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+
+
+// MARK: - logic Dark Mode
+extension SettingViewController {
+    
+    func setAppTheme() {
+        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
+        let window = UIApplication.shared.windows.first
+        window?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
+    }
+
+    func setupToggle() {
+        view.addSubview(toggle)
+        toggle.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(425)
+            make.right.equalToSuperview().inset(30)
+        }
+        toggle.addTarget(self, action: #selector(setupToggleDarkMode), for: .touchUpInside)
+        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
+        toggle.isOn = isDarkMode
+    }
+
+    @objc func setupToggleDarkMode() {
+        let isDarkMode = toggle.isOn
+        let window = UIApplication.shared.windows.first
+        window?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
+        UserDefaults.standard.set(isDarkMode, forKey: "isDarkMode")
+    }
+
+ 
+}
+
+
+// MARK: установка UI
 extension SettingViewController {
 
     private func loadUser() {
         if let user = UserInfoService.shared.fetchCurrentUserCoreData() {
             currentUser = user
-            print("user", user.lastName)
         }
     }
-    
     
     func setupAvatarView() {
         avatarView.image = UIImage(named: Resources.Image.profileSettingScreen)
@@ -251,89 +360,16 @@ extension SettingViewController {
             make.top.equalToSuperview().offset(430)
         }
     }
-
-    func setAppTheme() {
-        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
-        let window = UIApplication.shared.windows.first
-        window?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
-    }
-
-    func setupToggle() {
-        view.addSubview(toggle)
-        toggle.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(425)
-            make.right.equalToSuperview().inset(30)
-        }
-        toggle.addTarget(self, action: #selector(setupToggleDarkMode), for: .touchUpInside)
-        let isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
-        toggle.isOn = isDarkMode
-    }
-
-    @objc func setupToggleDarkMode() {
-        let isDarkMode = toggle.isOn
-        let window = UIApplication.shared.windows.first
-        window?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
-        UserDefaults.standard.set(isDarkMode, forKey: "isDarkMode")
-    }
-
+    
     func setupLogOutTemplateButton() {
         view.addSubview(logOutTemplateButton)
-
+        logOutTemplateButton.addTarget(self, action: #selector(logOutButtonPress), for: .touchUpInside)
         logOutTemplateButton.snp.makeConstraints { make in
             make.width.equalTo(367)
             make.height.equalTo(60)
             make.bottom.equalToSuperview().inset(87)
             make.right.equalToSuperview().inset(20)
             make.left.equalToSuperview().inset(20)
-
         }
-    }
-
-    @objc
-    private func changePassword() {
-        var newPasswordTextField = UITextField()
-        let alert = UIAlertController(title: "Enter the password", message: "", preferredStyle: .alert)
-        let changeAction = UIAlertAction(title: "Change", style: .default) { _ in
-            guard let password = newPasswordTextField.text else { return }
-            if (!password.isEmpty) {
-                Auth.auth().currentUser?.updatePassword(to: password) { error in
-                   print("Error  - updatePassword\(error)")
-                }
-            }
-        }
-
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
-
-        alert.addTextField { textfield in
-            newPasswordTextField = textfield
-            newPasswordTextField.placeholder = "New password"
-        }
-        alert.addAction(changeAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
-
-    }
-
-    @objc
-    private func forgotPassword() {
-        var textField = UITextField()
-        let alert = UIAlertController(title: "Enter your e-mail", message: "", preferredStyle: .alert)
-        let changeAction = UIAlertAction(title: "Get link!", style: .default) { _  in
-            guard let email = textField.text else { return }
-            if (!email.isEmpty) {
-                Auth.auth().sendPasswordReset(withEmail: email) { error in
-                    print("Error sendPasswordReset - \(error)")
-                 }
-            }
-        }
-
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
-        alert.addTextField { field in
-            textField = field
-            textField.placeholder = "E-mail"
-        }
-        alert.addAction(changeAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
     }
 }

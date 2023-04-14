@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Firebase
 
 // Simple password validation -- DONE
 // hookup with firebase -- DONE
@@ -49,11 +50,25 @@ class AuthViewController: UIViewController {
         setupUI()
         addActionsToButtons()
         presentAuthOptions()
+        checkAuth()
     }
     
     func presentAuthOptions() {
 
     }
+    
+    private func checkAuth() {
+        Auth.auth().addStateDidChangeListener { [weak self] _, user in
+            guard let self = self else { return }
+            if user != nil {
+                let rootTabBar = CustomTabBarController()
+                rootTabBar.modalTransitionStyle = .flipHorizontal
+                rootTabBar.modalPresentationStyle = .fullScreen
+                self.present(rootTabBar, animated: true)
+            }
+        }
+    }
+    
     
     // MARK: - Button Logic
 
