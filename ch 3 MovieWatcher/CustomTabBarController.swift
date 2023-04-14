@@ -10,7 +10,7 @@ import SnapKit
 
 class CustomTabBarController: UITabBarController {
     
-    let menuButton = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+    let menuButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,6 @@ class CustomTabBarController: UITabBarController {
         customizeTabBar(homeViewController, name: "Home")
         customizeTabBar(movieDetailViewController, name: "Favorites")
         customizeTabBar(settingViewController, name: "Setting")
-
     }
     
 
@@ -57,6 +56,7 @@ extension CustomTabBarController {
             
             controller.tabBarItem.selectedImage = UIImage(named: Resources.Image.tabBarHome)?
                 .withRenderingMode(.alwaysOriginal)
+            controller.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
         case "Favorites":
             controller.tabBarItem.title = ""
             controller.tabBarItem.image = UIImage(named: Resources.Image.favourites)?.withRenderingMode(.alwaysOriginal)
