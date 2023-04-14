@@ -24,6 +24,9 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        ThemeManager.shared.setTheme()
+        setupToggleDarkMode()
+
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
 
         setupAvatarView()
@@ -253,10 +256,18 @@ extension SettingViewController {
     }
 
     @objc func setupToggleDarkMode() {
-        let isDarkMode = toggle.isOn
-        let window = UIApplication.shared.windows.first
-        window?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
-        UserDefaults.standard.set(isDarkMode, forKey: "isDarkMode")
+        toggle.addTarget(self, action: #selector(toggleDidChange(_:)), for: .valueChanged)
+        toggle.isOn = ThemeManager.shared.currentTheme == .dark
+    }
+
+    @objc func toggleDidChange(_ toggle: UISwitch) {
+        if toggle.isOn {
+            ThemeManager.shared.currentTheme = .dark
+            ThemeManager.shared.applyDarkTheme()
+        } else {
+            ThemeManager.shared.currentTheme = .light
+            ThemeManager.shared.applyLightTheme()
+        }
     }
 
     func setupLogOutTemplateButton() {
