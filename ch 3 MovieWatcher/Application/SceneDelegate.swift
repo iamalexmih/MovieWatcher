@@ -9,7 +9,6 @@ import UIKit
 
 
 
-// swiftlint:disable all
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -20,10 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         ThemeManager.shared.setTheme()
+        
         let screenSaverViewController = ScreenSaverViewController()
 //        let onBoardingViewController = OnBoardingViewController()
 //        let settingViewController = SettingViewController()
-        let tabBar = CustomTabBarController()
+//        let tabBar = CustomTabBarController()
 //        let authVC = AuthViewController()
         
         let navController = NavBarController(rootViewController: screenSaverViewController)
