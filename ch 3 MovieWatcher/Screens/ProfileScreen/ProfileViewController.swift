@@ -42,6 +42,7 @@ final class ProfileViewController: UIViewController {
         addViews()
         configure()
         loadUser()
+        emailView.textField.isUserInteractionEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -239,9 +240,9 @@ extension ProfileViewController {
         emailView.textField.text = user.email
         
 //        dateBirthView.textField.text = convertFromDate(user.dateBirth)
-        
+        dateBirthView.datePicker.date = user.dateBirth ?? Date()
         if let gender = user.gender {
-            // populate gender view with gender
+            checkGenderView.loadUserGender(HumanGender(rawValue: gender) ?? .male)
         }
         
         locationView.textView.text = user.location ?? ""
@@ -250,43 +251,44 @@ extension ProfileViewController {
     private func saveNewUserData() {
         if let firstName = firstNameView.textField.text,
            let lastName = lastNameView.textField.text,
-           let email = emailView.textField.text,
-//           let dateString = dateBirthView.textField.text,
+           // let email = emailView.textField.text,
            // let genderString = "",
            let location = locationView.textView.text {
             
-//            let date = convertFromString(dateString)
-            
+            let date = dateBirthView.datePicker.date
+            let gender = checkGenderView.selectedGender
             let updatedUser = UserModel(idUuid: currentUser!.idUuid,
                                         firstName: firstName,
                                         lastName: lastName,
-                                        email: email,
-                                        dateBirth: Date(),
-                                        gender: HumanGender.male.rawValue,
+                                        email: currentUser!.email,
+                                        dateBirth: date,
+                                        gender: gender?.rawValue,
                                         location: location)
             
             UserInfoService.shared.editingUserInCoreData(userModel: updatedUser)
         }
     }
     
-    private func convertFromString(_ str: String?) -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YY/MM/dd"
-        if let str = str {
-            return dateFormatter.date(from: str) ?? Date()
-        }
-        return Date()
-    }
+   
     
-    private func convertFromDate(_ date: Date?) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YY/MM/dd"
-        
-        if let date = date {
-            
-            dateFormatter.dateFormat = "YY/MM/dd"
-            return dateFormatter.string(from: date)
-        }
-        return ""
-    }
+//    private func convertFromString(_ str: String?) -> Date {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "YY/MM/dd"
+//        if let str = str {
+//            return dateFormatter.date(from: str) ?? Date()
+//        }
+//        return Date()
+//    }
+//
+//    private func convertFromDate(_ date: Date?) -> String {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "YY/MM/dd"
+//
+//        if let date = date {
+//
+//            dateFormatter.dateFormat = "YY/MM/dd"
+//            return dateFormatter.string(from: date)
+//        }
+//        return ""
+//    }
 }
