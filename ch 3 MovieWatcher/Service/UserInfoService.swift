@@ -21,7 +21,7 @@ class UserInfoService {
         userEntity.idUser = user.idUuid
         userEntity.firstName = user.firstName
         userEntity.lastName = user.lastName
-        userEntity.email = user.email
+        userEntity.email = user.email.lowercased()
         userEntity.dateBirth = user.dateBirth
         userEntity.gender = user.gender
         userEntity.location = user.location
@@ -59,6 +59,20 @@ class UserInfoService {
         return userModel
     }
     
+    func editingUserInCoreData(userModel: UserModel) {
+            guard let userEntity = CoreDataService.shared.fetchUser(currenUserEmail) else {
+               print("fetchUserCoreData. User not found")
+                return
+            }
+            
+            userEntity.firstName = userModel.firstName
+            userEntity.lastName = userModel.lastName
+            userEntity.dateBirth = userModel.dateBirth
+            userEntity.gender = userModel.gender
+            userEntity.location = userModel.location
+            
+            CoreDataService.shared.save()
+        }
     
     func deleteOutCoreData(user id: String) {
         CoreDataService.shared.deleteOutCoreData(user: id)
