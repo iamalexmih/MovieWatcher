@@ -61,6 +61,8 @@ class AuthViewController: UIViewController {
         Auth.auth().addStateDidChangeListener { [weak self] _, user in
             guard let self = self else { return }
             if user != nil {
+                UserInfoService.shared.currenUserEmail = (user?.email!)!
+                print("addStateDidChangeListener", (user?.email!)!)
                 let rootTabBar = CustomTabBarController()
                 rootTabBar.modalTransitionStyle = .flipHorizontal
                 rootTabBar.modalPresentationStyle = .fullScreen
