@@ -31,7 +31,7 @@ final class ProfileViewController: UIViewController {
 
     var scrollViewBottom = 0.0
 
-    private var bottomViewHeight = 100.0
+//    private var bottomViewHeight = 100.0
     
     var currentUser: UserModel?
  
@@ -152,7 +152,7 @@ extension ProfileViewController {
         
         bottomView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
-            make.height.equalTo(bottomViewHeight)
+            make.height.equalTo(saveButton.snp.height).offset(30)
         }
     }
     
@@ -205,16 +205,18 @@ extension ProfileViewController {
     @objc
     private func keyboardWillShow(notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            scrollViewBottom = -(keyboardSize.height - bottomViewHeight)
-            configureScrollView()
-            print("в keyboardDidShow \(scrollViewBottom)")
+//            scrollViewBottom = -(keyboardSize.height - bottomViewHeight)
+//            configureScrollView()
+            scrollView.bounds.origin.y = keyboardSize.height
+            print("в keyboardDidShow \(keyboardSize.height)")
         }
     }
     
     @objc
     private func keyboardWillHide(notification: Notification) {
-        scrollViewBottom = 0.0
-        configureScrollView()
+//        scrollViewBottom = 0.0
+//        configureScrollView()
+        scrollView.bounds.origin.y = 0
         print("в keyboardDidHide \(scrollViewBottom)")
     }
 }
