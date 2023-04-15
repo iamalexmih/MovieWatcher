@@ -60,6 +60,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     //тап в любом месте экрана для скрытия клавиатуры
     private func configureTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        tapGesture.cancelsTouchesInView = false
                view.addGestureRecognizer(tapGesture)
     }
     

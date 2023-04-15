@@ -15,6 +15,18 @@ class CheckGenderView: UIView {
     
     private let stackViewHorizontal = UIStackView()
     
+    var selectedGender: HumanGender? {
+        if self.maleButton.isTapped {
+            self.femaleButton.isTapped = false
+            self.femaleButton.updateImage()
+            return HumanGender.male
+        } else {
+            self.maleButton.isTapped = false
+            self.maleButton.updateImage()
+                return HumanGender.female
+            }
+    }
+    
     // MARK: - Init
     init() {
         super.init(frame: .zero)
