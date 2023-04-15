@@ -71,13 +71,25 @@ class MovieCell: UITableViewCell {
         synchFavoriteWithNetwork(movie.id)
         guard let posterPath = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
         let urlPoster = URL(string: posterPath)
-        movieImage.kf.setImage(with: urlPoster) { result in
+        movieImage.kf.setImage(with: urlPoster, placeholder: UIImage(systemName: "questionmark.square.dashed")) { result in
             switch result {
             case .success(let value):
                 let imageData = value.image.pngData()
                 CoreDataService.shared.saveImageCoreData(imageData: imageData, movie: movie)
             case .failure(let error):
                 print("Error kf: \(error)")
+            }
+        }
+        
+        NetworkService.shared.getMovieInfo(with: movie.id) { result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    guard let time = data.runtime else { return }
+                    self.timeLabel.text = "\(time) minutes"
+                }
+            case .failure(let failure):
+                self.timeLabel.text = "140 minutes"
             }
         }
     }
@@ -130,6 +142,26 @@ extension MovieCell {
             favouriteButton.setImage(UIImage(named: Resources.Image.favourites)?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
     }
+}
+
+
+// MARK: - Core Data
+extension MovieCell {
+    
+    func saveImageCoreData(imageData: Data?, movie: Movie) {
+        // Если фильма с id xxx нет в хранилище, то тогда добавить.
+        let imageEntity = CoreDataService.shared.fetchImageUseMovieId(id: movie.genre_ids.first ?? 7777)
+        if imageEntity == nil {
+            let imageDataDefault = UIImage(systemName: "questionmark.square.dashed")?.pngData()
+            
+            let newImageEntity = ImageEntity(context: CoreDataService.shared.viewContext)
+            newImageEntity.id = Int64(movie.id)
+            newImageEntity.imageData = imageData ?? imageDataDefault
+            
+            CoreDataService.shared.save()
+        }
+    }
+    
 }
 
 

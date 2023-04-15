@@ -129,8 +129,23 @@ class BoxViewCell: UICollectionViewCell {
                         for: .normal)
         
         filmNameLabel.text = movie.original_title
-        //        timeLabel.text = NetworkService.shared.getRuntimeForMovie(movieId: movie.id)
-        timeLabel.text = "140 minutes"
+        
+        starRating.text = "\(movie.vote_average)"
+        votesNumber.text = "(\(movie.vote_count))"
+        
+        // get runtime of movie -- work -- kompot
+        NetworkService.shared.getMovieInfo(with: movie.id) { result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    guard let time = data.runtime else { return }
+                    self.timeLabel.text = "\(time) minutes"
+                }
+            case .failure(let failure):
+                self.timeLabel.text = "140 minutes"
+            }
+        }
+        
         categoryFilmLabel.text = NetworkService.shared.getNameGenreForOneMovie(
             movieGenresId: movie.genre_ids.first ?? 7777,
             arrayGenres: StorageGenres.shared.listGenres
@@ -138,7 +153,7 @@ class BoxViewCell: UICollectionViewCell {
         synchFavoriteWithNetwork(movieId)
         guard let posterPath = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
         let urlPoster = URL(string: posterPath)
-        filmImageView.kf.setImage(with: urlPoster) { result in
+        filmImageView.kf.setImage(with: urlPoster, placeholder: UIImage(systemName: "questionmark.square.dashed")) { result in
             switch result {
             case .success(let value):
                 let imageData = value.image.pngData()
