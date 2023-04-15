@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-
+        ThemeManager.shared.setTheme()
         let screenSaverViewController = ScreenSaverViewController()
 //        let onBoardingViewController = OnBoardingViewController()
 //        let settingViewController = SettingViewController()

@@ -59,7 +59,10 @@ class BoxViewCell: UICollectionViewCell {
     
     private let timeImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: Resources.Image.clockImage)
+        imageView.image = UIImage(named: Resources.Image.clockImage)?.withTintColor(
+            UIColor(named: Resources.Colors.cellIcon) ?? .systemGray2,
+            renderingMode: .alwaysOriginal
+        )
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
