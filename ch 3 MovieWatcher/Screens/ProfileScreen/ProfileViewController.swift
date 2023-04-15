@@ -21,21 +21,27 @@ final class ProfileViewController: UIViewController {
                                                   textFieldPlaceHolder: "Enter your last name")
     private let emailView = TextFieldWithLabel(labelText: "E-mail",
                                                textFieldPlaceHolder: "Enter your E-mail")
-    private let dateBirthView = TextFieldWithLabel(labelText: "Date of Birth",
-                                                   textFieldPlaceHolder: "Enter your date of birth")
+    private let dateBirthView = DateOfBirthPicker(labelText: "Date of Birth",
+                                                  placeholderText: "Enter your date of birth")
     private let locationView = TextViewWithLabel(labelText: "Location",
                                                  placeholderText: "Enter your location address")
     private let checkGenderView = CheckGenderView()
     let stackView = UIStackView()
     private var arrayElemets: [UIView] = []
+
+    var scrollViewBottom = 0.0
+
+    private var bottomViewHeight = 100.0
+
     private var scrollViewBottom: NSLayoutConstraint?
     
     var currentUser: UserModel?
-    
+ 
     // MARK: - VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
+        addViews()
         configure()
         loadUser()
     }
@@ -52,11 +58,34 @@ final class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController {
-    
+
+    // MARK: Actions
+    @objc
+    private func editPhoto() {
+        print("Edit photo")
+    }
+
+    @objc
+    private func saveButtonPress() {
+        print("Save changes")
+        saveNewUserData()
+    }
+    // MARK: Configure and constraints funcs
+    private func addViews() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(containerView)
+        containerView.addSubview(avatarImageView)
+        containerView.addSubviews(editButton)
+        view.addSubview(bottomView)
+        bottomView.addSubview(saveButton)
+        containerView.addSubview(stackView)
+    }
+
     private func configure() {
         configureBottomView()
         configureSaveButton()
         configureScrollView()
+        configurationNotificationCenter()
         configureContainerView()
         configureAvatarImage()
         configureEditButton()
@@ -75,17 +104,16 @@ extension ProfileViewController {
     }
     
     private func configureScrollView() {
-        view.addSubview(scrollView)
         scrollView.backgroundColor = .clear
         scrollView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.left.right.equalToSuperview()
-            make.bottom.equalTo(bottomView.snp.top)
+            make.bottom.equalTo(bottomView.snp.top).inset(scrollViewBottom)
+            print("в configureScrollView \(scrollViewBottom)")
         }
     }
     
     private func configureContainerView() {
-        scrollView.addSubview(containerView)
         containerView.backgroundColor = .clear
         containerView.snp.makeConstraints { make in
             make.width.equalToSuperview()
@@ -94,7 +122,6 @@ extension ProfileViewController {
     }
     
     private func configureAvatarImage() {
-        containerView.addSubview(avatarImageView)
         avatarImageView.image = UIImage(named: Resources.Image.profileSettingScreen)
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.layer.masksToBounds = true
@@ -108,7 +135,6 @@ extension ProfileViewController {
     }
     
     private func configureEditButton() {
-        containerView.addSubviews(editButton)
         editButton.setImage(UIImage(systemName: "pencil"), for: .normal)
         editButton.backgroundColor = UIColor(named: Resources.Colors.accent)
         editButton.tintColor = UIColor(named: Resources.Colors.textFieldBackground)
@@ -124,17 +150,15 @@ extension ProfileViewController {
     }
     
     private func configureBottomView() {
-        view.addSubview(bottomView)
         bottomView.backgroundColor = UIColor(named: Resources.Colors.backGround)
         
         bottomView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
-            make.height.equalTo(100)
+            make.height.equalTo(bottomViewHeight)
         }
     }
     
     private func configureSaveButton() {
-        bottomView.addSubview(saveButton)
         saveButton.addTarget(self, action: #selector(saveButtonPress), for: .touchUpInside)
         saveButton.snp.makeConstraints { make in
             make.centerY.centerX.equalToSuperview()
@@ -144,7 +168,6 @@ extension ProfileViewController {
     }
     
     private func configureStackView() {
-        containerView.addSubview(stackView)
         stackView.addArrangedSubview(firstNameView)
         stackView.addArrangedSubview(lastNameView)
         stackView.addArrangedSubview(emailView)
@@ -167,16 +190,34 @@ extension ProfileViewController {
         arrayElemets = [firstNameView, lastNameView, emailView, dateBirthView, checkGenderView]
         arrayElemets.forEach { $0.snp.makeConstraints { $0.height.equalTo(82) } }
     }
-    
+
+
+    // MARK: NotificationCenter
+    private func configurationNotificationCenter() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+
     @objc
-    private func editPhoto() {
-        print("Edit photo")
+    private func keyboardWillShow(notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            scrollViewBottom = -(keyboardSize.height - bottomViewHeight)
+            configureScrollView()
+            print("в keyboardDidShow \(scrollViewBottom)")
+        }
     }
     
     @objc
-    private func saveButtonPress() {
-        saveNewUserData()
-        print("Save changes")
+    private func keyboardWillHide(notification: Notification) {
+        scrollViewBottom = 0.0
+        configureScrollView()
+        print("в keyboardDidHide \(scrollViewBottom)")
     }
 }
 

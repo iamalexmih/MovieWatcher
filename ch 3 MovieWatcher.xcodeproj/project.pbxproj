@@ -30,6 +30,7 @@
 		8E6E226A29E14BE2009D1807 /* MovieDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E226929E14BE2009D1807 /* MovieDetailsView.swift */; };
 		8E6E226C29E14C00009D1807 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E226B29E14C00009D1807 /* StarRatingView.swift */; };
 		8E6E226E29E14DAE009D1807 /* CastAndCrewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E226D29E14DAE009D1807 /* CastAndCrewCell.swift */; };
+		8E84E4EB29EA92E400536CFE /* DateOfBirthPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E84E4EA29EA92E400536CFE /* DateOfBirthPicker.swift */; };
 		8E92CEC529E567A700DB826A /* ScreenSaverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E92CEC429E567A700DB826A /* ScreenSaverViewController.swift */; };
 		8E92CEC729E5680300DB826A /* movieAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 8E92CEC629E5680300DB826A /* movieAnimation.json */; };
 		8E92CEC929E5690A00DB826A /* InteractivePageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E92CEC829E5690A00DB826A /* InteractivePageIndicator.swift */; };
@@ -112,6 +113,7 @@
 		8E6E226929E14BE2009D1807 /* MovieDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsView.swift; sourceTree = "<group>"; };
 		8E6E226B29E14C00009D1807 /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
 		8E6E226D29E14DAE009D1807 /* CastAndCrewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastAndCrewCell.swift; sourceTree = "<group>"; };
+		8E84E4EA29EA92E400536CFE /* DateOfBirthPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfBirthPicker.swift; sourceTree = "<group>"; };
 		8E92CEC429E567A700DB826A /* ScreenSaverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSaverViewController.swift; sourceTree = "<group>"; };
 		8E92CEC629E5680300DB826A /* movieAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movieAnimation.json; sourceTree = "<group>"; };
 		8E92CEC829E5690A00DB826A /* InteractivePageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractivePageIndicator.swift; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 			children = (
 				B5EF3B3529E330B400183201 /* CheckGenderButton.swift */,
 				B5EF3B3329E2EF8E00183201 /* TextViewWithLabel.swift */,
+				8E84E4EA29EA92E400536CFE /* DateOfBirthPicker.swift */,
 				B5EF3B3A29E35F3700183201 /* CheckGenderView.swift */,
 			);
 			path = ProfileScreenComponents;
@@ -682,6 +685,7 @@
 				B5EF3B3629E330B400183201 /* CheckGenderButton.swift in Sources */,
 				8E6E226829E14BBB009D1807 /* CastAndCrewCollectionView.swift in Sources */,
 				87BD3C4529E058A40092A8FC /* ReusableTableView.swift in Sources */,
+				8E84E4EB29EA92E400536CFE /* DateOfBirthPicker.swift in Sources */,
 				B5B1D18429D9D90A006966FF /* Resource.swift in Sources */,
 				B5B1D19329D9DC20006966FF /* OnBoardingScreenViewController.swift in Sources */,
 				B551396C29DF1735005CD307 /* StorageGenres.swift in Sources */,
