@@ -10,7 +10,7 @@ import UIKit
 class CastAndCrewCell: UICollectionViewCell {
     static let reuseId = "CastAndCrewCell"
 
-    var castAndCrewPhoto = UIImage(named: "filmPoster")
+    var castAndCrewPhoto = UIImage(systemName: "person.crop.circle.badge.questionmark.fill")
     var nameLabelText = "Jon Watts"
     var roleLabelText = "Director"
 
@@ -35,7 +35,10 @@ class CastAndCrewCell: UICollectionViewCell {
         
         guard let photoPath = NetworkService.shared.makeUrlForPhoto(photoPath: cast.profile_path) else { return }
         let urlPhoto = URL(string: photoPath)
-        photoImageView.kf.setImage(with: urlPhoto)
+        photoImageView.kf.setImage(with: urlPhoto,
+                                   placeholder: UIImage(systemName: "person.crop.circle.badge.questionmark.fill"),
+                                   options: [.transition(.fade(0.1))]
+        )
     }
 
     required init?(coder: NSCoder) {

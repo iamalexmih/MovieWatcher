@@ -87,7 +87,10 @@ class MovieDetailViewController: UIViewController {
     // func for set info from movie model -- kompot -- work
     func configureNetworkInfo(movie: InfoMovie) {
         guard let urlPoster = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
-        self.movieImageView.kf.setImage(with: URL(string: urlPoster))
+        self.movieImageView.kf.setImage(with: URL(string: urlPoster),
+                                        placeholder: UIImage(systemName: "questionmark.square.dashed"),
+                                        options: [.transition(.fade(0.1))]
+        )
         
         movieNameLabel.text = movie.original_title
         
@@ -99,7 +102,7 @@ class MovieDetailViewController: UIViewController {
         guard let str = movie.genres?.last?.name else { return }
         genreView.detailTiTleLabel.text = str
         
-        self.ratingView.configure(rating: Int(movie.vote_average.rounded()))
+        self.ratingView.configure(rating: (Int(movie.vote_average.rounded()) / 2 ))
         
         guard let description = movie.overview else { return }
         descriptionOfMovieLabel.text = description

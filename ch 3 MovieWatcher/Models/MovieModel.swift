@@ -21,10 +21,6 @@ struct Movie: Codable {
     let release_date: String?
     let vote_count: Int // указывается в скобках после рейтинга фильма
     let vote_average: Double
-    
-    // посмотреть используются ли нижние двое через модель Movie 
-    let runtime: Int?
-    let overview: String? 
 }
 
 
