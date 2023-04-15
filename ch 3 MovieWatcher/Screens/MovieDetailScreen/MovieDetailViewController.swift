@@ -268,10 +268,16 @@ extension MovieDetailViewController {
         detailsStackView.addArrangedSubview(releaseView)
         releaseView.detailTiTleLabel.text = releaseDateText
         detailsStackView.addArrangedSubview(timeView)
-        timeView.detailImageView.image = UIImage(named: Resources.Image.clockImage)
+        timeView.detailImageView.image = UIImage(named: Resources.Image.clockImage)?.withTintColor(
+            UIColor(named: Resources.Colors.cellIcon) ?? .systemGray2,
+            renderingMode: .alwaysOriginal
+        )
         timeView.detailTiTleLabel.text = durationText
         detailsStackView.addArrangedSubview(genreView)
-        genreView.detailImageView.image = UIImage(named: Resources.Image.filmstripImage)
+        genreView.detailImageView.image = UIImage(named: Resources.Image.filmstripImage)?.withTintColor(
+            UIColor(named: Resources.Colors.cellIcon) ?? .systemGray2,
+            renderingMode: .alwaysOriginal
+        )
         genreView.detailTiTleLabel.text = genreText
         detailsStackView.snp.makeConstraints { make in
             make.top.equalTo(movieNameLabel.snp.bottom).inset(-16)

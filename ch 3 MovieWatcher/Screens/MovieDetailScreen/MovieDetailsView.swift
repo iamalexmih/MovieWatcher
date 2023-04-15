@@ -29,7 +29,7 @@ class MovieDetailsView: UIView {
 
     func configureDetailImageView() {
         addSubview(detailImageView)
-        detailImageView.image = UIImage(named: Resources.Image.calendarImage)
+        detailImageView.image = UIImage(named: Resources.Image.calendarImage)?.withRenderingMode(.alwaysTemplate)
         detailImageView.tintColor = UIColor(named: Resources.Colors.cellIcon)
         detailImageView.snp.makeConstraints { make in
             make.left.equalToSuperview()

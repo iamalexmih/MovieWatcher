@@ -12,7 +12,10 @@ class StarRatingView: UIView {
 
     private let stackView: UIStackView = {
         let stars = (1...5).map { _ in
-            UIImageView(image: UIImage(named: Resources.Image.starRaitingImage))
+            UIImageView(image: UIImage(named: Resources.Image.starRaitingImage)?.withTintColor(
+                UIColor(named: Resources.Colors.yellowStar) ?? .systemYellow,
+                renderingMode: .alwaysOriginal
+            ))
         }
         let stackView = UIStackView(arrangedSubviews: stars)
         stackView.axis = .horizontal
