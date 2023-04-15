@@ -71,7 +71,7 @@ class MovieCell: UITableViewCell {
         synchFavoriteWithNetwork(movie.id)
         guard let posterPath = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
         let urlPoster = URL(string: posterPath)
-        movieImage.kf.setImage(with: urlPoster) { result in
+        movieImage.kf.setImage(with: urlPoster, placeholder: UIImage(systemName: "questionmark.square.dashed")) { result in
             switch result {
             case .success(let value):
                 let imageData = value.image.pngData()
@@ -152,7 +152,7 @@ extension MovieCell {
         // Если фильма с id xxx нет в хранилище, то тогда добавить.
         let imageEntity = CoreDataService.shared.fetchImageUseMovieId(id: movie.genre_ids.first ?? 7777)
         if imageEntity == nil {
-            let imageDataDefault = UIImage(systemName: "questionmark")?.pngData()
+            let imageDataDefault = UIImage(systemName: "questionmark.square.dashed")?.pngData()
             
             let newImageEntity = ImageEntity(context: CoreDataService.shared.viewContext)
             newImageEntity.id = Int64(movie.id)
@@ -170,7 +170,7 @@ extension MovieCell {
 extension MovieCell {
     
     private func configureElementUI() {
-        movieImage.image = UIImage(named: "questionmark")
+        movieImage.image = UIImage(systemName: "questionmark")
         movieImage.contentMode = .scaleAspectFill
         movieImage.translatesAutoresizingMaskIntoConstraints = false
         movieImage.layer.cornerRadius = 10

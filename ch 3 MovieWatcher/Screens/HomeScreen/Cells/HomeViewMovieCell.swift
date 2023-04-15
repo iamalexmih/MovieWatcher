@@ -79,7 +79,7 @@ class HomeViewMovieCell: GeminiCell {
         
         guard let posterPath = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
         let urlPoster = URL(string: posterPath)
-        filmImageView.kf.setImage(with: urlPoster)
+        filmImageView.kf.setImage(with: urlPoster, placeholder: UIImage(systemName: "questionmark.square.dashed"))
     }
     
     func setConstraints() {
