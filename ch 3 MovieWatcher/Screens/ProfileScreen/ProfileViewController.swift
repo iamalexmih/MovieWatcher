@@ -32,8 +32,6 @@ final class ProfileViewController: UIViewController {
     var scrollViewBottom = 0.0
 
     private var bottomViewHeight = 100.0
-
-    private var scrollViewBottom: NSLayoutConstraint?
     
     var currentUser: UserModel?
  
@@ -238,7 +236,7 @@ extension ProfileViewController {
         lastNameView.textField.text = user.lastName ?? ""
         emailView.textField.text = user.email
         
-        dateBirthView.textField.text = convertFromDate(user.dateBirth)
+//        dateBirthView.textField.text = convertFromDate(user.dateBirth)
         
         if let gender = user.gender {
             // populate gender view with gender
@@ -251,17 +249,17 @@ extension ProfileViewController {
         if let firstName = firstNameView.textField.text,
            let lastName = lastNameView.textField.text,
            let email = emailView.textField.text,
-           let dateString = dateBirthView.textField.text,
+//           let dateString = dateBirthView.textField.text,
            // let genderString = "",
            let location = locationView.textView.text {
             
-            let date = convertFromString(dateString)
+//            let date = convertFromString(dateString)
             
             let updatedUser = UserModel(idUuid: currentUser!.idUuid,
                                         firstName: firstName,
                                         lastName: lastName,
                                         email: email,
-                                        dateBirth: date,
+                                        dateBirth: Date(),
                                         gender: HumanGender.male.rawValue,
                                         location: location)
             
