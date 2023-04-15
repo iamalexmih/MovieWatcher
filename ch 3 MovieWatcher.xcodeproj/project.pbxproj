@@ -50,7 +50,7 @@
 		B551396829DECDD9005CD307 /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B551396329DECDD9005CD307 /* PlusJakartaSans-Regular.ttf */; };
 		B551396A29DED5BE005CD307 /* UIFont + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551396929DED5BE005CD307 /* UIFont + ext.swift */; };
 		B551396C29DF1735005CD307 /* StorageGenres.swift in Sources */ = {isa = PBXBuildFile; fileRef = B551396B29DF1735005CD307 /* StorageGenres.swift */; };
-		B55891A329E9CB5F00D1D9B6 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55891A229E9CB5F00D1D9B6 /* UserDefaultManager.swift */; };
+		B56F9F1F29EB45C1009F47B7 /* UserDefault+Extansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56F9F1E29EB45C1009F47B7 /* UserDefault+Extansion.swift */; };
 		B5B1D16D29D9D7B0006966FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D16C29D9D7B0006966FF /* AppDelegate.swift */; };
 		B5B1D16F29D9D7B0006966FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1D16E29D9D7B0006966FF /* SceneDelegate.swift */; };
 		B5B1D17629D9D7B1006966FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5B1D17529D9D7B1006966FF /* Assets.xcassets */; };
@@ -133,7 +133,7 @@
 		B551396329DECDD9005CD307 /* PlusJakartaSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Regular.ttf"; sourceTree = "<group>"; };
 		B551396929DED5BE005CD307 /* UIFont + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + ext.swift"; sourceTree = "<group>"; };
 		B551396B29DF1735005CD307 /* StorageGenres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageGenres.swift; sourceTree = "<group>"; };
-		B55891A229E9CB5F00D1D9B6 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
+		B56F9F1E29EB45C1009F47B7 /* UserDefault+Extansion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Extansion.swift"; sourceTree = "<group>"; };
 		B5B1D16929D9D7B0006966FF /* ch 3 MovieWatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ch 3 MovieWatcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B1D16C29D9D7B0006966FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5B1D16E29D9D7B0006966FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -221,6 +221,7 @@
 				B551394729DC9717005CD307 /* UIView + ext.swift */,
 				B551396929DED5BE005CD307 /* UIFont + ext.swift */,
 				5770CA7F29E0C535000CED66 /* UIStackView.swift */,
+				B56F9F1E29EB45C1009F47B7 /* UserDefault+Extansion.swift */,
 			);
 			path = Extansions;
 			sourceTree = "<group>";
@@ -428,7 +429,6 @@
 				B5C25E7829E5A62E000DE9D7 /* CoreData */,
 				B551396B29DF1735005CD307 /* StorageGenres.swift */,
 				B5C25E7929E6A084000DE9D7 /* UserInfoService.swift */,
-				B55891A229E9CB5F00D1D9B6 /* UserDefaultManager.swift */,
 				B5B1D18F29D9DB8F006966FF /* NetworkService */,
 			);
 			path = Service;
@@ -677,7 +677,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B55891A329E9CB5F00D1D9B6 /* UserDefaultManager.swift in Sources */,
 				B5B1D1A329D9DD4B006966FF /* MovieCell.swift in Sources */,
 				87FC6C8929E5851F00F615BD /* BottomCollectionView.swift in Sources */,
 				B5B1D19729D9DC75006966FF /* LoginViewController.swift in Sources */,
@@ -716,6 +715,7 @@
 				B5C25E7C29E6A345000DE9D7 /* UserModel.swift in Sources */,
 				87FC6C8529E5703200F615BD /* TopCollectionView.swift in Sources */,
 				B5B1D1A929D9DDA3006966FF /* NetworkService.swift in Sources */,
+				B56F9F1F29EB45C1009F47B7 /* UserDefault+Extansion.swift in Sources */,
 				8727A1CB29DB00B400C3D087 /* GoogleButton.swift in Sources */,
 				B5EF3B3429E2EF8E00183201 /* TextViewWithLabel.swift in Sources */,
 				B551394C29DCA817005CD307 /* FavoriteViewController.swift in Sources */,

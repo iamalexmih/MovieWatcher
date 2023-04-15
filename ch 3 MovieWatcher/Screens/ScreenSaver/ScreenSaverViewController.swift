@@ -25,8 +25,14 @@ class ScreenSaverViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let onBoardingVC = OnBoardingViewController()
-            self.navigationController?.pushViewController(onBoardingVC, animated: true)
+            print(UserDefaults.standard.hasOnboarded)
+            if UserDefaults.standard.hasOnboarded {
+                let authVC = AuthViewController()
+                self.navigationController?.pushViewController(authVC, animated: true)
+            } else {
+                let onBoardingVC = OnBoardingViewController()
+                self.navigationController?.pushViewController(onBoardingVC, animated: true)
+            }
         }
     }
 

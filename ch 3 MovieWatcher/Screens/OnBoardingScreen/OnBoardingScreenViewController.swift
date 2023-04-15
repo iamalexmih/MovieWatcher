@@ -48,6 +48,8 @@ class OnBoardingViewController: UIViewController {
             setPage(page + 1)
         } else {
             let authVC = AuthViewController()
+            UserDefaults.standard.hasOnboarded = true
+            print(UserDefaults.standard.hasOnboarded)
             navigationController?.pushViewController(authVC, animated: true)
         }
     }
