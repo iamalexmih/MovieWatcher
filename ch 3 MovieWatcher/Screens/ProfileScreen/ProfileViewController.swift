@@ -29,19 +29,22 @@ final class ProfileViewController: UIViewController {
     let stackView = UIStackView()
     private var arrayElemets: [UIView] = []
     private var scrollViewBottom: NSLayoutConstraint?
-
+    
+    var currentUser: UserModel?
+    
     // MARK: - VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
         configure()
+        loadUser()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         tabBarController?.tabBar.isHidden = false
@@ -49,7 +52,7 @@ final class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController {
-
+    
     private func configure() {
         configureBottomView()
         configureSaveButton()
@@ -65,12 +68,12 @@ extension ProfileViewController {
     private func configureNavigationBar() {
         title = "Profile"
     }
-
+    
     private func configureTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tapGesture)
     }
-
+    
     private func configureScrollView() {
         view.addSubview(scrollView)
         scrollView.backgroundColor = .clear
@@ -80,7 +83,7 @@ extension ProfileViewController {
             make.bottom.equalTo(bottomView.snp.top)
         }
     }
-
+    
     private func configureContainerView() {
         scrollView.addSubview(containerView)
         containerView.backgroundColor = .clear
@@ -89,21 +92,21 @@ extension ProfileViewController {
             make.top.left.right.bottom.equalToSuperview()
         }
     }
-
+    
     private func configureAvatarImage() {
         containerView.addSubview(avatarImageView)
         avatarImageView.image = UIImage(named: Resources.Image.profileSettingScreen)
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.layer.masksToBounds = true
         avatarImageView.layer.cornerRadius = 50
-
+        
         avatarImageView.snp.makeConstraints { make in
             make.topMargin.equalToSuperview().inset(37)
             make.height.width.equalTo(100)
             make.centerX.equalToSuperview()
         }
     }
-
+    
     private func configureEditButton() {
         containerView.addSubviews(editButton)
         editButton.setImage(UIImage(systemName: "pencil"), for: .normal)
@@ -112,24 +115,24 @@ extension ProfileViewController {
         editButton.layer.cornerRadius = 15
         editButton.layer.masksToBounds = true
         editButton.addTarget(self, action: #selector(editPhoto), for: .touchUpInside)
-
+        
         editButton.snp.makeConstraints { make in
             make.width.height.equalTo(32)
             make.top.equalTo(avatarImageView).inset(68)
             make.left.equalTo(avatarImageView).inset(73)
         }
     }
-
+    
     private func configureBottomView() {
         view.addSubview(bottomView)
         bottomView.backgroundColor = UIColor(named: Resources.Colors.backGround)
-
+        
         bottomView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
             make.height.equalTo(100)
         }
     }
-
+    
     private func configureSaveButton() {
         bottomView.addSubview(saveButton)
         saveButton.addTarget(self, action: #selector(saveButtonPress), for: .touchUpInside)
@@ -139,7 +142,7 @@ extension ProfileViewController {
             make.left.right.equalToSuperview().inset(24)
         }
     }
-
+    
     private func configureStackView() {
         containerView.addSubview(stackView)
         stackView.addArrangedSubview(firstNameView)
@@ -150,28 +153,99 @@ extension ProfileViewController {
         stackView.addArrangedSubview(locationView)
         stackView.axis = .vertical
         stackView.spacing = 16
-
+        
         stackView.snp.makeConstraints { make in
             make.top.equalTo(avatarImageView.snp.bottom).inset(-16)
             make.leading.trailing.equalToSuperview().inset(32)
             make.bottom.equalToSuperview()
         }
-
+        
         locationView.snp.makeConstraints { make in
             make.height.equalTo(150)
         }
-
+        
         arrayElemets = [firstNameView, lastNameView, emailView, dateBirthView, checkGenderView]
         arrayElemets.forEach { $0.snp.makeConstraints { $0.height.equalTo(82) } }
     }
-
+    
     @objc
     private func editPhoto() {
         print("Edit photo")
     }
-
+    
     @objc
     private func saveButtonPress() {
+        saveNewUserData()
         print("Save changes")
+    }
+}
+
+// MARK: - Extension to work with core data
+extension ProfileViewController {
+    
+    private func loadUser() {
+        if let user = UserInfoService.shared.fetchCurrentUserCoreData() {
+            currentUser = user
+            populateFieldsWithUserData()
+        }
+    }
+    
+    private func populateFieldsWithUserData() {
+        guard let user = currentUser else {return}
+        
+        firstNameView.textField.text = user.firstName ?? ""
+        lastNameView.textField.text = user.lastName ?? ""
+        emailView.textField.text = user.email
+        
+        dateBirthView.textField.text = convertFromDate(user.dateBirth)
+        
+        if let gender = user.gender {
+            // populate gender view with gender
+        }
+        
+        locationView.textView.text = user.location ?? ""
+    }
+    
+    private func saveNewUserData() {
+        if let firstName = firstNameView.textField.text,
+           let lastName = lastNameView.textField.text,
+           let email = emailView.textField.text,
+           let dateString = dateBirthView.textField.text,
+           // let genderString = "",
+           let location = locationView.textView.text {
+            
+            let date = convertFromString(dateString)
+            
+            let updatedUser = UserModel(idUuid: currentUser!.idUuid,
+                                        firstName: firstName,
+                                        lastName: lastName,
+                                        email: email,
+                                        dateBirth: date,
+                                        gender: HumanGender.male.rawValue,
+                                        location: location)
+            
+            UserInfoService.shared.editingUserInCoreData(userModel: updatedUser)
+        }
+    }
+    
+    private func convertFromString(_ str: String?) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YY/MM/dd"
+        if let str = str {
+            return dateFormatter.date(from: str) ?? Date()
+        }
+        return Date()
+    }
+    
+    private func convertFromDate(_ date: Date?) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YY/MM/dd"
+        
+        if let date = date {
+            
+            dateFormatter.dateFormat = "YY/MM/dd"
+            return dateFormatter.string(from: date)
+        }
+        return ""
     }
 }
