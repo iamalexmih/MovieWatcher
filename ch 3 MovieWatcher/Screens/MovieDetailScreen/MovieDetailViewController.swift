@@ -87,7 +87,10 @@ class MovieDetailViewController: UIViewController {
     // func for set info from movie model -- kompot -- work
     func configureNetworkInfo(movie: InfoMovie) {
         guard let urlPoster = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
-        self.movieImageView.kf.setImage(with: URL(string: urlPoster), placeholder: UIImage(systemName: "questionmark.square.dashed"))
+        self.movieImageView.kf.setImage(with: URL(string: urlPoster),
+                                        placeholder: UIImage(systemName: "questionmark.square.dashed"),
+                                        options: [.transition(.fade(0.1))]
+        )
         
         movieNameLabel.text = movie.original_title
         

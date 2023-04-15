@@ -153,7 +153,9 @@ class BoxViewCell: UICollectionViewCell {
         synchFavoriteWithNetwork(movieId)
         guard let posterPath = NetworkService.shared.makeUrlForPoster(posterPath: movie.poster_path) else { return }
         let urlPoster = URL(string: posterPath)
-        filmImageView.kf.setImage(with: urlPoster, placeholder: UIImage(systemName: "questionmark.square.dashed")) { result in
+        filmImageView.kf.setImage(with: urlPoster,
+                                  placeholder: UIImage(systemName: "questionmark.square.dashed"),
+                                  options: [.transition(.fade(0.1))]) { result in
             switch result {
             case .success(let value):
                 let imageData = value.image.pngData()
