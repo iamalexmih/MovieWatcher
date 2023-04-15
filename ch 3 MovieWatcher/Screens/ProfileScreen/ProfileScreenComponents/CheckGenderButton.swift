@@ -22,7 +22,11 @@ class CheckGenderButton: UIButton {
     
     let labelTitle = UILabel()
     let checkIcon = UIImageView()
-    var isTapped = false
+    var isTapped = false {
+        didSet {
+            updateImage()
+        }
+    }
     var iconImage = "circle"
     
         
@@ -36,7 +40,7 @@ class CheckGenderButton: UIButton {
         constraints()
         configAppearance()
         makeSystem(self)
-        self.addTarget(self, action: #selector(genderButtonTapped(_:)), for: .touchUpInside)
+        // self.addTarget(self, action: #selector(genderButtonTapped(_:)), for: .touchUpInside)
     }
     
     
@@ -78,11 +82,11 @@ class CheckGenderButton: UIButton {
         labelTitle.textColor = UIColor(named: Resources.Colors.text)
     }
         
-    @objc func genderButtonTapped(_ sender: UIButton) {
-        isTapped.toggle()
-        iconImage = isTapped ? "checkmark.circle" : "circle"
-        configAppearance()
-    }
+//    @objc func genderButtonTapped(_ sender: UIButton) {
+//        isTapped.toggle()
+//        iconImage = isTapped ? "checkmark.circle" : "circle"
+//        configAppearance()
+//    }
     
     func updateImage() {
         iconImage = isTapped ? "checkmark.circle" : "circle"
