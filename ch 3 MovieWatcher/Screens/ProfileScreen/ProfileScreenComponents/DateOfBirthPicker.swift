@@ -8,19 +8,20 @@
 import UIKit
 
 class DateOfBirthPicker: UIStackView {
+
     private var labelText: String = "Location"
     private var placeholderText: String = "Enter your location address"
+    private var dateOfBirth = ""
 
     var label = UILabel()
     var contentView = UIView()
     let dateStackView = UIStackView()
-    let dateImage = UIImageView()
-    var datePicker = UIPickerView()
-
+    let dateButton = UIButton()
+    var datePicker = UIDatePicker()
+    var dateLabel = UILabel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
         setupStackView()
         setupLabelAndTexField()
     }
@@ -37,6 +38,8 @@ class DateOfBirthPicker: UIStackView {
 
         setupStackView()
         setupLabelAndTexField()
+        configureDatePicker()
+        configureDateButton()
     }
 
     private func setupStackView() {
@@ -44,12 +47,13 @@ class DateOfBirthPicker: UIStackView {
         self.spacing = 8
         dateStackView.axis = .horizontal
         dateStackView.spacing = 8
+        dateStackView.alignment = .trailing
 
         self.addArrangedSubview(label)
         self.addArrangedSubview(contentView)
         contentView.addSubview(dateStackView)
-        dateStackView.addArrangedSubview(datePicker)
-        dateStackView.addArrangedSubview(dateImage)
+        contentView.addSubview(dateButton)
+        contentView.addSubview(dateLabel)
     }
 
     private func setupLabelAndTexField() {
@@ -57,14 +61,6 @@ class DateOfBirthPicker: UIStackView {
         label.font = .jakartaMedium(size: 14)
         label.textColor = UIColor(named: Resources.Colors.secondText)
         label.translatesAutoresizingMaskIntoConstraints = false
-
-        dateImage.image = UIImage(systemName: "calendar")
-        dateImage.tintColor = UIColor(named: Resources.Colors.accent)
-        dateImage.snp.makeConstraints { make in
-            make.width.height.equalTo(20)
-        }
-
-        datePicker.backgroundColor = .red
 
         contentView.snp.makeConstraints { make in
             make.height.equalTo(52)
@@ -81,24 +77,63 @@ class DateOfBirthPicker: UIStackView {
             make.top.bottom.equalToSuperview().inset(14)
             make.left.right.equalToSuperview().inset(16)
         }
+
+        dateLabel.isHidden = true
+        dateLabel.font = .jakartaMedium(size: 16)
+        dateLabel.numberOfLines = 1
+        dateLabel.textAlignment = .left
+        dateLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().inset(16)
+            make.trailing.equalTo(dateButton).inset(-8)
+        }
     }
-}
 
-extension DateOfBirthPicker: UIPickerViewDelegate, UIPickerViewDataSource {
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 10
+    private func configureDatePicker() {
+        datePicker.backgroundColor = .clear
+        datePicker.datePickerMode = .date
+        datePicker.contentHorizontalAlignment = .left
+        datePicker.addTarget(self, action: #selector(getDate), for: .valueChanged)
+        let loc = Locale(identifier: "en")
+        datePicker.locale = loc
+        var calendar = Calendar.current
+        calendar.locale = loc
+        self.datePicker.calendar = calendar
     }
 
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        3
+    @objc
+    private func getDate(sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        let loc = Locale(identifier: "en")
+        dateFormatter.locale = loc
+
+        dateFormatter.dateStyle = DateFormatter.Style.long
+        dateOfBirth = dateFormatter.string(from: datePicker.date)
+        
+        datePicker.isHidden = true
+        if datePicker.isHidden {
+            dateLabel.isHidden = false
+            dateLabel.text = dateOfBirth
+        }
+        print(dateOfBirth)
     }
 
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return coinManager.currencyArray[row]
-//    }
 
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        let selectedCurrency = coinManager.currencyArray[row]
-//        coinManager.getCoinPrice(for: selectedCurrency)
-//    }
+    private func configureDateButton() {
+        dateButton.setImage(UIImage(named: Resources.Image.calendarImage), for: .normal)
+        dateButton.tintColor = UIColor(named: Resources.Colors.accent)
+        dateButton.addTarget(self, action: #selector(addDate), for: .touchUpInside)
+        dateButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalTo(-16)
+            make.width.height.equalTo(20)
+        }
+    }
+
+    @objc
+    private func addDate() {
+        dateStackView.addArrangedSubview(datePicker)
+        datePicker.isHidden = false
+        dateLabel.isHidden = true
+    }
 }

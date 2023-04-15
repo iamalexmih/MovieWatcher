@@ -28,9 +28,8 @@ final class ProfileViewController: UIViewController {
     private let checkGenderView = CheckGenderView()
     let stackView = UIStackView()
     private var arrayElemets: [UIView] = []
-//    private var scrollViewBottom = 0.0
 
-    var scrollViewBottom = 0.0 
+    var scrollViewBottom = 0.0
 
     private var bottomViewHeight = 100.0
 
@@ -54,6 +53,17 @@ final class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController {
+    // MARK: Actions
+    @objc
+    private func editPhoto() {
+        print("Edit photo")
+    }
+
+    @objc
+    private func saveButtonPress() {
+        print("Save changes")
+    }
+    // MARK: Configure and constraints funcs
     private func addViews() {
         view.addSubview(scrollView)
         scrollView.addSubview(containerView)
@@ -174,16 +184,7 @@ extension ProfileViewController {
         arrayElemets.forEach { $0.snp.makeConstraints { $0.height.equalTo(82) } }
     }
 
-    @objc
-    private func editPhoto() {
-        print("Edit photo")
-    }
-
-    @objc
-    private func saveButtonPress() {
-        print("Save changes")
-    }
-
+    // MARK: NotificationCenter
     private func configurationNotificationCenter() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow),
@@ -195,15 +196,19 @@ extension ProfileViewController {
                                                object: nil)
     }
 
-    @objc func keyboardWillShow(notification: Notification) {
+    @objc
+    private func keyboardWillShow(notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             scrollViewBottom = -(keyboardSize.height - bottomViewHeight)
-            print("в keyboardWillShow \(scrollViewBottom)")
+            configureScrollView()
+            print("в keyboardDidShow \(scrollViewBottom)")
         }
     }
 
-    @objc func keyboardWillHide(notification: Notification) {
+    @objc
+    private func keyboardWillHide(notification: Notification) {
         scrollViewBottom = 0.0
-        print("в keyboardWillHide \(scrollViewBottom)")
+        configureScrollView()
+        print("в keyboardDidHide \(scrollViewBottom)")
     }
 }
