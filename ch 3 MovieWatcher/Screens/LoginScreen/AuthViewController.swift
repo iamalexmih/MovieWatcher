@@ -117,6 +117,16 @@ class AuthViewController: UIViewController {
         
         setupBottomStack()
         setConstraints()
+        
+        // for hiding keyboard
+        emailTextField.textField.delegate = self
+        configureTapGesture()
+    }
+    
+    // hiding keyboard
+    private func configureTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tapGesture)
     }
     
     func setuTopStack() {
@@ -219,5 +229,10 @@ class AuthViewController: UIViewController {
 // MARK: - TextField Delegate Ext
 
 extension AuthViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true) // or textField.resignFirstResponder()
+        return true
+    }
     
 }

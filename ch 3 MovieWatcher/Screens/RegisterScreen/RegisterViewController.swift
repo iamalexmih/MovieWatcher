@@ -35,6 +35,8 @@ class RegisterViewController: UIViewController {
         for (label, placeholder) in names {
             let isSecure = label.contains("Password") ? true : false
             let field = TextFieldWithLabelStack(labelText: label, placeholderText: placeholder, isSecure: isSecure)
+            // for hiding keyboard
+            field.textField.delegate = self
             arr.append(field)
         }
         return arr
@@ -108,6 +110,13 @@ class RegisterViewController: UIViewController {
         setupLoginStack()
         setConstraints()
         getEmailFromPreviousScreen()
+        configureTapGesture()
+    }
+    
+    // hiding keyboard
+    private func configureTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tapGesture)
     }
     
     func getEmailFromPreviousScreen() {
@@ -181,6 +190,12 @@ class RegisterViewController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(65)
         }
     }
+}
+
+extension RegisterViewController: UITextFieldDelegate {
     
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true) // or textField.resignFirstResponder()
+        return true
+    }
 }
