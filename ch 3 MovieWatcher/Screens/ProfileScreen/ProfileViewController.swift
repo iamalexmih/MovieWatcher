@@ -101,8 +101,8 @@ extension ProfileViewController {
         configureScrollView()
         configurationNotificationCenter()
         configureContainerView()
-        configureAvatarImage()
         configureEditButton()
+        configureAvatarImage()
         configureStackView()
         configureNavigationBar()
         configureTapGesture()
@@ -136,13 +136,12 @@ extension ProfileViewController {
     }
     
     private func configureAvatarImage() {
-        containerView.addSubview(avatarImageView)
         ava.image = UIImage(named: Resources.Image.profileSettingScreen)
         avatarImageView.image = ava.image
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.layer.masksToBounds = true
         avatarImageView.layer.cornerRadius = 50
-        
+   
         avatarImageView.snp.makeConstraints { make in
             make.topMargin.equalToSuperview().inset(37)
             make.height.width.equalTo(100)
