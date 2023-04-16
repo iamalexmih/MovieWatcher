@@ -45,7 +45,7 @@ class CastAndCrewCollectionView: UICollectionView, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 150, height: 42)
+        return CGSize(width: 150, height: 50)
     }
 
     required init?(coder aDecoder: NSCoder) {
