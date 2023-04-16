@@ -15,12 +15,55 @@ class CheckGenderView: UIView {
     
     private let stackViewHorizontal = UIStackView()
     
+    var selectedGender: HumanGender?
+//    {
+//        if self.maleButton.isTapped {
+//            self.femaleButton.isTapped = false
+//            // self.femaleButton.updateImage()
+//            return HumanGender.male
+//        } else {
+//            self.maleButton.isTapped = false
+//            // self.maleButton.updateImage()
+//                return HumanGender.female
+//            }
+//    }
+    
+    func manageGender() {
+        if maleButton.isTapped {
+            selectedGender = .male
+            femaleButton.isTapped = false
+            femaleButton.updateImage()
+        } else if femaleButton.isTapped {
+            selectedGender = .female
+            maleButton.isTapped = false
+            maleButton.updateImage()
+        }
+    }
+    
+    func loadUserGender(_ gender: HumanGender) {
+        if gender == .male {
+            maleButton.isTapped = true
+            manageGender()
+        } else {
+            femaleButton.isTapped = true
+            manageGender()
+        }
+    }
+    
+    @objc func genderButtonTapped(_ sender: CheckGenderButton) {
+        sender.isTapped.toggle()
+        manageGender()
+    }
+    
     // MARK: - Init
     init() {
         super.init(frame: .zero)
         addViews()
         constraints()
         configAppearance()
+        
+        maleButton.addTarget(self, action: #selector(genderButtonTapped(_:)), for: .touchUpInside)
+        femaleButton.addTarget(self, action: #selector(genderButtonTapped(_:)), for: .touchUpInside)
     }
     
     

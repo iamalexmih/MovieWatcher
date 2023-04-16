@@ -188,7 +188,8 @@ extension MovieCell {
         movieName.textAlignment = .left
         movieName.translatesAutoresizingMaskIntoConstraints = false
         
-        timeImageView.image = UIImage(named: Resources.Image.clockImage)
+        timeImageView.image = UIImage(named: Resources.Image.clockImage)?.withRenderingMode(.alwaysTemplate)
+        timeImageView.tintColor = UIColor(named: Resources.Colors.cellIcon)
         timeImageView.translatesAutoresizingMaskIntoConstraints = false
         
         timeLabel.text = "148 Minutes"
@@ -196,7 +197,8 @@ extension MovieCell {
         timeLabel.textColor = UIColor(named: Resources.Colors.secondText)
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        calendarImageView.image = UIImage(named: Resources.Image.calendarImage)
+        calendarImageView.image = UIImage(named: Resources.Image.calendarImage)?.withRenderingMode(.alwaysTemplate)
+        calendarImageView.tintColor = UIColor(named: Resources.Colors.cellIcon)
         calendarImageView.translatesAutoresizingMaskIntoConstraints = false
         
         calendarLabel.text = "17 Sep 2021"
@@ -204,7 +206,8 @@ extension MovieCell {
         calendarLabel.textColor = UIColor(named: Resources.Colors.secondText)
         calendarLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        filmstripView.image = UIImage(named: Resources.Image.filmstripImage)
+        filmstripView.image = UIImage(named: Resources.Image.filmstripImage)?.withRenderingMode(.alwaysTemplate)
+        filmstripView.tintColor = UIColor(named: Resources.Colors.cellIcon)
         filmstripView.translatesAutoresizingMaskIntoConstraints = false
         
         categoryLabel.text = "Action"
