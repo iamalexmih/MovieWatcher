@@ -47,6 +47,7 @@ class CastAndCrewCollectionView: UICollectionView, UICollectionViewDelegate, UIC
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 150, height: 50)
     }
+    
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implement")
