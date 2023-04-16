@@ -343,7 +343,7 @@ extension SettingViewController {
         forgotPasswordButton.setTitleColor(UIColor(named: Resources.Colors.text), for: .normal)
         forgotPasswordButton.titleLabel?.font = UIFont.jakartaRomanSemiBold(size: 16)
         view.addSubview(forgotPasswordButton)
-        forgotPasswordButton.addTarget(self, action: #selector(forgotPassword), for: .touchUpInside)
+        forgotPasswordButton.addTarget(self, action: #selector(forgotPassword), for: .valueChanged)
 
         forgotPasswordButton.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(60)
