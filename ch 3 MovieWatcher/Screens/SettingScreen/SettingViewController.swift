@@ -106,6 +106,7 @@ extension SettingViewController {
 
         alert.addTextField { textfield in
             newPasswordTextField = textfield
+            newPasswordTextField.isSecureTextEntry = true
             newPasswordTextField.placeholder = "New password"
         }
         alert.addAction(changeAction)

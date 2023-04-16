@@ -101,8 +101,8 @@ extension ProfileViewController {
         configureScrollView()
         configurationNotificationCenter()
         configureContainerView()
-        configureAvatarImage()
         configureEditButton()
+        configureAvatarImage()
         configureStackView()
         configureNavigationBar()
         configureTapGesture()
@@ -136,7 +136,7 @@ extension ProfileViewController {
     }
     
     private func configureAvatarImage() {
-        containerView.addSubview(avatarImageView)
+//        containerView.addSubview(avatarImageView)
         ava.image = UIImage(named: Resources.Image.profileSettingScreen)
         avatarImageView.image = ava.image
         avatarImageView.contentMode = .scaleAspectFill

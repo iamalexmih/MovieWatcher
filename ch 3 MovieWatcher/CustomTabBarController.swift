@@ -31,6 +31,8 @@ class CustomTabBarController: UITabBarController {
         customizeTabBar(homeViewController, name: "Home")
         customizeTabBar(movieDetailViewController, name: "Favorites")
         customizeTabBar(settingViewController, name: "Setting")
+        
+        selectedIndex = 2
     }
     
 
