@@ -31,6 +31,8 @@ class LoginViewController: UIViewController {
         for (label, placeholder) in names {
             let isSecure = label.contains("Password") ? true : false
             let field = TextFieldWithLabelStack(labelText: label, placeholderText: placeholder, isSecure: isSecure)
+            // for hiding keyboard
+            field.textField.delegate = self
             arr.append(field)
         }
         return arr
@@ -85,6 +87,15 @@ class LoginViewController: UIViewController {
         setupMiddleStack()
         setConstraints()
         getEmailFromPreviousScreen()
+        
+        // for hiding keyboard
+        configureTapGesture()
+    }
+    
+    // hiding keyboard
+    private func configureTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tapGesture)
     }
     
     func getEmailFromPreviousScreen() {
@@ -145,8 +156,13 @@ class LoginViewController: UIViewController {
         }
         
         loginButton.snp.makeConstraints({$0.height.equalTo(54)})
-        
     }
+}
+
+extension LoginViewController: UITextFieldDelegate {
     
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true) // or textField.resignFirstResponder()
+        return true
+    }
 }
