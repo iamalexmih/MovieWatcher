@@ -34,13 +34,15 @@ class SettingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         loadUser()
+        if let avatar = UserInfoService.shared.fetchCurrentAvatarCoreData() {
+            avatarView.image = avatar
+        }
     }
     
     
     private func loadUser() {
         if let user = UserInfoService.shared.fetchCurrentUserCoreData() {
             currentUser = user
-            avatarView.image = currentUser!.avatarImage
             
             let firstName = currentUser!.firstName ?? "Anonymous "
             let lastName = currentUser!.lastName ?? "User"
@@ -106,6 +108,7 @@ extension SettingViewController {
 
         alert.addTextField { textfield in
             newPasswordTextField = textfield
+            newPasswordTextField.isSecureTextEntry = true
             newPasswordTextField.placeholder = "New password"
         }
         alert.addAction(changeAction)
@@ -195,7 +198,7 @@ extension SettingViewController {
     }
     
     func setupAvatarView() {
-        avatarView.image = UIImage(named: Resources.Image.profileSettingScreen)
+//        avatarView.image = UIImage(named: Resources.Image.profileSettingScreen)
         avatarView.contentMode = .scaleAspectFill
         avatarView.layer.cornerRadius = 28
         avatarView.clipsToBounds = true

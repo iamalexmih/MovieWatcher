@@ -25,13 +25,15 @@ class UserInfoService {
         userEntity.dateBirth = user.dateBirth
         userEntity.gender = user.gender
         userEntity.location = user.location
+        var avatar = UIImage(systemName: "person")?.pngData()
+        userEntity.avatarImageData = avatar
         
         CoreDataService.shared.save()
     }
     
     func fetchCurrentUserCoreData() -> UserModel? {
         guard let userEntity = CoreDataService.shared.fetchUser(currenUserEmail.lowercased()) else {
-           print("fetchUserCoreData. User not found")
+           print("fetchCurrentUserCoreData. User not found")
             return nil
         }
         var avatar = UIImage(systemName: "person")
@@ -52,7 +54,7 @@ class UserInfoService {
     
     func editingUserInCoreData(userModel: UserModel) {
         guard let userEntity = CoreDataService.shared.fetchUser(currenUserEmail.lowercased()) else {
-            print("fetchUserCoreData. User not found")
+            print("editingUserInCoreData. User not found")
             return
         }
         
@@ -67,8 +69,8 @@ class UserInfoService {
     
     
     func fetchCurrentAvatarCoreData() -> UIImage? {
-        guard let userEntity = CoreDataService.shared.fetchUser(currenUserEmail) else {
-           print("fetchUserCoreData. User not found")
+        guard let userEntity = CoreDataService.shared.fetchUser(currenUserEmail.lowercased()) else {
+           print("fetchCurrentAvatarCoreData. User not found")
             return nil
         }
         var avatar = UIImage(systemName: "person")
@@ -82,7 +84,7 @@ class UserInfoService {
     
     func editingAvatarUserInCoreData(avatar: UIImage?) {
         guard let userEntity = CoreDataService.shared.fetchUser(currenUserEmail) else {
-            print("fetchUserCoreData. User not found")
+            print("editingAvatarUserInCoreData. User not found")
             return
         }
         guard let avatar = avatar else { return }
