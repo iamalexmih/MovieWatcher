@@ -339,7 +339,7 @@ extension MovieDetailViewController {
         participantCollectionView.showsHorizontalScrollIndicator = false
         participantCollectionView.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(24)
-            make.height.equalTo(42)
+            make.height.equalTo(50)
             make.top.equalTo(castAndCrewHeaderLabel.snp.bottom).inset(-16)
             make.bottom.equalToSuperview().inset(50)
         }
