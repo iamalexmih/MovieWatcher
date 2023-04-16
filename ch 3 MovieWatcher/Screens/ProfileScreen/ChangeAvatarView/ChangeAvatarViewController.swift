@@ -9,8 +9,8 @@ import UIKit
 import SnapKit
 
 class ChangeAvatarViewController: UIViewController {
-    var imageView = UIImageView()
-    let settingsAvatar = ProfileViewController()
+    
+    var avatarImage: UIImage?
     
     private let pageContainer = UIView()
     private let titleLabel = UILabel()
@@ -81,14 +81,12 @@ extension ChangeAvatarViewController: UIImagePickerControllerDelegate, UINavigat
     
     @objc func deletePicker(_ sender: UIButton) {
         print("delete")
-        imageView.image = UIImage(systemName: "person.fill")
-        
+        avatarImage = UIImage(systemName: "person")
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
-            imageView.image = image
-
+            avatarImage = image
             print(image.size)
         }
         
@@ -100,7 +98,7 @@ extension ChangeAvatarViewController: UIImagePickerControllerDelegate, UINavigat
     }
     
     @objc func saveButtonPress(_ sender: UIButton) {
-        settingsAvatar.ava = imageView
+        UserInfoService.shared.editingAvatarUserInCoreData(avatar: avatarImage)
         self.dismiss(animated: true)
     }
 }
@@ -152,6 +150,8 @@ extension ChangeAvatarViewController {
 
         deletePhoto.setTitleColor(.red, for: .normal)
         deletePhoto.tintColor = .red
+        deletePhoto.imageEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        deletePhoto.titleEdgeInsets = UIEdgeInsets(top: 0, left: 44, bottom: 0, right: 0)
         deletePhoto.snp.makeConstraints { make in
             make.height.equalTo(60)
         }

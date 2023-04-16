@@ -43,7 +43,6 @@ final class ProfileViewController: UIViewController {
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
         addViews()
         configure()
-        setAvatar(with: ava)
         loadUser()
         emailView.textField.isUserInteractionEnabled = false
     }
@@ -51,7 +50,8 @@ final class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
-        setAvatar(with: ava)
+        print("viewWillAppearviewWillAppearviewWillAppearviewWillAppear")
+        loadAvatar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -60,10 +60,9 @@ final class ProfileViewController: UIViewController {
     }
     
     
-    func setAvatar(with photo: UIImageView?) {
-        guard let image = photo else { return }
-        avatarImageView.image = image.image
-        print(avatarImageView.image?.size)
+    func loadAvatar() {
+        guard let avatar = UserInfoService.shared.fetchCurrentAvatarCoreData() else { return }
+        avatarImageView.image = avatar
     }
 }
 
@@ -73,6 +72,10 @@ extension ProfileViewController {
     @objc
     private func editPhoto() {
         print("Edit photo")
+        //        navigationController?.pushViewController(detailedVC, animated: true)
+        let editPhotoVc = ChangeAvatarViewController()
+        //        navigationController?.pushViewController(editPhotoVc, animated: true)
+        self.present(editPhotoVc, animated: true)
     }
 
     @objc
@@ -80,6 +83,7 @@ extension ProfileViewController {
         print("Save changes")
         saveNewUserData()
     }
+    
     // MARK: Configure and constraints funcs
     private func addViews() {
         view.addSubview(scrollView)
@@ -203,14 +207,8 @@ extension ProfileViewController {
         arrayElemets.forEach { $0.snp.makeConstraints { $0.height.equalTo(82) } }
     }
 
-    @objc
-    private func editPhoto() {
-        print("Edit photo")
-//        navigationController?.pushViewController(detailedVC, animated: true)
-        let editPhotoVc = ChangeAvatarViewController()
-//        navigationController?.pushViewController(editPhotoVc, animated: true)
-        self.present(editPhotoVc, animated: true)
-
+    
+    
     // MARK: NotificationCenter
     private func configurationNotificationCenter() {
         NotificationCenter.default.addObserver(self,
@@ -283,7 +281,8 @@ extension ProfileViewController {
                                         email: currentUser!.email,
                                         dateBirth: date,
                                         gender: gender?.rawValue,
-                                        location: location)
+                                        location: location,
+                                        avatarImage: avatarImageView.image)
             
             UserInfoService.shared.editingUserInCoreData(userModel: updatedUser)
         }

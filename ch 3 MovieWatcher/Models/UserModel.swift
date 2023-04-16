@@ -5,7 +5,7 @@
 //  Created by Алексей Попроцкий on 12.04.2023.
 //
 
-import Foundation
+import UIKit
 
 
 class UserModel {
@@ -17,6 +17,7 @@ class UserModel {
     let dateBirth: Date?
     let gender: String?
     let location: String?
+    let avatarImage: UIImage?
     
     init(idUuid: String,
          firstName: String?,
@@ -24,7 +25,8 @@ class UserModel {
          email: String,
          dateBirth: Date?,
          gender: String?,
-         location: String?) {
+         location: String?,
+         avatarImage: UIImage?) {
         self.idUuid = idUuid
         self.firstName = firstName
         self.lastName = lastName
@@ -32,5 +34,6 @@ class UserModel {
         self.dateBirth = dateBirth
         self.gender = gender
         self.location = location
+        self.avatarImage = avatarImage
     }
 }

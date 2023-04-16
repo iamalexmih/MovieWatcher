@@ -284,7 +284,6 @@
 				B5B1D1B729DA0787006966FF /* Components */,
 				B551395629DDFD7E005CD307 /* Models */,
 				B5B1D19029D9DB9A006966FF /* Service */,
-				B5B1D18B29D9DA06006966FF /* ChangeAvatarView */,
 				B5B1D18A29D9D9F7006966FF /* FilterView */,
 				B5B1D18129D9D7F4006966FF /* Resource */,
 				B551394929DC98B9005CD307 /* Extansions */,
@@ -354,6 +353,7 @@
 		B5B1D18829D9D9AD006966FF /* ProfileScreen */ = {
 			isa = PBXGroup;
 			children = (
+				B5B1D18B29D9DA06006966FF /* ChangeAvatarView */,
 				B5EF3B3729E35E4C00183201 /* ProfileScreenComponents */,
 				B5B1D19829D9DC8E006966FF /* ProfileViewController.swift */,
 			);

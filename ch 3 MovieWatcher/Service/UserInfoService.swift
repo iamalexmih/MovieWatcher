@@ -5,7 +5,7 @@
 //  Created by Алексей Попроцкий on 12.04.2023.
 //
 
-import Foundation
+import UIKit
 
 
 class UserInfoService {
@@ -34,47 +34,83 @@ class UserInfoService {
            print("fetchUserCoreData. User not found")
             return nil
         }
+        var avatar = UIImage(systemName: "person")
+        if let avatarImageData = userEntity.avatarImageData {
+            avatar = UIImage(data: avatarImageData)
+        }
         let userModel = UserModel(idUuid: userEntity.idUser!,
                                   firstName: userEntity.firstName,
                                   lastName: userEntity.lastName,
                                   email: userEntity.email!,
                                   dateBirth: userEntity.dateBirth,
                                   gender: userEntity.gender,
-                                  location: userEntity.location)
+                                  location: userEntity.location,
+                                  avatarImage: avatar)
         return userModel
     }
     
-    func fetchUserCoreData(userId: String) -> UserModel? {
-        guard let userEntity = CoreDataService.shared.fetchUser(userId) else {
+    
+    func editingUserInCoreData(userModel: UserModel) {
+        guard let userEntity = CoreDataService.shared.fetchUser(currenUserEmail) else {
+            print("fetchUserCoreData. User not found")
+            return
+        }
+        
+        userEntity.firstName = userModel.firstName
+        userEntity.lastName = userModel.lastName
+        userEntity.dateBirth = userModel.dateBirth
+        userEntity.gender = userModel.gender
+        userEntity.location = userModel.location
+        
+        CoreDataService.shared.save()
+    }
+    
+    
+    func fetchCurrentAvatarCoreData() -> UIImage? {
+        guard let userEntity = CoreDataService.shared.fetchUser(currenUserEmail) else {
            print("fetchUserCoreData. User not found")
             return nil
         }
-        let userModel = UserModel(idUuid: userEntity.idUser!,
-                                  firstName: userEntity.firstName!,
-                                  lastName: userEntity.lastName!,
-                                  email: userEntity.email!,
-                                  dateBirth: userEntity.dateBirth,
-                                  gender: userEntity.gender,
-                                  location: userEntity.location)
-        return userModel
+        var avatar = UIImage(systemName: "person")
+        if let avatarImageData = userEntity.avatarImageData {
+            avatar = UIImage(data: avatarImageData)
+        }
+        
+        return avatar
     }
     
-    func editingUserInCoreData(userModel: UserModel) {
-            guard let userEntity = CoreDataService.shared.fetchUser(currenUserEmail) else {
-               print("fetchUserCoreData. User not found")
-                return
-            }
-            
-            userEntity.firstName = userModel.firstName
-            userEntity.lastName = userModel.lastName
-            userEntity.dateBirth = userModel.dateBirth
-            userEntity.gender = userModel.gender
-            userEntity.location = userModel.location
-            
-            CoreDataService.shared.save()
+    
+    func editingAvatarUserInCoreData(avatar: UIImage?) {
+        guard let userEntity = CoreDataService.shared.fetchUser(currenUserEmail) else {
+            print("fetchUserCoreData. User not found")
+            return
         }
+        guard let avatar = avatar else { return }
+        let avatarDate = avatar.pngData()
+        userEntity.avatarImageData = avatarDate
+        
+        CoreDataService.shared.save()
+    }
+    
     
     func deleteOutCoreData(user id: String) {
         CoreDataService.shared.deleteOutCoreData(user: id)
     }
+    
+//    func fetchUserCoreData(userId: String) -> UserModel? {
+//        guard let userEntity = CoreDataService.shared.fetchUser(userId) else {
+//           print("fetchUserCoreData. User not found")
+//            return nil
+//        }
+//        let userModel = UserModel(idUuid: userEntity.idUser!,
+//                                  firstName: userEntity.firstName!,
+//                                  lastName: userEntity.lastName!,
+//                                  email: userEntity.email!,
+//                                  dateBirth: userEntity.dateBirth,
+//                                  gender: userEntity.gender,
+//                                  location: userEntity.location)
+//        return userModel
+//    }
+    
+    
 }
