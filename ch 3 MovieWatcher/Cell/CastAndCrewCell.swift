@@ -75,7 +75,7 @@ class CastAndCrewCell: UICollectionViewCell {
         stackView.snp.makeConstraints { make in
             make.centerY.equalTo(photoImageView)
             make.left.equalTo(photoImageView.snp.right).inset(-8)
-            make.top.bottom.equalTo(photoImageView)
+            make.top.bottom.equalToSuperview()
             make.right.equalToSuperview()
         }
     }
