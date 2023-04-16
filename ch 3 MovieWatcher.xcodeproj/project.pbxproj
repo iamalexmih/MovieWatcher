@@ -13,6 +13,7 @@
 		5770CA7429E0C47E000CED66 /* BoxViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5770CA7329E0C47E000CED66 /* BoxViewCell.swift */; };
 		5770CA8029E0C535000CED66 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5770CA7F29E0C535000CED66 /* UIStackView.swift */; };
 		57E6209829DB4BFF00260AF5 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6209729DB4BFF00260AF5 /* CustomTabBarController.swift */; };
+		6368381529EB568A0066C529 /* ImageLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6368381429EB568A0066C529 /* ImageLabelButton.swift */; };
 		63E01F7929DBEFED0010C6C7 /* TextFieldWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */; };
 		6F19E43129E17A7300969FD6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F19E43029E17A7100969FD6 /* GoogleService-Info.plist */; };
 		6F19E43329E17F6600969FD6 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F19E43229E17F6600969FD6 /* AuthModel.swift */; };
@@ -95,6 +96,7 @@
 		5770CA7F29E0C535000CED66 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		57E6209729DB4BFF00260AF5 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		610D653D69895880F8210BB9 /* Pods-ch 3 MovieWatcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ch 3 MovieWatcher.debug.xcconfig"; path = "Target Support Files/Pods-ch 3 MovieWatcher/Pods-ch 3 MovieWatcher.debug.xcconfig"; sourceTree = "<group>"; };
+		6368381429EB568A0066C529 /* ImageLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelButton.swift; sourceTree = "<group>"; };
 		63E01F7829DBEFED0010C6C7 /* TextFieldWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithLabel.swift; sourceTree = "<group>"; };
 		6F19E43029E17A7100969FD6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6F19E43229E17F6600969FD6 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 				8727A1CA29DB00B400C3D087 /* GoogleButton.swift */,
 				B5B6B14D29DC47C500F79E98 /* LogOutTemplateButton.swift */,
 				00F1E97329DC55DB00F5FBF7 /* CustomButton.swift */,
+				6368381429EB568A0066C529 /* ImageLabelButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -699,6 +702,7 @@
 				8E6E226C29E14C00009D1807 /* StarRatingView.swift in Sources */,
 				5770CA7029E0C43F000CED66 /* HomeViewMovieCell.swift in Sources */,
 				B5B1D19529D9DC50006966FF /* RegisterViewController.swift in Sources */,
+				6368381529EB568A0066C529 /* ImageLabelButton.swift in Sources */,
 				B5EF3B3B29E35F3700183201 /* CheckGenderView.swift in Sources */,
 				8E92CEC929E5690A00DB826A /* InteractivePageIndicator.swift in Sources */,
 				B5B6B14E29DC47C500F79E98 /* LogOutTemplateButton.swift in Sources */,

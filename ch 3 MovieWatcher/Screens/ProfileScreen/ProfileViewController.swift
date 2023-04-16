@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 final class ProfileViewController: UIViewController {
+    var ava = UIImageView()
+    
     private var scrollView = UIScrollView()
     private var containerView = UIView()
     private let avatarImageView = UIImageView()
@@ -35,16 +37,25 @@ final class ProfileViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
         configure()
+        setAvatar(with: ava)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
+        setAvatar(with: ava)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         tabBarController?.tabBar.isHidden = false
+    }
+    
+    
+    func setAvatar(with photo: UIImageView?) {
+        guard let image = photo else { return }
+        avatarImageView.image = image.image
+        print(avatarImageView.image?.size)
     }
 }
 
@@ -92,7 +103,8 @@ extension ProfileViewController {
 
     private func configureAvatarImage() {
         containerView.addSubview(avatarImageView)
-        avatarImageView.image = UIImage(named: Resources.Image.profileSettingScreen)
+        ava.image = UIImage(named: Resources.Image.profileSettingScreen)
+        avatarImageView.image = ava.image
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.layer.masksToBounds = true
         avatarImageView.layer.cornerRadius = 50
@@ -168,6 +180,10 @@ extension ProfileViewController {
     @objc
     private func editPhoto() {
         print("Edit photo")
+//        navigationController?.pushViewController(detailedVC, animated: true)
+        let editPhotoVc = ChangeAvatarViewController()
+//        navigationController?.pushViewController(editPhotoVc, animated: true)
+        self.present(editPhotoVc, animated: true)
     }
 
     @objc
