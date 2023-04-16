@@ -20,6 +20,7 @@ enum Resources {
         static let textFieldBackground = "bgTextFieldAuthColor"
         static let textFieldBorder = "bgTextFieldAuthBorderColor"
         static let yellowStar = "yellowStar"
+        static let buttonPhoto = "bgButtonPhoto"
     }
     
     
