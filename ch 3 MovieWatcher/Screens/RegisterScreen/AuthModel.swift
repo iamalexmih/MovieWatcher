@@ -62,7 +62,7 @@ class AuthModel {
                     let newUser = UserModel(idUuid: UUID().uuidString,
                                             firstName: self.firstName,
                                             lastName: self.lastName,
-                                            email: email,
+                                            email: email.lowercased(),
                                             dateBirth: nil,
                                             gender: nil,
                                             location: nil,
@@ -93,7 +93,7 @@ class AuthModel {
                     print(error.localizedDescription)
                 }
                 if user != nil {
-                    UserInfoService.shared.currenUserEmail = email
+                    UserInfoService.shared.currenUserEmail = email.lowercased()
                     self.openTabBarController(controller)
                 }
             }

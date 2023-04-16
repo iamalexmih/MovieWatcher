@@ -54,6 +54,13 @@ class HomeViewController: UIViewController {
         } else {
             boxOfficeCollection.collectionBoxOfficeView.reloadData()
         }
+        
+        if let currentUser = UserInfoService.shared.fetchCurrentUserCoreData() {
+            personLabel.text = "Hi, " + (currentUser.firstName ?? "User")
+        }
+        if let avatar = UserInfoService.shared.fetchCurrentAvatarCoreData() {
+            userImage.image = avatar
+        }
     }
     
     
@@ -159,9 +166,7 @@ extension HomeViewController {
     
     func configureUserImage() {
         view.addSubview(userImage)
-        if let avatar = UserInfoService.shared.fetchCurrentAvatarCoreData() {
-            userImage.image = avatar
-        }
+        
 //        userImage.image = UIImage(named: Resources.Image.profileSettingScreen)
         userImage.layer.cornerRadius = 20
         userImage.layer.masksToBounds = true
@@ -172,9 +177,6 @@ extension HomeViewController {
     
     func configurePersonLabel() {
         personLabel.text = "Hi, User"
-        if let currentUser = UserInfoService.shared.fetchCurrentUserCoreData() {
-            personLabel.text = "Hi, " + (currentUser.firstName ?? "User")
-        }
         personLabel.adjustsFontSizeToFitWidth = true
         personLabel.font = UIFont.jakartaBold(size: 18)
         personLabel.minimumScaleFactor = 0.5
