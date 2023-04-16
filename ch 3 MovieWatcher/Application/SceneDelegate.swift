@@ -28,6 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let navController = NavBarController(rootViewController: screenSaverViewController)
         window?.rootViewController = navController
+        
         window?.makeKeyAndVisible()
     }
 }

@@ -65,7 +65,8 @@ class AuthModel {
                                             email: email,
                                             dateBirth: nil,
                                             gender: nil,
-                                            location: nil)
+                                            location: nil,
+                                            avatarImage: nil)
                     UserInfoService.shared.currenUserEmail = email
                     UserInfoService.shared.saveInfoInCoreData(for: newUser)
                     self.openTabBarController(controller)

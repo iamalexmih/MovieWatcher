@@ -29,14 +29,25 @@ class SettingViewController: UIViewController {
 
         ThemeManager.shared.setTheme()
         view.backgroundColor = UIColor(named: Resources.Colors.backGround)
-        loadUser()
         configureScreen()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadUser()
     }
     
     
     private func loadUser() {
         if let user = UserInfoService.shared.fetchCurrentUserCoreData() {
             currentUser = user
+            avatarView.image = currentUser!.avatarImage
+            
+            let firstName = currentUser!.firstName ?? "Anonymous "
+            let lastName = currentUser!.lastName ?? "User"
+            nameLabel.text = "\(firstName) \(lastName)"
+            
+            let email = currentUser!.email
+            nickNameLabel.text = email
         }
     }
     
@@ -183,7 +194,7 @@ extension SettingViewController {
     
     func setupAvatarView() {
         avatarView.image = UIImage(named: Resources.Image.profileSettingScreen)
-        avatarView.contentMode = .scaleAspectFit
+        avatarView.contentMode = .scaleAspectFill
         avatarView.layer.cornerRadius = 28
         avatarView.clipsToBounds = true
         view.addSubview(avatarView)
@@ -198,11 +209,6 @@ extension SettingViewController {
 
     func setupNameLabel() {
         nameLabel.text = "Anonymous User"
-        if let currentUser = currentUser {
-            let firstName = currentUser.firstName ?? "Anonymous "
-            let lastName = currentUser.lastName ?? "User"
-            nameLabel.text = "\(firstName) \(lastName)"
-        }
         nameLabel.textColor = UIColor(named: Resources.Colors.text)
         nameLabel.font = UIFont.jakartaRomanSemiBold(size: 18)
         view.addSubview(nameLabel)
@@ -215,10 +221,6 @@ extension SettingViewController {
 
     func setupNickNameLabel() {
         nickNameLabel.text = "empty"
-        if let currentUser = currentUser {
-            let email = currentUser.email
-            nickNameLabel.text = email
-        }
         nickNameLabel.textColor = UIColor(named: Resources.Colors.inactive)
         nickNameLabel.font = UIFont.jakartaRomanSemiBold(size: 18)
         view.addSubview(nickNameLabel)
@@ -343,7 +345,9 @@ extension SettingViewController {
         forgotPasswordButton.setTitleColor(UIColor(named: Resources.Colors.text), for: .normal)
         forgotPasswordButton.titleLabel?.font = UIFont.jakartaRomanSemiBold(size: 16)
         view.addSubview(forgotPasswordButton)
-        forgotPasswordButton.addTarget(self, action: #selector(forgotPassword), for: .touchUpInside)
+//        forgotPasswordButton.addTarget(self, action: #selector(forgotPassword), for: .touchUpInside)
+        // узнать почему надо поменять .touchUpInside на .valueChanged
+        forgotPasswordButton.addTarget(self, action: #selector(forgotPassword), for: .valueChanged)
 
         forgotPasswordButton.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(60)

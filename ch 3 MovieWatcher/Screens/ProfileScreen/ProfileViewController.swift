@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 final class ProfileViewController: UIViewController {
+    var ava = UIImageView()
+    
     private var scrollView = UIScrollView()
     private var containerView = UIView()
     private let avatarImageView = UIImageView()
@@ -48,11 +50,19 @@ final class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
+        print("viewWillAppearviewWillAppearviewWillAppearviewWillAppear")
+        loadAvatar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         tabBarController?.tabBar.isHidden = false
+    }
+    
+    
+    func loadAvatar() {
+        guard let avatar = UserInfoService.shared.fetchCurrentAvatarCoreData() else { return }
+        avatarImageView.image = avatar
     }
 }
 
@@ -62,6 +72,10 @@ extension ProfileViewController {
     @objc
     private func editPhoto() {
         print("Edit photo")
+        //        navigationController?.pushViewController(detailedVC, animated: true)
+        let editPhotoVc = ChangeAvatarViewController()
+        //        navigationController?.pushViewController(editPhotoVc, animated: true)
+        self.present(editPhotoVc, animated: true)
     }
 
     @objc
@@ -69,6 +83,7 @@ extension ProfileViewController {
         print("Save changes")
         saveNewUserData()
     }
+    
     // MARK: Configure and constraints funcs
     private func addViews() {
         view.addSubview(scrollView)
@@ -121,7 +136,9 @@ extension ProfileViewController {
     }
     
     private func configureAvatarImage() {
-        avatarImageView.image = UIImage(named: Resources.Image.profileSettingScreen)
+        containerView.addSubview(avatarImageView)
+        ava.image = UIImage(named: Resources.Image.profileSettingScreen)
+        avatarImageView.image = ava.image
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.layer.masksToBounds = true
         avatarImageView.layer.cornerRadius = 50
@@ -190,7 +207,8 @@ extension ProfileViewController {
         arrayElemets.forEach { $0.snp.makeConstraints { $0.height.equalTo(82) } }
     }
 
-
+    
+    
     // MARK: NotificationCenter
     private func configurationNotificationCenter() {
         NotificationCenter.default.addObserver(self,
@@ -263,7 +281,8 @@ extension ProfileViewController {
                                         email: currentUser!.email,
                                         dateBirth: date,
                                         gender: gender?.rawValue,
-                                        location: location)
+                                        location: location,
+                                        avatarImage: avatarImageView.image)
             
             UserInfoService.shared.editingUserInCoreData(userModel: updatedUser)
         }

@@ -159,7 +159,10 @@ extension HomeViewController {
     
     func configureUserImage() {
         view.addSubview(userImage)
-        userImage.image = UIImage(named: Resources.Image.profileSettingScreen)
+        if let avatar = UserInfoService.shared.fetchCurrentAvatarCoreData() {
+            userImage.image = avatar
+        }
+//        userImage.image = UIImage(named: Resources.Image.profileSettingScreen)
         userImage.layer.cornerRadius = 20
         userImage.layer.masksToBounds = true
         userImage.clipsToBounds = true
