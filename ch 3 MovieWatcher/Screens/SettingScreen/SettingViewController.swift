@@ -139,7 +139,7 @@ extension SettingViewController {
             make.right.equalToSuperview().inset(30)
         }
         setPositionToggle()
-        toggle.addTarget(self, action: #selector(toggleDidChange), for: .touchUpInside)
+        toggle.addTarget(self, action: #selector(toggleDidChange), for: .valueChanged)
     }
 
     func setPositionToggle() {
@@ -343,7 +343,7 @@ extension SettingViewController {
         forgotPasswordButton.setTitleColor(UIColor(named: Resources.Colors.text), for: .normal)
         forgotPasswordButton.titleLabel?.font = UIFont.jakartaRomanSemiBold(size: 16)
         view.addSubview(forgotPasswordButton)
-        forgotPasswordButton.addTarget(self, action: #selector(forgotPassword), for: .valueChanged)
+        forgotPasswordButton.addTarget(self, action: #selector(forgotPassword), for: .touchUpInside)
 
         forgotPasswordButton.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(60)
