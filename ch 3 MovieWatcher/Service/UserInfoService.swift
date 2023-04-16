@@ -30,7 +30,7 @@ class UserInfoService {
     }
     
     func fetchCurrentUserCoreData() -> UserModel? {
-        guard let userEntity = CoreDataService.shared.fetchUser(currenUserEmail) else {
+        guard let userEntity = CoreDataService.shared.fetchUser(currenUserEmail.lowercased()) else {
            print("fetchUserCoreData. User not found")
             return nil
         }
@@ -51,7 +51,7 @@ class UserInfoService {
     
     
     func editingUserInCoreData(userModel: UserModel) {
-        guard let userEntity = CoreDataService.shared.fetchUser(currenUserEmail) else {
+        guard let userEntity = CoreDataService.shared.fetchUser(currenUserEmail.lowercased()) else {
             print("fetchUserCoreData. User not found")
             return
         }
