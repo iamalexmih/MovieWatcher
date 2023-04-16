@@ -50,7 +50,7 @@ final class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
-        print("viewWillAppearviewWillAppearviewWillAppearviewWillAppear")
+        print("viewWillAppearviewWillAppearviewWillAppearviewWillAppear ")
         loadAvatar()
     }
     
@@ -89,7 +89,7 @@ extension ProfileViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(containerView)
         containerView.addSubview(avatarImageView)
-        containerView.addSubviews(editButton)
+        containerView.addSubview(editButton)
         view.addSubview(bottomView)
         bottomView.addSubview(saveButton)
         containerView.addSubview(stackView)
