@@ -59,6 +59,7 @@ class AuthModel {
                     print(error.localizedDescription)
                 }
                 if user != nil {
+                    let avatar = UIImage(systemName: "person")
                     let newUser = UserModel(idUuid: UUID().uuidString,
                                             firstName: self.firstName,
                                             lastName: self.lastName,
@@ -66,8 +67,8 @@ class AuthModel {
                                             dateBirth: nil,
                                             gender: nil,
                                             location: nil,
-                                            avatarImage: nil)
-                    UserInfoService.shared.currenUserEmail = email
+                                            avatarImage: avatar)
+                    UserInfoService.shared.currenUserEmail = email.lowercased()
                     UserInfoService.shared.saveInfoInCoreData(for: newUser)
                     self.openTabBarController(controller)
                 }

@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 final class ProfileViewController: UIViewController {
-    var ava = UIImageView()
+//    var ava = UIImageView()
     
     private var scrollView = UIScrollView()
     private var containerView = UIView()
@@ -137,8 +137,8 @@ extension ProfileViewController {
     
     private func configureAvatarImage() {
 //        containerView.addSubview(avatarImageView)
-        ava.image = UIImage(named: Resources.Image.profileSettingScreen)
-        avatarImageView.image = ava.image
+//        ava.image = UIImage(named: Resources.Image.profileSettingScreen)
+//        avatarImageView.image = ava.image
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.layer.masksToBounds = true
         avatarImageView.layer.cornerRadius = 50

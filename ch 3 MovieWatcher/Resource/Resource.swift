@@ -49,7 +49,7 @@ enum Resources {
         static let moviemaxIcon = "moviemaxIcon"
         
         // SettingScreenImages
-        static let profileSettingScreen = "ProfileSettingScreen"
+//        static let profileSettingScreen = "ProfileSettingScreen"
         static let headInProfileSetting = "HeadInProfileSetting"
         static let fleshInProfileSetting = "FleshInProfileSetting"
         static let changePasswordProfileSetting = "ChangePasswordProfileSetting"
